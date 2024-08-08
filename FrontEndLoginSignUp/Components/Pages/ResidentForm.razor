@@ -1,0 +1,117 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@using DALLibrary
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Add Resident</h4>
+        <EditForm Model="Resident" OnValidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label for="cnic">CNIC</label>
+                <InputText id="cnic" class="form-control" @bind-Value="Resident.CNIC"  required />
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <InputText id="name" class="form-control" @bind-Value="Resident.Names"  required />
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <InputText id="contact" class="form-control" @bind-Value="Resident.Contact"  required />
+            </div>
+            <div class="form-group">
+                <label for="HS_Name">Housing Society Name</label>
+                <InputText id="HS_Name" class="form-control" @bind-Value="HS_Name"  required />
+                <ValidationMessage For="@(() => HS_Name)" />
+            </div>
+            <div class="form-group">
+                <label for="passwords">Passwords</label>
+                <InputText id="passwords" type="password" class="form-control" @bind-Value="Resident.Passwords"  required />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+                <div class="alert alert-success mt-3">
+                @SuccessMessage
+                </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+                <div class="alert alert-danger mt-3">
+                @ErrorMessage
+                </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public Resident Resident { get; set; } = new Resident();
+    [Parameter] public EventCallback<Resident> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    public string HS_Name { get; set; }
+    public string ErrorMessage { get; set; }
+    public string SuccessMessage { get; set; }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        if (!IsValidHSName(HS_Name))
+        {
+            ErrorMessage = "Housing Society Name can only contain letters or digits.";
+            return;
+        }
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={HS_Name}";
+            var response1 = await client.GetAsync(url);
+            if (response1.IsSuccessStatusCode)
+            {
+                Resident.A_id = await response1.Content.ReadAsStringAsync();
+                var response = await client.PostAsJsonAsync("api/Resident", Resident);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Resident added successfully.";
+                    await OnSave.InvokeAsync(Resident);
+                }
+                else
+                {
+                    ErrorMessage = "Failed to save the resident. Please try again.";
+                }
+            }
+            else
+            {
+                ErrorMessage = "Invalid Housing Society Name.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private bool IsValidHSName(string hsName)
+    {
+        return hsName.All(char.IsLetterOrDigit);
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

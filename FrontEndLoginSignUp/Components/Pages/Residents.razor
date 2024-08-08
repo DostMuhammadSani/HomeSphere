@@ -1,0 +1,147 @@
+﻿@page "/residents"
+@rendermode InteractiveServer
+@* Residents.razor *@
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using DALLibrary
+@inject IHttpClientFactory HttpClientFactory
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Residents Management</h2>
+
+    <!-- Data Table -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>CNIC</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>A_Id</th>
+                <th>Passwords</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (residents.Any())
+            {
+                @foreach (var resident in residents)
+                {
+                    <tr>
+                        <td>@resident.CNIC</td>
+                        <td>@resident.Names</td>
+                        <td>@resident.Contact</td>
+                        <td>@resident.A_id</td>
+                        <td>@resident.Passwords</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" @onclick="() => EditResident(resident)">Update</button>
+                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteResident(resident.CNIC)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center">No residents found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Add Resident Button -->
+    <div class="mb-4">
+        <button class="btn btn-primary" @onclick="AddNewResident">Add Resident</button>
+    </div>
+
+    <!-- Resident Form -->
+    @if (showForm)
+    {
+        @if (currentResident.CNIC == null)
+        {
+            <ResidentForm Resident="currentResident" OnSave="HandleSave" OnCancel="HandleCancel" />
+        }
+        else
+        {
+            <UpdateResidentForm Resident="currentResident" OnSave="HandleSave" OnCancel="HandleCancel" />
+        }
+    }
+</div>
+
+@code {
+
+    private List<Resident> ? residents = new List<Resident>();
+    private Resident currentResident;
+    private bool showForm;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadResident();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task LoadResident()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.GetAsync("api/Resident");
+        if (response.IsSuccessStatusCode)
+        {
+            residents = await response.Content.ReadFromJsonAsync<List<Resident>>();
+        }
+    }
+    private void AddNewResident()
+    {
+        currentResident = new Resident(); // Initialize a new Resident for adding
+        showForm = true;
+    }
+
+    private void EditResident(Resident resident)
+    {
+        currentResident = resident; // Use the selected resident for editing
+        showForm = true;
+    }
+
+    private async void DeleteResident(string cnic)
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.DeleteAsync($"api/Resident?CNIC={cnic}");
+
+        if (response.IsSuccessStatusCode)
+        {
+
+            var residentToRemove = residents.FirstOrDefault(r => r.CNIC == cnic);
+            LoadResident();
+            if (residentToRemove != null)
+            {
+                residents.Remove(residentToRemove);
+            }
+        }
+        else
+        {
+            
+            Console.WriteLine($"Failed to delete resident with CNIC {cnic}. Status code: {response.StatusCode}");
+        }
+    }
+
+    private void HandleSave(Resident savedResident)
+    {
+        if (residents.Any(r => r.CNIC == savedResident.CNIC))
+        {
+            // Update existing resident in the list
+            var index = residents.FindIndex(r => r.CNIC == savedResident.CNIC);
+            residents[index] = savedResident;
+        }
+        else
+        {
+            // Add new resident to the list
+            residents.Add(savedResident);
+        }
+
+        showForm = false; // Hide the form after saving
+    }
+
+    private void HandleCancel()
+    {
+        showForm = false; // Hide the form without saving
+    }
+}

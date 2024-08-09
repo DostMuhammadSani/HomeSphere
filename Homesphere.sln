@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryModel", "ClassLibraryModel\ClassLibraryModel.csproj", "{46DE582A-EA2C-4C1D-98C3-FA0CCCDB8130}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontEndLoginSignUp", "FrontEndLoginSignUp\FrontEndLoginSignUp.csproj", "{678C90CE-4212-4008-B881-A35C1F53BC27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontEnd", "FrontEndLoginSignUp\FrontEnd.csproj", "{678C90CE-4212-4008-B881-A35C1F53BC27}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DALLibrary", "DALLibrary\DALLibrary.csproj", "{00747C81-03CC-44FE-A4A8-8F48F2AA4099}"
 EndProject

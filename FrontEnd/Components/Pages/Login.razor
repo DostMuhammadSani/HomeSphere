@@ -1,0 +1,92 @@
+﻿@page "/login"
+@rendermode InteractiveServer
+
+@using ClassLibraryModel
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+
+<h3>Login</h3>
+
+<EditForm FormName="LogIn" Model="@loginModel" OnValidSubmit="HandleLogin">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <InputText id="username" class="form-control" @bind-Value="loginModel.UserName" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <InputText id="password" class="form-control" type="password" @bind-Value="loginModel.Password" />
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+            <div class="alert alert-danger" role="alert">
+            @errorMessage
+            </div>
+    }
+</EditForm>
+
+<style>
+    body {
+        font-family: 'Georgia', serif;
+        background-color: #e0f2f1; /* Soft mint green */
+        color: #263238; /* Dark grey-blue */
+    }
+
+    h3 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #004d40; /* Deep teal */
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #004d40; /* Deep teal */
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #004d40; /* Deep teal border */
+        border-radius: 6px;
+        background-color: #ffffff; /* White */
+        color: #263238; /* Dark grey-blue */
+    }
+
+    .btn-primary {
+        display: block;
+        width: auto; /* Adjust width to fit content */
+        max-width: 200px; /* Set a max width */
+        padding: 12px 20px;
+        background-color: #00796b; /* Teal */
+        border: none;
+        border-radius: 6px;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 0 auto; /* Center button horizontally */
+    }
+
+    .btn-primary:hover {
+        background-color: #004d40; /* Darker teal */
+    }
+
+    .alert-danger {
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>
+
+

@@ -304,3 +304,4 @@ D:\FinalYearProject\.NET\HomeSphere\WebAPI\obj\Debug\net8.0\refint\WebAPI.dll
 D:\FinalYearProject\.NET\HomeSphere\WebAPI\obj\Debug\net8.0\WebAPI.pdb
 D:\FinalYearProject\.NET\HomeSphere\WebAPI\obj\Debug\net8.0\WebAPI.genruntimeconfig.cache
 D:\FinalYearProject\.NET\HomeSphere\WebAPI\obj\Debug\net8.0\ref\WebAPI.dll
+D:\FinalYearProject\.NET\HomeSphere\WebAPI\obj\Debug\net8.0\WebAPI.sourcelink.json

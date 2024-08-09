@@ -117,5 +117,44 @@ namespace DALLibrary
 
         }
 
+
+        public static List<T> GetDataParameter<T>(string procedureName,string A_id) where T : class, new()
+        {
+
+            List<T> users = new List<T>();
+            SqlConnection con = DBHelper.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(procedureName, con);
+            cmd.Parameters.AddWithValue("@A_id", A_id);
+            cmd.CommandType = CommandType.StoredProcedure;
+            Type tp = typeof(T);
+            PropertyInfo[] properties = tp.GetProperties();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                T obj = new T();
+                foreach (var property in properties)
+                {
+
+                    var name = property.Name;
+
+                    property.SetValue(obj, Convert.ChangeType(reader[$"{name}"], property.PropertyType));
+
+
+                }
+
+                users.Add(obj);
+
+            }
+            con.Close();
+            return users;
+
+
+
+
+
+        }
+
     }
 }

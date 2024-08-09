@@ -12,13 +12,13 @@ namespace WebAPI.Controllers
     {
 
         [HttpGet]  
-        public  List<Resident> GetResidents()
+        public  List<Resident> GetResidents(string A_id)
         {
-            return DALClass.GetData<Resident>("GetResident");
+            return DALClass.GetDataParameter<Resident>("GetResidents",A_id);
 
         }
         [HttpPost]
-        public  async void SaveResident(Resident R)
+        public  async Task<IActionResult> SaveResident(Resident R)
         {
             SqlParameter[] p =
            {
@@ -30,8 +30,22 @@ namespace WebAPI.Controllers
 
 
             };
+            try
+            {
 
-             DALClass.CUDResident(p, "SaveResident");
+                DALClass.CUDResident(p, "SaveResident");
+                return Ok();
+            }
+            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+            {
+                // Handle primary key or unique constraint violation
+                return Conflict("A resident with this CNIC already exists.");
+            }
+            catch (Exception ex)
+            {
+                // Handle other exceptions
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
         }
         [HttpPut]
         public async void UpdateResident(Resident R)

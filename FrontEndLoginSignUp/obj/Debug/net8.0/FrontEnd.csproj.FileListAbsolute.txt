@@ -1,0 +1,8 @@
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEnd.csproj.AssemblyReference.cache
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEnd.GeneratedMSBuildEditorConfig.editorconfig
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEnd.AssemblyInfoInputs.cache
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEnd.AssemblyInfo.cs
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEnd.csproj.CoreCompileInputs.cache
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEnd.MvcApplicationPartsAssemblyInfo.cs
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEnd.MvcApplicationPartsAssemblyInfo.cache
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEnd.sourcelink.json

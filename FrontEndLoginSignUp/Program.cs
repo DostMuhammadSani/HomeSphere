@@ -1,6 +1,7 @@
 using FrontEndLoginSignUp;
 using FrontEndLoginSignUp.Components;
 using System.Net.Http.Headers;
+using Blazored.SessionStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +13,10 @@ builder.Services.AddHttpClient("AuthApi", client =>
     client.BaseAddress = new Uri("https://localhost:7001");
 });
 builder.Services.AddSingleton<UserService>();
+builder.Services.AddBlazoredSessionStorage();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

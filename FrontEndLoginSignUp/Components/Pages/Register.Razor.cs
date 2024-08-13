@@ -20,7 +20,7 @@ namespace FrontEndLoginSignUp.Components.Pages
                 var adminResponse = await client.PostAsJsonAsync("api/Admin", person);
                 if (adminResponse.IsSuccessStatusCode)
                 {
-                    Navigation.NavigateTo("/login");
+                    Navigation.NavigateTo("/");
                 }
                 else
                 {

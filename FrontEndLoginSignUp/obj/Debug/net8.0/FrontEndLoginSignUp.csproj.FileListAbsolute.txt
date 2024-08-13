@@ -133,3 +133,8 @@ D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\DALLibr
 D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\WebAPI.pdb
 D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEndLoginSignUp.MvcApplicationPartsAssemblyInfo.cs
 D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEndLoginSignUp.sourcelink.json
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Blazored.LocalStorage.dll
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Blazored.SessionStorage.dll
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll

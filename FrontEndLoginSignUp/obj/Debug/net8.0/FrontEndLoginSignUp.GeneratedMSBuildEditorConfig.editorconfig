@@ -65,3 +65,7 @@ build_metadata.AdditionalFiles.CssScope =
 [D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-3ybvb4k3bx
+
+[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ltcqgfhw1w

@@ -1,0 +1,122 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@using DALLibrary
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@rendermode InteractiveServer
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Add Plot</h4>
+        <EditForm Model="Plot" OnValidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label for="plotNumber">Plot Number</label>
+                <InputText id="plotNumber" class="form-control" @bind-Value="Plot.PlotNumber" required />
+            </div>
+            <div class="form-group">
+                <label for="size">Size</label>
+                <InputText id="size" class="form-control" @bind-Value="Plot.Size" required />
+            </div>
+
+           <div class="form-group">
+    <label for="soldStatus">Sold Status</label>
+    <InputSelect id="soldStatus" class="form-control" @bind-Value="Plot.SoldStatus" required>
+       <option value="">Select Status</option>
+        <option value="Available">Available</option>
+        <option value="Sold">Sold</option>
+      
+    </InputSelect>
+</div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+                <div class="alert alert-success mt-3">
+                @SuccessMessage
+                </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+                <div class="alert alert-danger mt-3">
+                @ErrorMessage
+                </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public PlotModel Plot { get; set; } = new PlotModel();
+    [Parameter] public EventCallback<PlotModel> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    public string HS_Name { get; set; }
+    public string ErrorMessage { get; set; }
+    public string SuccessMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        HS_Name = UserService.Username;
+        base.OnInitialized();
+    }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={HS_Name}";
+            var response1 = await client.GetAsync(url);
+            if (response1.IsSuccessStatusCode)
+            {
+                Guid Id = Guid.NewGuid();
+                Plot.PlotID = Id.ToString();
+                Plot.A_id = await response1.Content.ReadAsStringAsync();
+                var response = await client.PostAsJsonAsync("api/Plot", Plot);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Plot added successfully.";
+                    await OnSave.InvokeAsync(Plot);
+                }
+                else
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                    {
+                        ErrorMessage = "A plot with this number already exists. Please use a different plot number.";
+                    }
+                    else
+                    {
+                        
+
+                        ErrorMessage = await response.Content.ReadAsStringAsync(); 
+                    }
+                }
+            }
+            else
+            {
+                ErrorMessage = "Invalid Housing Society Name.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

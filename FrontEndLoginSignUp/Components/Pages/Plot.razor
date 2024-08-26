@@ -1,0 +1,169 @@
+﻿@page "/plot"
+@rendermode InteractiveServer
+@* Plots.razor *@
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using DALLibrary
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@using Blazored.SessionStorage
+@using System.Security.Claims
+@inject ISessionStorageService SessionStorage
+
+@if(role == "Admin"){
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Plots Management</h2>
+
+        <!-- Data Table -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>PlotID</th>
+                    <th>Plot Number</th>
+                    <th>Size</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (plots.Any())
+                {
+                    @foreach (var plot in plots)
+                    {
+                        <tr>
+                            <td>@plot.PlotID</td>
+                            <td>@plot.PlotNumber</td>
+                            <td>@plot.Size</td>
+                            <td>@plot.SoldStatus</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" @onclick="() => EditPlot(plot)">Update</button>
+                                <button class="btn btn-danger btn-sm" @onclick="() => DeletePlot(plot.PlotID)">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center">No plots found</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Add Plot Button -->
+        <div class="mb-4">
+            <button class="btn btn-primary" @onclick="AddNewPlot">Add Plot</button>
+        </div>
+
+        <!-- Plot Form -->
+        @if (showForm)
+        {
+            @if (currentPlot.PlotID == null) 
+            {
+                <PlotForm Plot="currentPlot" OnSave="HandleSave" OnCancel="HandleCancel" />
+            }
+            else
+            {
+                <UpdatePlot Plot="currentPlot" OnSave="HandleSave" OnCancel="HandleCancel" />
+            }
+        }
+    </div>
+}
+@code {
+    private List<PlotModel> ? plots = new List<PlotModel>();
+    private PlotModel currentPlot;
+    private bool showForm;
+    private string A_id;
+    private string token;
+    public string role;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim.Value;
+            StateHasChanged(); // Request a re-render to update the UI if needed
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error retrieving token: {ex.Message}");
+        }
+
+        await LoadPlots();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task LoadPlots()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Plot?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                plots = await response.Content.ReadFromJsonAsync<List<PlotModel>>();
+            }
+        }
+    }
+
+    private void AddNewPlot()
+    {
+        currentPlot = new PlotModel(); // Initialize a new Plot for adding
+        showForm = true;
+    }
+
+    private void EditPlot(PlotModel plot)
+    {
+        currentPlot = plot; // Use the selected plot for editing
+        showForm = true;
+    }
+
+    private async void DeletePlot(string plotId)
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.DeleteAsync($"api/Plot?PlotID={plotId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var plotToRemove = plots.FirstOrDefault(p => p.PlotID == plotId);
+            if (plotToRemove != null)
+            {
+                plots.Remove(plotToRemove);
+            }
+            await LoadPlots();
+            StateHasChanged();
+        }
+        else
+        {
+            Console.WriteLine($"Failed to delete plot with PlotID {plotId}. Status code: {response.StatusCode}");
+        }
+    }
+
+    private void HandleSave(PlotModel savedPlot)
+    {
+        if (plots.Any(p => p.PlotID == savedPlot.PlotID))
+        {
+            var index = plots.FindIndex(p => p.PlotID == savedPlot.PlotID);
+            plots[index] = savedPlot;
+        }
+        else
+        {
+            plots.Add(savedPlot);
+        }
+
+        showForm = false; // Hide the form after saving
+    }
+
+    private void HandleCancel()
+    {
+        showForm = false; // Hide the form without saving
+    }
+}

@@ -38,6 +38,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Plot.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQbG90LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/PlotForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQbG90Rm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,6 +56,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Residents.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNpZGVudHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdatePlot.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVQbG90LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateResidentForm.razor]

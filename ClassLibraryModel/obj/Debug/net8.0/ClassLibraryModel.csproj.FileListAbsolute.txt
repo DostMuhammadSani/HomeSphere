@@ -20,3 +20,4 @@ D:\FinalYearProject\.NET\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibr
 D:\FinalYearProject\.NET\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\refint\ClassLibraryModel.dll
 D:\FinalYearProject\.NET\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.pdb
 D:\FinalYearProject\.NET\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ref\ClassLibraryModel.dll
+D:\FinalYearProject\.NET\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.sourcelink.json

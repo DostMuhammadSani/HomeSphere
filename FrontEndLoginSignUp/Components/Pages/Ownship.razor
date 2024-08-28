@@ -1,0 +1,169 @@
+﻿@page "/ownship"
+@rendermode InteractiveServer
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using DALLibrary
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@using Blazored.SessionStorage
+@using System.Security.Claims
+@inject ISessionStorageService SessionStorage
+
+@if(role == "Admin"){
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Ownership Management</h2>
+
+        <!-- Data Table -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>OwnID</th>
+                    <th>PlotID</th>
+                    <th>CNIC</th>
+                    <th>Purchase Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ownShips.Any())
+                {
+                    @foreach (var ownShip in ownShips)
+                    {
+                        <tr>
+                            <td>@ownShip.OwnID</td>
+                            <td>@ownShip.PlotID</td>
+                            <td>@ownShip.CNIC</td>
+                            <td>@ownShip.PurchaseDate.ToShortDateString()</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" @onclick="() => EditOwnShip(ownShip)">Update</button>
+                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteOwnShip(ownShip.OwnID)">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center">No ownership records found</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Add OwnShip Button -->
+        <div class="mb-4">
+            <button class="btn btn-primary" @onclick="AddNewOwnShip">Add Ownership</button>
+        </div>
+
+        <!-- OwnShip Form -->
+        @if (showForm)
+        {
+            @if (currentOwnShip.OwnID == null)
+            {
+                <OwnShipForm OwnShip="currentOwnShip" OnSave="HandleSave" OnCancel="HandleCancel" />
+            }
+            else
+            {
+                <UpdateOwnShip OwnShip="currentOwnShip" OnSave="HandleSave" OnCancel="HandleCancel" />
+            }
+        }
+    </div>
+}
+
+@code {
+    private List<OwnShipModel>? ownShips = new List<OwnShipModel>();
+    private OwnShipModel currentOwnShip;
+    private bool showForm;
+    private string A_id;
+    private string token;
+    public string role;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim.Value;
+            StateHasChanged(); // Request a re-render to update the UI if needed
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error retrieving token: {ex.Message}");
+        }
+
+        await LoadOwnShips();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task LoadOwnShips()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/OwnShip?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                ownShips = await response.Content.ReadFromJsonAsync<List<OwnShipModel>>();
+            }
+        }
+    }
+
+    private void AddNewOwnShip()
+    {
+        currentOwnShip = new OwnShipModel(); // Initialize a new OwnShip for adding
+        showForm = true;
+    }
+
+    private void EditOwnShip(OwnShipModel ownShip)
+    {
+        currentOwnShip = ownShip; // Use the selected OwnShip for editing
+        showForm = true;
+    }
+
+    private async void DeleteOwnShip(string ownShipId)
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.DeleteAsync($"api/OwnShip?OwnID={ownShipId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var ownShipToRemove = ownShips.FirstOrDefault(o => o.OwnID == ownShipId);
+            if (ownShipToRemove != null)
+            {
+                ownShips.Remove(ownShipToRemove);
+            }
+            await LoadOwnShips();
+            StateHasChanged();
+        }
+        else
+        {
+            Console.WriteLine($"Failed to delete ownership with OwnID {ownShipId}. Status code: {response.StatusCode}");
+        }
+    }
+
+    private void HandleSave(OwnShipModel savedOwnShip)
+    {
+        if (ownShips.Any(o => o.OwnID == savedOwnShip.OwnID))
+        {
+            var index = ownShips.FindIndex(o => o.OwnID == savedOwnShip.OwnID);
+            ownShips[index] = savedOwnShip;
+        }
+        else
+        {
+            ownShips.Add(savedOwnShip);
+        }
+
+        showForm = false; // Hide the form after saving
+    }
+
+    private void HandleCancel()
+    {
+        showForm = false; // Hide the form without saving
+    }
+}

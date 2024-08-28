@@ -1,0 +1,106 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@using DALLibrary
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@rendermode InteractiveServer
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Add Ownership</h4>
+        <EditForm Model="OwnShip" OnValidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label for="plotID">PlotID</label>
+                <InputText id="plotID" class="form-control" @bind-Value="OwnShip.PlotID" required />
+            </div>
+            <div class="form-group">
+                <label for="cnic">CNIC</label>
+                <InputText id="cnic" class="form-control" @bind-Value="OwnShip.CNIC" required />
+            </div>
+            <div class="form-group">
+                <label for="purchaseDate">Purchase Date</label>
+                <InputDate id="purchaseDate" class="form-control" @bind-Value="OwnShip.PurchaseDate" required />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+                <div class="alert alert-success mt-3">
+                @SuccessMessage
+                </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+                <div class="alert alert-danger mt-3">
+                @ErrorMessage
+                </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public OwnShipModel OwnShip { get; set; } = new OwnShipModel();
+    [Parameter] public EventCallback<OwnShipModel> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    public string HS_Name { get; set; }
+    public string ErrorMessage { get; set; }
+    public string SuccessMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        HS_Name = UserService.Username;
+        base.OnInitialized();
+    }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+
+            Guid Id =  Guid.NewGuid();
+            OwnShip.OwnID = Id.ToString();
+            var response = await client.PostAsJsonAsync("api/OwnShip", OwnShip);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Ownership added successfully.";
+                    await OnSave.InvokeAsync(OwnShip);
+                }
+                else
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                    {
+                        ErrorMessage = "An ownership record with this ID already exists.";
+                    }
+                    else
+                    {
+                        ErrorMessage = await response.Content.ReadAsStringAsync();
+                    }
+                }
+            
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

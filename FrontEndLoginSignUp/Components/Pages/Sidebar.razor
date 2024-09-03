@@ -1,0 +1,69 @@
+﻿@* Sidebar.razor *@
+<div class="col-md-2 bg-primary text-light p-3" style="min-height: 100vh;">
+            <!-- Profile Section -->
+            <div class="d-flex align-items-center mb-4">
+             
+                <div class="ml-3">
+                    <h6 class="mb-0">John David</h6>
+                    <small class="text-success">● Online</small>
+                </div>
+            </div>
+            <!-- Menu Items -->
+            <nav class="nav flex-column">
+                <span class="text-uppercase text-light mb-2">General</span>
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                    <i class="fas fa-palette mr-2"></i> Dashboard
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="/residents">
+                    <i class="fas fa-th-large mr-2"></i> Residents
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="/plots">
+                    <i class="fas fa-diamond mr-2"></i> Plots
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="/ownship">
+                    <i class="fas fa-table mr-2"></i> Ownship
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                    <i class="fas fa-cube mr-2"></i> Apps
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                    <i class="fas fa-money-bill-alt mr-2"></i> Pricing Tables
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                    <i class="fas fa-envelope mr-2"></i> Contact
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                    <i class="fas fa-file-alt mr-2"></i> Additional Pages
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                    <i class="fas fa-map-marker-alt mr-2"></i> Map
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                    <i class="fas fa-chart-bar mr-2"></i> Charts
+                </a>
+                <a class="nav-link text-light d-flex align-items-center" href="#">
+                    <i class="fas fa-cog mr-2"></i> Settings
+                </a>
+            </nav>
+        </div>
+
+<style>
+    .bg-primary {
+        background-color: #2c3e50 !important;
+        background-image: url('sidebar.jpg'); /* Add your pattern image here */
+    }
+    .nav-link {
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
+    .nav-link:hover {
+        background-color: #34495e;
+    }
+    .nav-link.active {
+        background-color: #1abc9c;
+        font-weight: bold;
+    }
+    .ml-3 {
+        margin-left: 1rem;
+    }
+</style>

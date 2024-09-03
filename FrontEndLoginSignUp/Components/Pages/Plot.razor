@@ -12,7 +12,9 @@
 @inject ISessionStorageService SessionStorage
 
 @if(role == "Admin"){
+        
     <div class="container mt-5">
+             <Sidebar></Sidebar>
         <h2 class="text-center mb-4">Plots Management</h2>
 
         <!-- Data Table -->
@@ -79,25 +81,27 @@
     private string token;
     public string role;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        try
+        if (firstRender)
         {
-            token = await SessionStorage.GetItemAsync<string>("authToken");
-            var claims = RoleFetch.ParseClaimsFromJwt(token);
-            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
-            role = roleClaim.Value;
-            StateHasChanged(); // Request a re-render to update the UI if needed
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error retrieving token: {ex.Message}");
-        }
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim.Value;
+                StateHasChanged(); // Request a re-render to update the UI if needed
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
 
-        await LoadPlots();
-        await base.OnInitializedAsync();
+            await LoadPlots();
+            await base.OnInitializedAsync();
+        }
     }
-
     private async Task LoadPlots()
     {
         var client = HttpClientFactory.CreateClient("AuthApi");

@@ -1,0 +1,266 @@
+﻿@page "/dashboard"
+@using System.Drawing
+@inject UserService UserService
+@using Blazored.SessionStorage
+@inject ISessionStorageService SessionStorage
+@using System.Security.Claims
+@rendermode InteractiveServer
+
+@if (role == "Admin")
+{
+    <!-- Dashboard Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <Sidebar></Sidebar>
+            <div class="col-md-10 p-4">
+                <!-- Top Nav -->
+                <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
+                    <!-- Search Bar -->
+                    <div class="search-bar">
+                        <input type="text" class="form-control" placeholder="Search here">
+                    </div>
+                    <!-- Icons Section -->
+                    <div class="icons-section d-flex align-items-center">
+                        <div class="icon-wrapper position-relative mr-4">
+                            <img src="icons/notification.png" class="nav-icon" alt="Notification">
+
+                        </div>
+
+                        <div class="icon-wrapper position-relative mr-4">
+                            <img src="icons/email.png" class="nav-icon" alt="Chat">
+
+                        </div>
+
+                        <div class="icon-wrapper position-relative mr-4">
+                            <img src="icons/settings.png" class="nav-icon" alt="Settings">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Statistics Section -->
+                <div class="row text-center mb-4 px-4">
+                    <div class="col-md-3">
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <img src="icons/profile.png" alt="Residents Icon" class="stats-icon">
+                                <h3>1200</h3>
+                                <p>Total Residents</p>
+                                <span class="text-success">+3% (30 days)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <img src="icons/land.png" alt="Plots Icon" class="stats-icon">
+                                <h3>450</h3>
+                                <p>Total Plots</p>
+                                <span class="text-success">+5% (30 days)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <img src="icons/key.png" alt="Ownership Icon" class="stats-icon">
+                                <h3>350</h3>
+                                <p>Total Ownerships</p>
+                                <span class="text-danger">-2% (30 days)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <img src="icons/money.png" alt="Revenue Icon" class="stats-icon">
+                                <h3>$1.2M</h3>
+                                <p>Total Revenue</p>
+                                <span class="text-danger">-4% (30 days)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Extra Area Chart -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Occupancy and Availability Chart</h5>
+                        <!-- Example Chart: Replace with actual chart library like Chart.js or ApexCharts -->
+                        <div>
+                            <canvas id="areaChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.1/chart.min.js"></script>
+<script>
+    var ctx = document.getElementById('areaChart').getContext('2d');
+    var areaChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'Occupied Plots',
+                data: [65, 70, 75, 80, 85, 90, 95],
+                borderColor: 'rgb(255, 99, 132)',
+                fill: false
+            }, {
+                label: 'Available Plots',
+                data: [35, 30, 25, 20, 15, 10, 5],
+                borderColor: 'rgb(54, 162, 235)',
+                fill: false
+            }, {
+                label: 'Ownership Transfers',
+                data: [5, 10, 15, 20, 25, 30, 35],
+                borderColor: 'rgb(75, 192, 192)',
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+    /* Container */
+    .row {
+        background-color: #f6f6fb;
+    }
+    .top-nav {
+        background-color: #f6f6fb;
+    }
+
+    /* Search Bar */
+    .search-bar .form-control {
+        width: 300px;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 15px;
+        font-size: 14px;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Icons Section */
+    .icons-section .icon-wrapper  {
+        
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+    }
+
+
+    .nav-icon {
+        width: 100%;
+        height: auto;
+    }
+
+    .badge {
+        background-color: #ff6b6b;
+        color: white;
+        font-size: 12px;
+        padding: 3px 6px;
+        border-radius: 50%;
+        top: -5px;
+        right: -5px;
+    }
+
+    /* Filter Period */
+    .btn-filter-period {
+        background-color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .calendar-icon {
+        width: 20px;
+        height: auto;
+        margin-right: 10px;
+    }
+
+    /* User Profile */
+    .user-profile .user-greeting {
+        font-size: 16px;
+        color: #4a4a4a;
+    }
+
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    /* Stats Cards */
+    .stats-card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .stats-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .card-body h3 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-body p {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-body span {
+        font-size: 0.8rem;
+    }
+</style>
+
+@code {
+    private string A_id;
+    private string token;
+    public string role;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+        try
+        {
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim.Value;
+            StateHasChanged(); // Request a re-render to update the UI if needed
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error retrieving token: {ex.Message}");
+        }
+
+        
+        await base.OnInitializedAsync();
+    }
+
+
+}
+}

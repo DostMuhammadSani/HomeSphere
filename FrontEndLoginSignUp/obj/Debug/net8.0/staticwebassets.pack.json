@@ -21,6 +21,58 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home.jpg",
+      "PackagePath": "staticwebassets\\home.jpg"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\email.png",
+      "PackagePath": "staticwebassets\\icons\\email.png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\home (2).png",
+      "PackagePath": "staticwebassets\\icons\\home (2).png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\key.png",
+      "PackagePath": "staticwebassets\\icons\\key.png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\land.png",
+      "PackagePath": "staticwebassets\\icons\\land.png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\money.png",
+      "PackagePath": "staticwebassets\\icons\\money.png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\notification.png",
+      "PackagePath": "staticwebassets\\icons\\notification.png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\profile.png",
+      "PackagePath": "staticwebassets\\icons\\profile.png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\settings.png",
+      "PackagePath": "staticwebassets\\icons\\settings.png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\user.png",
+      "PackagePath": "staticwebassets\\icons\\user.png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\login.jpg",
+      "PackagePath": "staticwebassets\\login.jpg"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\mobile.png",
+      "PackagePath": "staticwebassets\\mobile.png"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\sidebar.jpg",
+      "PackagePath": "staticwebassets\\sidebar.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FrontEndLoginSignUp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

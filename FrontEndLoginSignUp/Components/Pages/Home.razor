@@ -1,7 +1,328 @@
-﻿@page "/h"
+﻿@page "/"
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+<header class="header">
+    <div class="logo">
+        <h2>HomeSphere Residencia</h2>
+    </div>
+    <nav class="nav">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="#">Download</a>
+     
+    </nav>
+</header>
 
-<PageTitle>Home</PageTitle>
+<div class="landing-page">
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Manage with HomeSphere Residencia</h2>
+            <br />
+            <br />
+            <p>Manage your property efficiently and effectively with our comprehensive platform.</p>
+            <button class="cta-button" @onclick="onClick">Get Started </button>
+        </div>
+    </section>
+    <section class="features-section">
+    <div class="features-container">
+        <div class="mockup">
+            <img src="mobile.png" alt="Mobile App Mockup">
+        </div>
+        <div class="features-content">
+    <h2>Try HomeSphere Mobile App</h2>
+    <ul class="features-list">
+        <li>
+            <div class="feature-text">
+                <h3>Request Services</h3>
+                <p>Conveniently request various services such as maintenance, housekeeping, and more, directly through the HomeSphere platform.</p>
+            </div>
+        </li>
+        <li>
+            <div class="feature-text">
+                <h3>Pay Bills</h3>
+                <p>Quickly pay your utility and society maintenance bills with ease, all in one place.</p>
+            </div>
+        </li>
+        <li>
+            <div class="feature-text">
+                <h3>Register Complaints</h3>
+                <p>Easily register complaints regarding any issues in your society and track the resolution status in real-time.</p>
+            </div>
+        </li>
+        <li>
+            <div class="feature-text">
+                <h3>And more...</h3>
+                <p>Stay updated with society events and manage your profile all within HomeSphere.</p>
+            </div>
+        </li>
+    </ul>
+    <button class="cta-button">Download</button>
+</div>
 
-<h1>Hello, world!</h1>
+    </div>
+</section>
 
-Welcome to your new app.
+    <section class="features">
+        <div class="feature-item">
+         
+            <h3>Sync your property data</h3>
+            <p>Easily manage your property listings and updates from one place.</p>
+        </div>
+        <div class="feature-item">
+       
+            <h3>Manage property listings</h3>
+            <p>Effortlessly add, update, and delete property listings with our intuitive interface.</p>
+        </div>
+        <div class="feature-item">
+         
+            <h3>Track and manage tasks</h3>
+            <p>Stay on top of all property-related tasks with our task management feature.</p>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <div>© 2024 HomeSphere Residencia. All rights reserved.</div>
+</footer>
+
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo h2 {
+    color: #ffffff;
+    margin: 0;
+}
+
+.header .nav {
+    display: flex;
+}
+
+.header .nav a {
+    color: #ffffff;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header .nav a:hover {
+    color: #cccccc;
+}
+
+.landing-page {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    width: 100%;
+    height:80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    justify-content: center;
+    padding: 80px 20px;
+    background-image: url('home.jpg'); /* Ensure the background image is included */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    text-align: left;
+}
+
+.hero-content {
+    max-width: 800px;
+    
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0); /* Add a dark overlay behind the text */
+    border-radius: 5px;
+}
+
+.hero-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1f1f1f;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #1f1f1f;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    background-color: #3a3a3a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.cta-button:hover {
+    background-color: black;
+}
+
+.features {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 40px 0;
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+.feature-item {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.feature-item .icon {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #e74c3c;
+}
+
+.feature-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.feature-item p {
+    font-size: 1.1em;
+    color: #dddddd;
+}
+
+.footer {
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+.features-section {
+    width: 100%;
+    padding: 80px 20px;
+    background-color: #f6f6fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.features-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.mockup {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mockup img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 30px;
+}
+
+.features-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.features-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.sleep-icon {
+    background-color: #a29bfe;
+}
+
+.meditate-icon {
+    background-color: #fab1a0;
+}
+
+.music-icon {
+    background-color: #74b9ff;
+}
+
+.more-icon {
+    background-color: #ff7675;
+}
+
+.feature-text h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333333;
+}
+
+.feature-text p {
+    margin: 5px 0 0;
+    color: #666666;
+    font-size: 1em;
+}
+
+
+
+
+
+</style>
+
+@code {
+    public void onClick()
+    {
+        Navigation.NavigateTo("/login");
+    }
+}

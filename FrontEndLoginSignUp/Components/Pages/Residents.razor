@@ -13,7 +13,10 @@
 
 
 @if(role=="Admin"){
+    <div class="row"> 
+          <Sidebar></Sidebar>
 <div class="container mt-5">
+        
     <h2 class="text-center mb-4">Residents Management</h2>
 
     <!-- Data Table -->
@@ -73,6 +76,7 @@
         }
     }
 </div>
+</div>
 }
 @code {
 
@@ -80,27 +84,30 @@
     private Resident currentResident;
     private bool showForm;
     private string A_id;
-     private string token;
-     public string role;
-    protected override async Task OnInitializedAsync()
+    private string token;
+    public string role;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-       try
-    {
-    token = await SessionStorage.GetItemAsync<string>("authToken");
-    var claims = RoleFetch.ParseClaimsFromJwt(token);
-    var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
-    role = roleClaim.Value;
-    StateHasChanged(); // Request a re-render to update the UI if needed
-}
-catch (Exception ex)
-{
-    // Handle exceptions as needed
-    Console.WriteLine($"Error retrieving token: {ex.Message}");
-}
-        await LoadResident();
-        await base.OnInitializedAsync();
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim.Value;
+                StateHasChanged();
+                await LoadResident();
+               // Request a re-render to update the UI if needed
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions as needed
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+         
+        }
     }
-
     private async Task LoadResident()
     {
         var client = HttpClientFactory.CreateClient("AuthApi");

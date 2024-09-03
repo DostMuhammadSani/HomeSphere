@@ -21,7 +21,7 @@ namespace FrontEndLoginSignUp.Components.Pages
                 var jwtResponse = await response.Content.ReadFromJsonAsync<JwtResponse>();
                 Token = jwtResponse.Token;
                 await SessionStorage.SetItemAsync("authToken", Token);
-                Navigation.NavigateTo("/residents");
+                Navigation.NavigateTo("/dashboard");
             }
             else
             {

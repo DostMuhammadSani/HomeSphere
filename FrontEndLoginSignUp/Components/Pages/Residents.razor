@@ -1,6 +1,5 @@
 ﻿@page "/residents"
 @rendermode InteractiveServer
-@* Residents.razor *@
 @using System.Collections.Generic
 @using System.Linq
 @using ClassLibraryModel
@@ -11,81 +10,110 @@
 @using System.Security.Claims
 @inject ISessionStorageService SessionStorage
 
+@if (role == "Admin")
+{
+        <div style="display: flex; flex-direction: row; background-color: #f8f9fa;">
+            <Sidebar></Sidebar>
+            <div style="width: 80%; margin: 40px;">
+                <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
+                    <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Residents Management</h2>
 
-@if(role=="Admin"){
-    <div class="row"> 
-          <Sidebar></Sidebar>
-<div class="container mt-5">
-        
-    <h2 class="text-center mb-4">Residents Management</h2>
+                    <!-- Search Box -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <input @bind="searchText" style="width: 60%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Search by CNIC, Name, Contact, or A_Id" />
+                        <button style="background-color: #343a40; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchResidents">Search</button>
+                    </div>
 
-    <!-- Data Table -->
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>CNIC</th>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>A_Id</th>
-                <th>Passwords</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (residents.Any())
-            {
-                @foreach (var resident in residents)
+                    <!-- Add Resident Button -->
+                    <div style="text-align: right; margin-bottom: 20px;">
+                        <button style="background-color: #343a40; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="AddNewResident">Add Resident</button>
+                    </div>
+                             <!-- Resident Form -->
+                @if (showForm)
                 {
-                    <tr>
-                        <td>@resident.CNIC</td>
-                        <td>@resident.Names</td>
-                        <td>@resident.Contact</td>
-                        <td>@resident.A_id</td>
-                        <td>@resident.Passwords</td>
-                        <td>
-                            <button class="btn btn-warning btn-sm" @onclick="() => EditResident(resident)">Update</button>
-                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteResident(resident.CNIC)">Delete</button>
-                        </td>
-                    </tr>
+                                    <div style="margin-top: 20px;">
+                        @if (currentResident.CNIC == null)
+                        {
+                                                    <ResidentForm Resident="currentResident" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                        else
+                        {
+                                                    <UpdateResidentForm Resident="currentResident" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                                    </div>
                 }
-            }
-            else
-            {
-                <tr>
-                    <td colspan="6" class="text-center">No residents found</td>
-                </tr>
-            }
-        </tbody>
-    </table>
 
-    <!-- Add Resident Button -->
-    <div class="mb-4">
-        <button class="btn btn-primary" @onclick="AddNewResident">Add Resident</button>
-    </div>
+                    <!-- Data Table -->
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background-color: #343a40; color: white;">
+                                <th style="padding: 10px; border: 1px solid #ddd;">CNIC</th>
+                                <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
+                                <th style="padding: 10px; border: 1px solid #ddd;">Contact</th>
+                                <th style="padding: 10px; border: 1px solid #ddd;">A_Id</th>
+                                <th style="padding: 10px; border: 1px solid #ddd;">Password</th>
+                                <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @if (filteredResidents.Any())
+                        {
+                            @foreach (var resident in filteredResidents)
+                            {
+                                            <tr style="background-color: #f8f9fa;">
+                                                <td style="padding: 10px; border: 1px solid #ddd;">@resident.CNIC</td>
+                                                <td style="padding: 10px; border: 1px solid #ddd;">@resident.Names</td>
+                                                <td style="padding: 10px; border: 1px solid #ddd;">@resident.Contact</td>
+                                                <td style="padding: 10px; border: 1px solid #ddd;">@resident.A_id</td>
+                                                <td style="padding: 10px; border: 1px solid #ddd;">@resident.Passwords</td>
+                                                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+                                                    <button style="background-color:#343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditResident(resident)">Update</button>
+                                                    <button style="background-color: #343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteResident(resident.CNIC)">Delete</button>
+                                                </td>
+                                            </tr>
+                            }
+                        }
+                        else
+                        {
+                                    <tr>
+                                        <td colspan="6" style="padding: 20px; text-align: center; color: #888;">No residents found</td>
+                                    </tr>
+                        }
+                        </tbody>
+                    </table>
 
-    <!-- Resident Form -->
-    @if (showForm)
-    {
-        @if (currentResident.CNIC == null)
-        {
-            <ResidentForm Resident="currentResident" OnSave="HandleSave" OnCancel="HandleCancel" />
-        }
-        else
-        {
-            <UpdateResidentForm Resident="currentResident" OnSave="HandleSave" OnCancel="HandleCancel" />
-        }
-    }
-</div>
-</div>
+               
+                </div>
+            </div>
+        </div>
 }
-@code {
 
-    private List<Resident> ? residents = new List<Resident>();
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+    table th, table td {
+        text-align: left;
+    }
+
+    table th {
+        text-align: center;
+    }
+</style>
+
+@code {
+    private List<Resident> residents = new List<Resident>();
+    private List<Resident> filteredResidents = new List<Resident>();
     private Resident currentResident;
     private bool showForm;
     private string A_id;
     private string token;
     public string role;
+    private string searchText = "";
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -98,16 +126,16 @@
                 role = roleClaim.Value;
                 StateHasChanged();
                 await LoadResident();
-               // Request a re-render to update the UI if needed
+                StateHasChanged();
             }
             catch (Exception ex)
             {
-                // Handle exceptions as needed
                 Console.WriteLine($"Error retrieving token: {ex.Message}");
             }
-         
         }
+
     }
+
     private async Task LoadResident()
     {
         var client = HttpClientFactory.CreateClient("AuthApi");
@@ -120,19 +148,23 @@
             if (response.IsSuccessStatusCode)
             {
                 residents = await response.Content.ReadFromJsonAsync<List<Resident>>();
+                filteredResidents = residents; // Initialize filtered list with all residents
             }
         }
     }
+
     private void AddNewResident()
     {
         currentResident = new Resident(); // Initialize a new Resident for adding
         showForm = true;
+
     }
 
     private void EditResident(Resident resident)
     {
         currentResident = resident; // Use the selected resident for editing
         showForm = true;
+
     }
 
     private async void DeleteResident(string cnic)
@@ -142,15 +174,13 @@
 
         if (response.IsSuccessStatusCode)
         {
-            // Remove the resident from the list first
+            // Remove the resident from the list
             var residentToRemove = residents.FirstOrDefault(r => r.CNIC == cnic);
             if (residentToRemove != null)
             {
                 residents.Remove(residentToRemove);
-                
-                
+                filteredResidents.Remove(residentToRemove);
             }
-            await LoadResident();
             StateHasChanged();
         }
         else
@@ -159,25 +189,31 @@
         }
     }
 
-    private void HandleSave(Resident savedResident)
+    private async void HandleSave(Resident savedResident)
     {
-        if (residents.Any(r => r.CNIC == savedResident.CNIC))
-        {
-            // Update existing resident in the list
-            var index = residents.FindIndex(r => r.CNIC == savedResident.CNIC);
-            residents[index] = savedResident;
-        }
-        else
-        {
-            // Add new resident to the list
-            residents.Add(savedResident);
-        }
-
+       await LoadResident();
         showForm = false; // Hide the form after saving
+        StateHasChanged(); // Trigger UI update
     }
 
     private void HandleCancel()
     {
         showForm = false; // Hide the form without saving
+    }
+
+    private void SearchResidents()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredResidents = residents;
+        }
+        else
+        {
+            filteredResidents = residents.Where(r =>
+                r.CNIC.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                r.Names.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                r.Contact.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                r.A_id.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
     }
 }

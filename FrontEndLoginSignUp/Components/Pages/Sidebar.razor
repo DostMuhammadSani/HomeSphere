@@ -1,49 +1,41 @@
-﻿@* Sidebar.razor *@
+﻿
+@* Sidebar.razor *@
+@using Blazored.SessionStorage
+@inject ISessionStorageService SessionStorage
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject UserService UserService
 <div class="col-md-2 bg-primary text-light p-3" style="min-height: 100vh;">
             <!-- Profile Section -->
             <div class="d-flex align-items-center mb-4">
              
                 <div class="ml-3">
-                    <h6 class="mb-0">John David</h6>
+                    <h6 class="mb-0">@UserService.Username</h6>
                     <small class="text-success">● Online</small>
                 </div>
             </div>
             <!-- Menu Items -->
             <nav class="nav flex-column">
                 <span class="text-uppercase text-light mb-2">General</span>
-                <a class="nav-link text-light d-flex align-items-center" href="#">
-                    <i class="fas fa-palette mr-2"></i> Dashboard
+ 
+                <a class="nav-link text-light d-flex align-items-center" href="/dashboard">
+                    <i class="fas fa-th-large mr-2"></i> Dashboard
                 </a>
                 <a class="nav-link text-light d-flex align-items-center" href="/residents">
                     <i class="fas fa-th-large mr-2"></i> Residents
                 </a>
-                <a class="nav-link text-light d-flex align-items-center" href="/plots">
+                <a class="nav-link text-light d-flex align-items-center" href="/plot">
                     <i class="fas fa-diamond mr-2"></i> Plots
                 </a>
                 <a class="nav-link text-light d-flex align-items-center" href="/ownship">
                     <i class="fas fa-table mr-2"></i> Ownship
                 </a>
-                <a class="nav-link text-light d-flex align-items-center" href="#">
-                    <i class="fas fa-cube mr-2"></i> Apps
-                </a>
-                <a class="nav-link text-light d-flex align-items-center" href="#">
-                    <i class="fas fa-money-bill-alt mr-2"></i> Pricing Tables
-                </a>
-                <a class="nav-link text-light d-flex align-items-center" href="#">
-                    <i class="fas fa-envelope mr-2"></i> Contact
-                </a>
-                <a class="nav-link text-light d-flex align-items-center" href="#">
-                    <i class="fas fa-file-alt mr-2"></i> Additional Pages
-                </a>
-                <a class="nav-link text-light d-flex align-items-center" href="#">
-                    <i class="fas fa-map-marker-alt mr-2"></i> Map
-                </a>
-                <a class="nav-link text-light d-flex align-items-center" href="#">
-                    <i class="fas fa-chart-bar mr-2"></i> Charts
-                </a>
-                <a class="nav-link text-light d-flex align-items-center" href="#">
-                    <i class="fas fa-cog mr-2"></i> Settings
-                </a>
+               
+                <div class="nav-item px-3 mt-4">
+            <button class="btn btn-danger w-100" @onclick="Logout">
+                <span class="bi bi-box-arrow-right" aria-hidden="true"></span> Logout
+            </button>
+        </div>
             </nav>
         </div>
 
@@ -67,3 +59,19 @@
         margin-left: 1rem;
     }
 </style>
+@code {
+    string user;
+    protected override void OnInitialized()
+    {
+        user = UserService.Username;
+        base.OnInitialized();
+    }
+    private async Task Logout()
+    {
+        // Clear session storage
+        await SessionStorage.ClearAsync();
+
+        // Redirect to login page
+        Navigation.NavigateTo("/login");
+    }
+}

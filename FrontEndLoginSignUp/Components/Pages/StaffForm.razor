@@ -1,0 +1,141 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@using DALLibrary
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Add Staff</h4>
+        <EditForm Model="Staff" OnValidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <!-- CNIC Field -->
+            <div class="form-group">
+                <label for="cnic">CNIC</label>
+                <InputText id="cnic" class="form-control" @bind-Value="Staff.CNIC" required />
+            </div>
+
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <InputText id="name" class="form-control" @bind-Value="Staff.Names" required />
+            </div>
+
+            <!-- Contact Field -->
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <InputText id="contact" class="form-control" @bind-Value="Staff.Contact" required />
+            </div>
+
+             <div class="form-group">
+                <label for="profession">Profession</label>
+                <InputText id="profession" class="form-control" @bind-Value="Staff.Profession" required />
+            </div>
+
+            <!-- Passwords Field -->
+            <div class="form-group">
+                <label for="passwords">Passwords</label>
+                <InputText id="passwords" type="password" class="form-control" @bind-Value="Staff.Passwords" required />
+            </div>
+
+            <!-- Submit and Cancel Buttons -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" style="background-color:#343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;">Save</button>
+                <button type="button" class="btn btn-secondary" style="background-color:#343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+
+        <!-- Success and Error Messages -->
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+                <div class="alert alert-success mt-3">
+                @SuccessMessage
+                </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+                <div class="alert alert-danger mt-3">
+                @ErrorMessage
+                </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public StaffModel Staff { get; set; } = new StaffModel();
+    [Parameter] public EventCallback<StaffModel> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    public string HS_Name { get; set; }
+    public string ErrorMessage { get; set; }
+    public string SuccessMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        HS_Name = UserService.Username;
+        base.OnInitialized();
+    }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        if (!IsValidHSName(HS_Name))
+        {
+            ErrorMessage = "Housing Society Name can only contain letters or digits.";
+            return;
+        }
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={HS_Name}";
+            var response1 = await client.GetAsync(url);
+            if (response1.IsSuccessStatusCode)
+            {
+                Staff.A_id = await response1.Content.ReadAsStringAsync();
+                var response = await client.PostAsJsonAsync("api/Staff", Staff);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Staff added successfully.";
+                    await OnSave.InvokeAsync(Staff);
+                }
+                else
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.Conflict) // Assuming 409 Conflict is returned
+                    {
+                        ErrorMessage = "A staff member with this CNIC already exists. Please use a different CNIC.";
+                    }
+                    else
+                    {
+                        ErrorMessage = "Failed to save the staff member. Please try again.";
+                    }
+                }
+            }
+            else
+            {
+                ErrorMessage = "Invalid Housing Society Name.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private bool IsValidHSName(string hsName)
+    {
+        return hsName.All(char.IsLetterOrDigit);
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

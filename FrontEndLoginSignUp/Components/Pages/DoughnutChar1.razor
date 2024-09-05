@@ -1,0 +1,75 @@
+﻿@inject UserService UserService
+@using ClassLibraryModel
+
+@inject IHttpClientFactory HttpClientFactory
+
+<DoughnutChart @ref="doughnutChart" Width="500" />
+
+@code {
+    private DoughnutChart doughnutChart = default!;
+    private DoughnutChartOptions doughnutChartOptions = default!;
+    private ChartData chartData = default!;
+    private string[]? backgroundColors;
+    private string A_id;
+
+    private int datasetsCount = 0;
+    private int dataLabelsCount = 0;
+
+    private Random random = new();
+    List<CountModel> count = new List<CountModel>();
+
+    protected override void OnInitialized()
+    {
+        backgroundColors = ["rgba(50,50,50,1)", "rgba(211,211,211,1)"];
+        chartData = new ChartData { Labels = new List<string> { "Residents", "Staff" }, Datasets = new List<IChartDataset>() };
+
+        doughnutChartOptions = new();
+        doughnutChartOptions.Responsive = true;
+        doughnutChartOptions.Plugins.Title!.Text = "Number Of Residents and Staff";
+        doughnutChartOptions.Plugins.Title.Font = new ChartFont { Size = 20 };
+        doughnutChartOptions.Plugins.Title.Display = true;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadCount();
+            UpdateChartData();
+            await doughnutChart.InitializeAsync(chartData, doughnutChartOptions);
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private async Task LoadCount()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Resident/Count?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                count = await response.Content.ReadFromJsonAsync<List<CountModel>>();
+            }
+        }
+    }
+
+    private void UpdateChartData()
+    {
+        var residentCount = count[0].CResident;
+        var staffCount = count[0].CStaff;
+
+        var dataset = new DoughnutChartDataset
+            {
+                Label = "Number of Residents and Staff",
+                Data = new List<double?> { residentCount, staffCount },
+                BackgroundColor = new List<string> { backgroundColors![0], backgroundColors![1] }
+            };
+
+        chartData.Datasets.Clear();
+        chartData.Datasets.Add(dataset);
+    }
+}

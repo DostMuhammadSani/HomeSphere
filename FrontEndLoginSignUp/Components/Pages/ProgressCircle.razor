@@ -1,0 +1,84 @@
+﻿@using ClassLibraryModel
+@inject UserService UserService
+@inject IHttpClientFactory HttpClientFactory
+<BarChart @ref="barChart" Class="mb-4" />
+
+
+@code {
+    private BarChart barChart = default!;
+ 
+    List<OwnShipModel> ownship = new List<OwnShipModel>();
+    string A_id;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadOwnShips();
+            await RenderManhattanAsync();
+     
+         
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private async Task RenderManhattanAsync()
+    {
+        var groupedData = ownship
+        .GroupBy(x => new { Year = x.PurchaseDate.Year, Month = x.PurchaseDate.Month })
+        .Select(g => new
+        {
+            Period = new DateTime(g.Key.Year, g.Key.Month, 1), // Create a DateTime object for the first of the month
+            Count = g.Count()
+        })
+        .OrderBy(g => g.Period)
+        .ToList();
+        // Update the ChartData
+        var data = new ChartData
+            {
+                Labels = groupedData.Select(g => g.Period.ToString("MMM yyyy")).ToList(), // X-axis: Month and Year
+                Datasets = new List<IChartDataset>
+        {
+            new BarChartDataset
+            {
+                Label = "Number of Purchases",
+                Data = groupedData.Select(g => (double?)g.Count).ToList(), // Y-axis: Number of Purchases
+                BackgroundColor = new List<string> { "rgba(50,50,50,1)" }, // You can modify this color if needed
+                CategoryPercentage = 0.8,
+                BarPercentage = 1,
+            }
+        }
+            };
+            
+            var options = new BarChartOptions();
+
+        options.Interaction.Mode = InteractionMode.Index;
+
+        options.Plugins.Title!.Text = "OWNERSHIPS";
+        options.Plugins.Title.Display = true;
+        options.Plugins.Title.Font = new ChartFont { Size = 20 };
+
+        options.Responsive = true;
+
+        options.Scales.X!.Title = new ChartAxesTitle { Text = "Date Of Purchase", Display = true };
+        options.Scales.Y!.Title = new ChartAxesTitle { Text = "Number Of Purchase", Display = true };
+
+        await barChart.InitializeAsync(data, options);
+    }
+
+    private async Task LoadOwnShips()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/OwnShip?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                ownship = await response.Content.ReadFromJsonAsync<List<OwnShipModel>>();
+            }
+        }
+    }
+}

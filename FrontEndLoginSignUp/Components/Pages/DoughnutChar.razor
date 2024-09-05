@@ -1,0 +1,75 @@
+﻿@inject UserService UserService
+@using ClassLibraryModel
+
+@inject IHttpClientFactory HttpClientFactory
+
+<DoughnutChart @ref="doughnutChart" Width="500" />
+
+@code {
+    private DoughnutChart doughnutChart = default!;
+    private DoughnutChartOptions doughnutChartOptions = default!;
+    private ChartData chartData = default!;
+    private string[]? backgroundColors;
+    private string A_id;
+
+    private int datasetsCount = 0;
+    private int dataLabelsCount = 0;
+
+    private Random random = new();
+    List<PlotModel> plots = new List<PlotModel>();
+
+    protected override void OnInitialized()
+    {
+        backgroundColors = ["rgba(50,50,50,1)", "rgba(211,211,211,1)"];
+        chartData = new ChartData { Labels = new List<string> { "Available", "Sold" }, Datasets = new List<IChartDataset>() };
+
+        doughnutChartOptions = new();
+        doughnutChartOptions.Responsive = true;
+        doughnutChartOptions.Plugins.Title!.Text = "Plot Sales";
+        doughnutChartOptions.Plugins.Title.Font = new ChartFont { Size = 20 };
+        doughnutChartOptions.Plugins.Title.Display = true;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadPlots();
+            UpdateChartData();
+            await doughnutChart.InitializeAsync(chartData, doughnutChartOptions);
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private async Task LoadPlots()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Plot?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                plots = await response.Content.ReadFromJsonAsync<List<PlotModel>>();
+            }
+        }
+    }
+
+    private void UpdateChartData()
+    {
+        var availableCount = plots.Count(p => p.SoldStatus == "Available");
+        var soldCount = plots.Count(p => p.SoldStatus == "Sold");
+
+        var dataset = new DoughnutChartDataset
+            {
+                Label = "Sales Status",
+                Data = new List<double?> { availableCount, soldCount },
+                BackgroundColor = new List<string> { backgroundColors![0], backgroundColors![1] }
+            };
+
+        chartData.Datasets.Clear();
+        chartData.Datasets.Add(dataset);
+    }
+}

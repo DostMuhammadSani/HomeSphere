@@ -2,6 +2,7 @@ using FrontEndLoginSignUp;
 using FrontEndLoginSignUp.Components;
 using System.Net.Http.Headers;
 using Blazored.SessionStorage;
+using Blazorise;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddHttpClient("AuthApi", client =>
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddBlazoredSessionStorage();
 
+builder.Services.AddBlazorBootstrap();
 var app = builder.Build();
 
 

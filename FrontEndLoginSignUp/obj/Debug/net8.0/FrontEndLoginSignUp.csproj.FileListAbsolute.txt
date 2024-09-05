@@ -139,3 +139,8 @@ D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Microso
 D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Blazorise.dll
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Blazorise.Charts.dll
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Blazorise.Licensing.dll
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Lambda2Js.dll
+D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\BlazorBootstrap.dll

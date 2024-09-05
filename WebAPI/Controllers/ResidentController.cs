@@ -17,6 +17,12 @@ namespace WebAPI.Controllers
             return DALClass.GetDataParameter<Resident>("GetResidents",A_id);
 
         }
+        [HttpGet("Count")]
+        public List<CountModel> GetCount(string A_id)
+        {
+            return DALClass.GetDataParameter<CountModel>("CountRecords", A_id);
+
+        }
         [HttpPost]
         public  async Task<IActionResult> SaveResident(Resident R)
         {

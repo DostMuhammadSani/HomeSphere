@@ -170,6 +170,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Blazor.Bootstrap": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Blazored.LocalStorage": {
               "target": "Package",
               "version": "[4.5.0, )"
@@ -182,13 +186,21 @@
               "target": "Package",
               "version": "[2.4.0, )"
             },
+            "Blazorise": {
+              "target": "Package",
+              "version": "[1.6.1, )"
+            },
+            "Blazorise.Charts": {
+              "target": "Package",
+              "version": "[1.6.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.7, )"
             },
             "Microsoft.AspNetCore.Authorization": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

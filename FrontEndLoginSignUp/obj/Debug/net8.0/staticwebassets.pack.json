@@ -9,20 +9,16 @@
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\bootstrap\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
-    },
-    {
-      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\bootstrap\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
-    },
-    {
       "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
       "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home.jpg",
       "PackagePath": "staticwebassets\\home.jpg"
+    },
+    {
+      "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\cleaning-staff.png",
+      "PackagePath": "staticwebassets\\icons\\cleaning-staff.png"
     },
     {
       "Id": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\email.png",

@@ -4,134 +4,92 @@
 @using Blazored.SessionStorage
 @inject ISessionStorageService SessionStorage
 @using System.Security.Claims
+@using ClassLibraryModel
 @rendermode InteractiveServer
+@inject IHttpClientFactory HttpClientFactory
+@inject IJSRuntime JSRuntime
 
 @if (role == "Admin")
 {
-    <!-- Dashboard Layout -->
-    <div class="container-fluid">
-        <div class="row">
-            <Sidebar></Sidebar>
-            <div class="col-md-10 p-4">
-                <!-- Top Nav -->
-                <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
-                    <!-- Search Bar -->
-                    <div class="search-bar">
-                        <input type="text" class="form-control" placeholder="Search here">
-                    </div>
-                    <!-- Icons Section -->
-                    <div class="icons-section d-flex align-items-center">
-                        <div class="icon-wrapper position-relative mr-4">
-                            <img src="icons/notification.png" class="nav-icon" alt="Notification">
-
-                        </div>
-
-                        <div class="icon-wrapper position-relative mr-4">
-                            <img src="icons/email.png" class="nav-icon" alt="Chat">
-
-                        </div>
-
-                        <div class="icon-wrapper position-relative mr-4">
-                            <img src="icons/settings.png" class="nav-icon" alt="Settings">
-
-                        </div>
-                    </div>
-                </div>
-                <!-- Statistics Section -->
-                <div class="row text-center mb-4 px-4">
-                    <div class="col-md-3">
-                        <div class="card stats-card">
-                            <div class="card-body">
-                                <img src="icons/profile.png" alt="Residents Icon" class="stats-icon">
-                                <h3>1200</h3>
-                                <p>Total Residents</p>
-                                <span class="text-success">+3% (30 days)</span>
+            <!-- Dashboard Layout -->
+            <div class="container-fluid">
+                <div class="row">
+                    <Sidebars></Sidebars>
+                    <div class="col-md-10 p-4">
+                        <!-- Top Nav -->
+                        <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
+                            <!-- Search Bar -->
+                            <div class="search-bar">
+                                <input type="text" class="form-control" placeholder="Search here">
+                            </div>
+                            <!-- Icons Section -->
+                            <div class="icons-section d-flex align-items-center">
+                                <div class="icon-wrapper position-relative mr-4">
+                                    <img src="icons/notification.png" class="nav-icon" alt="Notification">
+                                </div>
+                                <div class="icon-wrapper position-relative mr-4">
+                                    <img src="icons/email.png" class="nav-icon" alt="Chat">
+                                </div>
+                                <div class="icon-wrapper position-relative mr-4">
+                                    <img src="icons/settings.png" class="nav-icon" alt="Settings">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card stats-card">
-                            <div class="card-body">
-                                <img src="icons/land.png" alt="Plots Icon" class="stats-icon">
-                                <h3>450</h3>
-                                <p>Total Plots</p>
-                                <span class="text-success">+5% (30 days)</span>
+                        <!-- Statistics Section -->
+                        <div class="row text-center mb-4 px-4">
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <img src="icons/profile.png" alt="Residents Icon" class="stats-icon">
+                                        <h3>@count[0].CResident</h3>
+                                        <p>Total Residents</p>
+                                        <span class="text-success">+3% (30 days)</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card stats-card">
-                            <div class="card-body">
-                                <img src="icons/key.png" alt="Ownership Icon" class="stats-icon">
-                                <h3>350</h3>
-                                <p>Total Ownerships</p>
-                                <span class="text-danger">-2% (30 days)</span>
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <img src="icons/land.png" alt="Plots Icon" class="stats-icon">
+                                        <h3>@count[0].CPlot</h3>
+                                        <p>Total Plots</p>
+                                        <span class="text-success">+5% (30 days)</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card stats-card">
-                            <div class="card-body">
-                                <img src="icons/money.png" alt="Revenue Icon" class="stats-icon">
-                                <h3>$1.2M</h3>
-                                <p>Total Revenue</p>
-                                <span class="text-danger">-4% (30 days)</span>
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <img src="icons/key.png" alt="Ownership Icon" class="stats-icon">
+                                        <h3>@count[0].COwnShip</h3>
+                                        <p>Total Ownerships</p>
+                                        <span class="text-danger">-2% (30 days)</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Extra Area Chart -->
-                <div class="card">
-                    <div class="card-body">
-                        <h5>Occupancy and Availability Chart</h5>
-                        <!-- Example Chart: Replace with actual chart library like Chart.js or ApexCharts -->
-                        <div>
-                            <canvas id="areaChart"></canvas>
+                                <div class="col-md-3">
+                                    <div class="card stats-card">
+                                        <div class="card-body">
+                                            <img src="icons/cleaning-staff.png" alt="Staff Icon" class="stats-icon">
+                                            <h3>@count[0].CStaff</h3>
+                                            <p>Total Staff</p>
+                                            <span class="text-success">+3% (30 days)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div >
+                        <ProgressCircle></ProgressCircle>
+                        <div class="charts">
+                        <DoughnutChar></DoughnutChar>
+                             <DoughnutChar1></DoughnutChar1>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+
 }
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.1/chart.min.js"></script>
-<script>
-    var ctx = document.getElementById('areaChart').getContext('2d');
-    var areaChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'Occupied Plots',
-                data: [65, 70, 75, 80, 85, 90, 95],
-                borderColor: 'rgb(255, 99, 132)',
-                fill: false
-            }, {
-                label: 'Available Plots',
-                data: [35, 30, 25, 20, 15, 10, 5],
-                borderColor: 'rgb(54, 162, 235)',
-                fill: false
-            }, {
-                label: 'Ownership Transfers',
-                data: [5, 10, 15, 20, 25, 30, 35],
-                borderColor: 'rgb(75, 192, 192)',
-                fill: false
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    mode: 'index',
-                    intersect: false,
-                }
-            }
-        }
-    });
-</script>
+
 
 <style>
     /* Container */
@@ -155,12 +113,10 @@
 
     /* Icons Section */
     .icons-section .icon-wrapper  {
-        
         width: 30px;
         height: 30px;
         margin-right: 20px;
     }
-
 
     .nav-icon {
         width: 100%;
@@ -234,33 +190,66 @@
     .card-body span {
         font-size: 0.8rem;
     }
+
+    .chart-container {
+        position: relative;
+        height: 300px;
+        width: 100%;
+    }
+    .charts{
+        display:flex;
+    }
 </style>
 
 @code {
     private string A_id;
     private string token;
     public string role;
+    public List<CountModel> count = new List<CountModel>();
+
+  
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-        try
-        {
-            token = await SessionStorage.GetItemAsync<string>("authToken");
-            var claims = RoleFetch.ParseClaimsFromJwt(token);
-            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
-            role = roleClaim.Value;
-            StateHasChanged(); // Request a re-render to update the UI if needed
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error retrieving token: {ex.Message}");
-        }
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim?.Value;
 
-        
+                var client = HttpClientFactory.CreateClient("AuthApi");
+                var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+                var response1 = await client.GetAsync(url);
+                if (response1.IsSuccessStatusCode)
+                {
+                    A_id = await response1.Content.ReadAsStringAsync();
+                    var response = await client.GetAsync($"api/Resident/Count?A_id={A_id}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        count = await response.Content.ReadFromJsonAsync<List<CountModel>>();
+                    }
+
+                   
+                    
+                    // Call chart rendering method
+
+                    StateHasChanged();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+        }
         await base.OnInitializedAsync();
     }
 
+   
 
-}
+    
+
+
 }

@@ -1,0 +1,198 @@
+﻿@page "/staff"
+@rendermode InteractiveServer
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using DALLibrary
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@using Blazored.SessionStorage
+@using System.Security.Claims
+@inject ISessionStorageService SessionStorage
+
+@if (role == "Admin")
+{
+    <div style="display: flex; flex-direction: row; background-color: #f8f9fa;">
+        <Sidebars></Sidebars>
+        <div style="width: 80%; margin: 40px;">
+            <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
+                <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Staff Management</h2>
+
+                <!-- Search Box -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <input @bind="searchText" style="width: 60%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Search by CNIC, Name, Contact, or Profession" />
+                    <button style="background-color: #343a40; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchStaff">Search</button>
+                </div>
+
+                <!-- Add Staff Button -->
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <button style="background-color: #343a40; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="AddNewStaff">Add Staff</button>
+                </div>
+
+                <!-- Staff Form -->
+                @if (showForm)
+                {
+                    <div style="margin-top: 20px;">
+                        @if (currentStaff.CNIC == null)
+                        {
+                            <StaffForm Staff="currentStaff" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                        else
+                        {
+                            <UpdateStaffForm Staff="currentStaff" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                    </div>
+                }
+
+                <!-- Data Table -->
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #343a40; color: white;">
+                            <th style="padding: 10px; border: 1px solid #ddd;">CNIC</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Contact</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Profession</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">A_Id</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if (filteredStaff.Any())
+                    {
+                        @foreach (var staff in filteredStaff)
+                        {
+                            <tr style="background-color: #f8f9fa;">
+                                <td style="padding: 10px; border: 1px solid #ddd;">@staff.CNIC</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">@staff.Names</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">@staff.Contact</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">@staff.Profession</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">@staff.A_id</td>
+                                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+                                    <button style="background-color:#343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditStaff(staff)">Update</button>
+                                    <button style="background-color: #343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteStaff(staff.CNIC)">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" style="padding: 20px; text-align: center; color: #888;">No staff members found</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<StaffModel> staffMembers = new List<StaffModel>();
+    private List<StaffModel> filteredStaff = new List<StaffModel>();
+    private StaffModel currentStaff;
+    private bool showForm;
+    private string A_id;
+    private string token;
+    public string role;
+    private string searchText = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim.Value;
+                StateHasChanged();
+                await LoadStaff();
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task LoadStaff()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Staff?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                staffMembers = await response.Content.ReadFromJsonAsync<List<StaffModel>>();
+                filteredStaff = staffMembers;
+            }
+        }
+    }
+
+    private void AddNewStaff()
+    {
+        currentStaff = new StaffModel();
+        showForm = true;
+    }
+
+    private void EditStaff(StaffModel staff)
+    {
+        currentStaff = staff;
+        showForm = true;
+    }
+
+    private async void DeleteStaff(string cnic)
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.DeleteAsync($"api/Staff?CNIC={cnic}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var staffToRemove = staffMembers.FirstOrDefault(r => r.CNIC == cnic);
+            if (staffToRemove != null)
+            {
+                staffMembers.Remove(staffToRemove);
+                filteredStaff.Remove(staffToRemove);
+            }
+            StateHasChanged();
+        }
+        else
+        {
+            Console.WriteLine($"Failed to delete staff with CNIC {cnic}. Status code: {response.StatusCode}");
+        }
+    }
+
+    private async void HandleSave(StaffModel savedStaff)
+    {
+        await LoadStaff();
+        showForm = false;
+        StateHasChanged();
+    }
+
+    private void HandleCancel()
+    {
+        showForm = false;
+    }
+
+    private void SearchStaff()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredStaff = staffMembers;
+        }
+        else
+        {
+            filteredStaff = staffMembers.Where(s =>
+                s.CNIC.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                s.Names.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                s.Contact.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                s.Profession.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+    }
+}

@@ -32,6 +32,7 @@ namespace WebAPI.Controllers
                 new SqlParameter("@Passwords",R.Passwords),
                 new SqlParameter("@Names",R.Names),
                 new SqlParameter("@Contact",R.Contact),
+                new SqlParameter ("@Picture",R.Picture),
                 new SqlParameter("@A_id",R.A_id)
 
 

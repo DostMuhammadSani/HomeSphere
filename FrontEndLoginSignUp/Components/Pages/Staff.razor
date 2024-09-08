@@ -48,11 +48,12 @@
                 <table style="width: 100%; border-collapse: collapse;">
                     <thead>
                         <tr style="background-color: #343a40; color: white;">
+                                 <th style="padding: 10px; border: 1px solid #ddd;">Picture</th>
                             <th style="padding: 10px; border: 1px solid #ddd;">CNIC</th>
                             <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
                             <th style="padding: 10px; border: 1px solid #ddd;">Contact</th>
                             <th style="padding: 10px; border: 1px solid #ddd;">Profession</th>
-                            <th style="padding: 10px; border: 1px solid #ddd;">A_Id</th>
+           
                             <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
                         </tr>
                     </thead>
@@ -62,11 +63,17 @@
                         @foreach (var staff in filteredStaff)
                         {
                             <tr style="background-color: #f8f9fa;">
+                                             <td style="padding: 10px; border: 1px solid #ddd;">
+                                            
+                                                 <img src=@staff.Picture width=30px height=30px />
+                                              
+                                             </td>
+
                                 <td style="padding: 10px; border: 1px solid #ddd;">@staff.CNIC</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">@staff.Names</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">@staff.Contact</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">@staff.Profession</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">@staff.A_id</td>
+                         
                                 <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
                                     <button style="background-color:#343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditStaff(staff)">Update</button>
                                     <button style="background-color: #343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteStaff(staff.CNIC)">Delete</button>

@@ -26,6 +26,7 @@ namespace WebAPI.Controllers
                 new SqlParameter("@Names", S.Names),
                 new SqlParameter("@Contact", S.Contact),
                 new SqlParameter("@Profession", S.Profession),
+                new SqlParameter("@Picture",S.Picture),
                 new SqlParameter("@A_id", S.A_id)
             };
 

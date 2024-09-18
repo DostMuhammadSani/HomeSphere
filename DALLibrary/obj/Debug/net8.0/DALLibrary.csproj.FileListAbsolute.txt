@@ -29,3 +29,35 @@ D:\FinalYearProject\.NET\HomeSphere\DALLibrary\obj\Debug\net8.0\refint\DALLibrar
 D:\FinalYearProject\.NET\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.pdb
 D:\FinalYearProject\.NET\HomeSphere\DALLibrary\obj\Debug\net8.0\ref\DALLibrary.dll
 D:\FinalYearProject\.NET\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.sourcelink.json
+D:\Final Year Project\DALLibrary\bin\Debug\net8.0\DALLibrary.deps.json
+D:\Final Year Project\DALLibrary\bin\Debug\net8.0\DALLibrary.dll
+D:\Final Year Project\DALLibrary\bin\Debug\net8.0\DALLibrary.pdb
+D:\Final Year Project\DALLibrary\bin\Debug\net8.0\ClassLibraryModel.dll
+D:\Final Year Project\DALLibrary\bin\Debug\net8.0\ClassLibraryModel.pdb
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\DALLibrary.csproj.AssemblyReference.cache
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\DALLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\DALLibrary.AssemblyInfoInputs.cache
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\DALLibrary.AssemblyInfo.cs
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\DALLibrary.csproj.CoreCompileInputs.cache
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\DALLibrary.sourcelink.json
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\DALLibrary.csproj.Up2Date
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\DALLibrary.dll
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\refint\DALLibrary.dll
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\DALLibrary.pdb
+D:\Final Year Project\DALLibrary\obj\Debug\net8.0\ref\DALLibrary.dll
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.csproj.AssemblyReference.cache
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.AssemblyInfoInputs.cache
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.AssemblyInfo.cs
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.csproj.CoreCompileInputs.cache
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.sourcelink.json
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.dll
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\refint\DALLibrary.dll
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.pdb
+D:\Final Year Project\HomeSphere\DALLibrary\bin\Debug\net8.0\DALLibrary.deps.json
+D:\Final Year Project\HomeSphere\DALLibrary\bin\Debug\net8.0\DALLibrary.dll
+D:\Final Year Project\HomeSphere\DALLibrary\bin\Debug\net8.0\DALLibrary.pdb
+D:\Final Year Project\HomeSphere\DALLibrary\bin\Debug\net8.0\ClassLibraryModel.dll
+D:\Final Year Project\HomeSphere\DALLibrary\bin\Debug\net8.0\ClassLibraryModel.pdb
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\DALLibrary.csproj.Up2Date
+D:\Final Year Project\HomeSphere\DALLibrary\obj\Debug\net8.0\ref\DALLibrary.dll

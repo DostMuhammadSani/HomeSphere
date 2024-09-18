@@ -9,119 +9,119 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FrontEndLoginSignUp
 build_property.RootNamespace = FrontEndLoginSignUp
-build_property.ProjectDir = D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp\
+build_property.ProjectDir = D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\FinalYearProject\.NET\HomeSphere\FrontEndLoginSignUp
+build_property.MSBuildProjectDirectory = D:\Final Year Project\HomeSphere\FrontEndLoginSignUp
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/App.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Counter.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Dashboard.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Dashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEYXNoYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/DoughnutChar.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/DoughnutChar.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEb3VnaG51dENoYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/DoughnutChar1.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/DoughnutChar1.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEb3VnaG51dENoYXIxLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Error.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Home.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Login.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Ownship.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Ownship.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xPd25zaGlwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/OwnShipForm.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/OwnShipForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xPd25TaGlwRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Plot.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Plot.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQbG90LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/PlotForm.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/PlotForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQbG90Rm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/ProgressCircle.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/ProgressCircle.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQcm9ncmVzc0NpcmNsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Register.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/ResidentForm.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/ResidentForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNpZGVudEZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Residents.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Residents.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNpZGVudHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Sidebars.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Sidebars.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaWRlYmFycy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/Staff.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Staff.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGFmZi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/StaffForm.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/StaffForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGFmZkZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateOwnShip.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateOwnShip.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVPd25TaGlwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdatePlot.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdatePlot.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVQbG90LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateResidentForm.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateResidentForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVSZXNpZGVudEZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateStaffForm.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateStaffForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVTdGFmZkZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Routes.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/_Imports.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Layout/MainLayout.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-3ybvb4k3bx
 
-[D:/FinalYearProject/.NET/HomeSphere/FrontEndLoginSignUp/Components/Layout/NavMenu.razor]
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-ltcqgfhw1w

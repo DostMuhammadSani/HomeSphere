@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "VgSvHCCeCjX30fiOXNZUgZnT2mwuFPgK0iBoqSQGmow=",
+  "Hash": "mMGKv3iZrLksxNTlu7WJMIvarP9EyQjsoNXCKPRalZg=",
   "Source": "FrontEndLoginSignUp",
   "BasePath": "_content/FrontEndLoginSignUp",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\WebAPI\\WebAPI.csproj",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\WebAPI\\WebAPI.csproj",
       "Version": 2,
       "Source": "WebAPI",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
@@ -22,17 +22,17 @@
     {
       "Name": "FrontEndLoginSignUp\\wwwroot",
       "Source": "FrontEndLoginSignUp",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\Blazor.Bootstrap.bundle.scp.css",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\Blazor.Bootstrap.bundle.scp.css",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "Blazor.Bootstrap.bundle.scp.css",
       "AssetKind": "All",
@@ -45,13 +45,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\Blazor.Bootstrap.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\Blazor.Bootstrap.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.css",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.css",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "blazor.bootstrap.css",
       "AssetKind": "All",
@@ -64,13 +64,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.css"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "blazor.bootstrap.js",
       "AssetKind": "All",
@@ -83,13 +83,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.pdf.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.pdf.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "blazor.bootstrap.pdf.js",
       "AssetKind": "All",
@@ -102,13 +102,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.pdf.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.pdf.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.sortable-list.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.sortable-list.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "blazor.bootstrap.sortable-list.js",
       "AssetKind": "All",
@@ -121,13 +121,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.sortable-list.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.sortable-list.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\icon\\128X128.png",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\icon\\128X128.png",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "icon/128X128.png",
       "AssetKind": "All",
@@ -140,13 +140,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\icon\\128X128.png"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\icon\\128X128.png"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.min.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.min.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "pdfjs-4.0.379.min.js",
       "AssetKind": "All",
@@ -159,13 +159,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.min.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.min.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.worker.min.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.worker.min.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "pdfjs-4.0.379.worker.min.js",
       "AssetKind": "All",
@@ -178,13 +178,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.worker.min.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.worker.min.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\Blazored.Modal.bundle.scp.css",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\Blazored.Modal.bundle.scp.css",
       "SourceId": "Blazored.Modal",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazored.Modal",
       "RelativePath": "Blazored.Modal.bundle.scp.css",
       "AssetKind": "All",
@@ -197,13 +197,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\Blazored.Modal.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\Blazored.Modal.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\BlazoredModal.razor.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\BlazoredModal.razor.js",
       "SourceId": "Blazored.Modal",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazored.Modal",
       "RelativePath": "BlazoredModal.razor.js",
       "AssetKind": "All",
@@ -216,13 +216,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\BlazoredModal.razor.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\BlazoredModal.razor.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\charts.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\charts.js",
       "SourceId": "Blazorise.Charts",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Charts",
       "RelativePath": "charts.js",
       "AssetKind": "All",
@@ -235,13 +235,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\charts.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\charts.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\utilities.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\utilities.js",
       "SourceId": "Blazorise.Charts",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Charts",
       "RelativePath": "utilities.js",
       "AssetKind": "All",
@@ -254,13 +254,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\utilities.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\utilities.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.css",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.css",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "blazorise.css",
       "AssetKind": "All",
@@ -273,13 +273,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.css"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.css"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.min.css",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.min.css",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "blazorise.min.css",
       "AssetKind": "All",
@@ -292,13 +292,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.min.css"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.min.css"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\breakpoint.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\breakpoint.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "breakpoint.js",
       "AssetKind": "All",
@@ -311,13 +311,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\breakpoint.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\breakpoint.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\button.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\button.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "button.js",
       "AssetKind": "All",
@@ -330,13 +330,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\button.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\button.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\closable.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\closable.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "closable.js",
       "AssetKind": "All",
@@ -349,13 +349,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\closable.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\closable.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\colorPicker.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\colorPicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "colorPicker.js",
       "AssetKind": "All",
@@ -368,13 +368,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\colorPicker.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\colorPicker.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\datePicker.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\datePicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "datePicker.js",
       "AssetKind": "All",
@@ -387,13 +387,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\datePicker.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\datePicker.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dragDrop.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dragDrop.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "dragDrop.js",
       "AssetKind": "All",
@@ -406,13 +406,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dragDrop.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dragDrop.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dropdown.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dropdown.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "dropdown.js",
       "AssetKind": "All",
@@ -425,13 +425,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dropdown.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dropdown.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\fileEdit.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\fileEdit.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "fileEdit.js",
       "AssetKind": "All",
@@ -444,13 +444,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\fileEdit.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\fileEdit.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\filePicker.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\filePicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "filePicker.js",
       "AssetKind": "All",
@@ -463,13 +463,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\filePicker.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\filePicker.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\floatingUi.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\floatingUi.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "floatingUi.js",
       "AssetKind": "All",
@@ -482,13 +482,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\floatingUi.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\floatingUi.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\inputMask.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\inputMask.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "inputMask.js",
       "AssetKind": "All",
@@ -501,13 +501,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\inputMask.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\inputMask.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\io.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\io.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "io.js",
       "AssetKind": "All",
@@ -520,13 +520,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\io.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\io.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\memoEdit.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\memoEdit.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "memoEdit.js",
       "AssetKind": "All",
@@ -539,13 +539,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\memoEdit.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\memoEdit.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\numericPicker.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\numericPicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "numericPicker.js",
       "AssetKind": "All",
@@ -558,13 +558,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\numericPicker.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\numericPicker.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\observer.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\observer.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "observer.js",
       "AssetKind": "All",
@@ -577,13 +577,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\observer.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\observer.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\table.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\table.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "table.js",
       "AssetKind": "All",
@@ -596,13 +596,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\table.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\table.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\textEdit.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\textEdit.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "textEdit.js",
       "AssetKind": "All",
@@ -615,13 +615,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\textEdit.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\textEdit.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\theme.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\theme.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "theme.js",
       "AssetKind": "All",
@@ -634,13 +634,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\theme.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\theme.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\timePicker.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\timePicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "timePicker.js",
       "AssetKind": "All",
@@ -653,13 +653,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\timePicker.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\timePicker.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\tooltip.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\tooltip.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "tooltip.js",
       "AssetKind": "All",
@@ -672,13 +672,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\tooltip.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\tooltip.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\utilities.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\utilities.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "utilities.js",
       "AssetKind": "All",
@@ -691,13 +691,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\utilities.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\utilities.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\DateTimeMaskValidator.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\DateTimeMaskValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/DateTimeMaskValidator.js",
       "AssetKind": "All",
@@ -710,13 +710,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\DateTimeMaskValidator.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\DateTimeMaskValidator.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NoValidator.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NoValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/NoValidator.js",
       "AssetKind": "All",
@@ -729,13 +729,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NoValidator.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NoValidator.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NumericMaskValidator.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NumericMaskValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/NumericMaskValidator.js",
       "AssetKind": "All",
@@ -748,13 +748,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NumericMaskValidator.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NumericMaskValidator.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\RegExMaskValidator.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\RegExMaskValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/RegExMaskValidator.js",
       "AssetKind": "All",
@@ -767,13 +767,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\RegExMaskValidator.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\RegExMaskValidator.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\autoNumeric.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\autoNumeric.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/autoNumeric.js",
       "AssetKind": "All",
@@ -786,13 +786,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\autoNumeric.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\autoNumeric.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Behave.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Behave.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/Behave.js",
       "AssetKind": "All",
@@ -805,13 +805,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Behave.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Behave.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\flatpickr.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\flatpickr.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/flatpickr.js",
       "AssetKind": "All",
@@ -824,13 +824,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\flatpickr.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\flatpickr.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/floating-ui.js",
       "AssetKind": "All",
@@ -843,13 +843,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui-core.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui-core.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/floating-ui-core.js",
       "AssetKind": "All",
@@ -862,13 +862,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui-core.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui-core.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\inputmask.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\inputmask.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/inputmask.js",
       "AssetKind": "All",
@@ -881,13 +881,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\inputmask.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\inputmask.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\jsencrypt.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\jsencrypt.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/jsencrypt.js",
       "AssetKind": "All",
@@ -900,13 +900,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\jsencrypt.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\jsencrypt.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Pickr.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Pickr.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/Pickr.js",
       "AssetKind": "All",
@@ -919,13 +919,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Pickr.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Pickr.js"
     },
     {
-      "Identity": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\sha512.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\sha512.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/sha512.js",
       "AssetKind": "All",
@@ -938,13 +938,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Saif\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\sha512.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\sha512.js"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndLoginSignUp.styles.css",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndLoginSignUp.styles.css",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "FrontEndLoginSignUp.styles.css",
       "AssetKind": "All",
@@ -957,13 +957,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndLoginSignUp.styles.css"
+      "OriginalItemSpec": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndLoginSignUp.styles.css"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FrontEndLoginSignUp.bundle.scp.css",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FrontEndLoginSignUp.bundle.scp.css",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "FrontEndLoginSignUp.bundle.scp.css",
       "AssetKind": "All",
@@ -976,13 +976,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FrontEndLoginSignUp.bundle.scp.css"
+      "OriginalItemSpec": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FrontEndLoginSignUp.bundle.scp.css"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\app.css",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\app.css",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -998,10 +998,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\favicon.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\favicon.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
@@ -1017,10 +1017,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home.jpg",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home.jpg",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "home.jpg",
       "AssetKind": "All",
@@ -1036,10 +1036,10 @@
       "OriginalItemSpec": "wwwroot\\home.jpg"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\cleaning-staff.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\cleaning-staff.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/cleaning-staff.png",
       "AssetKind": "All",
@@ -1055,10 +1055,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\cleaning-staff.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\email.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\email.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/email.png",
       "AssetKind": "All",
@@ -1074,10 +1074,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\email.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\home (2).png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\home (2).png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/home (2).png",
       "AssetKind": "All",
@@ -1093,10 +1093,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\home (2).png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\key.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\key.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/key.png",
       "AssetKind": "All",
@@ -1112,10 +1112,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\key.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\land.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\land.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/land.png",
       "AssetKind": "All",
@@ -1131,10 +1131,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\land.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\money.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\money.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/money.png",
       "AssetKind": "All",
@@ -1150,10 +1150,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\money.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\notification.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\notification.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/notification.png",
       "AssetKind": "All",
@@ -1169,10 +1169,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\notification.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\profile.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\profile.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/profile.png",
       "AssetKind": "All",
@@ -1188,10 +1188,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\profile.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\settings.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\settings.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/settings.png",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\settings.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\user.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\user.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "icons/user.png",
       "AssetKind": "All",
@@ -1226,10 +1226,10 @@
       "OriginalItemSpec": "wwwroot\\icons\\user.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\login.jpg",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\login.jpg",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "login.jpg",
       "AssetKind": "All",
@@ -1245,10 +1245,10 @@
       "OriginalItemSpec": "wwwroot\\login.jpg"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\mobile.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\mobile.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "mobile.png",
       "AssetKind": "All",
@@ -1264,10 +1264,10 @@
       "OriginalItemSpec": "wwwroot\\mobile.png"
     },
     {
-      "Identity": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\sidebar.jpg",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\sidebar.jpg",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\FinalYearProject\\.NET\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
       "RelativePath": "sidebar.jpg",
       "AssetKind": "All",

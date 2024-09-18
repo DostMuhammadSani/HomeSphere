@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FinalYearProject\\.NET\\HomeSphere\\WebAPI\\WebAPI.csproj": {}
+    "D:\\Final Year Project\\HomeSphere\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\FinalYearProject\\.NET\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj": {
+    "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FinalYearProject\\.NET\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj",
+        "projectUniqueName": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj",
         "projectName": "ClassLibraryModel",
-        "projectPath": "D:\\FinalYearProject\\.NET\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj",
-        "packagesPath": "C:\\Users\\Saif\\.nuget\\packages\\",
-        "outputPath": "D:\\FinalYearProject\\.NET\\HomeSphere\\ClassLibraryModel\\obj\\",
+        "projectPath": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Saif\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -55,21 +65,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\FinalYearProject\\.NET\\HomeSphere\\DALLibrary\\DALLibrary.csproj": {
+    "D:\\Final Year Project\\HomeSphere\\DALLibrary\\DALLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FinalYearProject\\.NET\\HomeSphere\\DALLibrary\\DALLibrary.csproj",
+        "projectUniqueName": "D:\\Final Year Project\\HomeSphere\\DALLibrary\\DALLibrary.csproj",
         "projectName": "DALLibrary",
-        "projectPath": "D:\\FinalYearProject\\.NET\\HomeSphere\\DALLibrary\\DALLibrary.csproj",
-        "packagesPath": "C:\\Users\\Saif\\.nuget\\packages\\",
-        "outputPath": "D:\\FinalYearProject\\.NET\\HomeSphere\\DALLibrary\\obj\\",
+        "projectPath": "D:\\Final Year Project\\HomeSphere\\DALLibrary\\DALLibrary.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\Final Year Project\\HomeSphere\\DALLibrary\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Saif\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,14 +91,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\FinalYearProject\\.NET\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj": {
-                "projectPath": "D:\\FinalYearProject\\.NET\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj"
+              "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj": {
+                "projectPath": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj"
               }
             }
           }
@@ -93,6 +108,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -120,21 +140,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\FinalYearProject\\.NET\\HomeSphere\\WebAPI\\WebAPI.csproj": {
+    "D:\\Final Year Project\\HomeSphere\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FinalYearProject\\.NET\\HomeSphere\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "D:\\Final Year Project\\HomeSphere\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "D:\\FinalYearProject\\.NET\\HomeSphere\\WebAPI\\WebAPI.csproj",
-        "packagesPath": "C:\\Users\\Saif\\.nuget\\packages\\",
-        "outputPath": "D:\\FinalYearProject\\.NET\\HomeSphere\\WebAPI\\obj\\",
+        "projectPath": "D:\\Final Year Project\\HomeSphere\\WebAPI\\WebAPI.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\Final Year Project\\HomeSphere\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Saif\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -142,17 +166,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\FinalYearProject\\.NET\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj": {
-                "projectPath": "D:\\FinalYearProject\\.NET\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj"
+              "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj": {
+                "projectPath": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ClassLibraryModel.csproj"
               },
-              "D:\\FinalYearProject\\.NET\\HomeSphere\\DALLibrary\\DALLibrary.csproj": {
-                "projectPath": "D:\\FinalYearProject\\.NET\\HomeSphere\\DALLibrary\\DALLibrary.csproj"
+              "D:\\Final Year Project\\HomeSphere\\DALLibrary\\DALLibrary.csproj": {
+                "projectPath": "D:\\Final Year Project\\HomeSphere\\DALLibrary\\DALLibrary.csproj"
               }
             }
           }
@@ -161,6 +186,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -179,7 +209,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -215,7 +245,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -21,3 +21,27 @@ D:\FinalYearProject\.NET\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\refint\Cl
 D:\FinalYearProject\.NET\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.pdb
 D:\FinalYearProject\.NET\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ref\ClassLibraryModel.dll
 D:\FinalYearProject\.NET\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.sourcelink.json
+D:\Final Year Project\ClassLibraryModel\bin\Debug\net8.0\ClassLibraryModel.deps.json
+D:\Final Year Project\ClassLibraryModel\bin\Debug\net8.0\ClassLibraryModel.dll
+D:\Final Year Project\ClassLibraryModel\bin\Debug\net8.0\ClassLibraryModel.pdb
+D:\Final Year Project\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.GeneratedMSBuildEditorConfig.editorconfig
+D:\Final Year Project\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.AssemblyInfoInputs.cache
+D:\Final Year Project\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.AssemblyInfo.cs
+D:\Final Year Project\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.csproj.CoreCompileInputs.cache
+D:\Final Year Project\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.sourcelink.json
+D:\Final Year Project\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.dll
+D:\Final Year Project\ClassLibraryModel\obj\Debug\net8.0\refint\ClassLibraryModel.dll
+D:\Final Year Project\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.pdb
+D:\Final Year Project\ClassLibraryModel\obj\Debug\net8.0\ref\ClassLibraryModel.dll
+D:\Final Year Project\HomeSphere\ClassLibraryModel\bin\Debug\net8.0\ClassLibraryModel.deps.json
+D:\Final Year Project\HomeSphere\ClassLibraryModel\bin\Debug\net8.0\ClassLibraryModel.dll
+D:\Final Year Project\HomeSphere\ClassLibraryModel\bin\Debug\net8.0\ClassLibraryModel.pdb
+D:\Final Year Project\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.GeneratedMSBuildEditorConfig.editorconfig
+D:\Final Year Project\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.AssemblyInfoInputs.cache
+D:\Final Year Project\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.AssemblyInfo.cs
+D:\Final Year Project\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.csproj.CoreCompileInputs.cache
+D:\Final Year Project\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.sourcelink.json
+D:\Final Year Project\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.dll
+D:\Final Year Project\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\refint\ClassLibraryModel.dll
+D:\Final Year Project\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ClassLibraryModel.pdb
+D:\Final Year Project\HomeSphere\ClassLibraryModel\obj\Debug\net8.0\ref\ClassLibraryModel.dll

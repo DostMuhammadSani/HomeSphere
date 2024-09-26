@@ -1,10 +1,14 @@
 ﻿using ClassLibraryModel;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.JSInterop;
 
 namespace FrontEndLoginSignUp.Components.Pages
 {
     public partial class Register
     {
+        [Inject]
+        private IJSRuntime JSRun { get; set; }
         private AdminModel person = new AdminModel();
         private string errorMessage = string.Empty;
 
@@ -25,15 +29,15 @@ namespace FrontEndLoginSignUp.Components.Pages
                 else
                 {
                     errorMessage = $"Admin registration failed: {await adminResponse.Content.ReadAsStringAsync()}";
-                    Console.WriteLine($"Admin Registration Error: {errorMessage}");
+                    await JSRun.InvokeVoidAsync("alert", errorMessage);
                 }
             }
             else
             {
                 errorMessage = $"Admin creation failed: {await registerResponse.Content.ReadAsStringAsync()}";
-                Console.WriteLine($"Admin Creation Error: {errorMessage}");
+                await JSRun.InvokeVoidAsync("alert", errorMessage);
             }
         }
     }
-
+    
 }

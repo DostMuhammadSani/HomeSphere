@@ -1,7 +1,8 @@
 ﻿using ClassLibraryModel;
 using System.Security.Claims;
 using System.Text.Json;
-
+using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components;
 
 namespace FrontEndLoginSignUp.Components.Pages
 {
@@ -10,6 +11,10 @@ namespace FrontEndLoginSignUp.Components.Pages
         private LoginModel loginModel = new LoginModel();
         private string errorMessage = string.Empty;
         public string Token;
+
+        [Inject]
+        private IJSRuntime JSRun { get; set; } // Inject JS runtime
+
         private async Task HandleLogin()
         {
             var client = HttpClientFactory.CreateClient("AuthApi");
@@ -29,9 +34,11 @@ namespace FrontEndLoginSignUp.Components.Pages
                 var errorDetails = await response.Content.ReadAsStringAsync();
                 errorMessage = $"Login failed: {errorDetails}";
 
-                Console.WriteLine($"Login Error: {errorMessage}");
+                // Call JS function to show alert
+                await JSRun.InvokeVoidAsync("alert", errorMessage);
             }
         }
+
         private IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
         {
             var payload = jwt.Split('.')[1];

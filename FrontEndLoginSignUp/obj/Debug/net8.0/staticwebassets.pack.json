@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\FrontEndLoginSignUp.bundle.scp.css"
     },
     {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\123078.jpg",
-      "PackagePath": "staticwebassets\\123078.jpg"
-    },
-    {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\4695.jpg",
       "PackagePath": "staticwebassets\\4695.jpg"
     },
@@ -17,28 +13,12 @@
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\blue.jpg",
-      "PackagePath": "staticwebassets\\blue.jpg"
-    },
-    {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\general.jpg",
       "PackagePath": "staticwebassets\\general.jpg"
-    },
-    {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home (2).jpg",
-      "PackagePath": "staticwebassets\\home (2).jpg"
-    },
-    {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home.jpg",
-      "PackagePath": "staticwebassets\\home.jpg"
-    },
-    {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home1.jpg",
-      "PackagePath": "staticwebassets\\home1.jpg"
     },
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home_services.jpeg",
@@ -85,18 +65,6 @@
       "PackagePath": "staticwebassets\\icons\\user.png"
     },
     {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\lo.jpg",
-      "PackagePath": "staticwebassets\\lo.jpg"
-    },
-    {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\log.jpg",
-      "PackagePath": "staticwebassets\\log.jpg"
-    },
-    {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\login.jfif",
-      "PackagePath": "staticwebassets\\login.jfif"
-    },
-    {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\login.jpg",
       "PackagePath": "staticwebassets\\login.jpg"
     },
@@ -107,10 +75,6 @@
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\property.jpg",
       "PackagePath": "staticwebassets\\property.jpg"
-    },
-    {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\sidebar.jpg",
-      "PackagePath": "staticwebassets\\sidebar.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FrontEndLoginSignUp.Microsoft.AspNetCore.StaticWebAssets.props",

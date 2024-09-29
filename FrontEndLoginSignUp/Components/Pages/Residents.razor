@@ -21,12 +21,12 @@
                     <!-- Search Box -->
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                         <input @bind="searchText" style="width: 60%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Search by CNIC, Name, Contact, or A_Id" />
-                        <button style="background-color: #343a40; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchResidents">Search</button>
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchResidents">Search</button>
                     </div>
 
                     <!-- Add Resident Button -->
                     <div style="text-align: right; margin-bottom: 20px;">
-                        <button style="background-color: #343a40; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="AddNewResident">Add Resident</button>
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="AddNewResident">Add Resident</button>
                     </div>
                              <!-- Resident Form -->
                 @if (showForm)
@@ -46,7 +46,7 @@
                     <!-- Data Table -->
                     <table style="width: 100%; border-collapse: collapse;">
                         <thead>
-                            <tr style="background-color: #343a40; color: white;">
+                        <tr style="background-color: #1b6cb9; color: white;">
                                 <th style="padding: 10px; border: 1px solid #ddd;">Icon</th>
                                 <th style="padding: 10px; border: 1px solid #ddd;">CNIC</th>
                                 <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
@@ -73,8 +73,8 @@
                                                
                                                 <td style="padding: 10px; border: 1px solid #ddd;">@resident.Passwords</td>
                                                 <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
-                                                    <button style="background-color:#343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditResident(resident)">Update</button>
-                                                    <button style="background-color: #343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteResident(resident.CNIC)">Delete</button>
+                                        <button style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditResident(resident)">Update</button>
+                                        <button style="background-color: #1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteResident(resident.CNIC)">Delete</button>
                                                 </td>
                                             </tr>
                             }

@@ -1,80 +1,112 @@
-﻿
-@* Sidebars.razor *@
+﻿@* Sidebars.razor *@
 @using Blazored.SessionStorage
 @inject ISessionStorageService SessionStorage
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
 @inject UserService UserService
-<div class="col-md-2 bg-primary text-light p-3" style="min-height: 100vh;">
-            <!-- Profile Section -->
-            <div class="d-flex align-items-center mb-4">
-             
-                <div class="ml-3">
-                    <h6 class="mb-0">@UserService.Username</h6>
-                    <small class="text-success">● Online</small>
-                </div>
+
+<div class="col-md-2 bg-primary text-light p-3 d-flex flex-column justify-content-between" style="min-height: 100vh;">
+    <!-- Profile Section -->
+    <div>
+        <div class="d-flex align-items-center mb-4">
+            <div class="ml-3">
+                <h6 class="mb-0">@UserService.Username</h6>
+                <small class="text-success">● Online</small>
             </div>
-            <!-- Menu Items -->
-            <nav class="nav flex-column">
-                <span class="text-uppercase text-light mb-2">General</span>
- 
-                <a class="nav-link text-light d-flex align-items-center" href="/dashboard">
-                    <i class="fas fa-th-large mr-2"></i> Dashboard
-                </a>
-               
-                <a class="nav-link text-light d-flex align-items-center" href="/plot">
-                    <i class="fas fa-diamond mr-2"></i> Plots
-                </a>
-        <a class="nav-link text-light d-flex align-items-center" href="/residents">
-            <i class="fas fa-th-large mr-2"></i> Residents
-        </a>
-                <a class="nav-link text-light d-flex align-items-center" href="/ownship">
-                    <i class="fas fa-table mr-2"></i> Ownship
-                </a>
-                 <a class="nav-link text-light d-flex align-items-center" href="/staff">
-                    <i class="fas fa-table mr-2"></i> Staff
-                </a>
-               
-                <div class="nav-item px-3 mt-4">
-            <button class="btn btn-danger w-100" @onclick="Logout">
-                <span class="bi bi-box-arrow-right" aria-hidden="true"></span> Logout
-            </button>
         </div>
-            </nav>
-        </div>
+
+        <hr class="sidebar-divider" />
+
+        <!-- Menu Items -->
+        <nav class="nav flex-column">
+            <span class="text-uppercase text-light mb-2">General</span>
+
+            <a class="nav-link text-light d-flex align-items-center" href="/dashboard">
+               Dashboard
+            </a>
+            <hr class="sidebar-divider" />
+
+            <a class="nav-link text-light d-flex align-items-center" href="/plot">
+                 Plots
+            </a>
+            <hr class="sidebar-divider" />
+
+            <a class="nav-link text-light d-flex align-items-center" href="/residents">
+             Residents
+            </a>
+            <hr class="sidebar-divider" />
+
+            <a class="nav-link text-light d-flex align-items-center" href="/ownship">
+                Ownership
+            </a>
+            <hr class="sidebar-divider" />
+
+            <a class="nav-link text-light d-flex align-items-center" href="/staff">
+                Staff
+            </a>
+            <hr class="sidebar-divider" />
+        </nav>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="nav-item mt-4">
+        <button class="btn btn-danger w-100 d-flex align-items-center justify-content-center" @onclick="Logout">
+            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+        </button>
+    </div>
+</div>
 
 <style>
     .bg-primary {
-        background-color: #0182E7 ;
- /* Add your pattern image here */
+        background-color: #278dd6 !important;
     }
+
     .nav-link {
-        padding: 10px;
-        transition: background-color 0.3s ease;
+        padding: 12px;
+        font-size: 14px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 5px;
     }
+
     .nav-link:hover {
-        background-color: #34495e;
+        background-color: #1b6cb9;
+        color: #ffffff;
     }
+
     .nav-link.active {
-        background-color: darkgreen;
+        background-color: #145a86;
         font-weight: bold;
     }
+
     .ml-3 {
         margin-left: 1rem;
     }
+
+    .btn-danger {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    /* Divider line */
+    .sidebar-divider {
+        border-top: 1px solid #ffffff;
+        margin: 0.5rem 0;
+    }
 </style>
+
 @code {
     string user;
+
     protected override void OnInitialized()
     {
         user = UserService.Username;
         base.OnInitialized();
     }
+
     private async Task Logout()
     {
         // Clear session storage
         await SessionStorage.ClearAsync();
-
         // Redirect to login page
         Navigation.NavigateTo("/login");
     }

@@ -1,0 +1,257 @@
+﻿@page "/plot-details/{PlotID}"
+@using ClassLibraryModel
+@inject IHttpClientFactory HttpClientFactory
+@rendermode InteractiveServer
+
+<div class="container">
+    <h3 class="title">Plot Details for PlotID</h3>
+
+    @if (isLoading)
+    {
+        <p class="loading">Loading...</p>
+    }
+    else if (plotDetails == null)
+    {
+        <p class="error-message">No plot details found </p>
+        <EditForm Model="@newPlotDetails" OnValidSubmit="AddPlotDetails" class="form">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label>Street:</label>
+                <InputText @bind-Value="newPlotDetails.Street" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Addresses:</label>
+                <InputText @bind-Value="newPlotDetails.Addresses" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>House Status:</label>
+                <InputText @bind-Value="newPlotDetails.HouseStatus" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Information:</label>
+                <InputText @bind-Value="newPlotDetails.Information" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Plot Details</button>
+        </EditForm>
+    }
+    else if (isEditing)
+    {
+        <EditForm Model="@plotDetails" OnValidSubmit="UpdatePlotDetails" class="form">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label>Street:</label>
+                <InputText @bind-Value="plotDetails.Street" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Addresses:</label>
+                <InputText @bind-Value="plotDetails.Addresses" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>House Status:</label>
+                <InputText @bind-Value="plotDetails.HouseStatus" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Information:</label>
+                <InputText @bind-Value="plotDetails.Information" class="form-control" />
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn btn-success">Update Plot Details</button>
+                <button type="button" class="btn btn-secondary" @onclick="CancelEdit">Cancel</button>
+            </div>
+        </EditForm>
+    }
+    else
+    {
+        <div class="plot-details">
+            <h4>Plot Information</h4>
+            <p><strong>Street:</strong> @plotDetails.Street</p>
+            <p><strong>Addresses:</strong> @plotDetails.Addresses</p>
+            <p><strong>House Status:</strong> @plotDetails.HouseStatus</p>
+            <p><strong>Information:</strong> @plotDetails.Information</p>
+
+            <div class="button-group">
+                <button class="btn btn-primary" @onclick="StartEditing">Update</button>
+                <button class="btn btn-danger" @onclick="DeletePlotDetails">Delete</button>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .container {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 600px;
+    }
+
+    .title {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    .loading, .error-message {
+        color: #ff3333;
+    }
+
+    .form {
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .plot-details {
+        margin-top: 20px;
+    }
+</style>
+
+@code {
+    [Parameter] public string PlotID { get; set; }
+
+    private PlotDetailsModel plotDetails;
+    private PlotDetailsModel newPlotDetails = new PlotDetailsModel();
+    private bool isLoading = true;
+    private bool isEditing = false;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadPlotDetails();
+    }
+
+    private async Task LoadPlotDetails()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        try
+        {
+            var response = await client.GetAsync($"api/plotdetails/{PlotID}");
+            if (response.IsSuccessStatusCode)
+            {
+                plotDetails = await response.Content.ReadFromJsonAsync<PlotDetailsModel>();
+            }
+            else
+            {
+                plotDetails = null;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching plot details: {ex.Message}");
+            plotDetails = null;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task AddPlotDetails()
+    {
+        Guid Id = Guid.NewGuid();
+        newPlotDetails.PDID = Id.ToString();
+        newPlotDetails.PlotID = PlotID;
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.PostAsJsonAsync("api/plotdetails", newPlotDetails);
+        if (response.IsSuccessStatusCode)
+        {
+            plotDetails = await response.Content.ReadFromJsonAsync<PlotDetailsModel>();
+            newPlotDetails = new PlotDetailsModel();
+        }
+        else
+        {
+            Console.WriteLine("Error adding plot details.");
+        }
+    }
+
+    private async Task UpdatePlotDetails()
+    {
+        string errorMessage = "";
+        if (plotDetails != null)
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.PutAsJsonAsync($"api/plotdetails/{PlotID}", plotDetails);
+            if (response.IsSuccessStatusCode)
+            {
+                isEditing = false;
+                await LoadPlotDetails();
+            }
+            else
+            {
+                errorMessage = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Error updating plot details: {errorMessage}");
+            }
+        }
+    }
+
+    private void StartEditing()
+    {
+        isEditing = true;
+    }
+
+    private void CancelEdit()
+    {
+        isEditing = false;
+        LoadPlotDetails();
+    }
+
+    private async Task DeletePlotDetails()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.DeleteAsync($"api/plotdetails/{PlotID}");
+        if (response.IsSuccessStatusCode)
+        {
+            plotDetails = null;
+        }
+        else
+        {
+            Console.WriteLine("Error deleting plot details.");
+        }
+    }
+}

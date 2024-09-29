@@ -138,11 +138,28 @@
         justify-content: space-between;
         align-items: center;
         padding: 80px 20px;
-        background-color: #f8faff;
+        background-image: url('4695.jpg'); /* Background image */
+        background-size: cover; /* Ensures the image covers the whole area */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat;
+        position: relative; /* Ensures the content inside is positioned correctly */
+        color: #fff; /* Text color on top of the background image */
     }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0); /* Optional: dark overlay to improve text readability */
+            z-index: 1;
+        }
 
     .hero-content {
         max-width: 600px;
+        z-index: 2;
     }
 
         .hero-content h1 {
@@ -158,10 +175,12 @@
     .hero-content p {
         font-size: 1.2em;
         margin-bottom: 30px;
+        color:black;
     }
 
     .hero-image img {
         max-width: 100%;
+
         border-radius: 10px;
         padding-right:5vw;
         height:50vh;

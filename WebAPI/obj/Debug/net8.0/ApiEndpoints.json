@@ -220,6 +220,75 @@
     ]
   },
   {
+    "ContainingType": "WebAPI.Controllers.PlotDetailsController",
+    "Method": "CreatePlotDetails",
+    "RelativePath": "api/PlotDetails",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "plotDetails",
+        "Type": "ClassLibraryModel.PlotDetailsModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI.Controllers.PlotDetailsController",
+    "Method": "GetPlotDetailsByPlotID",
+    "RelativePath": "api/PlotDetails/{plotID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "plotID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI.Controllers.PlotDetailsController",
+    "Method": "UpdatePlotDetails",
+    "RelativePath": "api/PlotDetails/{plotID}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "plotID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "plotDetails",
+        "Type": "ClassLibraryModel.PlotDetailsModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI.Controllers.PlotDetailsController",
+    "Method": "DeletePlotDetails",
+    "RelativePath": "api/PlotDetails/{plotID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "plotID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebAPI.Controllers.ResidentController",
     "Method": "GetResidents",
     "RelativePath": "api/Resident",

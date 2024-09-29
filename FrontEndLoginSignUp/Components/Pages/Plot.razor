@@ -9,6 +9,7 @@
 @using Blazored.SessionStorage
 @using System.Security.Claims
 @inject ISessionStorageService SessionStorage
+@inject NavigationManager Navigation
 
 @if (role == "Admin")
 {
@@ -21,13 +22,14 @@
                     <!-- Search Box -->
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                         <input @bind="searchText" style="width: 60%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Search by PlotID, Plot Number, or Size" />
-                        <button style="background-color: #343a40; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchPlots">Search</button>
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchPlots">Search</button>
                     </div>
 
                     <!-- Add Plot Button -->
                     <div style="text-align: right; margin-bottom: 20px;">
-                        <button style="background-color: #343a40; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="AddNewPlot">Add Plot</button>
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="AddNewPlot">Add Plot</button>
                     </div>
+               
                 @if (showForm)
                 {
                                     <div style="margin-top: 20px;">
@@ -39,13 +41,14 @@
                         {
                                                     <UpdatePlot Plot="currentPlot" OnSave="HandleSave" OnCancel="HandleCancel" />
                         }
+                       
                                     </div>
                 }
                     <!-- Data Table -->
                     <table style="width: 100%; border-collapse: collapse;">
                         <thead>
-                            <tr style="background-color: #343a40; color: white;">
-                                <th style="padding: 10px; border: 1px solid #ddd;">PlotID</th>
+                        <tr style="background-color: #1b6cb9; color: white;">
+                           
                                 <th style="padding: 10px; border: 1px solid #ddd;">Plot Number</th>
                                 <th style="padding: 10px; border: 1px solid #ddd;">Size</th>
                                 <th style="padding: 10px; border: 1px solid #ddd;">Status</th>
@@ -58,13 +61,15 @@
                             @foreach (var plot in filteredPlots)
                             {
                                             <tr style="background-color: #f8f9fa;">
-                                                <td style="padding: 10px; border: 1px solid #ddd;">@plot.PlotID</td>
+                                               
                                                 <td style="padding: 10px; border: 1px solid #ddd;">@plot.PlotNumber</td>
                                                 <td style="padding: 10px; border: 1px solid #ddd;">@plot.Size</td>
                                                 <td style="padding: 10px; border: 1px solid #ddd;">@plot.SoldStatus</td>
                                                 <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
-                                                    <button style="background-color:#343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditPlot(plot)">Update</button>
-                                                    <button style="background-color: #343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeletePlot(plot.PlotID)">Delete</button>
+                                        <button style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditPlot(plot)">Update</button>
+                                        <button style="background-color: #1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeletePlot(plot.PlotID)">Delete</button>
+                                        <button style="background-color: #28a745; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => ShowPlotDetails(plot.PlotID)">Details</button>
+                                    
                                                 </td>
                                             </tr>
                             }
@@ -79,6 +84,7 @@
                     </table>
 
                     <!-- Plot Form -->
+             
                
                 </div>
             </div>
@@ -95,6 +101,10 @@
     public string role;
     private string searchText = "";
 
+    private void ShowPlotDetails(string PlotID)
+    {
+        Navigation.NavigateTo($"/plot-details/{PlotID}");
+    }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

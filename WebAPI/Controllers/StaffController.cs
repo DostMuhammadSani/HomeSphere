@@ -13,7 +13,11 @@ namespace WebAPI.Controllers
         [HttpGet]
         public List<StaffModel> GetStaffByAdmin(string A_id)
         {
-            return DALClass.GetDataParameter<StaffModel>("GetStaffByAdmin", A_id);
+            SqlParameter[] prm =
+   {
+                    new SqlParameter("@A_id",A_id)
+                };
+            return DALClass.GetDataParameter<StaffModel>("GetStaffByAdmin", prm);
         }
 
         [HttpPost]

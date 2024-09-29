@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\FrontEndLoginSignUp.bundle.scp.css"
     },
     {
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\123078.jpg",
+      "PackagePath": "staticwebassets\\123078.jpg"
+    },
+    {
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\4695.jpg",
+      "PackagePath": "staticwebassets\\4695.jpg"
+    },
+    {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
@@ -41,8 +49,8 @@
       "PackagePath": "staticwebassets\\icons\\cleaning-staff.png"
     },
     {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\email.png",
-      "PackagePath": "staticwebassets\\icons\\email.png"
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\emails.png",
+      "PackagePath": "staticwebassets\\icons\\emails.png"
     },
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\home (2).png",
@@ -61,16 +69,16 @@
       "PackagePath": "staticwebassets\\icons\\money.png"
     },
     {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\notification.png",
-      "PackagePath": "staticwebassets\\icons\\notification.png"
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\notifications.png",
+      "PackagePath": "staticwebassets\\icons\\notifications.png"
     },
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\profile.png",
       "PackagePath": "staticwebassets\\icons\\profile.png"
     },
     {
-      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\settings.png",
-      "PackagePath": "staticwebassets\\icons\\settings.png"
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\setting.png",
+      "PackagePath": "staticwebassets\\icons\\setting.png"
     },
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\user.png",

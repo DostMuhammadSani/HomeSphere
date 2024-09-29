@@ -17,9 +17,12 @@ namespace WebAPI.Controllers
         {
             try
             {
-                
+                SqlParameter[] prm =
+                {
+                    new SqlParameter("@A_id",A_id)
+                }; 
 
-                var ownShips =  DALClass.GetDataParameter<OwnShipModel>("GetOwnerShip", A_id);
+                var ownShips =  DALClass.GetDataParameter<OwnShipModel>("GetOwnerShip", prm);
                 return Ok(ownShips);
             }
             catch (Exception ex)

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TqSZjkE40CGkVZcmqxH9o25xeQx/TwJfoALCVoCKyyg=",
+  "Hash": "Ioth/IrE7YFr0afSql0MfS0f1g5oqaOULCOrg1vYIHY=",
   "Source": "FrontEndLoginSignUp",
   "BasePath": "_content/FrontEndLoginSignUp",
   "Mode": "Default",
@@ -979,6 +979,44 @@
       "OriginalItemSpec": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FrontEndLoginSignUp.bundle.scp.css"
     },
     {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\123078.jpg",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "123078.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\123078.jpg"
+    },
+    {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\4695.jpg",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "4695.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\4695.jpg"
+    },
+    {
       "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\app.css",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
@@ -1150,12 +1188,12 @@
       "OriginalItemSpec": "wwwroot\\icons\\cleaning-staff.png"
     },
     {
-      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\email.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\emails.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/email.png",
+      "RelativePath": "icons/emails.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1166,7 +1204,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\icons\\email.png"
+      "OriginalItemSpec": "wwwroot\\icons\\emails.png"
     },
     {
       "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\home (2).png",
@@ -1245,12 +1283,12 @@
       "OriginalItemSpec": "wwwroot\\icons\\money.png"
     },
     {
-      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\notification.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\notifications.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/notification.png",
+      "RelativePath": "icons/notifications.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1261,7 +1299,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\icons\\notification.png"
+      "OriginalItemSpec": "wwwroot\\icons\\notifications.png"
     },
     {
       "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\profile.png",
@@ -1283,12 +1321,12 @@
       "OriginalItemSpec": "wwwroot\\icons\\profile.png"
     },
     {
-      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\settings.png",
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\setting.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/settings.png",
+      "RelativePath": "icons/setting.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1299,7 +1337,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\icons\\settings.png"
+      "OriginalItemSpec": "wwwroot\\icons\\setting.png"
     },
     {
       "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\user.png",

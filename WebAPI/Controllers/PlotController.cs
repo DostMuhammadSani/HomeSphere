@@ -15,8 +15,12 @@ namespace WebAPI.Controllers
         [HttpGet]
         public List<PlotModel> GetPlots(string A_id)
         {
+            SqlParameter[] prm =
+               {
+                    new SqlParameter("@A_id",A_id)
+                };
             // Fetch all plots associated with the given A_id
-            return DALClass.GetDataParameter<PlotModel>("GetPlots", A_id);
+            return DALClass.GetDataParameter<PlotModel>("GetPlots", prm);
         }
 
         [HttpPost]

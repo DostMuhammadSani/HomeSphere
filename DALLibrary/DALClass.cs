@@ -118,14 +118,16 @@ namespace DALLibrary
         }
 
 
-        public static List<T> GetDataParameter<T>(string procedureName,string A_id) where T : class, new()
+
+
+        public static List<T> GetDataParameter<T>(string procedureName,SqlParameter[] prm) where T : class, new()
         {
 
             List<T> users = new List<T>();
             SqlConnection con = DBHelper.getConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand(procedureName, con);
-            cmd.Parameters.AddWithValue("@A_id", A_id);
+            cmd.Parameters.AddRange(prm);
             cmd.CommandType = CommandType.StoredProcedure;
             Type tp = typeof(T);
             PropertyInfo[] properties = tp.GetProperties();

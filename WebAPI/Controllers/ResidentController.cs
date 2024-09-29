@@ -14,13 +14,21 @@ namespace WebAPI.Controllers
         [HttpGet]  
         public  List<Resident> GetResidents(string A_id)
         {
-            return DALClass.GetDataParameter<Resident>("GetResidents",A_id);
+            SqlParameter[] prm =
+               {
+                    new SqlParameter("@A_id",A_id)
+                };
+            return DALClass.GetDataParameter<Resident>("GetResidents",prm);
 
         }
         [HttpGet("Count")]
         public List<CountModel> GetCount(string A_id)
         {
-            return DALClass.GetDataParameter<CountModel>("CountRecords", A_id);
+            SqlParameter[] prm =
+               {
+                    new SqlParameter("@A_id",A_id)
+                };
+            return DALClass.GetDataParameter<CountModel>("CountRecords", prm);
 
         }
         [HttpPost]

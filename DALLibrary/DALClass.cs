@@ -80,6 +80,29 @@ namespace DALLibrary
         }
 
 
+        public static string GetPlotID(string PlotNumber)
+        {
+            string PlotID = "";
+            SqlConnection conn = DBHelper.getConnection();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("GetPlotID", conn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("PlotNumber", PlotNumber);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+
+                PlotID = Convert.ToString(reader["PlotID"]);
+
+            }
+            conn.Close();
+            return PlotID;
+
+
+        }
+
+
+
         public static List<T> GetData<T>(string procedureName) where T : class , new()
         {
 

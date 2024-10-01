@@ -23,6 +23,14 @@ namespace WebAPI.Controllers
             return DALClass.GetDataParameter<PlotModel>("GetPlots", prm);
         }
 
+        [HttpGet("PlotID")]
+        public string GetPlotID(string PlotNumber)
+        {
+
+            // Fetch all plots associated with the given A_id
+            return DALClass.GetPlotID(PlotNumber);
+        }
+
         [HttpPost]
         public async Task<IActionResult> SavePlot(PlotModel plot)
         {

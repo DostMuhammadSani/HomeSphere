@@ -13,36 +13,53 @@
             <DataAnnotationsValidator />
             <ValidationSummary />
 
+            <!-- Autocomplete for PlotID -->
             <div class="form-group">
                 <label for="plotID">PlotID</label>
-                <InputText id="plotID" class="form-control" @bind-Value="OwnShip.PlotID" required />
+                <InputText id="plotID" class="form-control" @bind-Value="OwnShip.PlotID" @oninput="FilterPlots" list="plotList" required />
+                <datalist id="plotList">
+                    @foreach (var plot in filteredPlots)
+                    {
+                        <option value="@plot.PlotID">@plot.PlotNumber (@plot.PlotID)</option>
+                    }
+                </datalist>
             </div>
+
+            <!-- Autocomplete for CNIC -->
             <div class="form-group">
                 <label for="cnic">CNIC</label>
-                <InputText id="cnic" class="form-control" @bind-Value="OwnShip.CNIC" required />
+                <InputText id="cnic" class="form-control" @bind-Value="OwnShip.CNIC" @oninput="FilterResidents" list="residentList" required />
+                <datalist id="residentList">
+                    @foreach (var resident in filteredResidents)
+                    {
+                        <option value="@resident.CNIC">@resident.Names (@resident.CNIC)</option>
+                    }
+                </datalist>
             </div>
+
             <div class="form-group">
                 <label for="purchaseDate">Purchase Date</label>
                 <InputDate id="purchaseDate" class="form-control" @bind-Value="OwnShip.PurchaseDate" required />
             </div>
+
             <div class="form-group">
-                <button type="submit" style="background-color:#343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" class="btn btn-primary">Update</button>
-                <button type="button" style="background-color:#343a40; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;"class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
             </div>
         </EditForm>
 
         @if (!string.IsNullOrEmpty(SuccessMessage))
         {
-                <div class="alert alert-success mt-3">
+            <div class="alert alert-success mt-3">
                 @SuccessMessage
-                </div>
+            </div>
         }
 
         @if (!string.IsNullOrEmpty(ErrorMessage))
         {
-                <div class="alert alert-danger mt-3">
+            <div class="alert alert-danger mt-3">
                 @ErrorMessage
-                </div>
+            </div>
         }
     </div>
 </div>
@@ -56,10 +73,16 @@
     public string ErrorMessage { get; set; }
     public string SuccessMessage { get; set; }
 
-    protected override void OnInitialized()
+    private List<PlotModel> plots = new List<PlotModel>();
+    private List<PlotModel> filteredPlots = new List<PlotModel>();
+    private List<Resident> residents = new List<Resident>();
+    private List<Resident> filteredResidents = new List<Resident>();
+    public string A_id{ get; set; }
+    protected override async Task OnInitializedAsync()
     {
         HS_Name = UserService.Username;
-        base.OnInitialized();
+        await LoadPlots();
+        await LoadResident();
     }
 
     private async Task HandleSubmit()
@@ -69,27 +92,25 @@
 
         try
         {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.PutAsJsonAsync("api/OwnShip", OwnShip);
 
-              var client = HttpClientFactory.CreateClient("AuthApi");
-                var response = await client.PutAsJsonAsync("api/OwnShip", OwnShip);
-
-                if (response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
+            {
+                SuccessMessage = "Ownership updated successfully.";
+                await OnSave.InvokeAsync(OwnShip);
+            }
+            else
+            {
+                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
-                    SuccessMessage = "Ownership updated successfully.";
-                    await OnSave.InvokeAsync(OwnShip);
+                    ErrorMessage = "An ownership record with this ID already exists or no record of this ID exists.";
                 }
                 else
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
-                    {
-                        ErrorMessage = "An ownership record with this ID already exists or no record of this ID exists.";
-                    }
-                    else
-                    {
-                        ErrorMessage = await response.Content.ReadAsStringAsync();
-                    }
+                    ErrorMessage = await response.Content.ReadAsStringAsync();
                 }
-           
+            }
         }
         catch (Exception ex)
         {
@@ -100,5 +121,69 @@
     private void Cancel()
     {
         OnCancel.InvokeAsync();
+    }
+
+    // Filtering plots based on user input
+    private void FilterPlots(ChangeEventArgs e)
+    {
+        var query = e.Value?.ToString().ToLower();
+        if (!string.IsNullOrWhiteSpace(query))
+        {
+            filteredPlots = plots.Where(p => p.PlotID.ToLower().Contains(query) || p.PlotNumber.ToLower().Contains(query)).ToList();
+        }
+        else
+        {
+            filteredPlots = plots; // Reset to all plots if query is empty
+        }
+    }
+
+    // Filtering residents based on user input
+    private void FilterResidents(ChangeEventArgs e)
+    {
+        var query = e.Value?.ToString().ToLower();
+        if (!string.IsNullOrWhiteSpace(query))
+        {
+            filteredResidents = residents.Where(r => r.CNIC.ToLower().Contains(query) || r.Names.ToLower().Contains(query)).ToList();
+        }
+        else
+        {
+            filteredResidents = residents; // Reset to all residents if query is empty
+        }
+    }
+
+    // Load plots and initialize the filtered list
+    private async Task LoadPlots()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Plot?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                plots = await response.Content.ReadFromJsonAsync<List<PlotModel>>();
+                filteredPlots = plots; // Initialize filtered list with all plots
+            }
+        }
+    }
+
+    // Load residents and initialize the filtered list
+    private async Task LoadResident()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Resident?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                residents = await response.Content.ReadFromJsonAsync<List<Resident>>();
+                filteredResidents = residents; // Initialize filtered list with all residents
+            }
+        }
     }
 }

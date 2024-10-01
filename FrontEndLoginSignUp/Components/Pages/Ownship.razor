@@ -9,7 +9,7 @@
 @using Blazored.SessionStorage
 @using System.Security.Claims
 @inject ISessionStorageService SessionStorage
-
+@inject NavigationManager Navigation
 @if (role == "Admin")
 {
             <div style="display: flex; flex-direction: row; background-color: #f8f9fa;">
@@ -20,7 +20,7 @@
 
                         <!-- Search Box -->
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                            <input @bind="searchText" style="width: 60%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Search by OwnID, PlotID, or CNIC" />
+                            <input @bind="searchText" style="width: 60%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Search by CNIC" />
                     <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchOwnShips">Search</button>
                         </div>
 
@@ -47,10 +47,10 @@
                         <table style="width: 100%; border-collapse: collapse;">
                             <thead>
                         <tr style="background-color: #1b6cb9; color: white;">
-                                    <th style="padding: 10px; border: 1px solid #ddd;">OwnID</th>
-                                    <th style="padding: 10px; border: 1px solid #ddd;">PlotID</th>
-                                    <th style="padding: 10px; border: 1px solid #ddd;">CNIC</th>
-                                    <th style="padding: 10px; border: 1px solid #ddd;">Purchase Date</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">CNIC</th>
+
+                                                                  
+                                                                        <th style="padding: 10px; border: 1px solid #ddd;">Purchase Date</th>
                                     <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
                                 </tr>
                             </thead>
@@ -60,14 +60,15 @@
                             @foreach (var ownShip in filteredOwnShips)
                             {
                                             <tr style="background-color: #f8f9fa;">
-                                                <td style="padding: 10px; border: 1px solid #ddd;">@ownShip.OwnID</td>
-                                                <td style="padding: 10px; border: 1px solid #ddd;">@ownShip.PlotID</td>
-                                                <td style="padding: 10px; border: 1px solid #ddd;">@ownShip.CNIC</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@ownShip.CNIC</td>
+                                            
+                                            
                                                 <td style="padding: 10px; border: 1px solid #ddd;">@ownShip.PurchaseDate.ToShortDateString()</td>
                                                 <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
                                         <button style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditOwnShip(ownShip)">Update</button>
                                         <button style="background-color: #1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteOwnShip(ownShip.OwnID)">Delete</button>
-                                                </td>
+                                        <button style="background-color: #28a745; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => ShowPlotDetails(ownShip.PlotID)">Details</button>
+                                    </td>
                                             </tr>
                             }
                         }
@@ -96,6 +97,10 @@
     public string role;
     private string searchText = "";
 
+    private void ShowPlotDetails(string PlotID)
+    {
+        Navigation.NavigateTo($"/plot-details/{PlotID}");
+    }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

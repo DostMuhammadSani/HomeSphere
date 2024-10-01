@@ -5,7 +5,7 @@
 
 <div class="container">
     <h3 class="title">Plot Details for PlotID</h3>
-
+    <p><strong>Plot ID:</strong> @PlotID</p>
     @if (isLoading)
     {
         <p class="loading">Loading...</p>
@@ -22,13 +22,17 @@
                 <InputText @bind-Value="newPlotDetails.Street" class="form-control" />
             </div>
             <div class="form-group">
-                <label>Addresses:</label>
+                <label>Address:</label>
                 <InputText @bind-Value="newPlotDetails.Addresses" class="form-control" />
             </div>
             <div class="form-group">
                 <label>House Status:</label>
-                <InputText @bind-Value="newPlotDetails.HouseStatus" class="form-control" />
+                <select @bind="newPlotDetails.HouseStatus" class="form-control">
+                    <option value="Constructed">Constructed</option>
+                    <option value="Not Constructed">Not Constructed</option>
+                </select>
             </div>
+
             <div class="form-group">
                 <label>Information:</label>
                 <InputText @bind-Value="newPlotDetails.Information" class="form-control" />
@@ -42,18 +46,24 @@
             <DataAnnotationsValidator />
             <ValidationSummary />
 
+           
+
             <div class="form-group">
                 <label>Street:</label>
                 <InputText @bind-Value="plotDetails.Street" class="form-control" />
             </div>
             <div class="form-group">
-                <label>Addresses:</label>
+                <label>Address:</label>
                 <InputText @bind-Value="plotDetails.Addresses" class="form-control" />
             </div>
             <div class="form-group">
                 <label>House Status:</label>
-                <InputText @bind-Value="plotDetails.HouseStatus" class="form-control" />
+                <select @bind="newPlotDetails.HouseStatus" class="form-control">
+                    <option value="Constructed">Constructed</option>
+                    <option value="Not Constructed">Not Constructed</option>
+                </select>
             </div>
+
             <div class="form-group">
                 <label>Information:</label>
                 <InputText @bind-Value="plotDetails.Information" class="form-control" />
@@ -69,7 +79,7 @@
         <div class="plot-details">
             <h4>Plot Information</h4>
             <p><strong>Street:</strong> @plotDetails.Street</p>
-            <p><strong>Addresses:</strong> @plotDetails.Addresses</p>
+            <p><strong>Address:</strong> @plotDetails.Addresses</p>
             <p><strong>House Status:</strong> @plotDetails.HouseStatus</p>
             <p><strong>Information:</strong> @plotDetails.Information</p>
 

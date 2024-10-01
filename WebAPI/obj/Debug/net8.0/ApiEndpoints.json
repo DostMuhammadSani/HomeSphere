@@ -220,6 +220,32 @@
     ]
   },
   {
+    "ContainingType": "WebAPI.Controllers.PlotController",
+    "Method": "GetPlotID",
+    "RelativePath": "api/Plot/PlotID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PlotNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "WebAPI.Controllers.PlotDetailsController",
     "Method": "CreatePlotDetails",
     "RelativePath": "api/PlotDetails",

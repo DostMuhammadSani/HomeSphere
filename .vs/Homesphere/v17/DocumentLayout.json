@@ -3,60 +3,44 @@
   "WorkspaceRootPath": "D:\\Final Year Project\\HomeSphere\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\updateownship.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\updateownship.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\plot.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\plot.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\ownship.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\ownship.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\ownshipform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\ownshipform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\plotform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\plotform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{46DE582A-EA2C-4C1D-98C3-FA0CCCDB8130}|ClassLibraryModel\\ClassLibraryModel.csproj|d:\\final year project\\homesphere\\classlibrarymodel\\residentmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{46DE582A-EA2C-4C1D-98C3-FA0CCCDB8130}|ClassLibraryModel\\ClassLibraryModel.csproj|solutionrelative:classlibrarymodel\\residentmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\residents.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\residents.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\plotdetailcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\plotdetailcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|d:\\final year project\\homesphere\\webapi\\controllers\\plotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\plotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\request.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\request.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\sidebars.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\sidebars.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00747C81-03CC-44FE-A4A8-8F48F2AA4099}|DALLibrary\\DALLibrary.csproj|d:\\final year project\\homesphere\\dallibrary\\dalclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00747C81-03CC-44FE-A4A8-8F48F2AA4099}|DALLibrary\\DALLibrary.csproj|solutionrelative:dallibrary\\dalclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|d:\\final year project\\homesphere\\webapi\\controllers\\ownershipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\ownershipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|d:\\final year project\\homesphere\\webapi\\controllers\\residentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\residentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46DE582A-EA2C-4C1D-98C3-FA0CCCDB8130}|ClassLibraryModel\\ClassLibraryModel.csproj|d:\\final year project\\homesphere\\classlibrarymodel\\requestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46DE582A-EA2C-4C1D-98C3-FA0CCCDB8130}|ClassLibraryModel\\ClassLibraryModel.csproj|solutionrelative:classlibrarymodel\\requestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\staff.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\staff.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|d:\\final year project\\homesphere\\webapi\\controllers\\requestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\requestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|d:\\final year project\\homesphere\\webapi\\controllers\\plotdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\plotdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\ownshipform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\ownshipform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,150 +50,102 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ResidentModel.cs",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ResidentModel.cs",
-              "RelativeDocumentMoniker": "ClassLibraryModel\\ResidentModel.cs",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ResidentModel.cs",
-              "RelativeToolTip": "ClassLibraryModel\\ResidentModel.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T12:02:22.9Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Residents.razor",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Residents.razor",
-              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Residents.razor",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Residents.razor",
-              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Residents.razor",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAAAKEAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Sidebars.razor",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Sidebars.razor",
+              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Sidebars.razor",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Sidebars.razor",
+              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Sidebars.razor",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAAAEMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T11:47:57.684Z",
+              "WhenOpened": "2024-10-01T16:40:14.831Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UpdateOwnShip.razor",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateOwnShip.razor",
-              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\UpdateOwnShip.razor",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateOwnShip.razor",
-              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\UpdateOwnShip.razor",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAYwJAAAAAJAAAAAAAAAA==",
+              "Title": "Request.razor",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Request.razor",
+              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Request.razor",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Request.razor",
+              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Request.razor",
+              "ViewState": "AgIAACAAAAAAAAAAAAAswC0AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T11:37:48.207Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PlotForm.razor",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\PlotForm.razor",
-              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\PlotForm.razor",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\PlotForm.razor",
-              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\PlotForm.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T11:37:14.386Z",
+              "WhenOpened": "2024-10-01T15:09:52.384Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Plot.razor",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Plot.razor",
-              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Plot.razor",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Plot.razor",
-              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Plot.razor",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAowBcAAACXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T11:30:58.517Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Ownship.razor",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Ownship.razor",
-              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Ownship.razor",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Ownship.razor",
-              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Ownship.razor",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABYAAACbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T11:13:12.634Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PlotDetailComponent.razor",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\PlotDetailComponent.razor",
-              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\PlotDetailComponent.razor",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\PlotDetailComponent.razor",
-              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\PlotDetailComponent.razor",
-              "ViewState": "AgIAAPwAAAAAAAAAAAAAAAsBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T11:04:03.568Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "Dashboard.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Dashboard.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Dashboard.razor",
               "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Dashboard.razor",
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Dashboard.razor",
-              "ViewState": "AgIAANgAAAAAAAAAAAAAAOMAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAOwAAAAAAAAAAAAwwPcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T10:37:54.705Z"
+              "WhenOpened": "2024-10-01T15:00:29.793Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PlotController.cs",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\PlotController.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Controllers\\PlotController.cs",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\PlotController.cs",
-              "RelativeToolTip": "WebAPI\\Controllers\\PlotController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAADwvxgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ResidentController.cs",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\ResidentController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\ResidentController.cs",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\ResidentController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\ResidentController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAArwCAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T10:35:33.842Z"
+              "WhenOpened": "2024-10-01T14:58:58.309Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 3,
               "Title": "DALClass.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\DALLibrary\\DALClass.cs",
               "RelativeDocumentMoniker": "DALLibrary\\DALClass.cs",
               "ToolTip": "D:\\Final Year Project\\HomeSphere\\DALLibrary\\DALClass.cs",
               "RelativeToolTip": "DALLibrary\\DALClass.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAwwGEAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAswI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T10:30:53.619Z"
+              "WhenOpened": "2024-10-01T14:55:49.423Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "OwnerShipController.cs",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\OwnerShipController.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Controllers\\OwnerShipController.cs",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\OwnerShipController.cs",
-              "RelativeToolTip": "WebAPI\\Controllers\\OwnerShipController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "RequestModel.cs",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\RequestModel.cs",
+              "RelativeDocumentMoniker": "ClassLibraryModel\\RequestModel.cs",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\RequestModel.cs",
+              "RelativeToolTip": "ClassLibraryModel\\RequestModel.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAkwCMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T10:24:32.788Z"
+              "WhenOpened": "2024-10-01T14:49:16.076Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
+              "Title": "RequestController.cs",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\RequestController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\RequestController.cs",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\RequestController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\RequestController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T14:44:10.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "OwnShipForm.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\OwnShipForm.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\OwnShipForm.razor",
@@ -217,32 +153,33 @@
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\OwnShipForm.razor",
               "ViewState": "AgIAAKUAAAAAAAAAAAAYwLMAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-01T10:24:24.237Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-01T10:24:24.237Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 6,
               "Title": "Staff.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Staff.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Staff.razor",
               "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Staff.razor",
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Staff.razor",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFsAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAE0AAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-29T07:36:40.725Z"
+              "WhenOpened": "2024-09-29T07:36:40.725Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 8,
               "Title": "PlotDetailsController.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\PlotDetailsController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\PlotDetailsController.cs",
               "ToolTip": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\PlotDetailsController.cs",
               "RelativeToolTip": "WebAPI\\Controllers\\PlotDetailsController.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAwwFMAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwFMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T19:05:28.668Z"
+              "WhenOpened": "2024-09-28T19:05:28.668Z",
+              "EditorCaption": ""
             }
           ]
         }

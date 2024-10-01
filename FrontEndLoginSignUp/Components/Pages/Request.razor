@@ -1,0 +1,206 @@
+﻿@page "/requests"
+@using Blazored.SessionStorage
+@using ClassLibraryModel
+@using System.Security.Claims
+@inject HttpClient HttpClient
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@inject ISessionStorageService SessionStorage
+@inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
+
+@if (role == "Admin")
+{
+    <div class="container-fluid">
+        <div class="row">
+            <Sidebars></Sidebars>
+            <div class="col-md-10 p-4">
+                <!-- Top Nav -->
+                <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
+                    <!-- Search Bar -->
+                    <div class="search-bar">
+                        <input type="text" @bind="searchQuery" @bind:event="oninput" class="form-control" placeholder="Search here" />
+                    </div>
+                    <!-- Icons Section -->
+                    
+                </div>
+
+                <!-- Requests List -->
+                <div class="requests-list">
+                    @if (filteredRequests != null && filteredRequests.Count > 0)
+                    {
+                        @foreach (var request in filteredRequests)
+                        {
+                            <div class="request-item" @onclick="() => ShowDetails(request)">
+                                <span>@request.Descriptions</span>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>No requests available.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for request details -->
+    @if (selectedRequest != null)
+    {
+        <div class="modal-overlay" @onclick="CloseModal">
+            <div class="modal-content" @onclick:stopPropagation="true">
+                <h4>Request Details</h4>
+                <p><strong>Address:</strong> @selectedRequest.Descriptions</p>
+                <p><strong>Status:</strong> @selectedRequest.Statuss</p>
+                <p><strong>Requested At:</strong> @selectedRequest.RequestTimestamp</p>
+                <p><strong>Accepted At:</strong> @selectedRequest.AcceptTimestamp</p>
+                <p><strong>Completed At:</strong> @selectedRequest.CompletionTimestamp</p>
+                <button @onclick="CloseModal" class="btn btn-primary">Close</button>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private List<RequestModel> requests;
+    private List<RequestModel> filteredRequests;
+    private RequestModel selectedRequest;
+    private string searchQuery;
+    private string token;
+    private string role;
+    private string A_id;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim?.Value;
+
+                var client = HttpClientFactory.CreateClient("AuthApi");
+                var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+                var response1 = await client.GetAsync(url);
+                if (response1.IsSuccessStatusCode)
+                {
+                    A_id = await response1.Content.ReadAsStringAsync();
+
+                    // Fetch requests using the A_id
+                    var response = await client.GetAsync($"api/Request?A_id={A_id}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        requests = await response.Content.ReadFromJsonAsync<List<RequestModel>>();
+                        filteredRequests = requests; // Initialize the filtered list
+                    }
+
+                    StateHasChanged();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+        }
+    }
+
+    private void ShowDetails(RequestModel request)
+    {
+        selectedRequest = request;
+    }
+
+    private void CloseModal()
+    {
+        selectedRequest = null;
+    }
+
+    private void SearchRequests()
+    {
+        if (!string.IsNullOrEmpty(searchQuery))
+        {
+            filteredRequests = requests.Where(r => r.Descriptions.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        else
+        {
+            filteredRequests = requests;
+        }
+    }
+}
+
+<style>
+    /* Top Nav */
+    .top-nav {
+        background-color: #f6f6fb;
+        padding: 20px;
+    }
+
+    /* Search Bar */
+    .search-bar .form-control {
+        width: 300px;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 15px;
+        font-size: 14px;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Requests List */
+    .requests-list {
+        margin-top: 20px;
+    }
+
+    .request-item {
+        background-color: #1b6cb9;
+        color: white;
+        padding: 10px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .request-item:hover {
+            background-color: #165d99;
+        }
+
+    /* Modal Overlay */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 400px;
+    }
+
+        .modal-content h4 {
+            color: #1b6cb9;
+        }
+
+        .modal-content button {
+            background-color: #1b6cb9;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .modal-content button:hover {
+                background-color: #165d99;
+            }
+</style>

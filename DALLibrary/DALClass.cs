@@ -123,9 +123,26 @@ namespace DALLibrary
 
                     var name = property.Name;
 
-                    property.SetValue(obj, Convert.ChangeType(reader[$"{name}"],property.PropertyType));
+                    if (reader[name] != DBNull.Value)
+                    {
+                        property.SetValue(obj, Convert.ChangeType(reader[name], property.PropertyType));
+                    }
+                    else
+                    {
+                        // Assign a default value if the property is a reference type or nullable
+                        if (property.PropertyType.IsClass || (Nullable.GetUnderlyingType(property.PropertyType) != null))
+                        {
+                            property.SetValue(obj, null);
+                        }
+                        else
+                        {
+                            // Assign a default value for value types (int, decimal, etc.)
+                            property.SetValue(obj, Activator.CreateInstance(property.PropertyType));
+                        }
+                    }
 
-                   
+
+
                 }
 
                 users.Add(obj);
@@ -164,10 +181,27 @@ namespace DALLibrary
 
                     var name = property.Name;
 
-                    property.SetValue(obj, Convert.ChangeType(reader[$"{name}"], property.PropertyType));
+                    if (reader[name] != DBNull.Value)
+                    {
+                        property.SetValue(obj, Convert.ChangeType(reader[name], property.PropertyType));
+                    }
+                    else
+                    {
+                        // Assign a default value if the property is a reference type or nullable
+                        if (property.PropertyType.IsClass || (Nullable.GetUnderlyingType(property.PropertyType) != null))
+                        {
+                            property.SetValue(obj, null);
+                        }
+                        else
+                        {
+                            // Assign a default value for value types (int, decimal, etc.)
+                            property.SetValue(obj, Activator.CreateInstance(property.PropertyType));
+                        }
+                    }
+                
 
 
-                }
+            }
 
                 users.Add(obj);
 

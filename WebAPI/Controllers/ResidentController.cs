@@ -21,6 +21,16 @@ namespace WebAPI.Controllers
             return DALClass.GetDataParameter<Resident>("GetResidents",prm);
 
         }
+        [HttpGet("Single")]
+        public Resident GetSingle(string CNIC)
+        {
+            SqlParameter[] prm =
+              {
+                    new SqlParameter("@CNIC",CNIC)
+                };
+            List<Resident> R=DALClass.GetDataParameter<Resident>("GetSingleResident", prm);
+            return R[0];
+        }
         [HttpGet("Count")]
         public List<CountModel> GetCount(string A_id)
         {

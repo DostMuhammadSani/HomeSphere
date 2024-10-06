@@ -1,0 +1,109 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@using DALLibrary
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Add Task</h4>
+        <EditForm Model="Task" OnValidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <!-- Task Name Field -->
+            <div class="form-group">
+                <label for="taskName">Task Name</label>
+                <InputText id="taskName" class="form-control" @bind-Value="Task.Task_name" required />
+            </div>
+
+            <!-- Profession Field -->
+            <div class="form-group">
+                <label for="profession">Profession</label>
+                <InputText id="profession" class="form-control" @bind-Value="Task.profession" required />
+            </div>
+
+            <!-- Submit and Cancel Buttons -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;">Save</button>
+                <button type="button" class="btn btn-secondary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+
+        <!-- Success and Error Messages -->
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+            <div class="alert alert-success mt-3">
+                @SuccessMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger mt-3">
+                @ErrorMessage
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public TaskModel Task { get; set; } = new TaskModel();
+    [Parameter] public EventCallback<TaskModel> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    public string A_id { get; set; }
+    public string ErrorMessage { get; set; }
+    public string SuccessMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+            var response1 = await client.GetAsync(url);
+
+            if (response1.IsSuccessStatusCode)
+            {
+                A_id = await response1.Content.ReadAsStringAsync();
+                Task.A_id = A_id;
+                Guid Id = Guid.NewGuid();
+                Task.Task_id = Id.ToString();
+                var response = await client.PostAsJsonAsync("api/Task", Task);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Task added successfully.";
+                    await OnSave.InvokeAsync(Task);
+                }
+                else
+                {
+                    ErrorMessage = "Failed to save the task. Please try again.";
+                }
+            }
+            else
+            {
+                ErrorMessage = "Invalid Admin ID.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

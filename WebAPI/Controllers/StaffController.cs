@@ -20,6 +20,18 @@ namespace WebAPI.Controllers
             return DALClass.GetDataParameter<StaffModel>("GetStaffByAdmin", prm);
         }
 
+        [HttpGet("Single")]
+        public Resident GetSingle(string CNIC)
+        {
+            SqlParameter[] prm =
+              {
+                    new SqlParameter("@CNIC",CNIC)
+                };
+            List<Resident> R = DALClass.GetDataParameter<Resident>("GetSingleStaff", prm);
+            return R[0];
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> SaveStaff(StaffModel S)
         {

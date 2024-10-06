@@ -22,6 +22,14 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Complain.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wbGFpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/ComplainStaff.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wbGFpblN0YWZmLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -102,6 +110,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGFmZkZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/TaskForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYXNrRm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Tasks.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYXNrcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateOwnShip.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVPd25TaGlwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -116,6 +132,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateStaffForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVTdGFmZkZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateTaskForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVUYXNrRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Routes.razor]

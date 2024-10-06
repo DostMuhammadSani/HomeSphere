@@ -16,13 +16,12 @@
             <Sidebars></Sidebars>
             <div class="col-md-10 p-4">
                 <!-- Top Nav -->
-                <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
-                    <!-- Search Bar -->
-                    <div class="search-bar">
-                        <input type="text" @bind="searchQuery" @bind:event="oninput" class="form-control" placeholder="Search here" />
+                <div class="top-nav d-flex justify-content-between align-items-center mb-4">
+                    <h3>Requests</h3>
+                    <div class="search-bar d-flex">
+                        <input type="text" class="form-control" placeholder="Search requests..." @bind="searchQuery" />
+                        <button class="btn btn-primary" @onclick="SearchRequests">Search</button>
                     </div>
-                    <!-- Icons Section -->
-                    
                 </div>
 
                 <!-- Requests List -->
@@ -53,6 +52,8 @@
                 <h4>Request Details</h4>
                 <p><strong>Address:</strong> @selectedRequest.Descriptions</p>
                 <p><strong>Status:</strong> @selectedRequest.Statuss</p>
+                <p><strong>Staff ID:</strong> @selectedRequest.S_CNIC</p>
+                <p><strong>Client:</strong> @selectedRequest.R_CNIC</p>
                 <p><strong>Requested At:</strong> @selectedRequest.RequestTimestamp</p>
                 <p><strong>Accepted At:</strong> @selectedRequest.AcceptTimestamp</p>
                 <p><strong>Completed At:</strong> @selectedRequest.CompletionTimestamp</p>
@@ -66,7 +67,7 @@
     private List<RequestModel> requests;
     private List<RequestModel> filteredRequests;
     private RequestModel selectedRequest;
-    private string searchQuery;
+    private string searchQuery = string.Empty;
     private string token;
     private string role;
     private string A_id;
@@ -131,24 +132,32 @@
 }
 
 <style>
-    /* Top Nav */
     .top-nav {
-        background-color: #f6f6fb;
         padding: 20px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e0e0e0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    /* Search Bar */
-    .search-bar .form-control {
-        width: 300px;
-        border: none;
-        border-radius: 12px;
-        padding: 10px 15px;
-        font-size: 14px;
-        background-color: #ffffff;
-        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    .search-bar {
+        display: flex;
+        align-items: center;
     }
 
-    /* Requests List */
+        .search-bar .form-control {
+            width: 300px;
+            border: 1px solid #ced4da;
+            border-radius: 12px;
+            padding: 10px 15px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+            .search-bar .form-control:focus {
+                border-color: #1b6cb9;
+                box-shadow: 0 0 5px rgba(27, 108, 185, 0.5);
+            }
+
     .requests-list {
         margin-top: 20px;
     }
@@ -167,7 +176,6 @@
             background-color: #165d99;
         }
 
-    /* Modal Overlay */
     .modal-overlay {
         position: fixed;
         top: 0;
@@ -185,6 +193,7 @@
         padding: 20px;
         border-radius: 10px;
         width: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
         .modal-content h4 {
@@ -198,6 +207,7 @@
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
             .modal-content button:hover {

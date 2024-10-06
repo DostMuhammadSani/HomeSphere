@@ -1,0 +1,239 @@
+﻿@page "/complains"
+@using Blazored.SessionStorage
+@using ClassLibraryModel
+@using System.Security.Claims
+@inject HttpClient HttpClient
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@inject ISessionStorageService SessionStorage
+@inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
+
+@if (role == "Admin")
+{
+    <div class="container-fluid">
+        <div class="row">
+            <Sidebars></Sidebars>
+            <div class="col-md-10 p-4">
+                <!-- Top Nav -->
+                <div class="top-nav d-flex justify-content-between align-items-center mb-4">
+                    <h3>Complains</h3>
+                    <div class="search-bar d-flex">
+                        <input type="text" class="form-control" placeholder="Search complaints..." @bind="searchQuery" />
+                        <button class="btn btn-primary" @onclick="SearchComplains">Search</button>
+                    </div>
+                </div>
+
+                <!-- Complains List -->
+                <div class="complains-list">
+                    @if (filteredComplains != null && filteredComplains.Count > 0)
+                    {
+                        @foreach (var complain in filteredComplains)
+                        {
+                            <div class="complain-item" @onclick="() => ShowDetails(complain)">
+                                <span>@complain.Complain_Description</span>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>No complaints available.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for complain details -->
+    @if (selectedComplain != null)
+    {
+        <div class="modal-overlay" @onclick="CloseModal">
+            <div class="modal-content" @onclick:stopPropagation="true">
+                <h4>Complain Details</h4>
+                <p><strong>Description:</strong> @selectedComplain.Complain_Description</p>
+
+                @if (resident != null)
+                {
+                    <div>
+                        <h5>Resident Details</h5>
+                        <p><strong>Name:</strong> @resident.Names</p>
+                        <p><strong>CNIC:</strong> @resident.CNIC</p>
+                        <p><strong>Contact:</strong> @resident.Contact</p>
+                        <img src="@resident.Picture" alt="Resident Image" style="width:100px; height:100px;" />
+                    </div>
+                }
+
+                <button @onclick="CloseModal" class="btn btn-primary">Close</button>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private List<ComplainsModel> complains;
+    private List<ComplainsModel> filteredComplains;
+    private ComplainsModel selectedComplain;
+    private Resident resident; // Model for resident details
+    private string searchQuery = string.Empty; // Initialized to avoid null checks
+    private string token;
+    private string role;
+    private string A_id;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadComplains();
+        }
+    }
+
+    private async Task LoadComplains()
+    {
+        try
+        {
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim?.Value;
+
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+            var response1 = await client.GetAsync(url);
+            if (response1.IsSuccessStatusCode)
+            {
+                A_id = await response1.Content.ReadAsStringAsync();
+                // Fetch complains using the A_id
+                var response = await client.GetAsync($"api/Complains?A_id={A_id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    complains = await response.Content.ReadFromJsonAsync<List<ComplainsModel>>();
+                    filteredComplains = complains; // Initialize the filtered list
+                }
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error retrieving complaints: {ex.Message}");
+        }
+    }
+
+    private async Task LoadResident(string cnic)
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Resident/Single?CNIC={cnic}"; // Adjust API endpoint as needed
+        var response = await client.GetAsync(url);
+        if (response.IsSuccessStatusCode)
+        {
+            resident = await response.Content.ReadFromJsonAsync<Resident>();
+        }
+    }
+
+    private async Task ShowDetails(ComplainsModel complain)
+    {
+        selectedComplain = complain;
+        await LoadResident(complain.CNIC); // Load resident details based on CNIC
+    }
+
+    private void CloseModal()
+    {
+        selectedComplain = null;
+        resident = null; // Reset resident details
+    }
+
+    private void SearchComplains()
+    {
+        if (!string.IsNullOrEmpty(searchQuery))
+        {
+            filteredComplains = complains.Where(c => c.Complain_Description.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        else
+        {
+            filteredComplains = complains;
+        }
+    }
+}
+
+<style>
+    .top-nav {
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e0e0e0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+    }
+
+        .search-bar .form-control {
+            width: 300px;
+            border: 1px solid #ced4da;
+            border-radius: 12px;
+            padding: 10px 15px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+            .search-bar .form-control:focus {
+                border-color: #1b6cb9;
+                box-shadow: 0 0 5px rgba(27, 108, 185, 0.5);
+            }
+
+    .complains-list {
+        margin-top: 20px;
+    }
+
+    .complain-item {
+        background-color: #1b6cb9;
+        color: white;
+        padding: 10px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .complain-item:hover {
+            background-color: #165d99;
+        }
+
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+        .modal-content h4 {
+            color: #1b6cb9;
+        }
+
+        .modal-content button {
+            background-color: #1b6cb9;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .modal-content button:hover {
+                background-color: #165d99;
+            }
+</style>

@@ -1,0 +1,113 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@using DALLibrary
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Update Task</h4>
+        <EditForm Model="Task" OnValidSubmit="HandleUpdateClick">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <!-- Task ID Field (Disabled) -->
+            <div class="form-group">
+                <label for="taskId">Task ID</label>
+                <InputText id="taskId" class="form-control" @bind-Value="Task.Task_id" disabled />
+            </div>
+
+            <!-- Task Name Field -->
+            <div class="form-group">
+                <label for="taskName">Task Name</label>
+                <InputText id="taskName" class="form-control" @bind-Value="Task.Task_name" required />
+            </div>
+
+            <!-- Profession Field -->
+            <div class="form-group">
+                <label for="profession">Profession</label>
+                <InputText id="profession" class="form-control" @bind-Value="Task.profession" required />
+            </div>
+
+            <!-- Update and Cancel Buttons -->
+            <div class="form-group">
+                <button type="submit" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" class="btn btn-primary">Update</button>
+                <button type="button" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+
+        <!-- Success and Error Messages -->
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+            <div class="alert alert-success mt-3">
+                @SuccessMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger mt-3">
+                @ErrorMessage
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public TaskModel Task { get; set; }
+    [Parameter] public EventCallback<TaskModel> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    public string A_id { get; set; }
+    public string ErrorMessage { get; set; }
+    public string SuccessMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    private async Task HandleUpdateClick()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+            var response1 = await client.GetAsync(url);
+
+            if (response1.IsSuccessStatusCode)
+            {
+                A_id = await response1.Content.ReadAsStringAsync();
+                Task.A_id = A_id;
+                var response = await client.PutAsJsonAsync("api/Task", Task);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Task updated successfully.";
+                    await OnSave.InvokeAsync(Task);
+                }
+                else
+                {
+                    ErrorMessage = "Failed to update the task. Please try again.";
+                }
+            }
+            else
+            {
+                ErrorMessage = "Invalid Admin ID.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

@@ -17,21 +17,26 @@
             <div class="col-md-10 p-4">
                 <!-- Top Nav -->
                 <div class="top-nav d-flex justify-content-between align-items-center mb-4">
-                    <h3>Complains</h3>
+                    <h3>Complaints</h3>
                     <div class="search-bar d-flex">
                         <input type="text" class="form-control" placeholder="Search complaints..." @bind="searchQuery" />
                         <button class="btn btn-primary" @onclick="SearchComplains">Search</button>
                     </div>
                 </div>
 
-                <!-- Complains List -->
+                <!-- Complaints List -->
                 <div class="complains-list">
                     @if (filteredComplains != null && filteredComplains.Count > 0)
                     {
                         @foreach (var complain in filteredComplains)
                         {
-                            <div class="complain-item" @onclick="() => ShowDetails(complain)">
-                                <span>@complain.Complain_Description</span>
+                            <div class="complain-item card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Complain</h5>
+                                    <p class="card-text">@complain.Complain_Description</p>
+                                    <small class="text-muted">@complain.RequestTimestamp.ToString("g")</small>
+                                    <button class="btn btn-outline-light mt-2" @onclick="() => ShowDetails(complain)">View Details</button>
+                                </div>
                             </div>
                         }
                     }
@@ -51,7 +56,7 @@
             <div class="modal-content" @onclick:stopPropagation="true">
                 <h4>Complain Details</h4>
                 <p><strong>Description:</strong> @selectedComplain.Complain_Description</p>
-
+                <p>Time: @selectedComplain.RequestTimestamp</p>
                 @if (resident != null)
                 {
                     <div>
@@ -188,12 +193,26 @@
     .complain-item {
         background-color: #1b6cb9;
         color: white;
-        padding: 10px;
-        margin-bottom: 5px;
+        padding: 20px;
+        margin-bottom: 15px;
         cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
     }
+
+        .complain-item .card-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .complain-item .card-text {
+            margin-bottom: 10px;
+        }
+
+        .complain-item small {
+            font-size: 0.8rem;
+            color: #e6e6e6;
+        }
 
         .complain-item:hover {
             background-color: #165d99;
@@ -230,10 +249,11 @@
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
 
             .modal-content button:hover {
                 background-color: #165d99;
             }
+
 </style>

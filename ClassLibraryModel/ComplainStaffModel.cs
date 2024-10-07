@@ -13,6 +13,7 @@ namespace ClassLibraryModel
     {
         public int Complain_ID { get; set; }
         public string Complain_Description { get; set; }
+        public DateTime RequestTimestamp { get; set; }
         public string RCNIC { get; set; }
         public string SCNIC { get; set; }
     }

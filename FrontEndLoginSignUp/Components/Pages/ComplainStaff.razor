@@ -17,21 +17,23 @@
             <div class="col-md-10 p-4">
                 <!-- Top Nav -->
                 <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
-                    <h3>Staff Complains</h3>
+                    <h3>Staff Complaints</h3>
                     <div class="search-bar d-flex">
                         <input type="text" class="form-control" placeholder="Search complaints..." @bind="searchQuery" />
                         <button class="btn btn-primary" @onclick="SearchComplains">Search</button>
                     </div>
                 </div>
 
-                <!-- Complains List -->
+                <!-- Complaints List -->
                 <div class="complains-list">
                     @if (filteredComplains != null && filteredComplains.Count > 0)
                     {
                         @foreach (var complain in filteredComplains)
                         {
                             <div class="complain-item" @onclick="() => ShowDetails(complain)">
-                                <span>@complain.Complain_Description</span>
+                                <h5 class="mb-2">Staff Complaint</h5>
+                                <p>@complain.Complain_Description</p>
+                                <p class="timestamp text-muted">@complain.RequestTimestamp.ToString("MMM dd, yyyy hh:mm tt")</p>
                             </div>
                         }
                     }
@@ -51,7 +53,7 @@
             <div class="modal-content" @onclick:stopPropagation="true">
                 <h4>Complain Details</h4>
                 <p><strong>Description:</strong> @selectedComplain.Complain_Description</p>
-
+                <p><strong>Time:</strong> @selectedComplain.RequestTimestamp</p>
                 @if (resident != null)
                 {
                     <div>
@@ -78,6 +80,9 @@
         </div>
     }
 }
+
+
+
 
 @code {
     private List<ComplainStaffModel> complains;
@@ -180,9 +185,14 @@
     }
 }
 
+
+
 <style>
     .top-nav {
         padding: 20px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e0e0e0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .search-bar {
@@ -211,16 +221,21 @@
     .complain-item {
         background-color: #1b6cb9;
         color: white;
-        padding: 10px;
-        margin-bottom: 5px;
-        cursor: pointer;
-        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
         transition: background-color 0.3s;
+        cursor: pointer;
     }
 
         .complain-item:hover {
             background-color: #165d99;
         }
+
+    .timestamp {
+        font-size: 12px;
+        color: #ccc;
+    }
 
     .modal-overlay {
         position: fixed;
@@ -239,6 +254,7 @@
         padding: 20px;
         border-radius: 10px;
         width: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
         .modal-content h4 {

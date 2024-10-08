@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
                 new SqlParameter("@PlotID", plotID)
             };
             var plotDetails = DALClass.GetDataParameter<PlotDetailsModel>("GetPlotDetailsByPlotID", prm);
-            if (plotDetails != null )
+            if (plotDetails.Count!=0)
             {
                 return Ok(plotDetails[0]);
             }
@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
                 try
                 {
                     DALClass.CUDResident(parameters, "AddPlotDetailsByPlotID");
-                    return CreatedAtAction(nameof(GetPlotDetailsByPlotID), new { plotID = plotDetails.PlotID }, plotDetails);
+                    return Ok(plotDetails);
                 }
                 catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
                 {

@@ -19,15 +19,16 @@
 
             <div class="form-group">
                 <label>Street:</label>
-                <InputText @bind-Value="newPlotDetails.Street" class="form-control" />
+                <InputText @bind-Value="newPlotDetails.Street" class="form-control" required />
             </div>
             <div class="form-group">
                 <label>Address:</label>
-                <InputText @bind-Value="newPlotDetails.Addresses" class="form-control" />
+                <InputText @bind-Value="newPlotDetails.Addresses" class="form-control" required />
             </div>
             <div class="form-group">
                 <label>House Status:</label>
-                <select @bind="newPlotDetails.HouseStatus" class="form-control">
+                <select @bind="newPlotDetails.HouseStatus" class="form-control" required>
+                    <option>Select Option</option>
                     <option value="Constructed">Constructed</option>
                     <option value="Not Constructed">Not Constructed</option>
                 </select>
@@ -35,7 +36,7 @@
 
             <div class="form-group">
                 <label>Information:</label>
-                <InputText @bind-Value="newPlotDetails.Information" class="form-control" />
+                <InputText @bind-Value="newPlotDetails.Information" class="form-control" required/>
             </div>
             <button type="submit" class="btn btn-primary">Add Plot Details</button>
         </EditForm>
@@ -170,6 +171,8 @@
     private PlotDetailsModel newPlotDetails = new PlotDetailsModel();
     private bool isLoading = true;
     private bool isEditing = false;
+    [Inject]
+    private IJSRuntime JSRun { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
@@ -181,7 +184,7 @@
         var client = HttpClientFactory.CreateClient("AuthApi");
         try
         {
-            var response = await client.GetAsync($"api/plotdetails/{PlotID}");
+            var response = await client.GetAsync($"api/PlotDetails/{PlotID}");
             if (response.IsSuccessStatusCode)
             {
                 plotDetails = await response.Content.ReadFromJsonAsync<PlotDetailsModel>();
@@ -204,20 +207,52 @@
 
     private async Task AddPlotDetails()
     {
-        Guid Id = Guid.NewGuid();
-        newPlotDetails.PDID = Id.ToString();
-        newPlotDetails.PlotID = PlotID;
-        var client = HttpClientFactory.CreateClient("AuthApi");
-        var response = await client.PostAsJsonAsync("api/plotdetails", newPlotDetails);
-        if (response.IsSuccessStatusCode)
+        try
         {
-            plotDetails = await response.Content.ReadFromJsonAsync<PlotDetailsModel>();
-            newPlotDetails = new PlotDetailsModel();
+            // Client-side validation
+            if (string.IsNullOrWhiteSpace(newPlotDetails.HouseStatus) ||
+                string.IsNullOrWhiteSpace(newPlotDetails.Street) ||
+                string.IsNullOrWhiteSpace(newPlotDetails.Addresses) ||
+                string.IsNullOrWhiteSpace(newPlotDetails.Information))
+            {
+                // Call JS function to show alert
+                await JSRun.InvokeVoidAsync("alert", "Fields are Missing");
+                return;
+            }
+
+            // Set IDs
+            Guid Id = Guid.NewGuid();
+            newPlotDetails.PDID = Id.ToString();
+            newPlotDetails.PlotID = PlotID;
+
+            // Log data before sending to API
+            Console.WriteLine($"PlotID: {newPlotDetails.PlotID}, PDID: {newPlotDetails.PDID}, HouseStatus: {newPlotDetails.HouseStatus}, Street: {newPlotDetails.Street}, Addresses: {newPlotDetails.Addresses}, Information: {newPlotDetails.Information}");
+
+            var client = HttpClientFactory.CreateClient("AuthApi");
+
+            // Send POST request to API
+            var response = await client.PostAsJsonAsync("api/PlotDetails", newPlotDetails);
+
+            // Check response status
+            if (response.IsSuccessStatusCode)
+            {
+                plotDetails = await response.Content.ReadFromJsonAsync<PlotDetailsModel>();
+                newPlotDetails = new PlotDetailsModel(); // Reset form after success
+            }
+            else
+            {
+                // Capture and log detailed error message from the response
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"API Error: Status Code {response.StatusCode}, Response: {errorContent}");
+            }
         }
-        else
+        catch (Exception ex)
         {
-            Console.WriteLine("Error adding plot details.");
+            // Catch and log any exception that occurs
+            Console.WriteLine($"Exception: {ex.Message}");
         }
+        StateHasChanged();
+
     }
 
     private async Task UpdatePlotDetails()
@@ -226,7 +261,7 @@
         if (plotDetails != null)
         {
             var client = HttpClientFactory.CreateClient("AuthApi");
-            var response = await client.PutAsJsonAsync($"api/plotdetails/{PlotID}", plotDetails);
+            var response = await client.PutAsJsonAsync($"api/PlotDetails/{PlotID}", plotDetails);
             if (response.IsSuccessStatusCode)
             {
                 isEditing = false;
@@ -254,7 +289,7 @@
     private async Task DeletePlotDetails()
     {
         var client = HttpClientFactory.CreateClient("AuthApi");
-        var response = await client.DeleteAsync($"api/plotdetails/{PlotID}");
+        var response = await client.DeleteAsync($"api/PlotDetails/{PlotID}");
         if (response.IsSuccessStatusCode)
         {
             plotDetails = null;

@@ -1,0 +1,127 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject IWebHostEnvironment Environment
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Update Event</h4>
+        <EditForm Model="Event" OnValidSubmit="HandleUpdateClick">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <!-- Event Name Field -->
+            <div class="form-group">
+                <label for="eventName">Event Name</label>
+                <InputText id="eventName" class="form-control" @bind-Value="Event.EName" required />
+            </div>
+
+            <!-- Description Field -->
+            <div class="form-group">
+                <label for="description">Description</label>
+                <InputTextArea id="description" class="form-control" @bind-Value="Event.Descriptions" required />
+            </div>
+
+            <!-- Current Picture -->
+            <div class="form-group">
+                <label>Current Picture</label>
+                @if (!string.IsNullOrEmpty(Event.Picture))
+                {
+                    <img src="@Event.Picture" alt="Event Picture" style="max-width: 100px; max-height: 100px;" />
+                }
+            </div>
+
+            <!-- Upload New Picture -->
+            <div class="form-group">
+                <label for="picture">Upload New Picture</label>
+                <InputFile OnChange="HandleFileSelected" />
+            </div>
+
+            <!-- Update and Cancel Buttons -->
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;">Update</button>
+                <button type="button" class="btn btn-secondary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+
+        <!-- Success and Error Messages -->
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+            <div class="alert alert-success mt-3">
+                @SuccessMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger mt-3">
+                @ErrorMessage
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventModels Event { get; set; }
+    [Parameter] public EventCallback<EventModels> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    public string ErrorMessage { get; set; }
+    public string SuccessMessage { get; set; }
+
+    private async Task HandleUpdateClick()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+
+            // Update Event Data
+            var response = await client.PutAsJsonAsync("api/Events", Event);
+
+            if (response.IsSuccessStatusCode)
+            {
+                SuccessMessage = "Event updated successfully.";
+                await OnSave.InvokeAsync(Event);
+            }
+            else
+            {
+                ErrorMessage = "Failed to update the event. Please try again.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            var file = e.File;
+            var filePath = Path.Combine(Environment.WebRootPath, "uploads", file.Name);
+
+            // Ensure the directory exists
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+
+            await using var fileStream = new FileStream(filePath, FileMode.Create);
+            await file.OpenReadStream().CopyToAsync(fileStream);
+
+            // Update the Picture field with the relative path
+            Event.Picture = $"/uploads/{file.Name}";
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred while uploading the file: {ex.Message}";
+        }
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

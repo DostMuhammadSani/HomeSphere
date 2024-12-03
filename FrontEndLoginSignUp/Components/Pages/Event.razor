@@ -1,0 +1,196 @@
+﻿@page "/events"
+@rendermode InteractiveServer
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using DALLibrary
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@using Blazored.SessionStorage
+@using System.Security.Claims
+@inject ISessionStorageService SessionStorage
+
+@if (role == "Admin")
+{
+    <div style="display: flex; flex-direction: row; background-color: #f8f9fa;">
+        <Sidebars></Sidebars>
+        <div style="width: 80%; margin: 40px;">
+            <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
+                <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Event Management</h2>
+
+                <!-- Search Box -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <input @bind="searchText" style="width: 60%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Search by Event Name or Description" />
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchEvents">Search</button>
+                </div>
+
+                <!-- Add Event Button -->
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="AddNewEvent">Add Event</button>
+                </div>
+
+                <!-- Event Form -->
+                @if (showForm)
+                {
+                    <div style="margin-top: 20px;">
+                        @if (currentEvent.EID == 0)
+                        {
+                            <EventForm Event="currentEvent" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                        else
+                        {
+                            <UpdateEventForm Event="currentEvent" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                    </div>
+                }
+
+                <!-- Data Table -->
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #1b6cb9; color: white;">
+                            <th style="padding: 10px; border: 1px solid #ddd;">Picture</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Event Name</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Description</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Date</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if (filteredEvents.Any())
+                    {
+                        @foreach (var evt in filteredEvents)
+                        {
+                            <tr style="background-color: #f8f9fa;">
+                                <td style="padding: 10px; border: 1px solid #ddd;">
+                                    <img src=@evt.Picture width="30px" height="30px" />
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">@evt.EName</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">@evt.Descriptions</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">@evt.EDate.ToShortDateString()</td>
+                                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+                                    <button style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditEvent(evt)">Update</button>
+                                    <button style="background-color: #1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteEvent(evt.EID)">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" style="padding: 20px; text-align: center; color: #888;">No events found</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<EventModels> eventList = new List<EventModels>();
+    private List<EventModels> filteredEvents = new List<EventModels>();
+    private EventModels currentEvent;
+    private bool showForm;
+    private string A_id;
+    private string token;
+    public string role;
+    private string searchText = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim.Value;
+                StateHasChanged();
+                await LoadEvents();
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task LoadEvents()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Events?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                eventList = await response.Content.ReadFromJsonAsync<List<EventModels>>();
+                filteredEvents = eventList;
+            }
+        }
+    }
+
+    private void AddNewEvent()
+    {
+        currentEvent = new EventModels();
+        showForm = true;
+    }
+
+    private void EditEvent(EventModels evt)
+    {
+        currentEvent = evt;
+        showForm = true;
+    }
+
+    private async void DeleteEvent(int eventId)
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.DeleteAsync($"api/Events?EID={eventId}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var eventToRemove = eventList.FirstOrDefault(e => e.EID == eventId);
+            if (eventToRemove != null)
+            {
+                eventList.Remove(eventToRemove);
+                filteredEvents.Remove(eventToRemove);
+            }
+            StateHasChanged();
+        }
+        else
+        {
+            Console.WriteLine($"Failed to delete event with ID {eventId}. Status code: {response.StatusCode}");
+        }
+    }
+
+    private async void HandleSave(EventModels savedEvent)
+    {
+        await LoadEvents();
+        showForm = false;
+        StateHasChanged();
+    }
+
+    private void HandleCancel()
+    {
+        showForm = false;
+    }
+
+    private void SearchEvents()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredEvents = eventList;
+        }
+        else
+        {
+            filteredEvents = eventList.Where(e =>
+                e.EName.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                e.Descriptions.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+    }
+}

@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets\\property.jpg"
     },
     {
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg",
+      "PackagePath": "staticwebassets\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FrontEndLoginSignUp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

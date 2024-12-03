@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "auIZ7P/WCont69CEnLj98E4TewJJEsiExjPoLz2oMfQ=",
+  "Hash": "s72v8xFEE9qbRGLiTQllY0yte4H9cj5xwNc9dM3Wtdk=",
   "Source": "FrontEndLoginSignUp",
   "BasePath": "_content/FrontEndLoginSignUp",
   "Mode": "Default",
@@ -1319,6 +1319,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\property.jpg"
+    },
+    {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "uploads/modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg"
     }
   ]
 }

@@ -50,6 +50,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Event.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/EventForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudEZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -116,6 +124,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Tasks.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYXNrcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateEventForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVFdmVudEZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateOwnShip.razor]

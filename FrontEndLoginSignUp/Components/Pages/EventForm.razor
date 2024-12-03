@@ -1,0 +1,158 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager Navigation
+@inject UserService UserService
+@inject IWebHostEnvironment Environment
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Add Event</h4>
+        <EditForm Model="Event" OnValidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <!-- Event Name Field -->
+            <div class="form-group">
+                <label for="eventName">Event Name</label>
+                <InputText id="eventName" class="form-control" @bind-Value="Event.EName" required />
+            </div>
+
+            <!-- Event Description Field -->
+            <div class="form-group">
+                <label for="description">Description</label>
+                <InputTextArea id="description" class="form-control" @bind-Value="Event.Descriptions" required />
+            </div>
+
+            <!-- Event Date Field -->
+            <div class="form-group">
+                <label for="eventDate">Event Date</label>
+                <InputDate id="eventDate" class="form-control" @bind-Value="Event.EDate" required />
+            </div>
+
+            <!-- Picture Upload -->
+            <div class="form-group">
+                <label for="picture">Event Picture</label>
+                <InputFile OnChange="HandleFileSelected" />
+                @if (!string.IsNullOrEmpty(Event.Picture))
+                {
+                    <div class="mt-2">
+                        <img src="@Event.Picture" alt="Event Picture" style="max-width: 100px; max-height: 100px;" />
+                    </div>
+                }
+            </div>
+
+            <!-- Submit and Cancel Buttons -->
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;">Save</button>
+                <button type="button" class="btn btn-secondary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+
+        <!-- Success and Error Messages -->
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+            <div class="alert alert-success mt-3">
+                @SuccessMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger mt-3">
+                @ErrorMessage
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventModels Event { get; set; } = new EventModels();
+    [Parameter] public EventCallback<EventModels> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    public string HS_Name { get; set; }
+    public string ErrorMessage { get; set; }
+    public string SuccessMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        HS_Name = UserService.Username;
+        base.OnInitialized();
+    }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        if (!IsValidHSName(HS_Name))
+        {
+            ErrorMessage = "Housing Society Name can only contain letters or digits.";
+            return;
+        }
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={HS_Name}";
+            var response1 = await client.GetAsync(url);
+            if (response1.IsSuccessStatusCode)
+            {
+                Event.A_id = await response1.Content.ReadAsStringAsync();
+                Event.Picture ??= "default_event.png"; // Default picture if none uploaded
+                var response = await client.PostAsJsonAsync("api/Events", Event);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Event added successfully.";
+                    await OnSave.InvokeAsync(Event);
+                }
+                else
+                {
+                    ErrorMessage = "Failed to save the event. Please try again.";
+                }
+            }
+            else
+            {
+                ErrorMessage = "Invalid Housing Society Name.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            var file = e.File;
+            var filePath = Path.Combine(Environment.WebRootPath, "uploads", file.Name);
+
+            // Ensure the directory exists
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+
+            await using var fileStream = new FileStream(filePath, FileMode.Create);
+            await file.OpenReadStream().CopyToAsync(fileStream);
+
+            // Save the relative path to the Picture field
+            Event.Picture = $"uploads/{file.Name}";
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred while uploading the file: {ex.Message}";
+        }
+    }
+
+    private bool IsValidHSName(string hsName)
+    {
+        return hsName.All(char.IsLetterOrDigit);
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

@@ -1,0 +1,143 @@
+﻿@page "/bills"
+@using Microsoft.AspNetCore.Components.Web
+@using Blazored.SessionStorage
+@using System.Security.Claims
+@inject ISessionStorageService SessionStorage
+@rendermode InteractiveServer
+
+@if(role=="Admin"){
+ <div style="display: flex; flex-direction: row; background-color: #f8f9fa;">
+            <Sidebars></Sidebars>
+    <div class="container">
+
+        <h1 class="header">Bills Management</h1>
+        <p class="sub-header">Easily manage and track all your bills in one place.</p>
+
+        <div class="cards-container">
+            <!-- Card 1: General Bills -->
+            <div class="card" @onclick="NavigateToGeneralBills">
+                <div class="card-content">
+                    <h2>General Bills</h2>
+                    <p>Manage and view all general bills.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Bills for Specific Residents -->
+            <div class="card" @onclick="NavigateToResidentBills">
+                <div class="card-content">
+                    <h2>Bills for Specific Residents</h2>
+                    <p>View and manage bills for specific residents.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+}
+
+@code {
+    private string token;
+    public string role;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim.Value;
+                StateHasChanged();
+               
+            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+        }
+    }
+
+    private void NavigateToGeneralBills()
+    {
+        // Navigate to General Bills page
+        NavigationManager.NavigateTo("/general-bills");
+    }
+
+    private void NavigateToResidentBills()
+    {
+        // Navigate to Bills for Specific Residents page
+        NavigationManager.NavigateTo("/resident-bills");
+    }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; } = default!;
+}
+
+<style>
+    body {
+        background: linear-gradient(to bottom, #e6f0ff, #ffffff);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        margin: 2rem auto;
+        max-width: 900px;
+        text-align: center;
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+        color: #1b6cb9;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .sub-header {
+        color: #555;
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .cards-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        background: #f9f9f9;
+        border: 2px solid #1b6cb9;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 280px;
+        padding: 1.5rem;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: #eaf3ff;
+        }
+
+    .card-content h2 {
+        color: #1b6cb9;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-content p {
+        color: #333;
+        font-size: 1rem;
+    }
+</style>

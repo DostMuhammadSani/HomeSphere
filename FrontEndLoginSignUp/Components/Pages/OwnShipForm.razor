@@ -13,28 +13,34 @@
             <DataAnnotationsValidator />
             <ValidationSummary />
 
-            <!-- Autocomplete for PlotID -->
-            <div class="form-group">
+            <div class="form-group position-relative">
                 <label for="plotID">PlotID</label>
-                <InputText id="plotID" class="form-control" @bind-Value="OwnShip.PlotID" @oninput="FilterPlots" list="plotList" required />
-                <datalist id="plotList">
+                <InputText id="plotID" class="form-control" @bind-Value="OwnShip.PlotID" @oninput="OnPlotSearchChanged" />
+
+                <div class="dropdown-menu dropdown-list"
+                     style="display: @(isPlotDropdownVisible ? "block" : "none");">
                     @foreach (var plot in filteredPlots)
                     {
-                        <option value="@plot.PlotID">@plot.PlotNumber (@plot.PlotID)</option>
+                        <div class="dropdown-item" @onclick="() => SelectPlot(plot)">
+                            @plot.PlotNumber (@plot.PlotID)
+                        </div>
                     }
-                </datalist>
+                </div>
             </div>
 
-            <!-- Autocomplete for CNIC -->
-            <div class="form-group">
+            <div class="form-group position-relative">
                 <label for="cnic">CNIC</label>
-                <InputText id="cnic" class="form-control" @bind-Value="OwnShip.CNIC" @oninput="FilterResidents" list="residentList" required />
-                <datalist id="residentList">
+                <InputText id="cnic" class="form-control" @bind-Value="OwnShip.CNIC" @oninput="OnResidentSearchChanged" />
+
+                <div class="dropdown-menu dropdown-list"
+                     style="display: @(isResidentDropdownVisible ? "block" : "none");">
                     @foreach (var resident in filteredResidents)
                     {
-                        <option value="@resident.CNIC">@resident.Names (@resident.CNIC)</option>
+                        <div class="dropdown-item" @onclick="() => SelectResident(resident)">
+                            @resident.Names (@resident.CNIC)
+                        </div>
                     }
-                </datalist>
+                </div>
             </div>
 
             <div class="form-group">
@@ -77,6 +83,9 @@
     private List<PlotModel> filteredPlots = new List<PlotModel>();
     private List<Resident> residents = new List<Resident>();
     private List<Resident> filteredResidents = new List<Resident>();
+    private bool isPlotDropdownVisible = false;
+    private bool isResidentDropdownVisible = false;
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -85,52 +94,103 @@
         await LoadResident();
     }
 
+    private void OnPlotSearchChanged(ChangeEventArgs args)
+    {
+        var searchTerm = args.Value?.ToString()?.Trim() ?? string.Empty;
+        isPlotDropdownVisible = !string.IsNullOrWhiteSpace(searchTerm);
+
+        filteredPlots = plots
+            .Where(plot => plot.PlotNumber.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                           plot.PlotID.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
+
+    private void OnResidentSearchChanged(ChangeEventArgs args)
+    {
+        var searchTerm = args.Value?.ToString()?.Trim() ?? string.Empty;
+        isResidentDropdownVisible = !string.IsNullOrWhiteSpace(searchTerm);
+
+        filteredResidents = residents
+            .Where(resident => resident.Names.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                               resident.CNIC.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
+
+    private void CloseDropdowns()
+    {
+        isPlotDropdownVisible = false;
+        isResidentDropdownVisible = false;
+    }
+
+
+
+    private void SelectPlot(PlotModel plot)
+    {
+        if (plot != null)
+        {
+            OwnShip.PlotID = plot.PlotID?.Trim();
+            CloseDropdowns();
+            filteredPlots.Clear();
+        }
+        else
+        {
+            ErrorMessage = "Failed to select the plot. Plot information is null.";
+        }
+    }
+
+
+    private void SelectResident(Resident resident)
+    {
+        OwnShip.CNIC = resident.CNIC;
+        CloseDropdowns();
+        filteredResidents.Clear(); // Clear the dropdown after selection
+    }
+
+
     private async Task HandleSubmit()
     {
         ErrorMessage = string.Empty;
         SuccessMessage = string.Empty;
+        await LoadPlots();
 
         try
-        {
+        { 
+            Console.WriteLine($"OwnShip.PlotID: {OwnShip.PlotID}");
+            foreach (var plot in plots)
+            {
+                Console.WriteLine($"PlotID: {plot.PlotID}");
+            }
+            var selectedPlot = plots.FirstOrDefault(p => p.PlotID == OwnShip.PlotID);
+            if (selectedPlot == null || selectedPlot.SoldStatus != "Available")
+            {
+                ErrorMessage = "The selected plot is no longer available.";
+                return;
+            }
+
             var client = HttpClientFactory.CreateClient("AuthApi");
             Guid Id = Guid.NewGuid();
             OwnShip.OwnID = Id.ToString();
 
-            // Add Ownership using POST API
+          
+
             var response = await client.PostAsJsonAsync("api/OwnShip", OwnShip);
 
             if (response.IsSuccessStatusCode)
             {
-                // Create PlotModel to update the SoldStatus
-                var plotToUpdate = new PlotModel
-                    {
-                        PlotID = OwnShip.PlotID,
-                        PlotNumber = plots.First(p => p.PlotID == OwnShip.PlotID).PlotNumber,
-                        Size = plots.First(p => p.PlotID == OwnShip.PlotID).Size,
-                        SoldStatus = "Sold"
-                    };
+                // Update the plot's SoldStatus
+                selectedPlot.SoldStatus = "Sold";
 
-                // Update the plot using UpdatePlot API
-                var response1 = await client.PutAsJsonAsync("api/Plot", plotToUpdate);
+                var response1 = await client.PutAsJsonAsync("api/Plot", selectedPlot);
 
                 if (response1.IsSuccessStatusCode)
                 {
                     SuccessMessage = "Ownership added successfully, and plot status updated.";
                     await OnSave.InvokeAsync(OwnShip);
                 }
-
-               
             }
             else
             {
-                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
-                {
-                    ErrorMessage = "An ownership record with this ID already exists or no record of this ID exists.";
-                }
-                else
-                {
-                    ErrorMessage = await response.Content.ReadAsStringAsync();
-                }
+                ErrorMessage = await response.Content.ReadAsStringAsync();
             }
         }
         catch (Exception ex)
@@ -145,43 +205,31 @@
         OnCancel.InvokeAsync();
     }
 
-    // Filtering plots based on user input
+
+
+    // Load plots and initialize the filtered list
+    // Load plots and initialize the filtered list
+
     private void FilterPlots(ChangeEventArgs e)
     {
-        var query = e.Value?.ToString()?.ToLowerInvariant() ?? string.Empty;
-
-        if (!string.IsNullOrWhiteSpace(query))
-        {
-            filteredPlots = plots
-                .Where(p => (!string.IsNullOrEmpty(p.PlotID) && p.PlotID.ToLowerInvariant().Contains(query)) ||
-                            (!string.IsNullOrEmpty(p.PlotNumber) && p.PlotNumber.ToLowerInvariant().Contains(query)))
-                .ToList();
-        }
-        else
-        {
-            filteredPlots = new List<PlotModel>(plots); // Reset to all plots
-        }
+        var input = e.Value?.ToString() ?? string.Empty;
+        filteredPlots = plots
+            .Where(plot => plot.PlotNumber.Contains(input, StringComparison.OrdinalIgnoreCase)
+                        || plot.PlotID.Contains(input, StringComparison.OrdinalIgnoreCase))
+            .ToList();
     }
+
+    // Filtering residents based on user input
     private void FilterResidents(ChangeEventArgs e)
     {
-        var query = e.Value?.ToString()?.ToLowerInvariant() ?? string.Empty;
-
-        if (!string.IsNullOrWhiteSpace(query))
-        {
-            filteredResidents = residents
-                .Where(r => (!string.IsNullOrEmpty(r.CNIC) && r.CNIC.ToLowerInvariant().Contains(query)) ||
-                            (!string.IsNullOrEmpty(r.Names) && r.Names.ToLowerInvariant().Contains(query)))
-                .ToList();
-        }
-        else
-        {
-            filteredResidents = new List<Resident>(residents); // Reset to all residents
-        }
+        var input = e.Value?.ToString() ?? string.Empty;
+        filteredResidents = residents
+            .Where(resident => resident.Names.Contains(input, StringComparison.OrdinalIgnoreCase)
+                            || resident.CNIC.Contains(input, StringComparison.OrdinalIgnoreCase))
+            .ToList();
     }
 
 
-    // Load plots and initialize the filtered list
-    // Load plots and initialize the filtered list
     private async Task LoadPlots()
     {
         var client = HttpClientFactory.CreateClient("AuthApi");
@@ -221,3 +269,29 @@
         }
     }
 }
+
+<style>
+    .dropdown-list {
+        position: absolute;
+        z-index: 1050; /* Ensure higher than other elements */
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        width: 100%;
+    }
+
+    .dropdown-item {
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+
+
+</style>

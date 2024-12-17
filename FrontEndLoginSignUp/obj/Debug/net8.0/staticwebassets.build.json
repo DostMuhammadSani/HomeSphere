@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "s72v8xFEE9qbRGLiTQllY0yte4H9cj5xwNc9dM3Wtdk=",
+  "Hash": "aB0bIwioK1SN5pNnnnd6kI+zrOQF4qsNVfpJLhPCZtI=",
   "Source": "FrontEndLoginSignUp",
   "BasePath": "_content/FrontEndLoginSignUp",
   "Mode": "Default",
@@ -1321,6 +1321,25 @@
       "OriginalItemSpec": "wwwroot\\property.jpg"
     },
     {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\m.jpg",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "uploads/m.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\m.jpg"
+    },
+    {
       "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
@@ -1338,6 +1357,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg"
+    },
+    {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\WhatsApp Image 2024-11-23 at 18.41.25_297f1861.jpg",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "uploads/WhatsApp Image 2024-11-23 at 18.41.25_297f1861.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\WhatsApp Image 2024-11-23 at 18.41.25_297f1861.jpg"
     }
   ]
 }

@@ -1,0 +1,217 @@
+﻿@page "/eventdesc/{EID:int}"
+@rendermode InteractiveServer
+
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using System.Net.Http.Json
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@inject NavigationManager Navigation
+@inject Blazored.SessionStorage.ISessionStorageService SessionStorage
+@using System.Security.Claims
+
+<h3 class="text-center text-primary">Event Description</h3>
+@if (role == "Admin")
+{
+    <h4 class="text-center text-secondary">Event ID: @EID</h4>
+
+    <div class="container mt-4">
+        @if (isLoading)
+        {
+            <div class="text-center">
+                <p>Loading event description...</p>
+                <div class="spinner-border text-primary" role="status"></div>
+            </div>
+        }
+        else if (eventDescription == null)
+        {
+            <div class="text-center">
+                <p class="text-danger">No description available for this event.</p>
+                <button class="btn btn-primary" @onclick="ShowAddForm">Add Description</button>
+            </div>
+        }
+        else
+        {
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Event Description Details
+                </div>
+                <div class="card-body">
+                    <p><strong>Audience Type:</strong> @eventDescription.AudienceType</p>
+                    <p><strong>VIP Ticket Price:</strong> @eventDescription.VIPTicketPrice</p>
+                    <p><strong>General Ticket Price:</strong> @eventDescription.GeneralTicketPrice</p>
+                    <p><strong>Locations:</strong> @eventDescription.Locations</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-warning me-2" @onclick="ShowUpdateForm">Update</button>
+                    <button class="btn btn-danger" @onclick="DeleteDescription">Delete</button>
+                </div>
+            </div>
+        }
+
+        @if (showForm)
+        {
+            <div class="card mt-4">
+                <div class="card-header bg-primary text-white">
+                    @(isUpdate ? "Update Event Description" : "Add Event Description")
+                </div>
+                <div class="card-body">
+                    <EditForm Model="formModel" OnValidSubmit="HandleValidSubmit">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+
+                        <div class="mb-3">
+                            <label class="form-label">Audience Type</label>
+                            <InputText class="form-control" @bind-Value="formModel.AudienceType" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">VIP Ticket Price</label>
+                            <InputText class="form-control" @bind-Value="formModel.VIPTicketPrice" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">General Ticket Price</label>
+                            <InputText class="form-control" @bind-Value="formModel.GeneralTicketPrice" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Locations</label>
+                            <InputText class="form-control" @bind-Value="formModel.Locations" />
+                        </div>
+
+                        <button type="submit" class="btn btn-success me-2">Submit</button>
+                        <button type="button" class="btn btn-secondary" @onclick="CancelForm">Cancel</button>
+                    </EditForm>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public int EID { get; set; }
+
+    private string token;
+    private string role;
+    private EventDescriptionModel eventDescription;
+    private EventDescriptionModel formModel = new EventDescriptionModel();
+    private bool isLoading = true;
+    private bool showForm = false;
+    private bool isUpdate = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                role = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+
+                // Call your data loading method here
+                await LoadEventDescription();
+
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token or data: {ex.Message}");
+            }
+        }
+    }
+
+
+    private async Task LoadEventDescription()
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var response = await client.GetAsync($"api/EventDescription?EID={EID}");
+            if (response.IsSuccessStatusCode)
+            {
+                var eventDescriptions = await response.Content.ReadFromJsonAsync<List<EventDescriptionModel>>();
+                eventDescription = eventDescriptions[0];
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading description: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void ShowAddForm()
+    {
+        formModel = new EventDescriptionModel { EID = EID };
+        isUpdate = false;
+        showForm = true;
+    }
+
+    private void ShowUpdateForm()
+    {
+        formModel = new EventDescriptionModel
+            {
+                EDescriptionID = eventDescription.EDescriptionID,
+                AudienceType = eventDescription.AudienceType,
+                VIPTicketPrice = eventDescription.VIPTicketPrice,
+                GeneralTicketPrice = eventDescription.GeneralTicketPrice,
+                Locations = eventDescription.Locations,
+                EID = eventDescription.EID
+            };
+        isUpdate = true;
+        showForm = true;
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            if (isUpdate)
+            {
+                await client.PutAsJsonAsync("api/EventDescription", formModel);
+            }
+            else
+            {
+                await client.PostAsJsonAsync("api/EventDescription", formModel);
+            }
+
+            showForm = false;
+            await LoadEventDescription();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error submitting form: {ex.Message}");
+        }
+    }
+
+    private async Task DeleteDescription()
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            await client.DeleteAsync($"api/EventDescription?EDescriptionID={eventDescription.EDescriptionID}");
+            eventDescription = null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleting description: {ex.Message}");
+        }
+    }
+
+    private void CancelForm()
+    {
+        showForm = false;
+    }
+}

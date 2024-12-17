@@ -95,12 +95,31 @@
             var client = HttpClientFactory.CreateClient("AuthApi");
             Guid Id = Guid.NewGuid();
             OwnShip.OwnID = Id.ToString();
+
+            // Add Ownership using POST API
             var response = await client.PostAsJsonAsync("api/OwnShip", OwnShip);
 
             if (response.IsSuccessStatusCode)
             {
-                SuccessMessage = "Ownership added successfully.";
-                await OnSave.InvokeAsync(OwnShip);
+                // Create PlotModel to update the SoldStatus
+                var plotToUpdate = new PlotModel
+                    {
+                        PlotID = OwnShip.PlotID,
+                        PlotNumber = plots.First(p => p.PlotID == OwnShip.PlotID).PlotNumber,
+                        Size = plots.First(p => p.PlotID == OwnShip.PlotID).Size,
+                        SoldStatus = "Sold"
+                    };
+
+                // Update the plot using UpdatePlot API
+                var response1 = await client.PutAsJsonAsync("api/Plot", plotToUpdate);
+
+                if (response1.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Ownership added successfully, and plot status updated.";
+                    await OnSave.InvokeAsync(OwnShip);
+                }
+
+               
             }
             else
             {
@@ -120,6 +139,7 @@
         }
     }
 
+
     private void Cancel()
     {
         OnCancel.InvokeAsync();
@@ -128,31 +148,39 @@
     // Filtering plots based on user input
     private void FilterPlots(ChangeEventArgs e)
     {
-        var query = e.Value?.ToString().ToLower();
+        var query = e.Value?.ToString()?.ToLowerInvariant() ?? string.Empty;
+
         if (!string.IsNullOrWhiteSpace(query))
         {
-            filteredPlots = plots.Where(p => p.PlotID.ToLower().Contains(query) || p.PlotNumber.ToLower().Contains(query)).ToList();
+            filteredPlots = plots
+                .Where(p => (!string.IsNullOrEmpty(p.PlotID) && p.PlotID.ToLowerInvariant().Contains(query)) ||
+                            (!string.IsNullOrEmpty(p.PlotNumber) && p.PlotNumber.ToLowerInvariant().Contains(query)))
+                .ToList();
         }
         else
         {
-            filteredPlots = plots; // Reset to all plots if query is empty
+            filteredPlots = new List<PlotModel>(plots); // Reset to all plots
         }
     }
-
-    // Filtering residents based on user input
     private void FilterResidents(ChangeEventArgs e)
     {
-        var query = e.Value?.ToString().ToLower();
+        var query = e.Value?.ToString()?.ToLowerInvariant() ?? string.Empty;
+
         if (!string.IsNullOrWhiteSpace(query))
         {
-            filteredResidents = residents.Where(r => r.CNIC.ToLower().Contains(query) || r.Names.ToLower().Contains(query)).ToList();
+            filteredResidents = residents
+                .Where(r => (!string.IsNullOrEmpty(r.CNIC) && r.CNIC.ToLowerInvariant().Contains(query)) ||
+                            (!string.IsNullOrEmpty(r.Names) && r.Names.ToLowerInvariant().Contains(query)))
+                .ToList();
         }
         else
         {
-            filteredResidents = residents; // Reset to all residents if query is empty
+            filteredResidents = new List<Resident>(residents); // Reset to all residents
         }
     }
 
+
+    // Load plots and initialize the filtered list
     // Load plots and initialize the filtered list
     private async Task LoadPlots()
     {
@@ -165,11 +193,15 @@
             var response = await client.GetAsync($"api/Plot?A_id={A_id}");
             if (response.IsSuccessStatusCode)
             {
-                plots = await response.Content.ReadFromJsonAsync<List<PlotModel>>();
-                filteredPlots = plots; // Initialize filtered list with all plots
+                var allPlots = await response.Content.ReadFromJsonAsync<List<PlotModel>>();
+
+                // Filter plots based on SoldStatus
+                plots = allPlots.Where(plot => plot.SoldStatus == "Available").ToList();
+                filteredPlots = plots; // Initialize filtered list with available plots
             }
         }
     }
+
 
     // Load residents and initialize the filtered list
     private async Task LoadResident()

@@ -9,6 +9,7 @@
 @using Blazored.SessionStorage
 @using System.Security.Claims
 @inject ISessionStorageService SessionStorage
+@inject NavigationManager Navigation
 
 @if (role == "Admin")
 {
@@ -70,7 +71,9 @@
                                 <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
                                     <button style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditEvent(evt)">Update</button>
                                     <button style="background-color: #1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteEvent(evt.EID)">Delete</button>
-                                </td>
+                                     <button style="background-color: #28a745; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => EventDescription(evt.EID)">Details</button>
+
+                                    </td>
                             </tr>
                         }
                     }
@@ -116,6 +119,11 @@
                 Console.WriteLine($"Error retrieving token: {ex.Message}");
             }
         }
+    }
+
+    private void EventDescription(int EID)
+    {
+        Navigation.NavigateTo($"/eventdesc/{EID}");
     }
 
     private async Task LoadEvents()

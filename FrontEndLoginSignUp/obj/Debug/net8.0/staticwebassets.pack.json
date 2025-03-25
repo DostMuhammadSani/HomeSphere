@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FrontEndLoginSignUp.bundle.scp.css",
-      "PackagePath": "staticwebassets\\FrontEndLoginSignUp.bundle.scp.css"
+      "PackagePath": "staticwebassets\\FrontEndLoginSignUp.59kuvwc31d.bundle.scp.css"
     },
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\4695.jpg",
@@ -87,6 +87,10 @@
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg",
       "PackagePath": "staticwebassets\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FrontEndLoginSignUp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FrontEndLoginSignUp.Microsoft.AspNetCore.StaticWebAssets.props",

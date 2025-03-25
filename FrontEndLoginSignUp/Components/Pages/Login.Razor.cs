@@ -32,7 +32,7 @@ namespace FrontEndLoginSignUp.Components.Pages
             {
                 // Retrieve the detailed error message from the response
                 var errorDetails = await response.Content.ReadAsStringAsync();
-                errorMessage = $"Login failed: {errorDetails}";
+                errorMessage = "Invalid Creditientials";
 
                 // Call JS function to show alert
                 await JSRun.InvokeVoidAsync("alert", errorMessage);

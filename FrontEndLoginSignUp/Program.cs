@@ -3,6 +3,25 @@ using FrontEndLoginSignUp.Components;
 using System.Net.Http.Headers;
 using Blazored.SessionStorage;
 using Blazorise;
+// Import the required packages
+//==============================
+
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using dotenv.net;
+
+// Set your Cloudinary credentials
+//=================================
+
+// Load environment variables from the .env file
+DotEnv.Load(options: new DotEnvOptions(probeForEnv: true));
+
+// Cloudinary credentials
+string cloudinaryUrl = "cloudinary://892661252848354:YOUR_API_SECRET@dn2cehj04"; // Replace YOUR_API_SECRET with your actual API secret
+
+Cloudinary cloudinary = new Cloudinary(cloudinaryUrl);
+cloudinary.Api.Secure = true;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

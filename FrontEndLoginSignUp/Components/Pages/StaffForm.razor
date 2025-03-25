@@ -99,7 +99,7 @@
             if (response1.IsSuccessStatusCode)
             {
                 Staff.A_id = await response1.Content.ReadAsStringAsync();
-                Staff.Picture = "icons/user.png";
+                Staff.Picture = null;
                 var response = await client.PostAsJsonAsync("api/Staff", Staff);
 
                 if (response.IsSuccessStatusCode)

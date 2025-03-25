@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
                 new SqlParameter("@Names", S.Names),
                 new SqlParameter("@Contact", S.Contact),
                 new SqlParameter("@Profession", S.Profession),
-                new SqlParameter("@Picture",S.Picture),
+                new SqlParameter("@Picture",(object?)S.Picture ?? DBNull.Value),
                 new SqlParameter("@A_id", S.A_id)
             };
 

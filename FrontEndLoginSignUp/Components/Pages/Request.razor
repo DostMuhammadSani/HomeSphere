@@ -11,62 +11,117 @@
 
 @if (role == "Admin")
 {
-    <div class="container-fluid">
-        <div class="row">
-            <Sidebars></Sidebars>
-            <div class="col-md-10 p-4">
-                <!-- Top Nav -->
-                <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
-                    <h3>Requests</h3>
-                    <div class="search-bar d-flex">
-                        <input type="text" class="form-control" placeholder="Search requests..." @bind="searchQuery" />
-                        <button class="btn btn-primary" @onclick="SearchRequests">Search</button>
+    <div class="admin-dashboard">
+        <Sidebars></Sidebars>
+        <div class="content-container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-content">
+                        <h2 class="card-title">Requests Management</h2>
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Search requests..." @bind="searchQuery" />
+                            <button class="btn btn-primary search-btn" @onclick="SearchRequests">Search</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Requests List -->
-                <div class="requests-list">
+                <div class="card-body">
                     @if (filteredRequests != null && filteredRequests.Count > 0)
                     {
-                        @foreach (var request in filteredRequests)
-                        {
-                            <div class="request-card" @onclick="() => ShowDetails(request)">
-                                <div class="request-header">
-                                    <h5>@request.Descriptions</h5>
-                                    <span class="request-timestamp">@request.RequestTimestamp.ToString("g")</span>
+                        <div class="requests-grid">
+                            @foreach (var request in filteredRequests)
+                            {
+                                <div class="request-card" @onclick="() => ShowDetails(request)">
+                                    <div class="request-header">
+                                     
+                                        <span class="request-date">@request.RequestTimestamp.ToString("MMM dd, yyyy hh:mm tt")</span>
+                                    </div>
+                                    <div class="request-body">
+                                        <p class="request-description">@request.Descriptions</p>
+                                    </div>
+                                    <div class="request-footer">
+                                        <span class="status-badge @GetStatusClass(request.Statuss)">@request.Statuss</span>
+                                        <span class="client-info">Client: @request.R_CNIC</span>
+                                    </div>
                                 </div>
-                                <div class="request-status">
-                                    <strong>Status:</strong> @request.Statuss
-                                </div>
-                                <div class="request-client">
-                                    <strong>Client:</strong> @request.R_CNIC
-                                </div>
-                            </div>
-                        }
+                            }
+                        </div>
                     }
                     else
                     {
-                        <p>No requests available.</p>
+                        <div class="empty-state">
+                            <p>No requests found</p>
+                            @if (!string.IsNullOrEmpty(searchQuery))
+                            {
+                                <button class="btn btn-text" @onclick="ClearSearch">Clear search</button>
+                            }
+                        </div>
                     }
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal for request details -->
+    <!-- Modal Dialog -->
     @if (selectedRequest != null)
     {
         <div class="modal-overlay" @onclick="CloseModal">
-            <div class="modal-content" @onclick:stopPropagation="true">
-                <h4>Request Details</h4>
-                <p><strong>Address:</strong> @selectedRequest.Descriptions</p>
-                <p><strong>Status:</strong> @selectedRequest.Statuss</p>
-                <p><strong>Staff ID:</strong> @selectedRequest.S_CNIC</p>
-                <p><strong>Client:</strong> @selectedRequest.R_CNIC</p>
-                <p><strong>Requested At:</strong> @selectedRequest.RequestTimestamp</p>
-                <p><strong>Accepted At:</strong> @selectedRequest.AcceptTimestamp</p>
-                <p><strong>Completed At:</strong> @selectedRequest.CompletionTimestamp</p>
-                <button @onclick="CloseModal" class="btn btn-primary">Close</button>
+            <div class="modal-dialog" @onclick:stopPropagation="true">
+                <div class="modal-header">
+                    <h3>Request Details</h3>
+                    <button class="btn-close" @onclick="CloseModal">&times;</button>
+                </div>
+                <div class="modal-content">
+                    <div class="detail-section">
+                        <h4 class="section-title">Request Information</h4>
+                      
+                        <div class="detail-row">
+                            <span class="detail-label">Description:</span>
+                            <span class="detail-value">@selectedRequest.Descriptions</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Status:</span>
+                            <span class="detail-value @GetStatusClass(selectedRequest.Statuss)">@selectedRequest.Statuss</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4 class="section-title">Timestamps</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">Requested At:</span>
+                            <span class="detail-value">@selectedRequest.RequestTimestamp.ToString("MMMM dd, yyyy hh:mm tt")</span>
+                        </div>
+                        @if (selectedRequest.AcceptTimestamp != null)
+                        {
+                            <div class="detail-row">
+                                <span class="detail-label">Accepted At:</span>
+                                <span class="detail-value">@selectedRequest.AcceptTimestamp.ToString("MMMM dd, yyyy hh:mm tt")</span>
+                            </div>
+                        }
+                        @if (selectedRequest.CompletionTimestamp != null)
+                        {
+                            <div class="detail-row">
+                                <span class="detail-label">Completed At:</span>
+                                <span class="detail-value">@selectedRequest.CompletionTimestamp.ToString("MMMM dd, yyyy hh:mm tt")</span>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="detail-section">
+                        <h4 class="section-title">Participants</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">Client CNIC:</span>
+                            <span class="detail-value">@selectedRequest.R_CNIC</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Staff CNIC:</span>
+                            <span class="detail-value">@selectedRequest.S_CNIC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" @onclick="CloseModal">Close</button>
+                </div>
             </div>
         </div>
     }
@@ -98,15 +153,12 @@
                 if (response1.IsSuccessStatusCode)
                 {
                     A_id = await response1.Content.ReadAsStringAsync();
-
-                    // Fetch requests using the A_id
                     var response = await client.GetAsync($"api/Request?A_id={A_id}");
                     if (response.IsSuccessStatusCode)
                     {
                         requests = await response.Content.ReadFromJsonAsync<List<RequestModel>>();
-                        filteredRequests = requests; // Initialize the filtered list
+                        filteredRequests = requests;
                     }
-
                     StateHasChanged();
                 }
             }
@@ -115,6 +167,18 @@
                 Console.WriteLine($"Error retrieving token: {ex.Message}");
             }
         }
+    }
+
+    private string GetStatusClass(string status)
+    {
+        return status?.ToLower() switch
+        {
+            "pending" => "status-pending",
+            "accepted" => "status-accepted",
+            "completed" => "status-completed",
+            "rejected" => "status-rejected",
+            _ => ""
+        };
     }
 
     private void ShowDetails(RequestModel request)
@@ -131,113 +195,327 @@
     {
         if (!string.IsNullOrEmpty(searchQuery))
         {
-            filteredRequests = requests.Where(r => r.Descriptions.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
+            filteredRequests = requests.Where(r =>
+                r.Descriptions.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+       
+                r.R_CNIC.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+                r.S_CNIC.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)
+            ).ToList();
         }
         else
         {
             filteredRequests = requests;
         }
     }
+
+    private void ClearSearch()
+    {
+        searchQuery = string.Empty;
+        filteredRequests = requests;
+    }
 }
 
 <style>
-    .top-nav {
-        padding: 20px;
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #e0e0e0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Base Styles */
+    .admin-dashboard {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f5f7fa;
     }
 
-    .search-bar {
+    .content-container {
+        flex: 1;
+        padding: 1rem;
+        margin-left: 60px;
+    }
+
+    /* Card Styles */
+    .card {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .card-title {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    /* Search Styles */
+    .search-container {
         display: flex;
         align-items: center;
+        gap: 0.75rem;
     }
 
-        .search-bar .form-control {
-            width: 300px;
-            border: 1px solid #ced4da;
-            border-radius: 12px;
-            padding: 10px 15px;
-            font-size: 14px;
-            margin-right: 10px;
-        }
-
-            .search-bar .form-control:focus {
-                border-color: #1b6cb9;
-                box-shadow: 0 0 5px rgba(27, 108, 185, 0.5);
-            }
-
-    .requests-list {
-        margin-top: 20px;
+    .search-input {
+        padding: 0.5rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        width: 250px;
     }
 
-    .request-card {
-        background-color: white;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s;
+    .search-btn {
+        padding: 0.5rem 1.25rem;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
         cursor: pointer;
     }
 
+    /* Requests Grid */
+    .requests-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+
+    .request-card {
+        background: white;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 1.25rem;
+        border-left: 3px solid #3498db;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
         .request-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
     .request-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #f0f0f0;
     }
 
-    .request-timestamp {
-        font-size: 12px;
-        color: #6c757d;
+    .request-id {
+        font-weight: 600;
+        color: #3498db;
+        font-size: 0.9rem;
     }
 
-    .request-status, .request-client {
-        margin-top: 10px;
-        font-size: 14px;
+    .request-date {
+        font-size: 0.8rem;
+        color: #7f8c8d;
     }
 
+    .request-description {
+        color: #34495e;
+        margin: 0;
+        line-height: 1.5;
+        font-size: 0.9rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .request-footer {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .status-badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    .status-pending {
+        background-color: #f39c12;
+        color: white;
+    }
+
+    .status-accepted {
+        background-color: #2ecc71;
+        color: white;
+    }
+
+    .status-completed {
+        background-color: #3498db;
+        color: white;
+    }
+
+    .status-rejected {
+        background-color: #e74c3c;
+        color: white;
+    }
+
+    .client-info {
+        font-size: 0.8rem;
+        color: #7f8c8d;
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 2rem;
+        color: #7f8c8d;
+    }
+
+    .btn-text {
+        color: #3498db;
+        background: none;
+        border: none;
+        padding: 0.25rem 0.5rem;
+        margin-top: 0.5rem;
+        cursor: pointer;
+    }
+
+    /* Modal Styles */
     .modal-overlay {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .modal-dialog {
+        background: white;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-header {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #eaeaea;
+        flex-shrink: 0;
+    }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+
+    .btn-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #7f8c8d;
+        line-height: 1;
+        position: absolute;
+        right: 1.5rem;
+        top: 1rem;
     }
 
     .modal-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        width: 400px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 1.5rem;
+        overflow-y: auto;
+        flex: 1;
     }
 
-        .modal-content h4 {
-            color: #1b6cb9;
+    .modal-footer {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #eaeaea;
+        display: flex;
+        justify-content: flex-end;
+        flex-shrink: 0;
+    }
+
+    /* Detail Sections */
+    .detail-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+        color: #3498db;
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.25rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .detail-row {
+        display: flex;
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .detail-label {
+        font-weight: 600;
+        min-width: 120px;
+        color: #2c3e50;
+    }
+
+    .detail-value {
+        flex: 1;
+        color: #34495e;
+        word-break: break-word;
+    }
+
+    /* Responsive Adjustments */
+    @@media (max-width: 768px) {
+        .content-container {
+            margin-left: 0;
+            padding: 0.5rem;
         }
 
-        .modal-content button {
-            background-color: #1b6cb9;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .header-content {
+            flex-direction: column;
+            align-items: stretch;
         }
 
-            .modal-content button:hover {
-                background-color: #165d99;
-            }
+        .search-container {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .search-input {
+            width: 100%;
+        }
+
+        .requests-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .detail-row {
+            flex-direction: column;
+        }
+
+        .detail-label {
+            margin-bottom: 0.25rem;
+        }
+    }
 </style>

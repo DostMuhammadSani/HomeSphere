@@ -42,22 +42,21 @@ namespace WebAPI.Controllers
 
         }
         [HttpPost]
-        public  async Task<IActionResult> SaveResident(Resident R)
+        public async Task<IActionResult> SaveResident(Resident R)
         {
             SqlParameter[] p =
-           {
-                new SqlParameter("@CNIC",R.CNIC),
-                new SqlParameter("@Passwords",R.Passwords),
-                new SqlParameter("@Names",R.Names),
-                new SqlParameter("@Contact",R.Contact),
-                new SqlParameter ("@Picture",R.Picture),
-                new SqlParameter("@A_id",R.A_id)
+            {
+        new SqlParameter("@CNIC", R.CNIC),
+        new SqlParameter("@Passwords", R.Passwords),
+        new SqlParameter("@Names", R.Names),
+        new SqlParameter("@Contact", R.Contact),
+        new SqlParameter("@Picture", (object?)R.Picture ?? DBNull.Value), // Allow null for Picture
+        new SqlParameter("@A_id", R.A_id)
+    };
 
-
-            };
             try
             {
-
+                // Call DAL method to save the resident
                 DALClass.CUDResident(p, "SaveResident");
                 return Ok();
             }
@@ -72,6 +71,7 @@ namespace WebAPI.Controllers
                 return StatusCode(500, "An error occurred while processing your request.");
             }
         }
+
         [HttpPut]
         public async void UpdateResident(Resident R)
         {

@@ -14,7 +14,7 @@ namespace ClassLibraryModel
             public string Names { get; set; }
             public string Contact { get; set; }
             public string Profession { get; set; }
-            public string Picture { get; set; }
+            public string? Picture { get; set; }
             public string A_id { get; set; }
         }
 }

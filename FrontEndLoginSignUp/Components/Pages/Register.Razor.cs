@@ -28,7 +28,7 @@ namespace FrontEndLoginSignUp.Components.Pages
                 }
                 else
                 {
-                    errorMessage = $"Admin registration failed: {await adminResponse.Content.ReadAsStringAsync()}";
+                    errorMessage = $"Admin registration failed: Invalid Creditientials";
                     await JSRun.InvokeVoidAsync("alert", errorMessage);
                 }
             }

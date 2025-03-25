@@ -11,86 +11,147 @@
 
 @if (role == "Admin")
 {
-    <div class="container-fluid">
-        <div class="row">
-            <Sidebars></Sidebars>
-            <div class="col-md-10 p-4">
-                <!-- Top Nav -->
-                <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
-                    <h3>Staff Complaints</h3>
-                    <div class="search-bar d-flex">
-                        <input type="text" class="form-control" placeholder="Search complaints..." @bind="searchQuery" />
-                        <button class="btn btn-primary" @onclick="SearchComplains">Search</button>
+    <div class="admin-dashboard">
+        <Sidebars></Sidebars>
+        <div class="content-container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-content">
+                        <h2 class="card-title">Staff Complaints Management</h2>
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Search complaints..." @bind="searchQuery" />
+                            <button class="btn btn-primary search-btn" @onclick="SearchComplains">Search</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Complaints List -->
-                <div class="complains-list">
+                <div class="card-body">
                     @if (filteredComplains != null && filteredComplains.Count > 0)
                     {
-                        @foreach (var complain in filteredComplains)
-                        {
-                            <div class="complain-item" @onclick="() => ShowDetails(complain)">
-                                <h5 class="mb-2">Staff Complaint</h5>
-                                <p>@complain.Complain_Description</p>
-                                <p class="timestamp text-muted">@complain.RequestTimestamp.ToString("MMM dd, yyyy hh:mm tt")</p>
-                            </div>
-                        }
+                        <div class="complaints-grid">
+                            @foreach (var complain in filteredComplains)
+                            {
+                                <div class="complaint-card" @onclick="() => ShowDetails(complain)">
+                                    <div class="complaint-header">
+                                       
+                                        <span class="complaint-date">@complain.RequestTimestamp.ToString("MMM dd, yyyy hh:mm tt")</span>
+                                    </div>
+                                    <div class="complaint-body">
+                                        <p class="complaint-description">@complain.Complain_Description</p>
+                                    </div>
+                                    <div class="complaint-footer">
+                                        <span class="badge">Staff Complaint</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
                     }
                     else
                     {
-                        <p>No complaints available.</p>
+                        <div class="empty-state">
+                            <p>No staff complaints found</p>
+                            @if (!string.IsNullOrEmpty(searchQuery))
+                            {
+                                <button class="btn btn-text" @onclick="ClearSearch">Clear search</button>
+                            }
+                        </div>
                     }
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal for complain details -->
+    <!-- Modal Dialog -->
     @if (selectedComplain != null)
     {
         <div class="modal-overlay" @onclick="CloseModal">
-            <div class="modal-content" @onclick:stopPropagation="true">
-                <h4>Complain Details</h4>
-                <p><strong>Description:</strong> @selectedComplain.Complain_Description</p>
-                <p><strong>Time:</strong> @selectedComplain.RequestTimestamp</p>
-                @if (resident != null)
-                {
-                    <div>
-                        <h5>Resident Details</h5>
-                        <p><strong>Name:</strong> @resident.Names</p>
-                        <p><strong>CNIC:</strong> @resident.CNIC</p>
-                        <p><strong>Contact:</strong> @resident.Contact</p>
+            <div class="modal-dialog" @onclick:stopPropagation="true">
+                <div class="modal-header">
+                    <h3>Complaint Details</h3>
+                    <button class="btn-close" @onclick="CloseModal">&times;</button>
+                </div>
+                <div class="modal-content">
+                    <div class="detail-section">
+                        <h4 class="section-title">Complaint Information</h4>
+                      
+                        <div class="detail-row">
+                            <span class="detail-label">Date:</span>
+                            <span class="detail-value">@selectedComplain.RequestTimestamp.ToString("MMMM dd, yyyy hh:mm tt")</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Description:</span>
+                            <span class="detail-value">@selectedComplain.Complain_Description</span>
+                        </div>
                     </div>
-                }
 
-                @if (staff != null)
-                {
-                    <div>
-                        <h5>Staff Details</h5>
-                        <p><strong>Name:</strong> @staff.Names</p>
-                        <p><strong>CNIC:</strong> @staff.CNIC</p>
-                        <p><strong>Contact:</strong> @staff.Contact</p>
-                        <img src="@staff.Picture" alt="Staff Image" style="width:100px; height:100px;" />
-                    </div>
-                }
+                    @if (resident != null)
+                    {
+                        <div class="detail-section">
+                            <h4 class="section-title">Complainant Details</h4>
+                            <div class="resident-info">
+                                <div class="resident-details">
+                                    <div class="detail-row">
+                                        <span class="detail-label">Name:</span>
+                                        <span class="detail-value">@resident.Names</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">CNIC:</span>
+                                        <span class="detail-value">@resident.CNIC</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Contact:</span>
+                                        <span class="detail-value">@resident.Contact</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
 
-                <button @onclick="CloseModal" class="btn btn-primary">Close</button>
+                    @if (staff != null)
+                    {
+                        <div class="detail-section">
+                            <h4 class="section-title">Staff Details</h4>
+                            <div class="staff-info">
+                                @if (!string.IsNullOrEmpty(staff.Picture))
+                                {
+                                    <div class="staff-avatar">
+                                        <img src="@staff.Picture" alt="Staff Photo" />
+                                    </div>
+                                }
+                                <div class="staff-details">
+                                    <div class="detail-row">
+                                        <span class="detail-label">Name:</span>
+                                        <span class="detail-value">@staff.Names</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">CNIC:</span>
+                                        <span class="detail-value">@staff.CNIC</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Contact:</span>
+                                        <span class="detail-value">@staff.Contact</span>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" @onclick="CloseModal">Close</button>
+                </div>
             </div>
         </div>
     }
 }
 
-
-
-
 @code {
     private List<ComplainStaffModel> complains;
     private List<ComplainStaffModel> filteredComplains;
     private ComplainStaffModel selectedComplain;
-    private Resident resident; // Model for resident details
-    private StaffModel staff; // Model for staff details
-    private string searchQuery = string.Empty; // Initialized to avoid null checks
+    private Resident resident;
+    private StaffModel staff;
+    private string searchQuery = string.Empty;
     private string token;
     private string role;
     private string A_id;
@@ -118,12 +179,11 @@
             if (response1.IsSuccessStatusCode)
             {
                 A_id = await response1.Content.ReadAsStringAsync();
-                // Fetch complaints using the A_id
                 var response = await client.GetAsync($"api/ComplainStaff?A_id={A_id}");
                 if (response.IsSuccessStatusCode)
                 {
                     complains = await response.Content.ReadFromJsonAsync<List<ComplainStaffModel>>();
-                    filteredComplains = complains; // Initialize the filtered list
+                    filteredComplains = complains;
                 }
                 StateHasChanged();
             }
@@ -137,7 +197,7 @@
     private async Task LoadResident(string cnic)
     {
         var client = HttpClientFactory.CreateClient("AuthApi");
-        var url = $"api/Resident/Single?CNIC={cnic}"; // Adjust API endpoint as needed
+        var url = $"api/Resident/Single?CNIC={cnic}";
         var response = await client.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -148,7 +208,7 @@
     private async Task LoadStaff(string cnic)
     {
         var client = HttpClientFactory.CreateClient("AuthApi");
-        var url = $"api/Staff/Single?CNIC={cnic}"; // Adjust API endpoint as needed
+        var url = $"api/Staff/Single?CNIC={cnic}";
         var response = await client.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
@@ -159,119 +219,340 @@
     private async Task ShowDetails(ComplainStaffModel complain)
     {
         selectedComplain = complain;
-        await LoadResident(complain.RCNIC); // Load resident details based on CNIC
-        await LoadStaff(complain.SCNIC); // Load staff details based on Staff ID
+        await LoadResident(complain.RCNIC);
+        await LoadStaff(complain.SCNIC);
     }
 
     private void CloseModal()
     {
         selectedComplain = null;
-        resident = null; // Reset resident details
-        staff = null; // Reset staff details
+        resident = null;
+        staff = null;
     }
 
     private void SearchComplains()
     {
         if (!string.IsNullOrEmpty(searchQuery))
         {
-            filteredComplains = complains
-                .Where(c => c.Complain_Description.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
-                .ToList();
+            filteredComplains = complains.Where(c =>
+                c.Complain_Description.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)
+              
+            ).ToList();
         }
         else
         {
-            filteredComplains = complains; // Reset to all complaints if search is empty
+            filteredComplains = complains;
         }
+    }
+
+    private void ClearSearch()
+    {
+        searchQuery = string.Empty;
+        filteredComplains = complains;
     }
 }
 
-
-
 <style>
-    .top-nav {
-        padding: 20px;
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #e0e0e0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Base Styles */
+    .admin-dashboard {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f5f7fa;
     }
 
-    .search-bar {
+    .content-container {
+        flex: 1;
+        padding: 1rem;
+        margin-left: 60px;
+    }
+
+    /* Card Styles */
+    .card {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .card-title {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    /* Search Styles */
+    .search-container {
         display: flex;
         align-items: center;
+        gap: 0.75rem;
     }
 
-        .search-bar .form-control {
-            width: 300px;
-            border: 1px solid #ced4da;
-            border-radius: 12px;
-            padding: 10px 15px;
-            font-size: 14px;
-            margin-right: 10px;
-        }
-
-            .search-bar .form-control:focus {
-                border-color: #1b6cb9;
-                box-shadow: 0 0 5px rgba(27, 108, 185, 0.5);
-            }
-
-    .complains-list {
-        margin-top: 20px;
+    .search-input {
+        padding: 0.5rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        width: 250px;
     }
 
-    .complain-item {
-        background-color: #1b6cb9;
+    .search-btn {
+        padding: 0.5rem 1.25rem;
+        background-color: #3498db;
         color: white;
-        padding: 15px;
-        margin-bottom: 10px;
-        border-radius: 8px;
-        transition: background-color 0.3s;
+        border: none;
+        border-radius: 4px;
         cursor: pointer;
     }
 
-        .complain-item:hover {
-            background-color: #165d99;
-        }
-
-    .timestamp {
-        font-size: 12px;
-        color: #ccc;
+    /* Complaints Grid */
+    .complaints-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
     }
 
+    .complaint-card {
+        background: white;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 1.25rem;
+        border-left: 3px solid #e74c3c;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+        .complaint-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .complaint-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .complaint-id {
+        font-weight: 600;
+        color: #e74c3c;
+        font-size: 0.9rem;
+    }
+
+    .complaint-date {
+        font-size: 0.8rem;
+        color: #7f8c8d;
+    }
+
+    .complaint-description {
+        color: #34495e;
+        margin: 0;
+        line-height: 1.5;
+        font-size: 0.9rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .complaint-footer {
+        margin-top: 1rem;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        background-color: #e74c3c;
+        color: white;
+        border-radius: 4px;
+        font-size: 0.75rem;
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 2rem;
+        color: #7f8c8d;
+    }
+
+    .btn-text {
+        color: #3498db;
+        background: none;
+        border: none;
+        padding: 0.25rem 0.5rem;
+        margin-top: 0.5rem;
+        cursor: pointer;
+    }
+
+    /* Modal Styles */
     .modal-overlay {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .modal-dialog {
+        background: white;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-header {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #eaeaea;
+        flex-shrink: 0;
+    }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+
+    .btn-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #7f8c8d;
+        line-height: 1;
+        position: absolute;
+        right: 1.5rem;
+        top: 1rem;
     }
 
     .modal-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        width: 400px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 1.5rem;
+        overflow-y: auto;
+        flex: 1;
     }
 
-        .modal-content h4 {
-            color: #1b6cb9;
+    .modal-footer {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #eaeaea;
+        display: flex;
+        justify-content: flex-end;
+        flex-shrink: 0;
+    }
+
+    /* Detail Sections */
+    .detail-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+        color: #e74c3c;
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.25rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .detail-row {
+        display: flex;
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .detail-label {
+        font-weight: 600;
+        min-width: 100px;
+        color: #2c3e50;
+    }
+
+    .detail-value {
+        flex: 1;
+        color: #34495e;
+        word-break: break-word;
+    }
+
+    /* Resident/Staff Info */
+    .resident-info, .staff-info {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .staff-avatar, .resident-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 4px;
+        overflow: hidden;
+        border: 1px solid #eaeaea;
+        flex-shrink: 0;
+    }
+
+        .staff-avatar img, .resident-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .modal-content button {
-            background-color: #1b6cb9;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+    .staff-details, .resident-details {
+        flex: 1;
+    }
+
+    /* Responsive Adjustments */
+    @@media (max-width: 768px) {
+        .content-container {
+            margin-left: 0;
+            padding: 0.5rem;
         }
 
-            .modal-content button:hover {
-                background-color: #165d99;
-            }
+        .header-content {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .search-container {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .search-input {
+            width: 100%;
+        }
+
+        .complaints-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .resident-info, .staff-info {
+            flex-direction: column;
+        }
+
+        .staff-avatar, .resident-avatar {
+            margin-bottom: 0.5rem;
+        }
+    }
 </style>

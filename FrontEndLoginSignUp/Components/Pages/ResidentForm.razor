@@ -83,7 +83,7 @@
             if (response1.IsSuccessStatusCode)
             {
                 Resident.A_id = await response1.Content.ReadAsStringAsync();
-                Resident.Picture = "icons/user.png";
+                Resident.Picture = null;
                 var response = await client.PostAsJsonAsync("api/Resident", Resident);
 
                 if (response.IsSuccessStatusCode)

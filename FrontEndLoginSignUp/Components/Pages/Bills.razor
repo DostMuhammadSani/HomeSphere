@@ -5,32 +5,65 @@
 @inject ISessionStorageService SessionStorage
 @rendermode InteractiveServer
 
-@if(role=="Admin"){
- <div style="display: flex; flex-direction: row; background-color: #f8f9fa;">
-            <Sidebars></Sidebars>
-    <div class="container">
-
-        <h1 class="header">Bills Management</h1>
-        <p class="sub-header">Easily manage and track all your bills in one place.</p>
-
-        <div class="cards-container">
-            <!-- Card 1: General Bills -->
-            <div class="card" @onclick="NavigateToGeneralBills">
-                <div class="card-content">
-                    <h2>General Bills</h2>
-                    <p>Manage and view all general bills.</p>
+@if (role == "Admin")
+{
+    <div class="page-container">
+        <Sidebars></Sidebars>
+        <div class="main-content">
+            <div class="container">
+                <div class="header-section">
+                    <h1 class="header">Bills Management</h1>
+                    <p class="sub-header">Comprehensive bill management system for your property</p>
                 </div>
-            </div>
 
-            <!-- Card 2: Bills for Specific Residents -->
-            <div class="card" @onclick="NavigateToResidentBills">
-                <div class="card-content">
-                    <h2>Bills for Specific Residents</h2>
-                    <p>View and manage bills for specific residents.</p>
+                <div class="cards-container">
+                    <!-- Card 1: General Bills -->
+                    <div class="card" @onclick="NavigateToGeneralBills">
+                        <div class="card-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="card-content">
+                            <h2>General Bills</h2>
+                            <p>Manage community-wide bills including maintenance, utilities, and services</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="action-text">View & Manage</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Resident Bills -->
+                    <div class="card" @onclick="NavigateToResidentBills">
+                        <div class="card-icon">
+                            <i class="fas fa-user-tag"></i>
+                        </div>
+                        <div class="card-content">
+                            <h2>Resident Bills</h2>
+                            <p>View and manage individual resident bills and payments</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="action-text">View & Manage</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Bill Status -->
+                    <div class="card" @onclick="NavigateToBillStatus">
+                        <div class="card-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="card-content">
+                            <h2>Bill Status</h2>
+                            <p>Track payment status, overdue bills, and generate reports</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="action-text">View Status</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 }
 
@@ -40,7 +73,6 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-
         if (firstRender)
         {
             try
@@ -50,8 +82,6 @@
                 var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
                 role = roleClaim.Value;
                 StateHasChanged();
-               
-            
             }
             catch (Exception ex)
             {
@@ -62,14 +92,17 @@
 
     private void NavigateToGeneralBills()
     {
-        // Navigate to General Bills page
         NavigationManager.NavigateTo("/general-bills");
     }
 
     private void NavigateToResidentBills()
     {
-        // Navigate to Bills for Specific Residents page
         NavigationManager.NavigateTo("/resident-bills");
+    }
+
+    private void NavigateToBillStatus()
+    {
+        NavigationManager.NavigateTo("/bill-status");
     }
 
     [Inject]
@@ -77,67 +110,177 @@
 }
 
 <style>
-    body {
-        background: linear-gradient(to bottom, #e6f0ff, #ffffff);
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
+    /* Base Styles */
+    .page-container {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f8f9fa;
+    }
+
+    .main-content {
+        flex: 1;
+        padding: 20px;
+        background-color: #f8f9fa;
     }
 
     .container {
-        margin: 2rem auto;
-        max-width: 900px;
-        text-align: center;
-        background: #ffffff;
+        max-width: 1200px;
+        margin: 0 auto;
         padding: 2rem;
+        background: #ffffff;
         border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .header-section {
+        text-align: center;
+        margin-bottom: 3rem;
     }
 
     .header {
         color: #1b6cb9;
         font-size: 2.5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
     }
 
     .sub-header {
-        color: #555;
+        color: #6c757d;
         font-size: 1.25rem;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
     }
 
+    /* Cards Container */
     .cards-container {
-        display: flex;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
-        flex-wrap: wrap;
+        margin-top: 2rem;
     }
 
+    /* Card Styles */
     .card {
-        background: #f9f9f9;
-        border: 2px solid #1b6cb9;
+        background: #ffffff;
         border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 280px;
-        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
         cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #e9ecef;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            background: #eaf3ff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-color: #1b6cb9;
         }
 
-    .card-content h2 {
-        color: #1b6cb9;
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
+    .card-icon {
+        background-color: #1b6cb9;
+        color: white;
+        font-size: 2rem;
+        padding: 1.5rem;
+        text-align: center;
     }
 
-    .card-content p {
-        color: #333;
-        font-size: 1rem;
+    .card-content {
+        padding: 1.5rem;
+        flex-grow: 1;
+    }
+
+        .card-content h2 {
+            color: #1b6cb9;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card-content p {
+            color: #6c757d;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+    .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        background-color: #f8f9fa;
+        border-top: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover .card-footer {
+        background-color: #e9f0f8;
+    }
+
+    .action-text {
+        color: #1b6cb9;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .card-footer i {
+        color: #1b6cb9;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-footer i {
+        transform: translateX(5px);
+    }
+
+    /* Responsive Styles */
+    @@media (max-width: 768px) {
+        .page-container {
+            flex-direction: column;
+        }
+
+        .main-content {
+            padding: 15px;
+        }
+
+        .container {
+            padding: 1.5rem;
+        }
+
+        .header {
+            font-size: 2rem;
+        }
+
+        .sub-header {
+            font-size: 1.1rem;
+        }
+
+        .cards-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .header {
+            font-size: 1.75rem;
+        }
+
+        .sub-header {
+            font-size: 1rem;
+        }
+
+        .card-icon {
+            font-size: 1.75rem;
+            padding: 1.25rem;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+        }
+
+            .card-content h2 {
+                font-size: 1.3rem;
+            }
     }
 </style>

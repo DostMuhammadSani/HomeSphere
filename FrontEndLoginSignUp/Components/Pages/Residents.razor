@@ -47,8 +47,8 @@
                     <table style="width: 100%; border-collapse: collapse;">
                         <thead>
                         <tr style="background-color: #1b6cb9; color: white;">
-                                <th style="padding: 10px; border: 1px solid #ddd;">Icon</th>
-                                <th style="padding: 10px; border: 1px solid #ddd;">CNIC</th>
+                            <!--<th style="padding: 10px; border: 1px solid #ddd;">Icon</th>-->
+                            <th style="padding: 10px; border: 1px solid #ddd;">CNIC</th>
                                 <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
                                 <th style="padding: 10px; border: 1px solid #ddd;">Contact</th>
                                 
@@ -61,12 +61,17 @@
                         {
                             @foreach (var resident in filteredResidents)
                             {
+                                
                                             <tr style="background-color: #f8f9fa;">
+                                    <!--
                                                              <td style="padding: 10px; border: 1px solid #ddd;">
 
                                                              <img src=@resident.Picture width=30px height=30px />
 
+
                                                          </td>
+
+                                -->
                                                 <td style="padding: 10px; border: 1px solid #ddd;">@resident.CNIC</td>
                                                 <td style="padding: 10px; border: 1px solid #ddd;">@resident.Names</td>
                                                 <td style="padding: 10px; border: 1px solid #ddd;">@resident.Contact</td>

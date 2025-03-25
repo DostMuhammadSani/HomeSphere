@@ -614,3 +614,7 @@ D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\scopedcss\bundle\WebAPI
 D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\WebAPI.csproj.Up2Date
 D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\WebAPI.genruntimeconfig.cache
 D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\ref\WebAPI.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\WebAPI.staticwebassets.endpoints.json
+D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\staticwebassets\msbuild.WebAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

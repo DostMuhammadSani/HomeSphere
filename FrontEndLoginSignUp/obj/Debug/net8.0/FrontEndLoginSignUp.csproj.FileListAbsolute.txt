@@ -372,3 +372,11 @@ D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\scopedcss\
 D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEnd.13A7FE16.Up2Date
 D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\FrontEndLoginSignUp.genruntimeconfig.cache
 D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\ref\FrontEndLoginSignUp.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\CloudinaryDotNet.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\dotenv.net.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\WebAPI.staticwebassets.endpoints.json
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\FrontEndLoginSignUp.staticwebassets.endpoints.json
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\staticwebassets\msbuild.FrontEndLoginSignUp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,0 +1,351 @@
+﻿@page "/general-bills"
+@rendermode InteractiveServer
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using DALLibrary
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@using Blazored.SessionStorage
+@using System.Security.Claims
+@inject ISessionStorageService SessionStorage
+@using System.Globalization
+
+<div class="page-container">
+    <div class="card bill-card">
+        <div class="card-header">
+            <h3 class="card-title">Create General Bills</h3>
+            <p class="card-subtitle">Generate bills for all residents</p>
+        </div>
+
+        <div class="card-body">
+            <form @onsubmit="HandleSubmit">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Item Description</label>
+                        <input @bind="bill.Item" type="text" class="form-control" placeholder="Enter item description" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Amount</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input @bind="bill.Price" type="number" step="0.01" class="form-control" placeholder="0.00" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Status</label>
+                        <select @bind="bill.Statuss" class="form-select" required>
+                            <option value="">Select Status</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Unpaid">Unpaid</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Fine Amount</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input @bind="bill.Fine" type="number" step="0.01" class="form-control" placeholder="0.00" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Issue Date</label>
+                        <input @bind="bill.IssueDate" type="date" class="form-control" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Due Date</label>
+                        <input @bind="bill.DueDate" type="date" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn-primary" disabled="@isProcessing">
+                        @if (isProcessing)
+                        {
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span> Processing...</span>
+                        }
+                        else
+                        {
+                            <span>Generate Bills for @residents.Count Residents</span>
+                        }
+                    </button>
+                </div>
+            </form>
+
+            @if (!string.IsNullOrEmpty(message))
+            {
+                <div class="alert @(isError ? "alert-danger" : "alert-success")">
+                    @message
+                    @if (!isError && residentsProcessed > 0)
+                    {
+                        <div class="mt-2">
+                            <small>Successfully processed @residentsProcessed bills</small>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .page-container {
+        background-color: #f8fafc;
+        min-height: 100vh;
+        padding: 2rem;
+    }
+
+    .bill-card {
+        max-width: 800px;
+        margin: 0 auto;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    .card-header {
+        background-color: #1b6cb9;
+        color: white;
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .card-subtitle {
+        opacity: 0.9;
+        font-size: 0.875rem;
+        margin-bottom: 0;
+    }
+
+    .card-body {
+        padding: 2rem;
+        background-color: white;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #334155;
+    }
+
+    .form-control, .form-select {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        transition: border-color 0.2s;
+    }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #1b6cb9;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(27, 108, 185, 0.1);
+        }
+
+    .input-group {
+        display: flex;
+    }
+
+    .input-group-text {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-right: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px 0 0 6px;
+    }
+
+    .input-group .form-control {
+        border-radius: 0 6px 6px 0;
+    }
+
+    .form-footer {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 1rem;
+        border-top: 1px solid #f1f5f9;
+    }
+
+    .btn-primary {
+        background-color: #1b6cb9;
+        color: white;
+        border: none;
+        padding: 0.625rem 1.25rem;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+        .btn-primary:hover {
+            background-color: #155a9e;
+        }
+
+        .btn-primary:disabled {
+            background-color: #9dbad8;
+            cursor: not-allowed;
+        }
+
+    .alert {
+        padding: 1rem;
+        border-radius: 6px;
+        margin-top: 1.5rem;
+    }
+
+    .alert-success {
+        background-color: #f0fdf4;
+        color: #166534;
+        border: 1px solid #bbf7d0;
+    }
+
+    .alert-danger {
+        background-color: #fef2f2;
+        color: #991b1b;
+        border: 1px solid #fecaca;
+    }
+
+    .spinner-border {
+        vertical-align: middle;
+    }
+</style>
+
+@code {
+    private List<Resident> residents = new List<Resident>();
+    private BillModel bill = new BillModel
+        {
+            IssueDate = DateTime.Today,
+            DueDate = DateTime.Today.AddDays(30),
+            Statuss = "Unpaid"
+        };
+    private string message = "";
+    private bool isError = false;
+    private bool isProcessing = false;
+    private int residentsProcessed = 0;
+
+    private string A_id;
+    private string token;
+    public string role;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim?.Value;
+                await LoadResident();
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task LoadResident()
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+            var response1 = await client.GetAsync(url);
+
+            if (response1.IsSuccessStatusCode)
+            {
+                A_id = await response1.Content.ReadAsStringAsync();
+                var response = await client.GetAsync($"api/Resident?A_id={A_id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    residents = await response.Content.ReadFromJsonAsync<List<Resident>>();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading residents: {ex.Message}");
+        }
+    }
+
+    private async Task HandleSubmit()
+    {
+        isProcessing = true;
+        isError = false;
+        residentsProcessed = 0;
+        message = "";
+        StateHasChanged();
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+
+            foreach (var resident in residents)
+            {
+                var billToSend = new BillModel
+                    {
+                        BID = Guid.NewGuid().ToString(),
+                        Item = bill.Item,
+                        Price = bill.Price,
+                        Statuss = bill.Statuss,
+                        IssueDate = bill.IssueDate,
+                        DueDate = bill.DueDate,
+                        Fine = bill.Fine,
+                        CNIC = resident.CNIC
+                    };
+
+                var response = await client.PostAsJsonAsync("api/Bill", billToSend);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Failed to create bill for resident with CNIC: {resident.CNIC}. Error: {errorContent}");
+                }
+
+                residentsProcessed++;
+            }
+
+            message = $"Bills generation completed successfully";
+            bill = new BillModel
+                {
+                    IssueDate = DateTime.Today,
+                    DueDate = DateTime.Today.AddDays(30),
+                    Statuss = "Unpaid"
+                };
+        }
+        catch (Exception ex)
+        {
+            isError = true;
+            message = $"Error: {ex.Message}";
+        }
+        finally
+        {
+            isProcessing = false;
+            StateHasChanged();
+        }
+    }
+}

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aB0bIwioK1SN5pNnnnd6kI+zrOQF4qsNVfpJLhPCZtI=",
+  "Hash": "hazPFuSjSEuBCGKcQBJiD+7V0/Xr7lBkRltVGgrICPY=",
   "Source": "FrontEndLoginSignUp",
   "BasePath": "_content/FrontEndLoginSignUp",
   "Mode": "Default",
@@ -43,6 +43,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
+      "Fingerprint": "9pixr9552e",
+      "Integrity": "E9QnlAmc6FCKQ12unLwOlh6hUcUx/XUc2bitsqVDVco=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\Blazor.Bootstrap.bundle.scp.css"
@@ -62,6 +64,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "yoeif30kwf",
+      "Integrity": "HopJKwHvn6Cr9f/7OiDpO/6tEO8EmXJrrin9lzeOOXg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.css"
@@ -81,6 +85,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "vc9g1nou3m",
+      "Integrity": "X/DJ5i9rFNw+60KIBuJ1SA0RXVJAbsW3eiSoeo+GhQw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.js"
@@ -100,6 +106,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ct0ej5e0q0",
+      "Integrity": "oAIj2P0Z/6hTwjGA3OGvWLdxMP4KwE35+AQzWQTpxAg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.pdf.js"
@@ -119,6 +127,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ezlxc6gzv3",
+      "Integrity": "du71NM6e2+m9l81ldV+Gbr74ER7Xx1GnJFg+rIY6OQU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.sortable-list.js"
@@ -138,6 +148,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "tngynhsog2",
+      "Integrity": "J1yB7ftYf6PWiU1781eE0JHBGfd1MV/XlLaxpVy09RU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\icon\\128X128.png"
@@ -157,6 +169,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "j8zp7bt7w3",
+      "Integrity": "XX7we2CiSWzj3rsNtKFCod90LBYAJ3bo8rmu4EuN7SQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.min.js"
@@ -176,6 +190,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "79hai7knhw",
+      "Integrity": "JbwqIn9Fic7JuWyTXuNnAA1T0dYQ2tkTi9HhrSltUtQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.worker.min.js"
@@ -195,6 +211,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
+      "Fingerprint": "xineniuf5l",
+      "Integrity": "Z/I1339InDuOPqcxuznblrUyBaYIXu9HFBq2z/gXq8A=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\Blazored.Modal.bundle.scp.css"
@@ -214,6 +232,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "8qij0y2dsa",
+      "Integrity": "kA2z2nG9FrUdWS/uJrfB+pfqUujsR3MLSrJeQKsao/Q=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\BlazoredModal.razor.js"
@@ -233,6 +253,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "arwwmqbc8g",
+      "Integrity": "1pvIznwyTX8bPSZBysgLEMMpgBD5JDz9UMQi2HjUF0Q=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\charts.js"
@@ -252,6 +274,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "yuah26ljhm",
+      "Integrity": "xoTc7gWMXJGBZtVeiYKd2TKGGIVbLt9a99npzZY2eQU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\utilities.js"
@@ -271,6 +295,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "dabth2yank",
+      "Integrity": "m4ic6bApgizDNEe93SNXAl7cf9TV4gkOaeIwAlIZyIo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.css"
@@ -290,6 +316,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "1v505jlh5m",
+      "Integrity": "UwFaM6PwFvXXRHHWGK9DhaOKnK0wvSKVqCWHYaMudY4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.min.css"
@@ -309,6 +337,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "id0t3r0t65",
+      "Integrity": "JhaI1xXnywN8viG6dIVM6CsVG8f8gNdVIn7XpGEIWh4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\breakpoint.js"
@@ -328,6 +358,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "wbz1tsfko5",
+      "Integrity": "5HnC1tqDz97Jgij+oCPguDGlprJOI2WZZ5PLNdL3+R8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\button.js"
@@ -347,6 +379,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "fhfndkf66a",
+      "Integrity": "Ixv4O0t21NpbZR6d0ORC1WkQHljTvIS5MBs3lRDN3No=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\closable.js"
@@ -366,6 +400,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "h843butyn0",
+      "Integrity": "z1QkhMm0X5DbPUfuDPDpW1wNKbZcEIq1DYMj1Lz0eog=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\colorPicker.js"
@@ -385,6 +421,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "0dkeicxyrz",
+      "Integrity": "lPADSsCFOpxS/J3AFLkl4Tahn6Fe7/BcXBYLDsJXsPE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\datePicker.js"
@@ -404,6 +442,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "j08tgt7oc2",
+      "Integrity": "LR45SV6Zevba86ezuTY9ttTG/er0UGSI9WZ41k16dBw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dragDrop.js"
@@ -423,6 +463,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "5ywnwfzxgi",
+      "Integrity": "jTKyswNaur56yfbzkDpqBf16x6KJUzjPJe6X6mtD8Mg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dropdown.js"
@@ -442,6 +484,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "hhrga4jnnx",
+      "Integrity": "20ZI2wFEbxKRgYAMnPularlZigeOQE2ArJXf4wNpzNo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\fileEdit.js"
@@ -461,6 +505,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "jdcajxhrqd",
+      "Integrity": "2buDtxX1KgnzlEFuNpU8o7vg2oMTyL0WycEBBl3bQZs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\filePicker.js"
@@ -480,6 +526,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "76nb072zkn",
+      "Integrity": "D6Zj4UGxTJBCpQqcwRaWb5qSeEknuQEnHGKz860hQcA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\floatingUi.js"
@@ -499,6 +547,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "1eb3wb4su8",
+      "Integrity": "aciEeokk+2Yju2vhuk+O1GPd7ipadoE5iB3SRqMHxNI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\inputMask.js"
@@ -518,6 +568,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "jpt4u823i0",
+      "Integrity": "mbKL6XwKZyyrts0POi77EYKAsiuPcX8ZEDw5bwtQtFY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\io.js"
@@ -537,6 +589,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "d9gdy5blow",
+      "Integrity": "kRl/XGvolSdU2zgwENTDOX2QS4LETeU1kym4Kj2sU6M=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\memoEdit.js"
@@ -556,6 +610,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "k0s6gm62g2",
+      "Integrity": "VNvHc6M/HtZDyUPSRzu2u0f+3uyHW3mItEJhWasUfT4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\numericPicker.js"
@@ -575,6 +631,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "s1nsmqqjya",
+      "Integrity": "UL7yfMvnqDrtwAkFBxgGYL+5hCO9VDCJ94lmA5Ry130=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\observer.js"
@@ -594,6 +652,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ar82890oui",
+      "Integrity": "KpuVYmizMjHU1aUD27Ly4rJY6gxMfWifmLKQAabGvNM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\table.js"
@@ -613,6 +673,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "x5953kgpvx",
+      "Integrity": "W09C6DcqNpTXefqh/CgVp4CeZGbcWdewbe+oCXLciQ8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\textEdit.js"
@@ -632,6 +694,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "7mew5qey9y",
+      "Integrity": "/z7kNAcnzllfg/HxEPpf0fnn2IpUACYWcVwVa2oqnsA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\theme.js"
@@ -651,6 +715,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "y2scwn1976",
+      "Integrity": "1rovY99u1WqDudBlrKriEPBclGhgwnTlfDRMRS8N6Ws=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\timePicker.js"
@@ -670,6 +736,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "2hripovrjo",
+      "Integrity": "liQ0aeIOn/dy+ABs3w6ujvRW6zmfAxAI73lvf5g42M8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\tooltip.js"
@@ -689,6 +757,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "v519k57fjv",
+      "Integrity": "I2bqIAXseoIduIJJjj62pZHGU+imfVNfTpzO4GkG0+U=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\utilities.js"
@@ -708,6 +778,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "9sjnuohl93",
+      "Integrity": "6VFRpMupxoUE443D30s91C5bFZsQ58DxuiNwbCVxLJk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\DateTimeMaskValidator.js"
@@ -727,6 +799,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "qgmopykj85",
+      "Integrity": "RvdrNjHB3Z79Jf1QB/v3rjA4ib41PS+fjetwFdNiJuw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NoValidator.js"
@@ -746,6 +820,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "rdf588x9o3",
+      "Integrity": "4ar0+fGtxySKLf8iZAlv7UMfP/0rO43/fn6aJjFYscE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NumericMaskValidator.js"
@@ -765,6 +841,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "4rmwhz9udx",
+      "Integrity": "0JfcdT/AH07dbEAVpuaISjcVIZZmz6JaK0kpd2kRHFM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\RegExMaskValidator.js"
@@ -784,6 +862,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "3i4j2ak5fv",
+      "Integrity": "dThViewRMpe+cFQ1zAZsNzQkylfewW7Ac5p0vxV/m8E=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\autoNumeric.js"
@@ -803,6 +883,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "k77rf775v5",
+      "Integrity": "QPixC/RhNy0Sx4ntFHFH0iGj3tNiFkhkh/FDWbau6LE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Behave.js"
@@ -822,6 +904,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "edp1606bnc",
+      "Integrity": "TuPGTy1RSyKjfSGGz7VXOVYYoW3nhlFnCiVxIxtci88=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\flatpickr.js"
@@ -841,6 +925,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "5mbjrq4df3",
+      "Integrity": "cxuZSSJUtLW1W9nVAnm5EiMlDJ34kSIUSNACDrLG6OI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui.js"
@@ -860,6 +946,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "2wlo7snjy4",
+      "Integrity": "0guaW7kt/WFpp8o6esUyNY5+Wm0/Jk0sgZGfiLlpIV0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui-core.js"
@@ -879,6 +967,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "m189u628rl",
+      "Integrity": "+mZGO/MfY1p0zmJh0VuKN/1cSevolIfLp+1p4yqRST0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\inputmask.js"
@@ -898,6 +988,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "pybrzh7rdh",
+      "Integrity": "UYwEFy4Dt94x8agDo+K5rAAynsteCUPA/G2UQCHEvyM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\jsencrypt.js"
@@ -917,6 +1009,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "qovnesw5rb",
+      "Integrity": "1gHexzaXVdeRaNA/1rkPr0sk9Wcyys2XlLgv22akhVM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Pickr.js"
@@ -936,6 +1030,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "luevd9t85z",
+      "Integrity": "E+LUjqfR7dS8pbN72SD0gJxBccFzMa7ZTfkInVjDPqU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\sha512.js"
@@ -946,7 +1042,7 @@
       "SourceType": "Computed",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "FrontEndLoginSignUp.styles.css",
+      "RelativePath": "FrontEndLoginSignUp#[.{fingerprint}]?.styles.css",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Primary",
@@ -955,6 +1051,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
+      "Fingerprint": "p9qu0iymrk",
+      "Integrity": "fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndLoginSignUp.styles.css"
@@ -965,7 +1063,7 @@
       "SourceType": "Computed",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "FrontEndLoginSignUp.bundle.scp.css",
+      "RelativePath": "FrontEndLoginSignUp#[.{fingerprint}]!.bundle.scp.css",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Primary",
@@ -974,6 +1072,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
+      "Fingerprint": "59kuvwc31d",
+      "Integrity": "CUEp3ZfQzc00dCs5H0KZ3higQufbJJ+JCngi+oljSLU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FrontEndLoginSignUp.bundle.scp.css"
@@ -984,15 +1084,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "4695.jpg",
+      "RelativePath": "4695#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "txfpfp2wpx",
+      "Integrity": "8a/PofGyMKpUzr3Flis8dWkC7kRUAY57xeNbpnreMBU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\4695.jpg"
@@ -1003,15 +1105,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "app.css",
+      "RelativePath": "app#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "da95v2qkru",
+      "Integrity": "u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\app.css"
@@ -1022,15 +1126,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "favicon.png",
+      "RelativePath": "favicon#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ifv42okdf2",
+      "Integrity": "4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
@@ -1041,15 +1147,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "general.jpg",
+      "RelativePath": "general#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "3mgoubozbc",
+      "Integrity": "5WsxQlIiZlXJl2WULfjl4k7o9NT1jx0jFqeUoohMERA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\general.jpg"
@@ -1060,15 +1168,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "home_services.jpeg",
+      "RelativePath": "home_services#[.{fingerprint}]?.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "qj153nuiej",
+      "Integrity": "FpbDGf18wvtCXLlNuWuh6hVCifR/HsoK+kwMEHewUAU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\home_services.jpeg"
@@ -1079,15 +1189,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/cleaning-staff.png",
+      "RelativePath": "icons/cleaning-staff#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ktns6ujgzn",
+      "Integrity": "aGrBoXJlDaqHacPLfUZ8LB9NVKl3taAWBWs31mmoETI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\cleaning-staff.png"
@@ -1098,15 +1210,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/emails.png",
+      "RelativePath": "icons/emails#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "m3rggd0jta",
+      "Integrity": "MhGk5CB3U4oxoj0aR1bSXjm382vA0i98NsldKy2ozy4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\emails.png"
@@ -1117,15 +1231,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/home (2).png",
+      "RelativePath": "icons/home (2)#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "urtm11dlcm",
+      "Integrity": "OpVH+pM90tIjz+ZSNY/ekS3o716H8/RUWrNJgS3dBvY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\home (2).png"
@@ -1136,15 +1252,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/key.png",
+      "RelativePath": "icons/key#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "5wjgvyudkj",
+      "Integrity": "tS/9Kfw8j/Y5TdCpNc71Vqrgf9nqPDf5TEqhHYm2g+4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\key.png"
@@ -1155,15 +1273,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/land.png",
+      "RelativePath": "icons/land#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "rmx3coo4rs",
+      "Integrity": "/cb89X0lyeqUJsqF4Di9dxTGStVnBgLdty4t+8ZiAVI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\land.png"
@@ -1174,15 +1294,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/money.png",
+      "RelativePath": "icons/money#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "5167rv62yj",
+      "Integrity": "SdGntbmxfrsdMQnYT9YnzIVuk2ka92xbanCrILLy7ZQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\money.png"
@@ -1193,15 +1315,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/notifications.png",
+      "RelativePath": "icons/notifications#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "pah4y2367x",
+      "Integrity": "b3WiUsO3BK2SYru9Jls4eX2ogR5oKxI9+tGnAL4NCJw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\notifications.png"
@@ -1212,15 +1336,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/profile.png",
+      "RelativePath": "icons/profile#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "p6ok3lqfgg",
+      "Integrity": "cW6ojrhfnHRLeIsoWlhQSp2Z+Bj0W/n6vIN9P5GOjH0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\profile.png"
@@ -1231,15 +1357,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/setting.png",
+      "RelativePath": "icons/setting#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "cgx8kzpmc8",
+      "Integrity": "XGvpRkQM9U0mfscTkrzpNflIdJ9E/qFSjQezXRQhZaM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\setting.png"
@@ -1250,15 +1378,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "icons/user.png",
+      "RelativePath": "icons/user#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "li65laxhs3",
+      "Integrity": "w2LsGsV93iTnv/TnFFv9g9P9DqRhsMzeMnIspZ9gkM4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\user.png"
@@ -1269,15 +1399,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "login.jpg",
+      "RelativePath": "login#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "t5fmny5bf1",
+      "Integrity": "v7ptJckJKqCQg9XUTcuRtdi7vMHGCDoWAqQI3Eh5I0M=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\login.jpg"
@@ -1288,15 +1420,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "mobile.png",
+      "RelativePath": "mobile#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "xzz4fld2eb",
+      "Integrity": "wz1SECNpSjnJ/KknfascuyO10BKqkrYgGv/la/Ek8UQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\mobile.png"
@@ -1307,15 +1441,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "property.jpg",
+      "RelativePath": "property#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "8uppaycs5h",
+      "Integrity": "ECGJMDSXaGNGFYV4CJO4mWXbdQCYqtlXsBJtwA+cKB8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\property.jpg"
@@ -1326,15 +1462,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "uploads/m.jpg",
+      "RelativePath": "uploads/m#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "9giabv0oul",
+      "Integrity": "6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\m.jpg"
@@ -1345,15 +1483,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "uploads/modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg",
+      "RelativePath": "uploads/modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "9giabv0oul",
+      "Integrity": "6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg"
@@ -1364,18 +1504,3692 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
       "BasePath": "_content/FrontEndLoginSignUp",
-      "RelativePath": "uploads/WhatsApp Image 2024-11-23 at 18.41.25_297f1861.jpg",
+      "RelativePath": "uploads/WhatsApp Image 2024-11-23 at 18.41.25_297f1861#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "tuwqp7mwqs",
+      "Integrity": "1b07+8mFpPNSOAybggeCfM0314Ec6F8LZ4TNYWUI/wY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\WhatsApp Image 2024-11-23 at 18.41.25_297f1861.jpg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\Blazor.Bootstrap.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13813"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"E9QnlAmc6FCKQ12unLwOlh6hUcUx/XUc2bitsqVDVco=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 01 Jul 2024 07:21:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-E9QnlAmc6FCKQ12unLwOlh6hUcUx/XUc2bitsqVDVco="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20005"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HopJKwHvn6Cr9f/7OiDpO/6tEO8EmXJrrin9lzeOOXg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Jul 2024 07:36:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HopJKwHvn6Cr9f/7OiDpO/6tEO8EmXJrrin9lzeOOXg="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "76428"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"X/DJ5i9rFNw+60KIBuJ1SA0RXVJAbsW3eiSoeo+GhQw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 25 Aug 2024 11:27:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-X/DJ5i9rFNw+60KIBuJ1SA0RXVJAbsW3eiSoeo+GhQw="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.pdf.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.pdf.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7290"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oAIj2P0Z/6hTwjGA3OGvWLdxMP4KwE35+AQzWQTpxAg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Jul 2024 07:36:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oAIj2P0Z/6hTwjGA3OGvWLdxMP4KwE35+AQzWQTpxAg="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.sortable-list.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.sortable-list.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1930"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"du71NM6e2+m9l81ldV+Gbr74ER7Xx1GnJFg+rIY6OQU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Apr 2024 19:30:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-du71NM6e2+m9l81ldV+Gbr74ER7Xx1GnJFg+rIY6OQU="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/icon/128X128.png",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\icon\\128X128.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7074"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"J1yB7ftYf6PWiU1781eE0JHBGfd1MV/XlLaxpVy09RU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Apr 2022 11:45:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-J1yB7ftYf6PWiU1781eE0JHBGfd1MV/XlLaxpVy09RU="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/pdfjs-4.0.379.min.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "305685"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XX7we2CiSWzj3rsNtKFCod90LBYAJ3bo8rmu4EuN7SQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Jul 2024 07:36:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XX7we2CiSWzj3rsNtKFCod90LBYAJ3bo8rmu4EuN7SQ="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/pdfjs-4.0.379.worker.min.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.worker.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1029159"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JbwqIn9Fic7JuWyTXuNnAA1T0dYQ2tkTi9HhrSltUtQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Jul 2024 07:36:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JbwqIn9Fic7JuWyTXuNnAA1T0dYQ2tkTi9HhrSltUtQ="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazored.Modal/Blazored.Modal.bundle.scp.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\Blazored.Modal.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3088"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Z/I1339InDuOPqcxuznblrUyBaYIXu9HFBq2z/gXq8A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 Feb 2024 22:12:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Z/I1339InDuOPqcxuznblrUyBaYIXu9HFBq2z/gXq8A="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazored.Modal/BlazoredModal.razor.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\BlazoredModal.razor.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1162"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kA2z2nG9FrUdWS/uJrfB+pfqUujsR3MLSrJeQKsao/Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 Feb 2024 22:12:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kA2z2nG9FrUdWS/uJrfB+pfqUujsR3MLSrJeQKsao/Q="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise.Charts/charts.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\charts.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14900"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1pvIznwyTX8bPSZBysgLEMMpgBD5JDz9UMQi2HjUF0Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1pvIznwyTX8bPSZBysgLEMMpgBD5JDz9UMQi2HjUF0Q="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise.Charts/utilities.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\staticwebassets\\utilities.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "712"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xoTc7gWMXJGBZtVeiYKd2TKGGIVbLt9a99npzZY2eQU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-xoTc7gWMXJGBZtVeiYKd2TKGGIVbLt9a99npzZY2eQU="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/blazorise.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70280"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"m4ic6bApgizDNEe93SNXAl7cf9TV4gkOaeIwAlIZyIo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Aug 2024 11:50:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-m4ic6bApgizDNEe93SNXAl7cf9TV4gkOaeIwAlIZyIo="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/blazorise.min.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\blazorise.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "59855"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UwFaM6PwFvXXRHHWGK9DhaOKnK0wvSKVqCWHYaMudY4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Aug 2024 11:50:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UwFaM6PwFvXXRHHWGK9DhaOKnK0wvSKVqCWHYaMudY4="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/breakpoint.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\breakpoint.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2379"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JhaI1xXnywN8viG6dIVM6CsVG8f8gNdVIn7XpGEIWh4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JhaI1xXnywN8viG6dIVM6CsVG8f8gNdVIn7XpGEIWh4="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/button.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\button.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "946"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5HnC1tqDz97Jgij+oCPguDGlprJOI2WZZ5PLNdL3+R8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5HnC1tqDz97Jgij+oCPguDGlprJOI2WZZ5PLNdL3+R8="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/closable.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\closable.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5188"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ixv4O0t21NpbZR6d0ORC1WkQHljTvIS5MBs3lRDN3No=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ixv4O0t21NpbZR6d0ORC1WkQHljTvIS5MBs3lRDN3No="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/colorPicker.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\colorPicker.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7451"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z1QkhMm0X5DbPUfuDPDpW1wNKbZcEIq1DYMj1Lz0eog=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-z1QkhMm0X5DbPUfuDPDpW1wNKbZcEIq1DYMj1Lz0eog="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/datePicker.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\datePicker.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14398"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lPADSsCFOpxS/J3AFLkl4Tahn6Fe7/BcXBYLDsJXsPE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lPADSsCFOpxS/J3AFLkl4Tahn6Fe7/BcXBYLDsJXsPE="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/dragDrop.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dragDrop.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2437"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LR45SV6Zevba86ezuTY9ttTG/er0UGSI9WZ41k16dBw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LR45SV6Zevba86ezuTY9ttTG/er0UGSI9WZ41k16dBw="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/dropdown.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\dropdown.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1372"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jTKyswNaur56yfbzkDpqBf16x6KJUzjPJe6X6mtD8Mg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jTKyswNaur56yfbzkDpqBf16x6KJUzjPJe6X6mtD8Mg="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/fileEdit.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\fileEdit.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5695"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"20ZI2wFEbxKRgYAMnPularlZigeOQE2ArJXf4wNpzNo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-20ZI2wFEbxKRgYAMnPularlZigeOQE2ArJXf4wNpzNo="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/filePicker.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\filePicker.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2245"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2buDtxX1KgnzlEFuNpU8o7vg2oMTyL0WycEBBl3bQZs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2buDtxX1KgnzlEFuNpU8o7vg2oMTyL0WycEBBl3bQZs="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/floatingUi.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\floatingUi.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1681"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D6Zj4UGxTJBCpQqcwRaWb5qSeEknuQEnHGKz860hQcA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-D6Zj4UGxTJBCpQqcwRaWb5qSeEknuQEnHGKz860hQcA="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/inputMask.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\inputMask.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2605"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aciEeokk+2Yju2vhuk+O1GPd7ipadoE5iB3SRqMHxNI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aciEeokk+2Yju2vhuk+O1GPd7ipadoE5iB3SRqMHxNI="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/io.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\io.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mbKL6XwKZyyrts0POi77EYKAsiuPcX8ZEDw5bwtQtFY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mbKL6XwKZyyrts0POi77EYKAsiuPcX8ZEDw5bwtQtFY="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/memoEdit.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\memoEdit.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3592"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kRl/XGvolSdU2zgwENTDOX2QS4LETeU1kym4Kj2sU6M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kRl/XGvolSdU2zgwENTDOX2QS4LETeU1kym4Kj2sU6M="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/numericPicker.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\numericPicker.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7349"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VNvHc6M/HtZDyUPSRzu2u0f+3uyHW3mItEJhWasUfT4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VNvHc6M/HtZDyUPSRzu2u0f+3uyHW3mItEJhWasUfT4="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/observer.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\observer.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3682"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UL7yfMvnqDrtwAkFBxgGYL+5hCO9VDCJ94lmA5Ry130=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UL7yfMvnqDrtwAkFBxgGYL+5hCO9VDCJ94lmA5Ry130="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/table.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\table.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7736"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KpuVYmizMjHU1aUD27Ly4rJY6gxMfWifmLKQAabGvNM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KpuVYmizMjHU1aUD27Ly4rJY6gxMfWifmLKQAabGvNM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/textEdit.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\textEdit.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1719"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"W09C6DcqNpTXefqh/CgVp4CeZGbcWdewbe+oCXLciQ8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-W09C6DcqNpTXefqh/CgVp4CeZGbcWdewbe+oCXLciQ8="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/theme.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\theme.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/z7kNAcnzllfg/HxEPpf0fnn2IpUACYWcVwVa2oqnsA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/z7kNAcnzllfg/HxEPpf0fnn2IpUACYWcVwVa2oqnsA="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/timePicker.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\timePicker.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6946"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1rovY99u1WqDudBlrKriEPBclGhgwnTlfDRMRS8N6Ws=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1rovY99u1WqDudBlrKriEPBclGhgwnTlfDRMRS8N6Ws="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/tooltip.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\tooltip.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54102"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"liQ0aeIOn/dy+ABs3w6ujvRW6zmfAxAI73lvf5g42M8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-liQ0aeIOn/dy+ABs3w6ujvRW6zmfAxAI73lvf5g42M8="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/utilities.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\utilities.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9864"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"I2bqIAXseoIduIJJjj62pZHGU+imfVNfTpzO4GkG0+U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 22 Aug 2024 10:25:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-I2bqIAXseoIduIJJjj62pZHGU+imfVNfTpzO4GkG0+U="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/validators/DateTimeMaskValidator.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\DateTimeMaskValidator.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "651"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6VFRpMupxoUE443D30s91C5bFZsQ58DxuiNwbCVxLJk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6VFRpMupxoUE443D30s91C5bFZsQ58DxuiNwbCVxLJk="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/validators/NoValidator.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NoValidator.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "113"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RvdrNjHB3Z79Jf1QB/v3rjA4ib41PS+fjetwFdNiJuw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-RvdrNjHB3Z79Jf1QB/v3rjA4ib41PS+fjetwFdNiJuw="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/validators/NumericMaskValidator.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\NumericMaskValidator.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6408"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4ar0+fGtxySKLf8iZAlv7UMfP/0rO43/fn6aJjFYscE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4ar0+fGtxySKLf8iZAlv7UMfP/0rO43/fn6aJjFYscE="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/validators/RegExMaskValidator.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\validators\\RegExMaskValidator.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "633"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0JfcdT/AH07dbEAVpuaISjcVIZZmz6JaK0kpd2kRHFM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0JfcdT/AH07dbEAVpuaISjcVIZZmz6JaK0kpd2kRHFM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/vendors/autoNumeric.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\autoNumeric.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "229278"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dThViewRMpe+cFQ1zAZsNzQkylfewW7Ac5p0vxV/m8E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Aug 2024 11:50:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dThViewRMpe+cFQ1zAZsNzQkylfewW7Ac5p0vxV/m8E="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/vendors/Behave.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Behave.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9317"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QPixC/RhNy0Sx4ntFHFH0iGj3tNiFkhkh/FDWbau6LE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QPixC/RhNy0Sx4ntFHFH0iGj3tNiFkhkh/FDWbau6LE="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/vendors/flatpickr.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\flatpickr.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "62541"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TuPGTy1RSyKjfSGGz7VXOVYYoW3nhlFnCiVxIxtci88=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TuPGTy1RSyKjfSGGz7VXOVYYoW3nhlFnCiVxIxtci88="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/vendors/floating-ui.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10628"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cxuZSSJUtLW1W9nVAnm5EiMlDJ34kSIUSNACDrLG6OI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cxuZSSJUtLW1W9nVAnm5EiMlDJ34kSIUSNACDrLG6OI="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/vendors/floating-ui-core.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\floating-ui-core.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15103"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0guaW7kt/WFpp8o6esUyNY5+Wm0/Jk0sgZGfiLlpIV0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0guaW7kt/WFpp8o6esUyNY5+Wm0/Jk0sgZGfiLlpIV0="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/vendors/inputmask.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\inputmask.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "141988"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+mZGO/MfY1p0zmJh0VuKN/1cSevolIfLp+1p4yqRST0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Aug 2024 11:50:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+mZGO/MfY1p0zmJh0VuKN/1cSevolIfLp+1p4yqRST0="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/vendors/jsencrypt.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\jsencrypt.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "55434"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UYwEFy4Dt94x8agDo+K5rAAynsteCUPA/G2UQCHEvyM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UYwEFy4Dt94x8agDo+K5rAAynsteCUPA/G2UQCHEvyM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/vendors/Pickr.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\Pickr.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27690"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1gHexzaXVdeRaNA/1rkPr0sk9Wcyys2XlLgv22akhVM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1gHexzaXVdeRaNA/1rkPr0sk9Wcyys2XlLgv22akhVM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazorise/vendors/sha512.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\staticwebassets\\vendors\\sha512.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17899"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"E+LUjqfR7dS8pbN72SD0gJxBccFzMa7ZTfkInVjDPqU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Jun 2024 11:17:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-E+LUjqfR7dS8pbN72SD0gJxBccFzMa7ZTfkInVjDPqU="
+        }
+      ]
+    },
+    {
+      "Route": "4695.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\4695.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "548461"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8a/PofGyMKpUzr3Flis8dWkC7kRUAY57xeNbpnreMBU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Sep 2024 09:18:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8a/PofGyMKpUzr3Flis8dWkC7kRUAY57xeNbpnreMBU="
+        }
+      ]
+    },
+    {
+      "Route": "4695.txfpfp2wpx.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\4695.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "548461"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8a/PofGyMKpUzr3Flis8dWkC7kRUAY57xeNbpnreMBU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Sep 2024 09:18:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "txfpfp2wpx"
+        },
+        {
+          "Name": "label",
+          "Value": "4695.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8a/PofGyMKpUzr3Flis8dWkC7kRUAY57xeNbpnreMBU="
+        }
+      ]
+    },
+    {
+      "Route": "app.css",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\app.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE="
+        }
+      ]
+    },
+    {
+      "Route": "app.da95v2qkru.css",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\app.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2591"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "da95v2qkru"
+        },
+        {
+          "Name": "label",
+          "Value": "app.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-u9qEka1auR7E3rd3/8/j8hkQdSOYj9bRJ4nYiFDR1sE="
+        }
+      ]
+    },
+    {
+      "Route": "favicon.ifv42okdf2.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\favicon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1148"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ifv42okdf2"
+        },
+        {
+          "Name": "label",
+          "Value": "favicon.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg="
+        }
+      ]
+    },
+    {
+      "Route": "favicon.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\favicon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1148"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg="
+        }
+      ]
+    },
+    {
+      "Route": "FrontEndLoginSignUp.59kuvwc31d.bundle.scp.css",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FrontEndLoginSignUp.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5921"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CUEp3ZfQzc00dCs5H0KZ3higQufbJJ+JCngi+oljSLU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Sep 2024 04:18:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "59kuvwc31d"
+        },
+        {
+          "Name": "label",
+          "Value": "FrontEndLoginSignUp.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CUEp3ZfQzc00dCs5H0KZ3higQufbJJ+JCngi+oljSLU="
+        }
+      ]
+    },
+    {
+      "Route": "FrontEndLoginSignUp.bundle.scp.css",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FrontEndLoginSignUp.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5921"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CUEp3ZfQzc00dCs5H0KZ3higQufbJJ+JCngi+oljSLU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Sep 2024 04:18:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CUEp3ZfQzc00dCs5H0KZ3higQufbJJ+JCngi+oljSLU="
+        }
+      ]
+    },
+    {
+      "Route": "FrontEndLoginSignUp.p9qu0iymrk.styles.css",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndLoginSignUp.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Sep 2024 04:18:14 GMT"
+        },
+        {
+          "Name": "Link",
+          "Value": "<_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css>; rel=\"preload\"; as=\"style\", <_content/Blazored.Modal/Blazored.Modal.bundle.scp.css>; rel=\"preload\"; as=\"style\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p9qu0iymrk"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo="
+        },
+        {
+          "Name": "label",
+          "Value": "FrontEndLoginSignUp.styles.css"
+        }
+      ]
+    },
+    {
+      "Route": "FrontEndLoginSignUp.styles.css",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndLoginSignUp.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6059"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Sep 2024 04:18:14 GMT"
+        },
+        {
+          "Name": "Link",
+          "Value": "<_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css>; rel=\"preload\"; as=\"style\", <_content/Blazored.Modal/Blazored.Modal.bundle.scp.css>; rel=\"preload\"; as=\"style\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo="
+        }
+      ]
+    },
+    {
+      "Route": "general.3mgoubozbc.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\general.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14248219"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5WsxQlIiZlXJl2WULfjl4k7o9NT1jx0jFqeUoohMERA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Sep 2024 04:00:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3mgoubozbc"
+        },
+        {
+          "Name": "label",
+          "Value": "general.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5WsxQlIiZlXJl2WULfjl4k7o9NT1jx0jFqeUoohMERA="
+        }
+      ]
+    },
+    {
+      "Route": "general.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\general.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14248219"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5WsxQlIiZlXJl2WULfjl4k7o9NT1jx0jFqeUoohMERA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Sep 2024 04:00:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5WsxQlIiZlXJl2WULfjl4k7o9NT1jx0jFqeUoohMERA="
+        }
+      ]
+    },
+    {
+      "Route": "home_services.jpeg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home_services.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "30724"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FpbDGf18wvtCXLlNuWuh6hVCifR/HsoK+kwMEHewUAU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Sep 2024 03:39:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FpbDGf18wvtCXLlNuWuh6hVCifR/HsoK+kwMEHewUAU="
+        }
+      ]
+    },
+    {
+      "Route": "home_services.qj153nuiej.jpeg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\home_services.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "30724"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FpbDGf18wvtCXLlNuWuh6hVCifR/HsoK+kwMEHewUAU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Sep 2024 03:39:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qj153nuiej"
+        },
+        {
+          "Name": "label",
+          "Value": "home_services.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FpbDGf18wvtCXLlNuWuh6hVCifR/HsoK+kwMEHewUAU="
+        }
+      ]
+    },
+    {
+      "Route": "icons/cleaning-staff.ktns6ujgzn.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\cleaning-staff.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25145"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aGrBoXJlDaqHacPLfUZ8LB9NVKl3taAWBWs31mmoETI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ktns6ujgzn"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/cleaning-staff.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aGrBoXJlDaqHacPLfUZ8LB9NVKl3taAWBWs31mmoETI="
+        }
+      ]
+    },
+    {
+      "Route": "icons/cleaning-staff.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\cleaning-staff.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25145"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aGrBoXJlDaqHacPLfUZ8LB9NVKl3taAWBWs31mmoETI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aGrBoXJlDaqHacPLfUZ8LB9NVKl3taAWBWs31mmoETI="
+        }
+      ]
+    },
+    {
+      "Route": "icons/emails.m3rggd0jta.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\emails.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6890"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MhGk5CB3U4oxoj0aR1bSXjm382vA0i98NsldKy2ozy4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Sep 2024 08:47:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m3rggd0jta"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/emails.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MhGk5CB3U4oxoj0aR1bSXjm382vA0i98NsldKy2ozy4="
+        }
+      ]
+    },
+    {
+      "Route": "icons/emails.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\emails.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6890"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MhGk5CB3U4oxoj0aR1bSXjm382vA0i98NsldKy2ozy4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Sep 2024 08:47:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MhGk5CB3U4oxoj0aR1bSXjm382vA0i98NsldKy2ozy4="
+        }
+      ]
+    },
+    {
+      "Route": "icons/home (2).png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\home (2).png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OpVH+pM90tIjz+ZSNY/ekS3o716H8/RUWrNJgS3dBvY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OpVH+pM90tIjz+ZSNY/ekS3o716H8/RUWrNJgS3dBvY="
+        }
+      ]
+    },
+    {
+      "Route": "icons/home (2).urtm11dlcm.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\home (2).png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OpVH+pM90tIjz+ZSNY/ekS3o716H8/RUWrNJgS3dBvY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "urtm11dlcm"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/home (2).png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OpVH+pM90tIjz+ZSNY/ekS3o716H8/RUWrNJgS3dBvY="
+        }
+      ]
+    },
+    {
+      "Route": "icons/key.5wjgvyudkj.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\key.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16777"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tS/9Kfw8j/Y5TdCpNc71Vqrgf9nqPDf5TEqhHYm2g+4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5wjgvyudkj"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/key.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tS/9Kfw8j/Y5TdCpNc71Vqrgf9nqPDf5TEqhHYm2g+4="
+        }
+      ]
+    },
+    {
+      "Route": "icons/key.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\key.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16777"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tS/9Kfw8j/Y5TdCpNc71Vqrgf9nqPDf5TEqhHYm2g+4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tS/9Kfw8j/Y5TdCpNc71Vqrgf9nqPDf5TEqhHYm2g+4="
+        }
+      ]
+    },
+    {
+      "Route": "icons/land.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\land.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12201"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/cb89X0lyeqUJsqF4Di9dxTGStVnBgLdty4t+8ZiAVI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/cb89X0lyeqUJsqF4Di9dxTGStVnBgLdty4t+8ZiAVI="
+        }
+      ]
+    },
+    {
+      "Route": "icons/land.rmx3coo4rs.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\land.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12201"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/cb89X0lyeqUJsqF4Di9dxTGStVnBgLdty4t+8ZiAVI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rmx3coo4rs"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/land.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/cb89X0lyeqUJsqF4Di9dxTGStVnBgLdty4t+8ZiAVI="
+        }
+      ]
+    },
+    {
+      "Route": "icons/money.5167rv62yj.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\money.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "61271"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SdGntbmxfrsdMQnYT9YnzIVuk2ka92xbanCrILLy7ZQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5167rv62yj"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/money.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SdGntbmxfrsdMQnYT9YnzIVuk2ka92xbanCrILLy7ZQ="
+        }
+      ]
+    },
+    {
+      "Route": "icons/money.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\money.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "61271"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SdGntbmxfrsdMQnYT9YnzIVuk2ka92xbanCrILLy7ZQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SdGntbmxfrsdMQnYT9YnzIVuk2ka92xbanCrILLy7ZQ="
+        }
+      ]
+    },
+    {
+      "Route": "icons/notifications.pah4y2367x.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\notifications.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7977"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"b3WiUsO3BK2SYru9Jls4eX2ogR5oKxI9+tGnAL4NCJw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Sep 2024 08:46:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pah4y2367x"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/notifications.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-b3WiUsO3BK2SYru9Jls4eX2ogR5oKxI9+tGnAL4NCJw="
+        }
+      ]
+    },
+    {
+      "Route": "icons/notifications.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\notifications.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7977"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"b3WiUsO3BK2SYru9Jls4eX2ogR5oKxI9+tGnAL4NCJw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Sep 2024 08:46:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-b3WiUsO3BK2SYru9Jls4eX2ogR5oKxI9+tGnAL4NCJw="
+        }
+      ]
+    },
+    {
+      "Route": "icons/profile.p6ok3lqfgg.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\profile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32174"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cW6ojrhfnHRLeIsoWlhQSp2Z+Bj0W/n6vIN9P5GOjH0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p6ok3lqfgg"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/profile.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cW6ojrhfnHRLeIsoWlhQSp2Z+Bj0W/n6vIN9P5GOjH0="
+        }
+      ]
+    },
+    {
+      "Route": "icons/profile.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\profile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32174"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cW6ojrhfnHRLeIsoWlhQSp2Z+Bj0W/n6vIN9P5GOjH0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cW6ojrhfnHRLeIsoWlhQSp2Z+Bj0W/n6vIN9P5GOjH0="
+        }
+      ]
+    },
+    {
+      "Route": "icons/setting.cgx8kzpmc8.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\setting.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22552"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XGvpRkQM9U0mfscTkrzpNflIdJ9E/qFSjQezXRQhZaM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Sep 2024 08:48:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cgx8kzpmc8"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/setting.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XGvpRkQM9U0mfscTkrzpNflIdJ9E/qFSjQezXRQhZaM="
+        }
+      ]
+    },
+    {
+      "Route": "icons/setting.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\setting.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22552"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XGvpRkQM9U0mfscTkrzpNflIdJ9E/qFSjQezXRQhZaM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Sep 2024 08:48:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XGvpRkQM9U0mfscTkrzpNflIdJ9E/qFSjQezXRQhZaM="
+        }
+      ]
+    },
+    {
+      "Route": "icons/user.li65laxhs3.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\user.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9600"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"w2LsGsV93iTnv/TnFFv9g9P9DqRhsMzeMnIspZ9gkM4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "li65laxhs3"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/user.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-w2LsGsV93iTnv/TnFFv9g9P9DqRhsMzeMnIspZ9gkM4="
+        }
+      ]
+    },
+    {
+      "Route": "icons/user.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\user.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9600"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"w2LsGsV93iTnv/TnFFv9g9P9DqRhsMzeMnIspZ9gkM4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-w2LsGsV93iTnv/TnFFv9g9P9DqRhsMzeMnIspZ9gkM4="
+        }
+      ]
+    },
+    {
+      "Route": "login.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\login.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "364931"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v7ptJckJKqCQg9XUTcuRtdi7vMHGCDoWAqQI3Eh5I0M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Sep 2024 07:42:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-v7ptJckJKqCQg9XUTcuRtdi7vMHGCDoWAqQI3Eh5I0M="
+        }
+      ]
+    },
+    {
+      "Route": "login.t5fmny5bf1.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\login.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "364931"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v7ptJckJKqCQg9XUTcuRtdi7vMHGCDoWAqQI3Eh5I0M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Sep 2024 07:42:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t5fmny5bf1"
+        },
+        {
+          "Name": "label",
+          "Value": "login.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-v7ptJckJKqCQg9XUTcuRtdi7vMHGCDoWAqQI3Eh5I0M="
+        }
+      ]
+    },
+    {
+      "Route": "mobile.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\mobile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "202434"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wz1SECNpSjnJ/KknfascuyO10BKqkrYgGv/la/Ek8UQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wz1SECNpSjnJ/KknfascuyO10BKqkrYgGv/la/Ek8UQ="
+        }
+      ]
+    },
+    {
+      "Route": "mobile.xzz4fld2eb.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\mobile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "202434"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wz1SECNpSjnJ/KknfascuyO10BKqkrYgGv/la/Ek8UQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Sep 2024 17:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xzz4fld2eb"
+        },
+        {
+          "Name": "label",
+          "Value": "mobile.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wz1SECNpSjnJ/KknfascuyO10BKqkrYgGv/la/Ek8UQ="
+        }
+      ]
+    },
+    {
+      "Route": "property.8uppaycs5h.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\property.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6753060"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ECGJMDSXaGNGFYV4CJO4mWXbdQCYqtlXsBJtwA+cKB8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Sep 2024 04:02:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8uppaycs5h"
+        },
+        {
+          "Name": "label",
+          "Value": "property.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ECGJMDSXaGNGFYV4CJO4mWXbdQCYqtlXsBJtwA+cKB8="
+        }
+      ]
+    },
+    {
+      "Route": "property.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\property.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6753060"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ECGJMDSXaGNGFYV4CJO4mWXbdQCYqtlXsBJtwA+cKB8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Sep 2024 04:02:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ECGJMDSXaGNGFYV4CJO4mWXbdQCYqtlXsBJtwA+cKB8="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/m.9giabv0oul.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\m.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103555"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Dec 2024 20:01:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "9giabv0oul"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/m.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/m.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\m.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103555"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Dec 2024 20:01:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.9giabv0oul.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103555"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Dec 2024 20:24:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "9giabv0oul"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\modern-glossy-music-event-poster-design-template-84d38a706368baec17981e71a5e5810d_screen.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103555"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 03 Dec 2024 20:24:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6UJjY6inzd5tHBllvM5ix92yJx9Ufri/E+CJtEMGsCM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/WhatsApp Image 2024-11-23 at 18.41.25_297f1861.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\WhatsApp Image 2024-11-23 at 18.41.25_297f1861.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22238"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1b07+8mFpPNSOAybggeCfM0314Ec6F8LZ4TNYWUI/wY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 15 Dec 2024 16:26:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1b07+8mFpPNSOAybggeCfM0314Ec6F8LZ4TNYWUI/wY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/WhatsApp Image 2024-11-23 at 18.41.25_297f1861.tuwqp7mwqs.jpg",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\uploads\\WhatsApp Image 2024-11-23 at 18.41.25_297f1861.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22238"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1b07+8mFpPNSOAybggeCfM0314Ec6F8LZ4TNYWUI/wY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 15 Dec 2024 16:26:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tuwqp7mwqs"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/WhatsApp Image 2024-11-23 at 18.41.25_297f1861.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1b07+8mFpPNSOAybggeCfM0314Ec6F8LZ4TNYWUI/wY="
+        }
+      ]
     }
   ]
 }

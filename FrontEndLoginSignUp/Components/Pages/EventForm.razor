@@ -1,9 +1,12 @@
 ﻿@using System.ComponentModel.DataAnnotations
 @using ClassLibraryModel
+@using CloudinaryDotNet;
+@using CloudinaryDotNet.Actions;
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager Navigation
 @inject UserService UserService
 @inject IWebHostEnvironment Environment
+
 
 <div class="card mt-4">
     <div class="card-body">
@@ -67,6 +70,7 @@
 </div>
 
 @code {
+
     [Parameter] public EventModels Event { get; set; } = new EventModels();
     [Parameter] public EventCallback<EventModels> OnSave { get; set; }
     [Parameter] public EventCallback OnCancel { get; set; }
@@ -74,6 +78,7 @@
     public string HS_Name { get; set; }
     public string ErrorMessage { get; set; }
     public string SuccessMessage { get; set; }
+
 
     protected override void OnInitialized()
     {
@@ -100,7 +105,7 @@
             if (response1.IsSuccessStatusCode)
             {
                 Event.A_id = await response1.Content.ReadAsStringAsync();
-                Event.Picture ??= "default_event.png"; // Default picture if none uploaded
+                Event.Picture ??= null; // Default picture if none uploaded
                 var response = await client.PostAsJsonAsync("api/Events", Event);
 
                 if (response.IsSuccessStatusCode)
@@ -124,21 +129,52 @@
         }
     }
 
+
+
     private async Task HandleFileSelected(InputFileChangeEventArgs e)
     {
         try
         {
+            // Get the selected file
             var file = e.File;
-            var filePath = Path.Combine(Environment.WebRootPath, "uploads", file.Name);
 
-            // Ensure the directory exists
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            // Configure Cloudinary
+            var account = new Account(
+                "dn2cehj04",              // Cloud name
+                "892661252848354",        // API key
+                "<your_api_secret>"       // API secret
+            );
 
-            await using var fileStream = new FileStream(filePath, FileMode.Create);
-            await file.OpenReadStream().CopyToAsync(fileStream);
+            var cloudinary = new Cloudinary(account);
 
-            // Save the relative path to the Picture field
-            Event.Picture = $"uploads/{file.Name}";
+            // Read the file into a memory stream
+            await using var memoryStream = new MemoryStream();
+            await file.OpenReadStream().CopyToAsync(memoryStream);
+            memoryStream.Position = 0;
+
+            // Set upload parameters for the file
+            var uploadParams = new ImageUploadParams()
+                {
+                    File = new FileDescription(file.Name, memoryStream),  // Pass the file stream
+                    UseFilename = true,  // Use the original file name
+                    UniqueFilename = false,  // Avoid generating a unique name
+                    Overwrite = true  // Allow overwriting existing files
+                };
+
+            // Upload the image to Cloudinary
+            var uploadResult = await cloudinary.UploadAsync(uploadParams);
+
+            // Check the upload result
+            if (uploadResult.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                // Save the secure URL returned by Cloudinary
+                Event.Picture = uploadResult.SecureUrl.ToString();
+                Console.WriteLine($"Uploaded image URL: {Event.Picture}");
+            }
+            else
+            {
+                ErrorMessage = $"Cloudinary upload failed: {uploadResult.Error.Message}";
+            }
         }
         catch (Exception ex)
         {

@@ -4,14 +4,23 @@
 
 <header class="header">
     <div class="logo">
-        <h2>HomeSphere</h2> <!-- Changed to match clean design -->
+        <h2>HomeSphere</h2>
     </div>
     <nav class="nav">
         <a href="/login">Login</a>
         <a href="/register">Register</a>
         <a href="#">Download</a>
     </nav>
+    <div class="mobile-menu-btn" @onclick="ToggleMobileMenu">
+        ☰
+    </div>
 </header>
+
+<div class="mobile-menu @(showMobileMenu ? "show" : "hide")">
+    <a href="/login" @onclick="ToggleMobileMenu">Login</a>
+    <a href="/register" @onclick="ToggleMobileMenu">Register</a>
+    <a href="#" @onclick="ToggleMobileMenu">Download</a>
+</div>
 
 <div class="landing-page">
     <!-- Hero Section -->
@@ -22,35 +31,46 @@
             <button class="cta-button" @onclick="onClick">Get Started</button>
         </div>
         <div class="hero-image">
-            <img src="icons/home (2).png" alt="Professional using tablet" height="350px "> <!-- Image of the man with the tablet -->
+            <img src="icons/home (2).png" alt="Professional using tablet" height="350px">
         </div>
     </section>
 
-    <!-- Services Section -->
     <!-- Features Section -->
     <section class="features">
         <h2>Key Features</h2>
         <div class="features-grid">
             <div class="feature-item">
                 <div class="feature-icon">
-                    <img src="property.jpg" alt="Sync Data Icon"> <!-- Add an appropriate icon here -->
+                    <img src="property.jpg" alt="Sync Data Icon">
                 </div>
                 <h3>Sync Your Property Data</h3>
                 <p>Easily manage your property listings and updates from one place.</p>
             </div>
             <div class="feature-item">
                 <div class="feature-icon">
-                    <img src="general.jpg" alt="Manage Listings Icon"> <!-- Add an appropriate icon here -->
+                    <img src="general.jpg" alt="Manage Listings Icon">
                 </div>
                 <h3>Manage Property Listings</h3>
                 <p>Effortlessly add, update, and delete property listings with our intuitive interface.</p>
             </div>
             <div class="feature-item">
                 <div class="feature-icon">
-                    <img src="home_services.jpeg" alt="Task Management Icon"> <!-- Add an appropriate icon here -->
+                    <img src="home_services.jpeg" alt="Task Management Icon">
                 </div>
                 <h3>Track and Manage Tasks</h3>
                 <p>Stay on top of all property-related tasks with our task management feature.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner">
+        <div class="banner-content">
+            <h2>Unlock HomeSphere Feature Of Grocery</h2>
+            <p>Create your account today to access all grocery management tools and services.</p>
+            <div class="banner-buttons">
+                <button class="banner-btn signin-btn" >Sign In</button>
+                <button class="banner-btn signup-btn" >Sign Up</button>
             </div>
         </div>
     </section>
@@ -76,18 +96,16 @@
                         <h4>Register Complaints</h4>
                         <p>Easily register complaints regarding any issues in your society and track the resolution status in real-time.</p>
                     </li>
-                  
                 </ul>
                 <button class="cta-button">Download</button>
             </div>
         </div>
     </section>
 
-
     <!-- Contact Section -->
     <section class="contact-section">
         <h2>Don't Hesitate to Contact Us</h2>
-        <p>Have any questions or inquiries? We’re here to help!</p>
+        <p>Have any questions or inquiries? We're here to help!</p>
         <button class="cta-button">Contact Us</button>
     </section>
 </div>
@@ -100,10 +118,11 @@
     /* Global Styles */
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #f8faff; /* Light blue background */
+        background-color: #f8faff;
         color: #333;
         margin: 0;
         padding: 0;
+        overflow-x: hidden;
     }
 
     .header {
@@ -113,6 +132,7 @@
         justify-content: space-between;
         align-items: center;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
     }
 
         .header .logo h2 {
@@ -132,18 +152,53 @@
                 color: #48B7FF;
             }
 
+    .mobile-menu-btn {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #0468d7;
+    }
+
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 20px;
+    }
+
+        .mobile-menu.show {
+            display: flex;
+        }
+
+        .mobile-menu.hide {
+            display: none;
+        }
+
+        .mobile-menu a {
+            padding: 10px 0;
+            color: #0468d7;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+        }
+
     /* Hero Section */
     .hero {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 80px 20px;
-        background-image: url('4695.jpg'); /* Background image */
-        background-size: cover; /* Ensures the image covers the whole area */
-        background-position: center; /* Centers the image */
-        background-repeat: no-repeat;
-        position: relative; /* Ensures the content inside is positioned correctly */
-        color: #fff; /* Text color on top of the background image */
+        background-image: url('4695.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        color: #fff;
+        flex-wrap: wrap;
     }
 
         .hero::before {
@@ -153,17 +208,19 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0); /* Optional: dark overlay to improve text readability */
+            background: rgba(0, 0, 0, 0);
             z-index: 1;
         }
 
     .hero-content {
         max-width: 600px;
         z-index: 2;
+        flex: 1;
+        min-width: 300px;
     }
 
         .hero-content h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             color: #333;
             margin-bottom: 20px;
         }
@@ -175,17 +232,160 @@
     .hero-content p {
         font-size: 1.2em;
         margin-bottom: 30px;
-        color:black;
+        color: black;
     }
 
-    .hero-image img {
-        max-width: 100%;
-
-        border-radius: 10px;
-        padding-right:5vw;
-        height:50vh;
+    .hero-image {
+        flex: 1;
+        min-width: 300px;
+        text-align: center;
     }
 
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            padding-right: 5vw;
+            height: auto;
+            max-height: 350px;
+        }
+
+    /* Features Section */
+    .features {
+        padding: 60px 20px;
+        background-color: #ffffff;
+        text-align: center;
+    }
+
+        .features h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .feature-item {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #0468d7;
+            padding: 0 20px;
+            margin-top: 20px;
+        }
+
+        .feature-item p {
+            color: #666;
+            padding: 0 20px 20px;
+            margin-top: 0;
+            flex-grow: 1;
+        }
+
+    .feature-icon img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* Promo Banner */
+    .promo-banner {
+        background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 80px 20px;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+    .banner-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .promo-banner h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .promo-banner p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
+
+    .banner-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .banner-btn {
+        padding: 12px 30px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        border: 2px solid white;
+        font-weight: bold;
+    }
+
+    .signin-btn {
+        background-color: transparent;
+        color: white;
+    }
+
+        .signin-btn:hover {
+            background-color: white;
+            color: #0468d7;
+        }
+
+    .signup-btn {
+        background-color: #0468d7;
+        color: white;
+        border-color: #0468d7;
+    }
+
+        .signup-btn:hover {
+            background-color: #0254b3;
+            border-color: #0254b3;
+        }
+
+    /* CTA Button */
     .cta-button {
         padding: 15px 30px;
         background-color: #0468d7;
@@ -201,203 +401,37 @@
             background-color: #0254b3;
         }
 
-    /* Services Section */
-    .services-section {
-        padding: 60px 20px;
-        text-align: center;
-    }
-
-        .services-section h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-        }
-
-    .services-grid {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .service-item {
-        max-width: 250px;
-        text-align: center;
-    }
-
-        .service-item img {
-            width: 80px;
-            margin-bottom: 20px;
-        }
-
-        .service-item h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .service-item p {
-            font-size: 1em;
-            color: #666;
-        }
-
-    /* Projects Section */
-    .projects-section {
-        padding: 60px 20px;
-        background-color: #f8faff;
-        text-align: center;
-    }
-
-        .projects-section h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-        }
-
-    .projects-grid {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .project-item {
-        text-align: center;
-    }
-
-        .project-item img {
-            max-width: 200px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .project-item p {
-            font-size: 1.1em;
-            color: #333;
-        }
-
-    /* Testimonials Section */
-    .testimonials-section {
-        padding: 60px 20px;
-        text-align: center;
-    }
-
-        .testimonials-section h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-        }
-
-    .testimonial {
-        max-width: 600px;
-        margin: 0 auto;
-        font-size: 1.2em;
-        color: #555;
-    }
-
-    /* Contact Section */
-    .contact-section {
-        padding: 60px 20px;
-        text-align: center;
-    }
-
-        .contact-section h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        .contact-section p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-
-    .footer {
-        padding: 20px;
-        background-color: #f1f1f1;
-        text-align: center;
-    }
-    /* Features Section */
-.features {
-    padding: 60px 20px;
-    background-color: #f8faff;
-    text-align: center;
-}
-
-.features h2 {
-    font-size: 2.5em;
-    margin-bottom: 40px;
-    color: #333;
-}
-
-.features-grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.feature-item {
-    background-color: white;
-    margin: 15px;
-    max-width: 300px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
- 
-}
-
-.feature-item:hover {
-    transform: translateY(-10px);
-}
-
-.feature-item h3 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    color: #0468d7;
-    padding:10px;
-}
-
-.feature-item p {
-    color: #666;
-            padding: 10px;
-}
-
-.feature-icon img {
-    width:100%;
-    height:35vh;
-    margin-bottom: 20px;
-    border-radius: 15px;
-
-
-}
-/* HomeSphere Mobile App Features Section */
-/* HomeSphere Mobile App Features Section */
+    /* Mobile App Section */
     .features-section {
-        display: flex;
-        justify-content: space-around; /* Center content */
-        align-items: stretch; /* Ensure both sections stretch equally */
         padding: 60px 20px;
         background-color: #f8faff;
     }
 
     .features-container {
         display: flex;
-        align-items: stretch; /* Ensure items are the same height */
+        align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 40px;
     }
 
     .mockup {
         flex: 1;
-        max-width: 500px; /* Keep a maximum width */
-        margin-right: 30px; /* Space between mockup and content */
+        min-width: 300px;
     }
 
     .mockup-image {
         max-width: 100%;
         border-radius: 15px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        height: auto; /* Maintain aspect ratio */
+        height: auto;
     }
 
     .features-content {
         flex: 1;
-        max-width: 500px; /* Keep a maximum width */
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        justify-content: space-between; /* Space out items evenly */
+        min-width: 300px;
     }
 
         .features-content h3 {
@@ -410,7 +444,6 @@
         list-style: none;
         padding: 0;
         margin: 20px 0;
-        flex-grow: 1; /* Allow the list to grow and fill available space */
     }
 
         .features-list li {
@@ -418,7 +451,7 @@
         }
 
         .features-list h4 {
-            font-size: 1em;
+            font-size: 1.2em;
             color: #333;
             margin-bottom: 10px;
         }
@@ -427,33 +460,133 @@
             color: #666;
         }
 
-    .cta-button {
-        padding: 10px 15px;
-        background-color: #0468d7;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 1.1em;
-        transition: background-color 0.3s ease;
-        align-self:center;
-        width:20vw;
+    /* Contact Section */
+    .contact-section {
+        padding: 60px 20px;
+        text-align: center;
+        background-color: #ffffff;
     }
 
-        .cta-button:hover {
-            background-color: #0254b3;
+        .contact-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
         }
 
-/* Responsive Design for Mobile App Section */
+        .contact-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
 
+    /* Footer */
+    .footer {
+        padding: 20px;
+        background-color: #0468d7;
+        text-align: center;
+        color: white;
+    }
 
+    /* Responsive Design */
+   @@media (max-width: 768px) {
+        .header .nav
 
+    {
+        display: none;
+    }
 
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .hero-content {
+        margin-bottom: 40px;
+    }
+
+    .hero-image img {
+        padding-right: 0;
+        max-height: 300px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .promo-banner h2 {
+        font-size: 2em;
+    }
+
+    .promo-banner p {
+        font-size: 1em;
+    }
+
+    .banner-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner-btn {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    .features-container {
+        flex-direction: column;
+    }
+
+    .mockup {
+        margin-bottom: 40px;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+
+    }
+
+    @@media (max-width: 480px) {
+        .hero-content h1
+
+    {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .promo-banner {
+        padding: 60px 20px;
+    }
+
+        .promo-banner h2 {
+            font-size: 1.8em;
+        }
+
+    .features-content h3 {
+        font-size: 1.8em;
+    }
+
+    }
 </style>
 
 @code {
+    private bool showMobileMenu = false;
+
     public void onClick()
     {
         Navigation.NavigateTo("/login");
+    }
+
+    private void ToggleMobileMenu()
+    {
+        showMobileMenu = !showMobileMenu;
+        StateHasChanged();
     }
 }

@@ -169,7 +169,7 @@
           "lib/net8.0/Blazorise.Licensing.dll": {}
         }
       },
-      "CloudinaryDotNet/1.27.0": {
+      "CloudinaryDotNet/1.27.5": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
@@ -2590,16 +2590,16 @@
         "lib/net8.0/Blazorise.Licensing.dll"
       ]
     },
-    "CloudinaryDotNet/1.27.0": {
-      "sha512": "cGhfo1KE1NuBaHqcNCre69+ROLnEwB0lKoX1Rw8A5km4ehdawyq6PJGc3HK5bv363NO1S4M29TAPkMfqc9Bq2w==",
+    "CloudinaryDotNet/1.27.5": {
+      "sha512": "wYq4VGuy6o49XMG97jITrXM//4a60Lf5WzuvDcn7tpPrkYJMnaRuAl1xA9CsHlKzxOD1MYRmUYxQGSbcEG1TMQ==",
       "type": "package",
-      "path": "cloudinarydotnet/1.27.0",
+      "path": "cloudinarydotnet/1.27.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "CloudinaryIcon.png",
         "README.md",
-        "cloudinarydotnet.1.27.0.nupkg.sha512",
+        "cloudinarydotnet.1.27.5.nupkg.sha512",
         "cloudinarydotnet.nuspec",
         "lib/net452/CloudinaryDotNet.dll",
         "lib/net452/CloudinaryDotNet.xml",
@@ -7130,7 +7130,7 @@
       "Blazorise >= 1.6.1",
       "Blazorise.Charts >= 1.6.1",
       "ClassLibraryModel >= 1.0.0",
-      "CloudinaryDotNet >= 1.27.0",
+      "CloudinaryDotNet >= 1.27.5",
       "DALLibrary >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.7",
       "Microsoft.AspNetCore.Authorization >= 8.0.8",
@@ -7226,7 +7226,7 @@
           },
           "CloudinaryDotNet": {
             "target": "Package",
-            "version": "[1.27.0, )"
+            "version": "[1.27.5, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",

@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCaWxscy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/BillStatus.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCaWxsU3RhdHVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Complain.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wbGFpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

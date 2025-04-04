@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0exKPeNCYl0=",
+  "dgSpecHash": "XL2VaLp/3nE=",
   "success": true,
   "projectFilePath": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "C:\\Users\\User\\.nuget\\packages\\blazorise\\1.6.1\\blazorise.1.6.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\blazorise.charts\\1.6.1\\blazorise.charts.1.6.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\blazorise.licensing\\1.2.0\\blazorise.licensing.1.2.0.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\cloudinarydotnet\\1.27.0\\cloudinarydotnet.1.27.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\cloudinarydotnet\\1.27.5\\cloudinarydotnet.1.27.5.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\dotenv.net\\3.2.1\\dotenv.net.3.2.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\lambda2js\\3.1.4\\lambda2js.3.1.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.7\\microsoft.aspnetcore.authentication.jwtbearer.8.0.7.nupkg.sha512",

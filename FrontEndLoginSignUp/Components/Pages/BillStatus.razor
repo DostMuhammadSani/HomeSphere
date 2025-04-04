@@ -1,0 +1,440 @@
+﻿@page "/bill-status"
+@using Microsoft.AspNetCore.Components.Web
+@using Blazored.SessionStorage
+@using System.Security.Claims
+@inject ISessionStorageService SessionStorage
+@rendermode InteractiveServer
+
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using DALLibrary
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+
+<style>
+    .bill-container {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .page-header {
+        color: #1b6cb9;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .toolbar {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .search-box {
+        display: flex;
+        flex-grow: 1;
+        width: 100%;
+    }
+
+    .search-input {
+        padding: 0.75rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        flex-grow: 1;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .search-button, .refresh-button {
+        padding: 0.75rem 1.25rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    .search-button {
+        background-color: #1b6cb9;
+        color: white;
+        border: none;
+    }
+
+        .search-button:hover {
+            background-color: #145a9a;
+        }
+
+    .refresh-button {
+        background-color: #f8f9fa;
+        color: #1b6cb9;
+        border: 1px solid #1b6cb9;
+    }
+
+        .refresh-button:hover {
+            background-color: #e9f0f8;
+        }
+
+    .bill-table-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .bill-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+
+        .bill-table th {
+            background-color: #1b6cb9;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 500;
+            position: sticky;
+            top: 0;
+        }
+
+        .bill-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .bill-table tr:hover {
+            background-color: #f8fafd;
+        }
+
+    .status-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        display: inline-block;
+    }
+
+    .status-pending {
+        background-color: #fff3e0;
+        color: #ff9800;
+    }
+
+    .status-paid {
+        background-color: #e8f5e9;
+        color: #4caf50;
+    }
+
+    .status-overdue {
+        background-color: #ffebee;
+        color: #f44336;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 2rem 1rem;
+        color: #666;
+    }
+
+        .empty-state i {
+            font-size: 2.5rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            color: #555;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .empty-state p {
+            font-size: 1rem;
+        }
+
+    .amount {
+        font-weight: 500;
+        color: #333;
+    }
+
+    .date {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .customer-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .customer-avatar {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: #1b6cb9;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+    }
+
+    /* Responsive adjustments */
+    @@media (min-width: 768px) {
+        .toolbar {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .search-box {
+            max-width: 500px;
+        }
+
+        .button-group {
+            flex-grow: 0;
+        }
+
+        .search-button, .refresh-button {
+            flex-grow: 0;
+            width: auto;
+        }
+
+        .page-header {
+            font-size: 1.8rem;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .bill-table td, .bill-table th {
+            padding: 0.75rem 0.5rem;
+        }
+
+        .customer-info {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
+        }
+
+        .customer-avatar {
+            width: 1.5rem;
+            height: 1.5rem;
+            font-size: 0.7rem;
+        }
+    }
+</style>
+
+<div class="bill-container">
+    @if (role == "Admin")
+    {
+        <h2 class="page-header">
+            <i class="fas fa-file-invoice-dollar"></i>
+            Bill Management
+        </h2>
+
+        <div class="toolbar">
+            <div class="search-box">
+                <input class="search-input"
+                       type="text"
+                       @bind="searchTerm"
+                       @oninput="(e) => { searchTerm = e.Value.ToString(); FilterBills(); }"
+                       placeholder="Search bills..." />
+            </div>
+            <div class="button-group">
+                <button class="search-button" @onclick="() => FilterBills()">
+                    <i class="fas fa-search"></i>
+                    <span class="button-text">Search</span>
+                </button>
+                <button class="refresh-button" @onclick="LoadBills">
+                    <i class="fas fa-sync-alt"></i>
+                    <span class="button-text">Refresh</span>
+                </button>
+            </div>
+        </div>
+
+        @if (filteredBills == null)
+        {
+            <div class="empty-state">
+                <i class="fas fa-spinner fa-spin"></i>
+                <h3>Loading bills...</h3>
+            </div>
+        }
+        else if (!filteredBills.Any())
+        {
+            <div class="empty-state">
+                <i class="fas fa-file-alt"></i>
+                <h3>No bills found</h3>
+                <p>@(string.IsNullOrEmpty(searchTerm) ? "There are no bills to display." : "No bills match your search criteria.")</p>
+            </div>
+        }
+        else
+        {
+            <div class="bill-table-container">
+                <table class="bill-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Item</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Issued</th>
+                            <th>Due Date</th>
+                            <th>Fine</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bill in filteredBills)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="customer-info">
+                                        <div class="customer-avatar">
+                                            @GetInitials(bill.CNIC)
+                                        </div>
+                                        <span class="customer-cnic">@bill.CNIC</span>
+                                    </div>
+                                </td>
+                                <td>@bill.Item</td>
+                                <td class="amount">@bill.Price</td>
+                                <td>
+                                    <span class="status-badge @GetStatusClass(bill.Statuss)">
+                                        @bill.Statuss
+                                    </span>
+                                </td>
+                                <td class="date">@bill.IssueDate.ToString("dd MMM yyyy")</td>
+                                <td class="date @(IsOverdue(bill.DueDate) ? "status-overdue" : "")">
+                                    @bill.DueDate.ToString("dd MMM yyyy")
+                                </td>
+                                <td class="amount">@bill.Fine</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="empty-state">
+            <i class="fas fa-lock"></i>
+            <h3>Access Denied</h3>
+            <p>You don't have permission to view this page.</p>
+        </div>
+    }
+</div>
+
+@code {
+    private List<BillModel> bills = new List<BillModel>();
+    private List<BillModel> filteredBills = new List<BillModel>();
+    private string searchTerm = string.Empty;
+
+    private string A_id;
+    private string token;
+    public string role;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim?.Value;
+
+                if (role == "Admin")
+                {
+                    await LoadBills();
+                }
+
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task LoadBills()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Bill?A_id={A_id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                bills = await response.Content.ReadFromJsonAsync<List<BillModel>>();
+                filteredBills = bills.ToList();
+                StateHasChanged();
+            }
+        }
+    }
+
+    private void FilterBills()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredBills = bills.ToList();
+        }
+        else
+        {
+            var term = searchTerm.ToLower();
+            filteredBills = bills.Where(b =>
+                (b.Item?.ToLower().Contains(term) ?? false) ||
+                (b.CNIC?.ToLower().Contains(term) ?? false) ||
+                (b.Statuss?.ToLower().Contains(term) ?? false) ||
+                (b.Price?.ToLower().Contains(term) ?? false)
+            ).ToList();
+        }
+    }
+
+    private string GetStatusClass(string status)
+    {
+        return status?.ToLower() switch
+        {
+            "pending" => "status-pending",
+            "paid" => "status-paid",
+            "overdue" => "status-overdue",
+            _ => ""
+        };
+    }
+
+    private bool IsOverdue(DateTime dueDate)
+    {
+        return dueDate < DateTime.Now && dueDate != DateTime.MinValue;
+    }
+
+    private string GetInitials(string cnic)
+    {
+        if (string.IsNullOrEmpty(cnic) || cnic.Length < 5)
+            return "CN";
+
+        return cnic.Substring( 0, 2).ToUpper();
+    }
+}

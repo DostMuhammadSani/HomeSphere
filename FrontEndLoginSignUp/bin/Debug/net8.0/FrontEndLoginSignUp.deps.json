@@ -15,7 +15,7 @@
           "Blazorise": "1.6.1",
           "Blazorise.Charts": "1.6.1",
           "ClassLibraryModel": "1.0.0",
-          "CloudinaryDotNet": "1.27.0",
+          "CloudinaryDotNet": "1.27.5",
           "DALLibrary": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.7",
           "Microsoft.AspNetCore.Authorization": "8.0.8",
@@ -146,7 +146,7 @@
           }
         }
       },
-      "CloudinaryDotNet/1.27.0": {
+      "CloudinaryDotNet/1.27.5": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "System.Net.Http": "4.3.4",
@@ -154,8 +154,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/CloudinaryDotNet.dll": {
-            "assemblyVersion": "1.27.0.0",
-            "fileVersion": "1.27.0.0"
+            "assemblyVersion": "1.27.5.0",
+            "fileVersion": "1.27.5.0"
           }
         }
       },
@@ -1395,12 +1395,12 @@
       "path": "blazorise.licensing/1.2.0",
       "hashPath": "blazorise.licensing.1.2.0.nupkg.sha512"
     },
-    "CloudinaryDotNet/1.27.0": {
+    "CloudinaryDotNet/1.27.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cGhfo1KE1NuBaHqcNCre69+ROLnEwB0lKoX1Rw8A5km4ehdawyq6PJGc3HK5bv363NO1S4M29TAPkMfqc9Bq2w==",
-      "path": "cloudinarydotnet/1.27.0",
-      "hashPath": "cloudinarydotnet.1.27.0.nupkg.sha512"
+      "sha512": "sha512-wYq4VGuy6o49XMG97jITrXM//4a60Lf5WzuvDcn7tpPrkYJMnaRuAl1xA9CsHlKzxOD1MYRmUYxQGSbcEG1TMQ==",
+      "path": "cloudinarydotnet/1.27.5",
+      "hashPath": "cloudinarydotnet.1.27.5.nupkg.sha512"
     },
     "dotenv.net/3.2.1": {
       "type": "package",

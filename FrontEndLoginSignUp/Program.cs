@@ -3,12 +3,13 @@ using FrontEndLoginSignUp.Components;
 using System.Net.Http.Headers;
 using Blazored.SessionStorage;
 using Blazorise;
+using CloudinaryDotNet;
 // Import the required packages
 //==============================
 
-using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
+
 using dotenv.net;
+using ClassLibraryModel;
 
 // Set your Cloudinary credentials
 //=================================
@@ -16,16 +17,23 @@ using dotenv.net;
 // Load environment variables from the .env file
 DotEnv.Load(options: new DotEnvOptions(probeForEnv: true));
 
-// Cloudinary credentials
-string cloudinaryUrl = "cloudinary://892661252848354:YOUR_API_SECRET@dn2cehj04"; // Replace YOUR_API_SECRET with your actual API secret
 
-Cloudinary cloudinary = new Cloudinary(cloudinaryUrl);
-cloudinary.Api.Secure = true;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
+
+var cloudinarySettings = builder.Configuration.GetSection("Cloudinary").Get<CloudinarySettings>();
+Account account = new Account(
+    cloudinarySettings.CloudName,
+    cloudinarySettings.ApiKey,
+    cloudinarySettings.ApiSecret);
+
+builder.Services.AddSingleton(new Cloudinary(account));
+
+
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddHttpClient("AuthApi", client =>
@@ -34,7 +42,7 @@ builder.Services.AddHttpClient("AuthApi", client =>
 });
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddBlazoredSessionStorage();
-
+builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.AddBlazorBootstrap();
 var app = builder.Build();
 

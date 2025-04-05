@@ -1,0 +1,236 @@
+﻿@page "/stores"
+@rendermode InteractiveServer
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using DALLibrary
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@using Blazored.SessionStorage
+@using System.Security.Claims
+@inject ISessionStorageService SessionStorage
+
+@if (role == "Admin")
+{
+    <div style="display: flex; flex-direction: row; background-color: #f8f9fa;">
+        <Sidebars></Sidebars>
+        <div style="width: 80%; margin: 40px;">
+            <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
+                <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Stores Management</h2>
+
+                <!-- Search Box -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <input @bind="searchText" style="width: 60%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Search by Store ID, Name, Username, or Location" />
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchStores">Search</button>
+                </div>
+
+                <!-- Add Store Button -->
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="AddNewStore">Add Store</button>
+                </div>
+
+                <!-- Store Form -->
+                @if (showForm)
+                {
+                    <div style="margin-top: 20px;">
+                        @if (currentStore.StoreID == null)
+                        {
+                            <StoreForm Store="currentStore" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                        else
+                        {
+                            <UpdateStoreForm Store="currentStore" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                    </div>
+                }
+
+                <!-- Data Table -->
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #1b6cb9; color: white;">
+   
+                            <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Username</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Location</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Contact</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (filteredStores.Any())
+                        {
+                            @foreach (var store in filteredStores)
+                            {
+                                <tr style="background-color: #f8f9fa;">
+                                  
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@store.StoreName</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@store.Username</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@store.Locations</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@store.Contact</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+                                        <button style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditStore(store)">Update</button>
+                                        <button style="background-color: #1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteStore(store.StoreID)">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" style="padding: 20px; text-align: center; color: #888;">No stores found</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+    table th, table td {
+        text-align: left;
+    }
+
+    table th {
+        text-align: center;
+    }
+</style>
+
+@code {
+    private List<StoreModel> stores = new List<StoreModel>();
+    private List<StoreModel> filteredStores = new List<StoreModel>();
+    private StoreModel currentStore;
+    private bool showForm;
+    private string A_id;
+    private string token;
+    public string role;
+    private string searchText = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim.Value;
+                StateHasChanged();
+                await LoadStores();
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task LoadStores()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Stores?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                stores = await response.Content.ReadFromJsonAsync<List<StoreModel>>();
+                filteredStores = stores;
+            }
+        }
+    }
+
+    private void AddNewStore()
+    {
+        currentStore = new StoreModel();
+        showForm = true;
+    }
+
+    private void EditStore(StoreModel store)
+    {
+        currentStore = store;
+        showForm = true;
+    }
+
+    private async void DeleteStore(string storeId)
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var store = stores.FirstOrDefault(s => s.StoreID == storeId);
+
+        if (store == null)
+        {
+            Console.WriteLine($"Store with ID {storeId} not found in the list.");
+            return;
+        }
+
+        try
+        {
+            // Delete store first
+            var response = await client.DeleteAsync($"api/Auth/deleteshopkeeper/{store.Username}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Then delete the associated user
+                var userResponse = await client.DeleteAsync($"api/Stores?StoreID={storeId}");
+
+                if (!userResponse.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"Warning: User deleted but failed to delete Store '{store.Username}'. Status: {userResponse.StatusCode}");
+                }
+
+                stores.Remove(store);
+                filteredStores.Remove(store);
+                StateHasChanged();
+            }
+            else
+            {
+                Console.WriteLine($"Failed to delete store. Status: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred during deletion: {ex.Message}");
+        }
+    }
+
+    private async void HandleSave(StoreModel savedStore)
+    {
+        await LoadStores();
+        showForm = false;
+        StateHasChanged();
+    }
+
+    private void HandleCancel()
+    {
+        showForm = false;
+    }
+
+    private void SearchStores()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredStores = stores;
+        }
+        else
+        {
+            filteredStores = stores.Where(s =>
+                (s.StoreID?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (s.StoreName?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (s.Username?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (s.Locations?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (s.Contact?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false))
+                .ToList();
+        }
+    }
+}

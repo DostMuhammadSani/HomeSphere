@@ -1,0 +1,138 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@using DALLibrary
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title">Add Store</h4>
+        <EditForm Model="Store" OnValidSubmit="HandleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label for="storeName">Store Name</label>
+                <InputText id="storeName" class="form-control" @bind-Value="Store.StoreName" required />
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <InputText id="username" class="form-control" @bind-Value="Store.Username" required />
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <InputTextArea id="location" class="form-control" @bind-Value="Store.Locations" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <InputText id="password" type="password" class="form-control" @bind-Value="Store.Passwords" required />
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <InputText id="contact" class="form-control" @bind-Value="Store.Contact" required />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;">Save</button>
+                <button type="button" class="btn btn-secondary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+
+        @if (!string.IsNullOrEmpty(SuccessMessage))
+        {
+            <div class="alert alert-success mt-3">
+                @SuccessMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger mt-3">
+                @ErrorMessage
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public StoreModel Store { get; set; } = new StoreModel();
+    [Parameter] public EventCallback<StoreModel> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    public string HS_Name { get; set; }
+    public string ErrorMessage { get; set; }
+    public string SuccessMessage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        HS_Name = UserService.Username;
+        base.OnInitialized();
+    }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        if (!IsValidHSName(HS_Name))
+        {
+            ErrorMessage = "Housing Society Name can only contain letters or digits.";
+            return;
+        }
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={HS_Name}";
+            var response1 = await client.GetAsync(url);
+
+            if (response1.IsSuccessStatusCode)
+            {
+                Store.A_id = await response1.Content.ReadAsStringAsync();
+                Store.StoreID = Guid.NewGuid().ToString();
+
+                var userResponse = await client.PostAsJsonAsync("api/Auth/registerShopkeeper", Store);
+
+                if (!userResponse.IsSuccessStatusCode)
+                {
+                    ErrorMessage = "Failed to register user for store.";
+                    return;
+                }
+
+                // Step 2: Create Store
+                var response = await client.PostAsJsonAsync("api/Stores", Store);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Store added successfully.";
+                    await OnSave.InvokeAsync(Store);
+                }
+                else
+                {
+                    // Optional: rollback user if store creation fails
+                    await client.DeleteAsync($"api/User?Username={Store.Username}");
+                    ErrorMessage = "Failed to save the store. Please try again.";
+                }
+            }
+            else
+            {
+                ErrorMessage = "Invalid Housing Society Name.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+
+    private bool IsValidHSName(string hsName)
+    {
+        return hsName.All(char.IsLetterOrDigit);
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

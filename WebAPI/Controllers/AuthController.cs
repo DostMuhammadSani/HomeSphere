@@ -57,6 +57,162 @@ namespace WebAPI.Controllers
             return BadRequest(ModelState);
         }
 
+        [HttpPost("registerShopkeeper")]
+        public async Task<IActionResult> RegisterShopkeeper([FromBody] StoreModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new IdentityUser { UserName = model.Username, Email = model.Username };
+            var result = await _userManager.CreateAsync(user, model.Passwords);
+
+            if (result.Succeeded)
+            {
+                var roleResult = await _userManager.AddToRoleAsync(user, "Shopkeeper");
+                if (!roleResult.Succeeded)
+                {
+                    foreach (var error in roleResult.Errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
+                    return BadRequest(ModelState);
+                }
+                return Ok(new { message = "Registration successful" });
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.Code, error.Description);
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        [HttpPut("updateadmin/{username}")]
+        public async Task<IActionResult> UpdateAdmin(string username, [FromBody] AdminModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                return NotFound(new { message = "Admin user not found." });
+            }
+
+            // Update Email (username/HS_Name)
+            user.UserName = model.HS_Name;
+            user.Email = model.HS_Name;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!string.IsNullOrEmpty(model.Passwords))
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var passwordResult = await _userManager.ResetPasswordAsync(user, token, model.Passwords);
+                if (!passwordResult.Succeeded)
+                {
+                    return BadRequest(passwordResult.Errors);
+                }
+            }
+
+            if (result.Succeeded)
+            {
+                return Ok(new { message = "Admin user updated successfully." });
+            }
+
+            return BadRequest(result.Errors);
+        }
+
+        [HttpPut("updateshopkeeper/{username}")]
+        public async Task<IActionResult> UpdateShopkeeper(string username, [FromBody] StoreModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                return NotFound(new { message = "Shopkeeper user not found." });
+            }
+
+            user.UserName = model.Username;
+            user.Email = model.Username;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!string.IsNullOrEmpty(model.Passwords))
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var passwordResult = await _userManager.ResetPasswordAsync(user, token, model.Passwords);
+                if (!passwordResult.Succeeded)
+                {
+                    return BadRequest(passwordResult.Errors);
+                }
+            }
+
+            if (result.Succeeded)
+            {
+                return Ok(new { message = "Shopkeeper user updated successfully." });
+            }
+
+            return BadRequest(result.Errors);
+        }
+        [HttpDelete("deleteadmin/{username}")]
+        public async Task<IActionResult> DeleteAdmin(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                return NotFound(new { message = "Admin user not found." });
+            }
+
+            var roles = await _userManager.GetRolesAsync(user);
+            if (!roles.Contains("ADMIN"))
+            {
+                return BadRequest(new { message = "User is not an admin." });
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return Ok(new { message = "Admin deleted successfully." });
+            }
+
+            return BadRequest(result.Errors);
+        }
+
+        [HttpDelete("deleteshopkeeper/{username}")]
+        public async Task<IActionResult> DeleteShopkeeper(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                return NotFound(new { message = "Shopkeeper user not found." });
+            }
+
+            var roles = await _userManager.GetRolesAsync(user);
+            if (!roles.Contains("Shopkeeper"))
+            {
+                return BadRequest(new { message = "User is not a shopkeeper." });
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return Ok(new { message = "Shopkeeper deleted successfully." });
+            }
+
+            return BadRequest(result.Errors);
+        }
+
+
         [HttpPost("loginadmin")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {

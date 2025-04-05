@@ -1,0 +1,456 @@
+﻿@page "/logingrocery"
+@rendermode InteractiveServer
+
+@using ClassLibraryModel
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@using Blazored.SessionStorage
+@inject ISessionStorageService SessionStorage
+
+<div class="login-page">
+    <!-- Grocery-themed background image -->
+    <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+         alt="Grocery store aisle" class="background-image" />
+    <div class="background-overlay"></div>
+    
+    <div class="login-container">
+        
+       
+
+        <div class="welcome-section">
+            <h1><i class="fas fa-shopping-basket"></i> FreshMart Pro</h1>
+            <p>Grocery Store Management System</p>
+            <div class="grocery-showcase">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+                     alt="Fresh groceries" class="grocery-image" />
+            </div>
+        </div>
+
+        <EditForm Model="@loginModel" OnValidSubmit="HandleLogin" class="auth-form">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-header">
+                <h2>Manager Login</h2>
+                <p>Access your store dashboard</p>
+            </div>
+
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user-tag"></i> Username</label>
+                <InputText id="username" class="form-control" @bind-Value="loginModel.UserName"
+                           placeholder="Enter admin username" />
+                <ValidationMessage For="@(() => loginModel.UserName)" />
+            </div>
+
+            <div class="form-group">
+                <label for="password"><i class="fas fa-key"></i> Password</label>
+                <div class="password-input">
+                    <InputText id="password" type="password" class="form-control"
+                               @bind-Value="loginModel.Password" placeholder="Enter password" />
+                    <button type="button" class="toggle-password" @onclick="TogglePasswordVisibility">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <ValidationMessage For="@(() => loginModel.Password)" />
+            </div>
+
+            
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    @errorMessage
+                </div>
+            }
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+
+            <div class="system-info">
+                <p><i class="fas fa-info-circle"></i> For customer access, please use the mobile app</p>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+<style>
+    /* Base Styles */
+    :root {
+        --primary-color: #28a745;
+        --primary-dark: #218838;
+        --primary-light: #34ce57;
+        --accent-color: #ffc107;
+        --text-light: #ffffff;
+        --text-dark: #343a40;
+        --text-muted: #6c757d;
+        --error-color: #dc3545;
+        --border-radius: 8px;
+        --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+    }
+
+    /* Layout */
+    .login-page {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    .background-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+    }
+
+    .login-container {
+        position: relative;
+        z-index: 3;
+        width: 90%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+    }
+
+    /* Welcome Section */
+    .welcome-section {
+        padding: 3rem;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: var(--text-light);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        .welcome-section h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+            .welcome-section h1 i {
+                margin-right: 10px;
+            }
+
+        .welcome-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+    .grocery-showcase {
+        margin-top: 2rem;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+    }
+
+    .grocery-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: var(--transition);
+    }
+
+        .grocery-image:hover {
+            transform: scale(1.03);
+        }
+
+    /* Auth Form */
+    .auth-form {
+        padding: 3rem;
+        color: var(--text-dark);
+    }
+
+    .form-header {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+        .form-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+    /* Form Elements */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+            .form-group label i {
+                margin-right: 8px;
+                color: var(--primary-color);
+            }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ced4da;
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        transition: var(--transition);
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+
+    .password-input {
+        position: relative;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+    }
+
+    /* Form Options */
+    .form-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.5rem 0;
+        font-size: 0.9rem;
+    }
+
+    .remember-me {
+        display: flex;
+        align-items: center;
+    }
+
+        .remember-me input {
+            margin-right: 8px;
+        }
+
+    .forgot-password {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+        .forgot-password:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+    /* Button */
+    .btn-login {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .btn-login:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+    /* Alert */
+    .alert {
+        padding: 12px;
+        border-radius: var(--border-radius);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+
+    .alert-error {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: var(--error-color);
+    }
+
+    /* System Info */
+    .system-info {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+
+        .system-info i {
+            margin-right: 5px;
+        }
+
+    /* Back Button Styles - Improved Placement */
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 4;
+        padding: 8px 15px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 2px solid var(--primary-color);
+        border-radius: var(--border-radius);
+        color: var(--primary-dark);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .back-button i {
+            font-size: 0.9rem;
+        }
+
+
+  
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .login-container {
+            grid-template-columns: 1fr;
+            max-width: 600px;
+        }
+
+        .welcome-section {
+            display: none;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .login-container {
+            width: 95%;
+        }
+
+        .auth-form {
+            padding: 2rem;
+        }
+
+        .form-header h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 992px) {
+        .login-container {
+            grid-template-columns: 1fr;
+            max-width: 600px;
+        }
+
+        .back-button {
+            top: 15px;
+            left: 15px;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .back-button {
+            top: 10px;
+            left: 10px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+    }
+</style>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+    private string errorMessage = string.Empty;
+    private bool showPassword = false;
+
+    private void TogglePasswordVisibility()
+    {
+        showPassword = !showPassword;
+    }
+
+    private async Task HandleLogin()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.PostAsJsonAsync("api/Auth/loginadmin", loginModel);
+
+        if (response.IsSuccessStatusCode)
+        {
+            UserService.Username = loginModel.UserName;
+            var jwtResponse = await response.Content.ReadFromJsonAsync<JwtResponse>();
+            var token = jwtResponse.Token;
+            await SessionStorage.SetItemAsync("authToken", token);
+            Navigation.NavigateTo("/grocery");
+        }
+        else
+        {
+            errorMessage = "Invalid credentials. Please try again.";
+        }
+    }
+
+    private class JwtResponse
+    {
+        public string Token { get; set; }
+    }
+    private void NavigateToHome()
+    {
+        Navigation.NavigateTo("/");
+    }
+
+}

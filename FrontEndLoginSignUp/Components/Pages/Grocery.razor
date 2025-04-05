@@ -1,0 +1,475 @@
+﻿@page "/grocery"
+@rendermode InteractiveServer
+@using System.Security.Claims
+@using System.Text.Json
+@inject Blazored.SessionStorage.ISessionStorageService SessionStorage
+@inject NavigationManager Navigation
+
+<div class="grocery-dashboard">
+    <!-- Header Section -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
+            <div class="user-info">
+                <span class="user-role"><i class="fas fa-user-shield"></i> @role</span>
+                <button class="btn-logout" @onclick="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        @if (role == "Shopkeeper")
+        {
+            <!-- Shopkeeper Dashboard -->
+            <div class="dashboard-grid">
+                <!-- Products Management Card -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-apple-alt card-icon"></i>
+                        <h2>Product Management</h2>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+                         alt="Fresh Grocery Products" class="card-image" />
+                    <div class="card-body">
+                        <p>Add, edit, or remove products from your inventory</p>
+                        <div class="card-actions">
+                            <button class="btn-card" @onclick="NavigateToProducts">
+                                <i class="fas fa-box-open"></i> Manage Products
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Tracking Card -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-clipboard-list card-icon"></i>
+                        <h2>Orders Tracking</h2>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                         alt="Grocery Orders" class="card-image" />
+                    <div class="card-body">
+                        <p>View and manage current customer orders</p>
+                        <div class="card-actions">
+                            <button class="btn-card" @onclick="NavigateToOrders">
+                                <i class="fas fa-truck"></i> Track Orders
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Card -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-warehouse card-icon"></i>
+                        <h2>Inventory Status</h2>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                         alt="Grocery Inventory" class="card-image" />
+                    <div class="card-body">
+                        <p>Check stock levels and inventory reports</p>
+                        <div class="card-actions">
+                            <button class="btn-card" @onclick="NavigateToInventory">
+                                <i class="fas fa-chart-line"></i> View Inventory
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                            </div>
+        }
+        else
+        {
+            <!-- Unauthorized Access Message -->
+            <div class="unauthorized-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>Access Denied</h2>
+                <p>You don't have permission to view this dashboard.</p>
+                <button class="btn-return" @onclick="NavigateToHome">
+                    <i class="fas fa-home"></i> Return to Home
+                </button>
+            </div>
+        }
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="dashboard-footer">
+        <p>© @DateTime.Now.Year FreshMart Pro - Grocery Store Management System</p>
+            </footer>
+</div>
+
+<style>
+    /* Base Styles */
+    :root {
+        --primary-color: #28a745;
+        --primary-dark: #218838;
+        --primary-light: #34ce57;
+        --accent-color: #ffc107;
+        --text-dark: #343a40;
+        --text-light: #ffffff;
+        --bg-light: #f8f9fa;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+    }
+
+    /* Dashboard Layout */
+    .grocery-dashboard {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: var(--bg-light);
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    /* Header Styles */
+    .dashboard-header {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        padding: 1rem 2rem;
+        box-shadow: var(--box-shadow);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .user-role {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-logout {
+        background-color: transparent;
+        border: 1px solid var(--text-light);
+        color: var(--text-light);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .btn-logout:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+    /* Main Content Styles */
+    .dashboard-main {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Dashboard Grid */
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    /* Dashboard Cards */
+    .dashboard-card {
+        background-color: var(--text-light);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+    }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+    .card-header {
+        padding: 1.5rem;
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+    .card-icon {
+        font-size: 1.5rem;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .card-body p {
+            margin: 0 0 1.5rem 0;
+            color: var(--text-dark);
+            flex: 1;
+        }
+
+    .card-actions {
+        margin-top: auto;
+    }
+
+    .btn-card {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+        .btn-card:hover {
+            background-color: var(--primary-dark);
+        }
+
+    /* Unauthorized Message */
+    .unauthorized-message {
+        text-align: center;
+        padding: 4rem 2rem;
+        background-color: var(--text-light);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        max-width: 600px;
+        margin: 2rem auto;
+    }
+
+        .unauthorized-message i {
+            font-size: 3rem;
+            color: var(--error-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .unauthorized-message h2 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .unauthorized-message p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+    .btn-return {
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .btn-return:hover {
+            background-color: var(--primary-dark);
+        }
+
+    /* Footer Styles */
+    .dashboard-footer {
+        background-color: var(--text-dark);
+        color: var(--text-light);
+        padding: 1.5rem 2rem;
+        text-align: center;
+    }
+
+        .dashboard-footer p {
+            margin: 0;
+        }
+
+    .footer-links {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+            .footer-links a:hover {
+                color: var(--accent-color);
+            }
+
+    /* Responsive Styles */
+    @@media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .user-info {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .dashboard-main {
+            padding: 1rem;
+        }
+
+        .dashboard-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .dashboard-header {
+            padding: 1rem;
+        }
+
+            .dashboard-header h1 {
+                font-size: 1.2rem;
+            }
+
+        .user-info {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .user-role, .btn-logout {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+
+@code {
+    private string role = string.Empty;
+    private string errorMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var token = await SessionStorage.GetItemAsync<string>("authToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                var claims = ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim?.Value;
+                if (role != "Shopkeeper")
+                {
+                    await SessionStorage.RemoveItemAsync("authToken");
+                }
+
+            }
+
+                    }
+        catch (Exception ex)
+        {
+            errorMessage = "Error loading user information";
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+
+    private IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
+    {
+        var payload = jwt.Split('.')[1];
+        var jsonBytes = ParseBase64WithoutPadding(payload);
+        var keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
+        return keyValuePairs.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString()));
+    }
+
+    private byte[] ParseBase64WithoutPadding(string base64)
+    {
+        switch (base64.Length % 4)
+        {
+            case 2: base64 += "=="; break;
+            case 3: base64 += "="; break;
+        }
+        return Convert.FromBase64String(base64);
+    }
+
+    private async Task Logout()
+    {
+        await SessionStorage.RemoveItemAsync("authToken");
+        Navigation.NavigateTo("/logingrocery");
+    }
+
+    private void NavigateToProducts()
+    {
+        Navigation.NavigateTo("/products");
+    }
+
+    private void NavigateToOrders()
+    {
+
+        Navigation.NavigateTo("/orders");
+    }
+
+    private void NavigateToInventory()
+    {
+        Navigation.NavigateTo("/inventory");
+    }
+
+    private void NavigateToAnalytics()
+    {
+        Navigation.NavigateTo("/analytics");
+    }
+
+    private async Task NavigateToHome()
+    {
+        await SessionStorage.RemoveItemAsync("authToken");
+        Navigation.NavigateTo("/");
+    }
+}

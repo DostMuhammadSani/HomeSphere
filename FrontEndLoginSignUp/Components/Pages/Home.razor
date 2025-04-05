@@ -70,7 +70,7 @@
             <p>Access all grocery management tools and services.</p>
             <div class="banner-buttons">
 
-                <button class="banner-btn signup-btn" >Sign In</button>
+                <button class="banner-btn signup-btn" @onclick="onClickGrocery">Sign In</button>
             </div>
         </div>
     </section>
@@ -582,6 +582,11 @@
     public void onClick()
     {
         Navigation.NavigateTo("/login");
+    }
+
+    public void onClickGrocery()
+    {
+        Navigation.NavigateTo("/logingrocery");
     }
 
     private void ToggleMobileMenu()

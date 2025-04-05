@@ -5,89 +5,106 @@
 @inject ISessionStorageService SessionStorage
 @using System.Security.Claims
 @using ClassLibraryModel
+@inject NavigationManager Navigation
 @rendermode InteractiveServer
 @inject IHttpClientFactory HttpClientFactory
 @inject IJSRuntime JSRuntime
 
+
 @if (role == "Admin")
 {
-            <!-- Dashboard Layout -->
-            <div class="container-fluid">
-                <div class="row">
-                    <Sidebars></Sidebars>
-                    <div class="col-md-10 p-4">
-                        <!-- Top Nav -->
-                        <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
-                            <!-- Search Bar -->
-                            <div class="search-bar">
-                                <input type="text" class="form-control" placeholder="Search here">
-                            </div>
-                            <!-- Icons Section -->
-                            <div class="icons-section d-flex align-items-center">
-                                <div class="icon-wrapper position-relative mr-4">
-                                    <img src="icons/notifications.png" class="nav-icon" alt="Notification">
-                                </div>
-                                <div class="icon-wrapper position-relative mr-4">
-                                    <img src="icons/emails.png" class="nav-icon" alt="Chat">
-                                </div>
-                                <div class="icon-wrapper position-relative mr-4">
-                                    <img src="icons/setting.png" class="nav-icon" alt="Settings">
-                                </div>
-                            </div>
+    <!-- Dashboard Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <Sidebars></Sidebars>
+            <div class="col-md-10 p-4">
+                <!-- Top Nav -->
+                <div class="top-nav d-flex justify-content-between align-items-center mb-4 p-3">
+                    <!-- Search Bar -->
+                    <div class="search-bar">
+                        <input type="text" class="form-control" placeholder="Search here">
+                    </div>
+                    <!-- Icons Section -->
+                    <div class="icons-section d-flex align-items-center">
+                        <div class="icon-wrapper position-relative mr-4">
+                            <img src="icons/notifications.png" class="nav-icon" alt="Notification">
                         </div>
-                        <!-- Statistics Section -->
-                        <div class="row text-center mb-4 px-4">
-                            <div class="col-md-3">
-                                <div class="card stats-card">
-                                    <div class="card-body">
-                                        <img src="icons/profile.png" alt="Residents Icon" class="stats-icon">
-                                        <h3>@count[0].CResident</h3>
-                                        <p>Total Residents</p>
-                                        <span class="text-success">+3% (30 days)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card stats-card">
-                                    <div class="card-body">
-                                        <img src="icons/land.png" alt="Plots Icon" class="stats-icon">
-                                        <h3>@count[0].CPlot</h3>
-                                        <p>Total Plots</p>
-                                        <span class="text-success">+5% (30 days)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card stats-card">
-                                    <div class="card-body">
-                                        <img src="icons/key.png" alt="Ownership Icon" class="stats-icon">
-                                        <h3>@count[0].COwnShip</h3>
-                                        <p>Total Ownerships</p>
-                                        <span class="text-danger">-2% (30 days)</span>
-                                    </div>
-                                </div>
-                            </div>
-                                <div class="col-md-3">
-                                    <div class="card stats-card">
-                                        <div class="card-body">
-                                            <img src="icons/cleaning-staff.png" alt="Staff Icon" class="stats-icon">
-                                            <h3>@count[0].CStaff</h3>
-                                            <p>Total Staff</p>
-                                            <span class="text-success">+3% (30 days)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div >
-                        <ProgressCircle></ProgressCircle>
-                        <div class="charts">
-                        <DoughnutChar></DoughnutChar>
-                             <DoughnutChar1></DoughnutChar1>
+                        <div class="icon-wrapper position-relative mr-4">
+                            <img src="icons/emails.png" class="nav-icon" alt="Chat">
+                        </div>
+                        <div class="icon-wrapper position-relative mr-4">
+                            <img src="icons/setting.png" class="nav-icon" alt="Settings">
                         </div>
                     </div>
                 </div>
+                <!-- Statistics Section -->
+                <div class="row text-center mb-4 px-4">
+                    <div class="col-md-3">
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <img src="icons/profile.png" alt="Residents Icon" class="stats-icon">
+                                <h3>@count[0].CResident</h3>
+                                <p>Total Residents</p>
+                                <span class="text-success">+3% (30 days)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <img src="icons/land.png" alt="Plots Icon" class="stats-icon">
+                                <h3>@count[0].CPlot</h3>
+                                <p>Total Plots</p>
+                                <span class="text-success">+5% (30 days)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <img src="icons/key.png" alt="Ownership Icon" class="stats-icon">
+                                <h3>@count[0].COwnShip</h3>
+                                <p>Total Ownerships</p>
+                                <span class="text-danger">-2% (30 days)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stats-card">
+                            <div class="card-body">
+                                <img src="icons/cleaning-staff.png" alt="Staff Icon" class="stats-icon">
+                                <h3>@count[0].CStaff</h3>
+                                <p>Total Staff</p>
+                                <span class="text-success">+3% (30 days)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ProgressCircle></ProgressCircle>
+                <div class="charts">
+                    <DoughnutChar></DoughnutChar>
+                    <DoughnutChar1></DoughnutChar1>
+                </div>
             </div>
-
-
+        </div>
+    </div>
+}
+else 
+{
+    <!-- Access Denied Section -->
+    <div class="access-denied-container">
+        <div class="access-denied-content">
+            <div class="denied-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2>Access Denied</h2>
+            <p>You don't have permission to access the admin dashboard.</p>
+            <p>Your current role: <strong>@role</strong></p>
+            <button class="btn-return" @onclick="NavigateToAppropriatePage">
+                Return to @(role == "Shopkeeper" ? "Grocery Management" : "Home")
+            </button>
+        </div>
+    </div>
 }
 
 
@@ -199,6 +216,54 @@
     .charts{
         display:flex;
     }
+
+    .access-denied-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f6f6fb;
+    }
+
+    .access-denied-content {
+        text-align: center;
+        max-width: 500px;
+        padding: 40px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .denied-icon {
+        font-size: 60px;
+        color: #ff4757;
+        margin-bottom: 20px;
+    }
+
+    .access-denied-content h2 {
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .access-denied-content p {
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .btn-return {
+        margin-top: 20px;
+        padding: 10px 25px;
+        background-color: #1b6cb9;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .btn-return:hover {
+            background-color: #1b6cb9;
+        }
 </style>
 
 @code {
@@ -219,25 +284,31 @@
                 var claims = RoleFetch.ParseClaimsFromJwt(token);
                 var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
                 role = roleClaim?.Value;
-
-                var client = HttpClientFactory.CreateClient("AuthApi");
-                var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
-                var response1 = await client.GetAsync(url);
-                if (response1.IsSuccessStatusCode)
+                if (string.IsNullOrEmpty(token))
                 {
-                    A_id = await response1.Content.ReadAsStringAsync();
-                    var response = await client.GetAsync($"api/Resident/Count?A_id={A_id}");
-                    if (response.IsSuccessStatusCode)
-                    {
-                        count = await response.Content.ReadFromJsonAsync<List<CountModel>>();
-                    }
-
-                   
-                    
-                    // Call chart rendering method
-
-                    StateHasChanged();
+                    Navigation.NavigateTo("/login");
+                    return;
                 }
+
+                if (role == "Admin")
+                {
+                    var client = HttpClientFactory.CreateClient("AuthApi");
+                    var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+                    var response1 = await client.GetAsync(url);
+                    if (response1.IsSuccessStatusCode)
+                    {
+                        A_id = await response1.Content.ReadAsStringAsync();
+                        var response = await client.GetAsync($"api/Resident/Count?A_id={A_id}");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            count = await response.Content.ReadFromJsonAsync<List<CountModel>>();
+                        }
+                    }
+                }
+                else{
+                    await SessionStorage.RemoveItemAsync("authToken");
+                }
+                StateHasChanged();
             }
             catch (Exception ex)
             {
@@ -247,9 +318,15 @@
         await base.OnInitializedAsync();
     }
 
+    private async Task NavigateToAppropriatePage()
+    {
+        await SessionStorage.RemoveItemAsync("authToken");
+        Navigation.NavigateTo(role == "Shopkeeper" ? "/logingrocery" : "/");
+    }
+}
    
 
     
 
 
-}
+

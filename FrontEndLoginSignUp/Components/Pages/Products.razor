@@ -1,0 +1,540 @@
+﻿@page "/products"
+@rendermode InteractiveServer
+@using System.Collections.Generic
+@using System.Linq
+@using Blazored.SessionStorage
+@using ClassLibraryModel
+@using System.Security.Claims
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@inject ISessionStorageService SessionStorage
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+<!-- Header -->
+<header class="products-header">
+    <div class="header-content">
+        <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
+        <div class="user-info">
+            <span class="user-role"><i class="fas fa-user-shield"></i> @role</span>
+            <button class="btn-logout" @onclick="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </div>
+</header>
+@if(role=="Shopkeeper"){
+<!-- Main Content -->
+<div class="products-container">
+    <div class="products-actions">
+        <div class="search-container">
+            <input type="text"
+                   placeholder="Search products..."
+                   @bind="searchTerm"
+                   @bind:event="oninput"
+                   @onkeyup="SearchProducts"
+                   class="search-input" />
+            <button class="btn-search" @onclick="SearchProducts">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <button class="btn-add" @onclick="NavigateToAddProduct">
+            <i class="fas fa-plus"></i> Add Product
+        </button>
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="loading">Loading products...</div>
+    }
+    else if (errorMessage != null)
+    {
+        <div class="error-message">@errorMessage</div>
+    }
+    else
+    {
+        <div class="products-grid">
+            @foreach (var productGroup in filteredGroupedProducts)
+            {
+                var product = productGroup.First();
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>@product.Descriptions</h3>
+                        <span class="quantity-badge">@productGroup.Count()</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="@(product.Picture ?? "https://via.placeholder.com/150")" alt="@product.Descriptions" />
+                    </div>
+                    <div class="product-details">
+                        <div class="info-row">
+                            <span class="label">Price:</span>
+                            <span class="value">$@product.Price</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Expires:</span>
+                            <span class="value">@product.ExpiryDate.ToString("MMM dd, yyyy")</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-action btn-update" @onclick="() => EditProduct(product.ProductID)">
+                            <i class="fas fa-edit"></i> Update
+                        </button>
+                       
+                        <button class="btn-action btn-delete" @onclick="() => DeleteProduct(product.ProductID)">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+}
+<!-- Footer -->
+<footer class="products-footer">
+    © @DateTime.Now.Year My Store - Inventory Management System
+</footer>
+
+@code {
+    private List<ProductModel> Product = new List<ProductModel>();
+    private List<ProductModel> filteredProducts = new List<ProductModel>();
+    private string searchTerm = "";
+    private IEnumerable<IGrouping<string, ProductModel>> groupedProducts =>
+        Product.GroupBy(p => p.Descriptions + p.Price + p.ExpiryDate.ToString());
+    private IEnumerable<IGrouping<string, ProductModel>> filteredGroupedProducts =>
+        filteredProducts.GroupBy(p => p.Descriptions + p.Price + p.ExpiryDate.ToString());
+    private string UserName;
+    private string StoreName = "My Store";
+    private string errorMessage;
+    private bool isLoading = true;
+    private string token;
+    public string role;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim?.Value;
+            UserName = UserService.Username;
+            await LoadProducts();
+            filteredProducts = Product;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to initialize: {ex.Message}";
+            Console.WriteLine($"Initialization error: {ex}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task LoadProducts()
+    {
+        isLoading = true;
+        errorMessage = null;
+        StateHasChanged();
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.GetAsync($"api/Products?UserName={UserName}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                Product = await response.Content.ReadFromJsonAsync<List<ProductModel>>() ?? new();
+                filteredProducts = Product;
+                StoreName = Product.FirstOrDefault()?.StoreID ?? "My Store";
+            }
+            else
+            {
+                errorMessage = await GetErrorMessage(response);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to load products: {ex.Message}";
+            Console.WriteLine($"Load products error: {ex}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task<string> GetErrorMessage(HttpResponseMessage response)
+    {
+        try
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            return !string.IsNullOrWhiteSpace(content)
+                ? (content.Length > 100 ? content.Substring(0, 100) + "..." : content)
+                : $"Error: {response.StatusCode}";
+        }
+        catch
+        {
+            return $"Error: {response.StatusCode}";
+        }
+    }
+
+    private void SearchProducts()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredProducts = Product;
+        }
+        else
+        {
+            filteredProducts = Product
+                .Where(p => p.Descriptions.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                           p.Price.ToString().Contains(searchTerm) ||
+                           p.ExpiryDate.ToString("MMM dd, yyyy").Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+        StateHasChanged();
+    }
+
+    private async Task DeleteProduct(string productId)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this product?"))
+            return;
+
+        isLoading = true;
+        StateHasChanged();
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.DeleteAsync($"api/Products?UserName={UserName}&ProductID={productId}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                await LoadProducts();
+            }
+            else
+            {
+                errorMessage = await GetErrorMessage(response);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to delete product: {ex.Message}";
+            Console.WriteLine($"Delete product error: {ex}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task ReduceQuantity(string productId)
+    {
+        if (!await JSRuntime.InvokeAsync<bool>("confirm", "Reduce quantity by 1?"))
+            return;
+
+        isLoading = true;
+        StateHasChanged();
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.DeleteAsync($"api/Products?UserName={UserName}&ProductID={productId}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                await LoadProducts();
+            }
+            else
+            {
+                errorMessage = await GetErrorMessage(response);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to reduce quantity: {ex.Message}";
+            Console.WriteLine($"Reduce quantity error: {ex}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private void NavigateToAddProduct() => NavigationManager.NavigateTo("/addproduct");
+    private void EditProduct(string productId) => NavigationManager.NavigateTo($"/updateproduct?id={productId}");
+    private async Task Logout() { await SessionStorage.RemoveItemAsync("authToken"); NavigationManager.NavigateTo("/logingrocery"); }
+}
+
+<style>
+    :root {
+        --primary-color: #28a745;
+        --primary-dark: #218838;
+        --primary-light: #34c759;
+        --text-light: #fff;
+        --text-dark: #333;
+        --bg-light: #f8f9fa;
+        --radius: 8px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .products-container {
+        max-width: 1400px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .products-actions {
+        margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        max-width: 400px;
+        min-width: 200px;
+    }
+
+    .search-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 1px solid #ced4da;
+        border-right: none;
+        border-radius: var(--radius) 0 0 var(--radius);
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+        height: 40px;
+    }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+        }
+
+    .btn-search {
+        background: var(--primary-color);
+        color: var(--text-light);
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        cursor: pointer;
+        transition: background 0.3s;
+        height: 40px;
+        min-width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .btn-search:hover {
+            background: var(--primary-dark);
+        }
+
+    .btn-add {
+        background: var(--primary-color);
+        color: var(--text-light);
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background 0.3s;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .btn-add:hover {
+            background: var(--primary-dark);
+        }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #e9ecef;
+    }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    .product-header {
+        background: var(--primary-color);
+        color: var(--text-light);
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .product-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+    .quantity-badge {
+        background: var(--primary-dark);
+        color: var(--text-light);
+        padding: 0.3rem 0.8rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .product-details {
+        padding: 1rem;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem 0;
+    }
+
+    .label {
+        color: #666;
+        font-weight: 500;
+    }
+
+    .value {
+        color: var(--text-dark);
+        font-weight: 600;
+    }
+
+    .product-actions {
+        padding: 1rem;
+        border-top: 1px solid #e9ecef;
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .btn-action {
+        flex: 1;
+        padding: 0.6rem;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background 0.3s;
+        color: var(--text-light);
+        font-weight: 500;
+    }
+
+    .btn-update {
+        background: var(--primary-color);
+    }
+
+        .btn-update:hover {
+            background: var(--primary-dark);
+        }
+
+    .btn-reduce {
+        background: #2ecc71;
+    }
+
+        .btn-reduce:hover {
+            background: #27ae60;
+        }
+
+    .btn-delete {
+        background: #27ae60;
+    }
+
+        .btn-delete:hover {
+            background: #219653;
+        }
+
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-dark);
+    }
+
+    .error-message {
+        text-align: center;
+        padding: 2rem;
+        color: #dc3545;
+    }
+
+    .products-header {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        padding: 1rem 2rem;
+        box-shadow: var(--shadow);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .products-header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .user-role {
+        background: rgba(255,255,255,0.2);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+    }
+
+    .btn-logout {
+        background: transparent;
+        border: 1px solid var(--text-light);
+        color: var(--text-light);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-logout:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+    .products-footer {
+        text-align: center;
+        background: var(--text-dark);
+        color: var(--text-light);
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+</style>

@@ -1,0 +1,443 @@
+﻿@page "/addproduct"
+@rendermode InteractiveServer
+@using Blazored.SessionStorage
+@using ClassLibraryModel
+@using CloudinaryDotNet
+@using CloudinaryDotNet.Actions
+@using Microsoft.AspNetCore.Components.Forms
+@using System.Security.Claims
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@inject ISessionStorageService SessionStorage
+@inject NavigationManager NavigationManager
+@inject IPhotoService PhotoService
+
+<!-- Header -->
+<header class="products-header">
+    <div class="header-content">
+        <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
+        <div class="user-info">
+            <span class="user-role"><i class="fas fa-user-shield"></i> @role</span>
+            <button class="btn-logout" @onclick="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </div>
+</header>
+@if(role=="Shopkeeper"){
+<!-- Main Content -->
+<div class="products-container">
+    <div class="add-product-form">
+        @if (errorMessage != null)
+        {
+            <div class="error-message">@errorMessage</div>
+        }
+
+        <EditForm Model="@NewProduct" OnValidSubmit="HandleValidSubmit" enctype="multipart/form-data">
+            <DataAnnotationsValidator />
+            <div class="form-section">
+                <h2 class="form-title"><i class="fas fa-plus-circle"></i> Add New Product</h2>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Product ID</label>
+                        <InputText @bind-Value="@NewProduct.ProductID" class="form-control" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Product Image</label>
+                        <InputFile OnChange="HandleImageUpload" class="form-control" accept="image/*" />
+                        @if (!string.IsNullOrEmpty(NewProduct.Picture))
+                        {
+                            <div class="image-preview">
+                                <img src="@NewProduct.Picture" alt="Product Preview" />
+                            </div>
+                        }
+                        @if (uploadInProgress)
+                        {
+                            <div class="upload-status">
+                                <span><i class="fas fa-spinner fa-spin"></i> Uploading image...</span>
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Price</label>
+                        <InputNumber @bind-Value="@NewProduct.Price" class="form-control" />
+                        <ValidationMessage For="@(() => NewProduct.Price)" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Quantity</label>
+                        <InputNumber @bind-Value="@Quantity" class="form-control" min="1" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Expiry Date</label>
+                        <InputDate @bind-Value="@NewProduct.ExpiryDate" class="form-control" />
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">Description</label>
+                        <InputTextArea @bind-Value="@NewProduct.Descriptions" class="form-control" rows="3" />
+                        <ValidationMessage For="@(() => NewProduct.Descriptions)" />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-action btn-save" disabled="@(uploadInProgress || isSubmitting)">
+                        @if (isSubmitting)
+                        {
+                            <span><i class="fas fa-spinner fa-spin"></i> Saving...</span>
+                        }
+                        else
+                        {
+                            <span><i class="fas fa-save"></i> Save Product</span>
+                        }
+                    </button>
+                    <button type="button" class="btn-action btn-cancel" @onclick="Cancel">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+</div>
+}
+<!-- Footer -->
+<footer class="products-footer">
+    © @DateTime.Now.Year My Store - Inventory Management System
+</footer>
+
+@code {
+    private ProductModel NewProduct = new ProductModel();
+    private int Quantity = 1;
+    private string UserName;
+    private bool uploadInProgress = false;
+    private bool isSubmitting = false;
+    private string errorMessage;
+    private string token;
+    public string role;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim?.Value;
+            UserName = UserService.Username;
+            NewProduct.ExpiryDate = DateTime.Now.AddDays(30);
+            NewProduct.ProductID = Guid.NewGuid().ToString();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to initialize: {ex.Message}";
+            Console.WriteLine($"Initialization error: {ex}");
+        }
+    }
+
+    private async Task HandleImageUpload(InputFileChangeEventArgs e)
+    {
+        uploadInProgress = true;
+        errorMessage = null;
+        StateHasChanged();
+
+        try
+        {
+            var file = e.File;
+
+            if (file.Size > 5 * 1024 * 1024) // 5MB
+            {
+                errorMessage = "Image size must be less than 5MB";
+                return;
+            }
+
+            var uploadResult = await PhotoService.AddPhotoAsync(file);
+
+            if (uploadResult.Error == null)
+            {
+                NewProduct.Picture = uploadResult.SecureUrl.ToString();
+            }
+            else
+            {
+                errorMessage = $"Failed to upload image: {uploadResult.Error.Message}";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error uploading image: {ex.Message}";
+        }
+        finally
+        {
+            uploadInProgress = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        isSubmitting = true;
+        errorMessage = null;
+        StateHasChanged();
+
+        try
+        {
+            if (string.IsNullOrEmpty(NewProduct.Descriptions))
+            {
+                errorMessage = "Description is required";
+                return;
+            }
+
+            if (NewProduct.Price <= 0)
+            {
+                errorMessage = "Price must be greater than 0";
+                return;
+            }
+
+            if (Quantity <= 0)
+            {
+                errorMessage = "Quantity must be at least 1";
+                return;
+            }
+
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            NewProduct.UserName = UserName;
+            NewProduct.StoreID = "SID";
+
+            for (int i = 0; i < Quantity; i++)
+            {
+                if (i > 0)
+                {
+                    NewProduct.ProductID = Guid.NewGuid().ToString();
+                }
+
+                var response = await client.PostAsJsonAsync("api/Products", NewProduct);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>();
+                    errorMessage = problemDetails?.Title ?? $"Error adding product: {response.StatusCode}";
+
+                    if (problemDetails?.Extensions != null &&
+                        problemDetails.Extensions.TryGetValue("errors", out var errors))
+                    {
+                        errorMessage += "\n" + string.Join("\n", ((Newtonsoft.Json.Linq.JObject)errors).Values<string>());
+                    }
+
+                    break;
+                }
+            }
+
+            if (errorMessage == null)
+            {
+                NavigationManager.NavigateTo("/products");
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An unexpected error occurred: {ex.Message}";
+        }
+        finally
+        {
+            isSubmitting = false;
+            StateHasChanged();
+        }
+    }
+
+    private void Cancel() => NavigationManager.NavigateTo("/products");
+    private async Task Logout() { await SessionStorage.RemoveItemAsync("authToken"); NavigationManager.NavigateTo("/logingrocery"); }
+
+    private class ProblemDetails
+    {
+        public string Title { get; set; }
+        public Dictionary<string, object> Extensions { get; set; }
+    }
+}
+
+<style>
+    :root {
+        --primary-color: #28a745;
+        --primary-dark: #218838;
+        --primary-light: #34c759;
+        --text-light: #fff;
+        --text-dark: #333;
+        --bg-light: #f8f9fa;
+        --radius: 8px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .products-container {
+        max-width: 1400px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .add-product-form {
+        background: white;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 2rem;
+    }
+
+    .form-title {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .form-section {
+        margin-bottom: 2rem;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+    .form-label {
+        color: var(--text-dark);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+        padding: 0.75rem;
+        border: 1px solid #ced4da;
+        border-radius: var(--radius);
+        font-size: 1rem;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        outline: none;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+    }
+
+    .image-preview {
+        margin-top: 1rem;
+    }
+
+    .image-preview img {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: var(--radius);
+        border: 1px solid #e9ecef;
+    }
+
+    .upload-status {
+        margin-top: 0.5rem;
+        color: var(--primary-color);
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-action {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background 0.3s;
+        color: var(--text-light);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-save {
+        background: var(--primary-color);
+    }
+
+    .btn-save:hover {
+        background: var(--primary-dark);
+    }
+
+    .btn-cancel {
+        background: #6c757d;
+    }
+
+    .btn-cancel:hover {
+        background: #5a6268;
+    }
+
+    .error-message {
+        text-align: center;
+        padding: 1rem;
+        color: #dc3545;
+        background: #f8d7da;
+        border-radius: var(--radius);
+        margin-bottom: 1.5rem;
+    }
+
+    /* Header Styles */
+    .products-header {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        padding: 1rem 2rem;
+        box-shadow: var(--shadow);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .products-header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .user-role {
+        background: rgba(255,255,255,0.2);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+    }
+
+    .btn-logout {
+        background: transparent;
+        border: 1px solid var(--text-light);
+        color: var(--text-light);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-logout:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Footer Styles */
+    .products-footer {
+        text-align: center;
+        background: var(--text-dark);
+        color: var(--text-light);
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+</style>

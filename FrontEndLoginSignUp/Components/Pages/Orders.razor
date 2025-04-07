@@ -1,0 +1,635 @@
+﻿@page "/orders"
+@rendermode InteractiveServer
+@using System.Security.Claims
+@using System.Text.Json
+@using ClassLibraryModel
+@inject Blazored.SessionStorage.ISessionStorageService SessionStorage
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+
+<div class="grocery-dashboard">
+    <!-- Header Section -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <h1><i class="fas fa-clipboard-list"></i>  FreshMart Pro Dashboard</h1>
+            <div class="user-info">
+                <span class="user-role"><i class="fas fa-user-shield"></i> @role</span>
+                <button class="btn-logout" @onclick="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        @if (role == "Shopkeeper")
+        {
+            <!-- Orders Management Section -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card orders-container">
+                    <!-- Search and Filter Section -->
+                    <div class="search-section">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" @bind="searchTerm" @bind:event="oninput" placeholder="Search orders..." />
+                            <button class="btn-search" @onclick="HandleSearch">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                        <button class="btn-refresh" @onclick="LoadOrders">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+
+                    <!-- Orders Table -->
+                    <div class="orders-table-container">
+                        @if (isLoading)
+                        {
+                            <div class="loading-spinner">
+                                <i class="fas fa-spinner fa-spin"></i> Loading orders...
+                            </div>
+                        }
+                        else if (orders == null || !orders.Any())
+                        {
+                            <div class="no-orders">
+                                <i class="fas fa-clipboard"></i>
+                                <p>No orders found</p>
+                            </div>
+                        }
+                        else
+                        {
+                            <table class="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Total Amount</th>
+                                        <th>Delivery Location</th>
+                                        <th>Delivery Charges</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var order in filteredOrders)
+                                    {
+                                        <tr>
+                                            <td>@order.OrderID</td>
+                                            <td>@order.OrderTime.ToString("dd MMM yyyy")</td>
+                                            <td>@order.TotalAmount.ToString("C")</td>
+                                            <td>@order.DeliveryLocation</td>
+                                            <td>@order.DeliveryCharges</td>
+                                            <td>
+                                                <button class="btn-view" @onclick="() => ViewOrderDetails(order.OrderID)">
+                                                    <i class="fas fa-eye"></i> View Details
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <!-- Unauthorized Access Message -->
+            <div class="unauthorized-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>Access Denied</h2>
+                <p>You don't have permission to view this dashboard.</p>
+                <button class="btn-return" @onclick="NavigateToHome">
+                    <i class="fas fa-home"></i> Return to Home
+                </button>
+            </div>
+        }
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="dashboard-footer">
+        <p>© @DateTime.Now.Year FreshMart Pro - Grocery Store Management System</p>
+    </footer>
+</div>
+
+<style>
+    /* Base Styles - Same as previous page */
+    :root {
+        --primary-color: #0468d7;
+        --primary-dark: #0254b3;
+        --primary-light: #1b6cb9;
+        --accent-color: #1b6cb9;
+        --text-dark: #343a40;
+        --text-light: #ffffff;
+        --bg-light: #f8f9fa;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        --success-color: #28a745;
+        --view-color: #17a2b8;
+    }
+
+    /* Dashboard Layout */
+    .grocery-dashboard {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: var(--bg-light);
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    /* Header Styles - Same as previous page */
+    .dashboard-header {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        padding: 1rem 2rem;
+        box-shadow: var(--box-shadow);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .user-role {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-logout {
+        background-color: transparent;
+        border: 1px solid var(--text-light);
+        color: var(--text-light);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .btn-logout:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+    /* Main Content Styles */
+    .dashboard-main {
+        flex: 1;
+        padding: 2rem;
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Single column for orders */
+        gap: 2rem;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0;
+    }
+
+    .dashboard-card.orders-container {
+        background-color: var(--text-light);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        padding: 1.5rem;
+    }
+
+    /* Search Section */
+    .search-section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .search-box {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+        display: flex;
+        align-items: center;
+    }
+
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            border-right: none;
+        }
+
+            .search-box input:focus {
+                outline: none;
+                border-color: var(--primary-color);
+                box-shadow: none;
+            }
+
+    .btn-search {
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        border: none;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+        .btn-search:hover {
+            background-color: var(--primary-dark);
+        }
+
+    .btn-refresh {
+        padding: 0.75rem 1.5rem;
+        background-color: var(--success-color);
+        color: var(--text-light);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+        .btn-refresh:hover {
+            background-color: #218838;
+        }
+
+    /* Orders Table */
+    .orders-table-container {
+        overflow-x: auto;
+    }
+
+    .orders-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+
+        .orders-table th {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .orders-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .orders-table tr:hover {
+            background-color: rgba(4, 104, 215, 0.05);
+        }
+
+    .btn-view {
+        padding: 0.5rem 1rem;
+        background-color: var(--view-color);
+        color: var(--text-light);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+        .btn-view:hover {
+            background-color: #138496;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-view:active {
+            transform: translateY(0);
+        }
+
+    /* Loading and No Orders States */
+    .loading-spinner {
+        padding: 2rem;
+        text-align: center;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .no-orders {
+        padding: 3rem 2rem;
+        text-align: center;
+        color: var(--text-dark);
+        opacity: 0.7;
+    }
+
+        .no-orders i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+    /* Unauthorized Message - Same as previous page */
+    .unauthorized-message {
+        text-align: center;
+        padding: 4rem 2rem;
+        background-color: var(--text-light);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        max-width: 600px;
+        margin: 2rem auto;
+    }
+
+        .unauthorized-message i {
+            font-size: 3rem;
+            color: var(--danger-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .unauthorized-message h2 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+    .btn-return {
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .btn-return:hover {
+            background-color: var(--primary-dark);
+        }
+
+    /* Footer Styles - Same as previous page */
+    .dashboard-footer {
+        background-color: var(--text-dark);
+        color: var(--text-light);
+        padding: 1.5rem 2rem;
+        text-align: center;
+    }
+
+        .dashboard-footer p {
+            margin: 0;
+        }
+
+    /* Responsive Styles - Same as previous page */
+    @@media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .user-info {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .dashboard-main {
+            padding: 1rem;
+        }
+
+        .orders-table th, .orders-table td {
+            padding: 0.75rem 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .search-box {
+            min-width: 100%;
+        }
+
+        .search-section {
+            flex-direction: column;
+        }
+
+        .btn-refresh {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .dashboard-header {
+            padding: 1rem;
+        }
+
+            .dashboard-header h1 {
+                font-size: 1.2rem;
+            }
+
+        .user-info {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .user-role, .btn-logout {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .search-box {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+            .search-box input {
+                border-radius: var(--border-radius);
+                border-right: 1px solid #ddd;
+            }
+
+        .btn-search {
+            border-radius: var(--border-radius);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-view {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+
+@code {
+    private string role = string.Empty;
+    private string username = string.Empty;
+    private string errorMessage = string.Empty;
+    private bool isLoading = true;
+    private List<OrderModel> orders = new();
+    private List<OrderModel> filteredOrders = new();
+    private string searchTerm = string.Empty;
+    private string statusFilter = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var token = await SessionStorage.GetItemAsync<string>("authToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                var claims = ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim?.Value;
+                var usernameClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
+                username = UserService.Username;
+
+                if (role == "Shopkeeper")
+                {
+                    await LoadOrders();
+                }
+                else
+                {
+                    await SessionStorage.RemoveItemAsync("authToken");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Error loading orders";
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task LoadOrders()
+    {
+        isLoading = true;
+        StateHasChanged();
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.GetAsync($"api/Orders?username={username}");
+            if (response.IsSuccessStatusCode)
+            {
+                orders = await response.Content.ReadFromJsonAsync<List<OrderModel>>() ?? new();
+                FilterOrders();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to load orders. Please try again.";
+            Console.WriteLine($"Error loading orders: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void FilterOrders()
+    {
+        filteredOrders = orders
+            .Where(o => string.IsNullOrEmpty(searchTerm) ||
+                       o.OrderID.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                       o.DeliveryLocation.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                       o.TotalAmount.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .OrderByDescending(o => o.OrderTime)
+            .ToList();
+    }
+
+    private void HandleSearch()
+    {
+        FilterOrders();
+    }
+
+    private void ViewOrderDetails(string orderId)
+    {
+        Navigation.NavigateTo($"/order-details/{orderId}");
+    }
+
+    private IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
+    {
+        var payload = jwt.Split('.')[1];
+        var jsonBytes = ParseBase64WithoutPadding(payload);
+        var keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
+        return keyValuePairs.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString()));
+    }
+
+    private byte[] ParseBase64WithoutPadding(string base64)
+    {
+        switch (base64.Length % 4)
+        {
+            case 2: base64 += "=="; break;
+            case 3: base64 += "="; break;
+        }
+        return Convert.FromBase64String(base64);
+    }
+
+    private async Task Logout()
+    {
+        await SessionStorage.RemoveItemAsync("authToken");
+        Navigation.NavigateTo("/logingrocery");
+    }
+
+    private async Task NavigateToHome()
+    {
+        await SessionStorage.RemoveItemAsync("authToken");
+        Navigation.NavigateTo("/");
+    }
+}

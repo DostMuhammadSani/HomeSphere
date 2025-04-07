@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "D:\\Final Year Project\\HomeSphere\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\updateproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\updateproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\orders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\orders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\addproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\addproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\grocery.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\grocery.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\products.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\products.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\grocery.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\grocery.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|d:\\final year project\\homesphere\\webapi\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46DE582A-EA2C-4C1D-98C3-FA0CCCDB8130}|ClassLibraryModel\\ClassLibraryModel.csproj|d:\\final year project\\homesphere\\classlibrarymodel\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46DE582A-EA2C-4C1D-98C3-FA0CCCDB8130}|ClassLibraryModel\\ClassLibraryModel.csproj|solutionrelative:classlibrarymodel\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|d:\\final year project\\homesphere\\webapi\\controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\updateproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\updateproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\addproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\addproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\logingrocery.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -45,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{46DE582A-EA2C-4C1D-98C3-FA0CCCDB8130}|ClassLibraryModel\\ClassLibraryModel.csproj|d:\\final year project\\homesphere\\classlibrarymodel\\residentmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{46DE582A-EA2C-4C1D-98C3-FA0CCCDB8130}|ClassLibraryModel\\ClassLibraryModel.csproj|solutionrelative:classlibrarymodel\\residentmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|d:\\final year project\\homesphere\\webapi\\controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AFDC2D-8E09-46C3-8609-80C7278A9C54}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\storeform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -214,48 +226,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UpdateProduct.razor",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateProduct.razor",
-              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\UpdateProduct.razor",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateProduct.razor",
-              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\UpdateProduct.razor",
-              "ViewState": "AgIAAAgBAAAAAAAAAAAQwBABAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-06T16:09:42.573Z",
+              "DocumentIndex": 3,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\OrdersController.cs",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T04:09:58.126Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AddProduct.razor",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\AddProduct.razor",
-              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\AddProduct.razor",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\AddProduct.razor",
-              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\AddProduct.razor",
-              "ViewState": "AgIAAPYAAAAAAAAAAAAAAP0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-06T16:06:23.866Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Products.razor",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Products.razor",
-              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Products.razor",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Products.razor",
-              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Products.razor",
-              "ViewState": "AgIAAAgBAAAAAAAAAAAAABIBAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-06T16:04:04.872Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "LoginGrocery.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\LoginGrocery.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\LoginGrocery.razor",
@@ -267,19 +255,97 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Grocery.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Grocery.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Grocery.razor",
               "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Grocery.razor",
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Grocery.razor",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAGgAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-05T18:24:36.845Z"
+              "WhenOpened": "2025-04-05T18:24:36.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderModel.cs",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\OrderModel.cs",
+              "RelativeDocumentMoniker": "ClassLibraryModel\\OrderModel.cs",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\OrderModel.cs",
+              "RelativeToolTip": "ClassLibraryModel\\OrderModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T04:08:44.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Orders.razor",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Orders.razor",
+              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Orders.razor",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Orders.razor",
+              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Orders.razor",
+              "ViewState": "AgIAAG8CAAAAAAAAAAAQwHcCAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T04:17:59.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UpdateProduct.razor",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateProduct.razor",
+              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\UpdateProduct.razor",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateProduct.razor",
+              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\UpdateProduct.razor",
+              "ViewState": "AgIAANoBAAAAAAAAAAAAABABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-06T16:09:42.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Products.razor",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Products.razor",
+              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Products.razor",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Products.razor",
+              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Products.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-06T16:04:04.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StoreController.cs",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\StoreController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\StoreController.cs",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\StoreController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\StoreController.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAQwGIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T07:25:51.118Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "AddProduct.razor",
+              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\AddProduct.razor",
+              "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\AddProduct.razor",
+              "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\AddProduct.razor",
+              "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\AddProduct.razor",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAAAP0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-06T16:06:23.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\AdminController.cs",
@@ -291,7 +357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "Event.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Event.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Event.razor",
@@ -303,7 +369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ProductModel.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ProductModel.cs",
               "RelativeDocumentMoniker": "ClassLibraryModel\\ProductModel.cs",
@@ -315,7 +381,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "DBHelper.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\DALLibrary\\DBHelper.cs",
               "RelativeDocumentMoniker": "DALLibrary\\DBHelper.cs",
@@ -327,7 +393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "PhotoService.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\PhotoService.cs",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\PhotoService.cs",
@@ -339,7 +405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "StoreForm.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\StoreForm.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\StoreForm.razor",
@@ -351,7 +417,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "ResidentModel.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ResidentModel.cs",
               "RelativeDocumentMoniker": "ClassLibraryModel\\ResidentModel.cs",
@@ -363,7 +429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "Stores.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Stores.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Stores.razor",
@@ -375,19 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "StoreController.cs",
-              "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\StoreController.cs",
-              "RelativeDocumentMoniker": "WebAPI\\Controllers\\StoreController.cs",
-              "ToolTip": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\StoreController.cs",
-              "RelativeToolTip": "WebAPI\\Controllers\\StoreController.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAAwF4AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T07:25:51.118Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "LoginModel.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\LoginModel.cs",
               "RelativeDocumentMoniker": "ClassLibraryModel\\LoginModel.cs",
@@ -399,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "Dashboard.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Dashboard.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Dashboard.razor",
@@ -411,7 +465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "UpdateStoreForm.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateStoreForm.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\UpdateStoreForm.razor",
@@ -423,7 +477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "Login.Razor.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Login.Razor.cs",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Login.Razor.cs",
@@ -435,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\AuthController.cs",
@@ -447,7 +501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "Register.Razor.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Register.Razor.cs",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Register.Razor.cs",
@@ -459,7 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "UpdateResidentForm.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateResidentForm.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\UpdateResidentForm.razor",
@@ -471,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Program.cs",
               "RelativeDocumentMoniker": "WebAPI\\Program.cs",
@@ -483,7 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "ResidentForm.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\ResidentForm.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\ResidentForm.razor",
@@ -495,7 +549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\appsettings.json",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\appsettings.json",
@@ -507,7 +561,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "PlotDetailComponent.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\PlotDetailComponent.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\PlotDetailComponent.razor",
@@ -519,7 +573,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Complain.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Complain.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Complain.razor",
@@ -531,7 +585,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "Register.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Register.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Register.razor",
@@ -543,7 +597,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "BillStatus.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\BillStatus.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\BillStatus.razor",
@@ -555,7 +609,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "BillModel.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\BillModel.cs",
               "RelativeDocumentMoniker": "ClassLibraryModel\\BillModel.cs",
@@ -567,7 +621,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "Request.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Request.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Request.razor",
@@ -579,7 +633,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "GeneralBills.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\GeneralBills.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\GeneralBills.razor",
@@ -591,7 +645,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": ".env",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\.env",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\.env",
@@ -603,7 +657,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "ResidentController.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\ResidentController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\ResidentController.cs",
@@ -615,7 +669,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "StaffModel.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\StaffModel.cs",
               "RelativeDocumentMoniker": "ClassLibraryModel\\StaffModel.cs",
@@ -627,7 +681,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "BillController.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\BillController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\BillController.cs",
@@ -639,7 +693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "StaffController.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\StaffController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\StaffController.cs",
@@ -651,7 +705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "Staff.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Staff.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Staff.razor",
@@ -663,7 +717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 40,
               "Title": "StaffForm.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\StaffForm.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\StaffForm.razor",
@@ -675,7 +729,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 41,
               "Title": "UpdateOwnShip.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateOwnShip.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\UpdateOwnShip.razor",
@@ -687,7 +741,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 42,
               "Title": "Ownship.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Ownship.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Ownship.razor",
@@ -699,7 +753,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 43,
               "Title": "OwnShipForm.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\OwnShipForm.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\OwnShipForm.razor",
@@ -711,7 +765,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 44,
               "Title": "Plot.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\Plot.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\Plot.razor",
@@ -723,7 +777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 45,
               "Title": "EventDescription.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\EventDescription.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\EventDescription.razor",
@@ -735,7 +789,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 46,
               "Title": "UpdatePlot.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdatePlot.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\UpdatePlot.razor",
@@ -747,7 +801,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 47,
               "Title": "PlotController.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\PlotController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\PlotController.cs",
@@ -759,7 +813,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 48,
               "Title": "EventDescriptionController.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\EventDescriptionController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\EventDescriptionController.cs",
@@ -771,7 +825,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 49,
               "Title": "EventDescriptionModel.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\EventDescriptionModel.cs",
               "RelativeDocumentMoniker": "ClassLibraryModel\\EventDescriptionModel.cs",
@@ -783,7 +837,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 50,
               "Title": "ComplainsModel.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\ComplainsModel.cs",
               "RelativeDocumentMoniker": "ClassLibraryModel\\ComplainsModel.cs",
@@ -795,7 +849,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 51,
               "Title": "UpdateStaffForm.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateStaffForm.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\UpdateStaffForm.razor",
@@ -807,7 +861,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 52,
               "Title": "TaskModel.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\ClassLibraryModel\\TaskModel.cs",
               "RelativeDocumentMoniker": "ClassLibraryModel\\TaskModel.cs",
@@ -819,7 +873,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 53,
               "Title": "PlotDetailsController.cs",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\WebAPI\\Controllers\\PlotDetailsController.cs",
               "RelativeDocumentMoniker": "WebAPI\\Controllers\\PlotDetailsController.cs",

@@ -726,6 +726,53 @@
         }
       }
     },
+    "/api/Orders": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrderModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrderModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrderModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/OwnShip": {
       "get": {
         "tags": [
@@ -2158,6 +2205,40 @@
           },
           "rememberMe": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderModel": {
+        "type": "object",
+        "properties": {
+          "orderID": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "float"
+          },
+          "deliveryCharges": {
+            "type": "number",
+            "format": "float"
+          },
+          "deliveryLocation": {
+            "type": "string",
+            "nullable": true
+          },
+          "cnic": {
+            "type": "string",
+            "nullable": true
+          },
+          "storeID": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

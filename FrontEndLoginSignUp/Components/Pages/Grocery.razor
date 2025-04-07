@@ -59,24 +59,6 @@
                     </div>
                 </div>
 
-                <!-- Inventory Card -->
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <i class="fas fa-warehouse card-icon"></i>
-                        <h2>Inventory Status</h2>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                         alt="Grocery Inventory" class="card-image" />
-                    <div class="card-body">
-                        <p>Check stock levels and inventory reports</p>
-                        <div class="card-actions">
-                            <button class="btn-card" @onclick="NavigateToInventory">
-                                <i class="fas fa-chart-line"></i> View Inventory
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
                             </div>
         }
         else
@@ -180,20 +162,23 @@
         }
 
     /* Main Content Styles */
+    /* Main Content Styles */
     .dashboard-main {
         flex: 1;
         padding: 2rem;
-        max-width: 1200px;
+        width: 100%; /* Changed from max-width to ensure full width */
         margin: 0 auto;
-        width: 100%;
+        box-sizing: border-box;
     }
 
     /* Dashboard Grid */
     .dashboard-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Changed from auto-fill to auto-fit */
         gap: 2rem;
+        width: 100%; /* Ensure grid takes full width */
         margin-top: 1rem;
+        padding: 0; /* Remove any potential padding */
     }
 
     /* Dashboard Cards */
@@ -205,8 +190,10 @@
         transition: var(--transition);
         display: flex;
         flex-direction: column;
+        width: 100%; /* Ensure cards take full available width */
+        margin: 0; /* Remove any default margins */
+        box-sizing: border-box;
     }
-
         .dashboard-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);

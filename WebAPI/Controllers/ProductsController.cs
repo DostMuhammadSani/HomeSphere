@@ -37,6 +37,32 @@ namespace WebAPI.Controllers
             }
         }
 
+
+        [HttpGet("ProductsforOrder")]
+        public async Task<IActionResult> GetProductsByOrder(string OrderID)
+        {
+
+
+            try
+            {
+                var products = DALClass.GetProductwithOrders(OrderID);
+                if (products == null || products.Count == 0)
+                {
+                    return NotFound("No products found for this store or store doesn't exist");
+                }
+                return Ok(products);
+            }
+            catch (SqlException ex) when (ex.Number == 50000) // Custom error from RAISERROR
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
+        }
+
+
         // POST: api/Products
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromBody] ProductModel product)

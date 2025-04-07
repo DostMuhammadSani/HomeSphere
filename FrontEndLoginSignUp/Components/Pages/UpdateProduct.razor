@@ -103,7 +103,7 @@
 }
 <!-- Footer -->
 <footer class="products-footer">
-    © @DateTime.Now.Year My Store - Inventory Management System
+    <p>© @DateTime.Now.Year FreshMart Pro - Grocery Store Management System</p>
 </footer>
 
 @code {
@@ -272,7 +272,7 @@
     }
 
     private void Cancel() => NavigationManager.NavigateTo("/products");
-    private async Task Logout() { await SessionStorage.RemoveItemAsync("authToken"); NavigationManager.NavigateTo("/logingrocery"); }
+    private async Task Logout() { await SessionStorage.RemoveItemAsync("authToken"); NavigationManager.NavigateTo("/"); }
 }
 
 <style>

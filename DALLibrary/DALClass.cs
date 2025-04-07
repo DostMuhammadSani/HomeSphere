@@ -243,5 +243,36 @@ namespace DALLibrary
         }
 
 
+    
+
+
+    public static List<ProductModel> GetProductwithOrders(string OrderID)
+        {
+            List<ProductModel> Products = new List<ProductModel>();
+            SqlConnection conn = DBHelper.getConnection();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("GetProductsByOrderID", conn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@OrderID ", OrderID);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                ProductModel P = new ProductModel();
+                P.ProductID = Convert.ToString(reader["ProductID"]);
+                P.Picture = Convert.ToString(reader["Picture"]);
+                P.Price = (int)reader["Price"];
+                P.Descriptions = Convert.ToString(reader["Descriptions"]);
+                P.ExpiryDate = (DateTime)reader["ExpiryDate"];
+                P.StoreID = Convert.ToString(reader["StoreID"]);
+                Products.Add(P);
+            }
+            conn.Close();
+            return Products;
+
+
+        }
+
+
     }
+
 }

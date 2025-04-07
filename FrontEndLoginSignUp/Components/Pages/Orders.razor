@@ -624,7 +624,7 @@
     private async Task Logout()
     {
         await SessionStorage.RemoveItemAsync("authToken");
-        Navigation.NavigateTo("/logingrocery");
+        Navigation.NavigateTo("/");
     }
 
     private async Task NavigateToHome()

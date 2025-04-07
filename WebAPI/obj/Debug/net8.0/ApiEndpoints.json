@@ -758,6 +758,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebAPI.Controllers.ProductsController",
+    "Method": "GetProductsByOrder",
+    "RelativePath": "api/Products/ProductsforOrder",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OrderID",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebAPI.Controllers.RequestController",
     "Method": "GetRequests",
     "RelativePath": "api/Request",

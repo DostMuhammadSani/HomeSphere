@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FrontEndLoginSignUp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9be8449dff2db23418951e879b861e91679fb630")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2df9a50288809a70f3eaeed0da0a9ff3aee77bd")]
 [assembly: System.Reflection.AssemblyProductAttribute("FrontEndLoginSignUp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FrontEndLoginSignUp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

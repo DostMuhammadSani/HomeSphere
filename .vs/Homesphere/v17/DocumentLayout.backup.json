@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\updatesalaryform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\staffsalaries.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\staffsalaries.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\salaryform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\salaryform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\staffsalaries.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|solutionrelative:frontendloginsignup\\components\\pages\\staffsalaries.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{678C90CE-4212-4008-B881-A35C1F53BC27}|FrontEndLoginSignUp\\FrontEndLoginSignUp.csproj|d:\\final year project\\homesphere\\frontendloginsignup\\components\\pages\\staffform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -296,14 +296,14 @@
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\UpdateSalaryForm.razor",
               "ToolTip": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\UpdateSalaryForm.razor",
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\UpdateSalaryForm.razor",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACsAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-06T22:25:11.706Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "SalaryForm.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\SalaryForm.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\SalaryForm.razor",
@@ -316,7 +316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "StaffSalaries.razor",
               "DocumentMoniker": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\Components\\Pages\\StaffSalaries.razor",
               "RelativeDocumentMoniker": "FrontEndLoginSignUp\\Components\\Pages\\StaffSalaries.razor",
@@ -324,8 +324,7 @@
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\StaffSalaries.razor",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAO0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-06T17:20:23.496Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T17:20:23.496Z"
             },
             {
               "$type": "Document",
@@ -337,8 +336,7 @@
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Staff.razor",
               "ViewState": "AgIAALsAAAAAAAAAAAAgwMsAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-03T19:32:36.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:32:36.393Z"
             },
             {
               "$type": "Document",
@@ -350,8 +348,7 @@
               "RelativeToolTip": "WebAPI\\Controllers\\StaffSalariesController.cs",
               "ViewState": "AgIAAEYAAAAAAAAAAAAQwFEAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T17:09:17.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T17:09:17.964Z"
             },
             {
               "$type": "Document",
@@ -363,8 +360,7 @@
               "RelativeToolTip": "ClassLibraryModel\\StaffModel.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAkwBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T20:01:21.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T20:01:21.812Z"
             },
             {
               "$type": "Document",
@@ -376,8 +372,7 @@
               "RelativeToolTip": "ClassLibraryModel\\StaffSalaryModel.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAxwBAAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T17:07:08.312Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T17:07:08.312Z"
             },
             {
               "$type": "Document",
@@ -389,8 +384,7 @@
               "RelativeToolTip": "WebAPI\\Controllers\\StaffController.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAYwC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T19:04:44.157Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-18T19:04:44.157Z"
             },
             {
               "$type": "Document",
@@ -402,8 +396,7 @@
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\UpdateStaffForm.razor",
               "ViewState": "AgIAAGYAAAAAAAAAAAAYwHsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-03T19:41:01.902Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:41:01.902Z"
             },
             {
               "$type": "Document",
@@ -415,8 +408,7 @@
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\StaffForm.razor",
               "ViewState": "AgIAAHkAAAAAAAAAAAAgwI4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-03T19:37:15.846Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:37:15.846Z"
             },
             {
               "$type": "Document",
@@ -428,8 +420,7 @@
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\Residents.razor",
               "ViewState": "AgIAANEAAAAAAAAAAAAYwOYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-29T04:32:32.933Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-29T04:32:32.933Z"
             },
             {
               "$type": "Document",
@@ -441,8 +432,7 @@
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\TaskForm.razor",
               "ViewState": "AgIAAEsAAAAAAAAAAAAAAE8AAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-06T21:58:52.418Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T21:58:52.418Z"
             },
             {
               "$type": "Document",
@@ -454,8 +444,7 @@
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\ResidentForm.razor",
               "ViewState": "AgIAAEsAAAAAAAAAAAAAAGoAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-05T15:40:34.619Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T15:40:34.619Z"
             },
             {
               "$type": "Document",
@@ -467,8 +456,7 @@
               "RelativeToolTip": "WebAPI\\Controllers\\FinancialReportsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T17:10:52.32Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T17:10:52.32Z"
             },
             {
               "$type": "Document",
@@ -480,8 +468,7 @@
               "RelativeToolTip": "ClassLibraryModel\\BudgetModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAwwBUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T17:13:05.987Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T17:13:05.987Z"
             },
             {
               "$type": "Document",
@@ -493,8 +480,7 @@
               "RelativeToolTip": "FrontEndLoginSignUp\\Components\\Pages\\GeneralBills.razor",
               "ViewState": "AgIAABgAAAAAAAAAAAAAACgBAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-25T11:50:15.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-25T11:50:15.268Z"
             },
             {
               "$type": "Document",
@@ -506,8 +492,7 @@
               "RelativeToolTip": "WebAPI\\Controllers\\BudgetsController.cs.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T17:13:57.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T17:13:57.647Z"
             },
             {
               "$type": "Document",
@@ -519,8 +504,7 @@
               "RelativeToolTip": "ClassLibraryModel\\FinancialSummaryModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T17:12:00.127Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T17:12:00.127Z"
             },
             {
               "$type": "Document",
@@ -532,8 +516,7 @@
               "RelativeToolTip": "ClassLibraryModel\\FinancialReportModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAwwBUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T17:10:13.504Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T17:10:13.504Z"
             },
             {
               "$type": "Document",
@@ -569,8 +552,7 @@
               "RelativeToolTip": "WebAPI\\Controllers\\StoreController.cs",
               "ViewState": "AgIAAE8AAAAAAAAAAAAwwGQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T07:25:51.118Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T07:25:51.118Z"
             },
             {
               "$type": "Document",
@@ -582,8 +564,7 @@
               "RelativeToolTip": "WebAPI\\Controllers\\ProductsController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAzwD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T05:32:40.622Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:32:40.622Z"
             },
             {
               "$type": "Document",

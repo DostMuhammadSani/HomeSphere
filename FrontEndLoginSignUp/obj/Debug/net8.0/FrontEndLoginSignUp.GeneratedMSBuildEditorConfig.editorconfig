@@ -152,6 +152,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNpZGVudHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/SalaryForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTYWxhcnlGb3JtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/Sidebars.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaWRlYmFycy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -162,6 +166,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/StaffForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGFmZkZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/StaffSalaries.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGFmZlNhbGFyaWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/StoreForm.razor]
@@ -198,6 +206,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateResidentForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVSZXNpZGVudEZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateSalaryForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGRhdGVTYWxhcnlGb3JtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/UpdateStaffForm.razor]

@@ -1,0 +1,260 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using ClassLibraryModel
+@using DALLibrary
+@inject NavigationManager Navigation
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+    <h4 class="text-2xl font-semibold text-gray-800 mb-6">Update Salary</h4>
+    <EditForm Model="Salary" OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator />
+        <div class="mb-4 text-red-600 text-sm">
+            <ValidationSummary />
+        </div>
+
+        <!-- SalaryID Field (Disabled) -->
+        <div class="mb-4">
+            <label for="salaryId" class="block text-sm font-medium text-gray-700">Salary ID</label>
+            <InputText id="salaryId" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-100"
+                       @bind-Value="Salary.SalaryID"
+                       disabled />
+        </div>
+
+        <!-- StaffCNIC Autocomplete -->
+        <div class="mb-4 relative">
+            <label for="staffCnic" class="block text-sm font-medium text-gray-700">Staff CNIC</label>
+            <InputText id="staffCnic" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                       @bind-Value="searchCnic"
+                       @oninput="FilterStaff"
+                       placeholder="Type CNIC or Name"
+                       required disabled />
+            @if (filteredStaff.Any() && showSuggestions)
+            {
+                <ul class="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-48 overflow-y-auto">
+                    @foreach (var staff in filteredStaff)
+                    {
+                        <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+                            @onclick="() => SelectStaff(staff)">
+                            @staff.CNIC - @staff.Names
+                        </li>
+                    }
+                </ul>
+            }
+
+          
+        </div>
+
+        <!-- Amount Field -->
+        <div class="mb-4">
+            <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
+            <InputNumber id="amount" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                         @bind-Value="Salary.Amount"
+                         required />
+        </div>
+
+        <!-- PaymentDate Field -->
+        <div class="mb-4">
+            <label for="paymentDate" class="block text-sm font-medium text-gray-700">Payment Date</label>
+            <InputDate id="paymentDate" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                       @bind-Value="Salary.PaymentDate"
+                       required />
+        </div>
+
+        <!-- PaymentMethod Dropdown -->
+        <div class="mb-4">
+            <label for="paymentMethod" class="block text-sm font-medium text-gray-700">Payment Method</label>
+            <InputSelect id="paymentMethod" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                         @bind-Value="Salary.PaymentMethod"
+                         required>
+                <option value="">Select Payment Method</option>
+                <option value="Cash">Cash</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="Check">Check</option>
+                <option value="Mobile Payment">Mobile Payment</option>
+            </InputSelect>
+        </div>
+
+        <!-- Status Dropdown -->
+        <div class="mb-4">
+            <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+            <InputSelect id="status" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                         @bind-Value="Salary.Status"
+                         required>
+                <option value="">Select Status</option>
+                <option value="Paid">Paid</option>
+                <option value="Pending">Pending</option>
+                <option value="Failed">Failed</option>
+            </InputSelect>
+        </div>
+
+        <!-- Description Field -->
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+            <InputTextArea id="description" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                           @bind-Value="Salary.Description" />
+        </div>
+
+        <!-- Submit and Cancel Buttons -->
+        <div class="flex space-x-4">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Update</button>
+            <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    @onclick="Cancel">
+                Cancel
+            </button>
+        </div>
+    </EditForm>
+
+    <!-- Success and Error Messages -->
+    @if (!string.IsNullOrEmpty(SuccessMessage))
+    {
+        <div class="mt-4 p-4 bg-green-100 text-green-700 rounded-md">
+            @SuccessMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="mt-4 p-4 bg-red-100 text-red-700 rounded-md">
+            @ErrorMessage
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public StaffSalaryModel Salary { get; set; }
+    [Parameter] public EventCallback<StaffSalaryModel> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    private List<StaffModel> staffMembers = new List<StaffModel>();
+    private List<StaffModel> filteredStaff = new List<StaffModel>();
+    private string searchCnic = "";
+    private bool showSuggestions = false;
+    private string HS_Name { get; set; }
+    private string ErrorMessage { get; set; }
+    private string SuccessMessage { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        HS_Name = UserService.Username;
+        await LoadStaff();
+        // Initialize searchCnic with the current StaffCNIC and Name
+        var currentStaff = staffMembers.FirstOrDefault(s => s.CNIC == Salary.StaffCNIC);
+        searchCnic = currentStaff != null ? $"{currentStaff.CNIC} - {currentStaff.Names}" : Salary.StaffCNIC;
+    }
+
+    private async Task LoadStaff()
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={HS_Name}";
+            var response1 = await client.GetAsync(url);
+            if (response1.IsSuccessStatusCode)
+            {
+                var A_id = await response1.Content.ReadAsStringAsync();
+                var response = await client.GetAsync($"api/Staff?A_id={A_id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    staffMembers = await response.Content.ReadFromJsonAsync<List<StaffModel>>();
+                    filteredStaff = staffMembers;
+                }
+                else
+                {
+                    ErrorMessage = "Failed to load staff members.";
+                }
+            }
+            else
+            {
+                ErrorMessage = "Invalid Housing Society Name.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred while loading staff: {ex.Message}";
+        }
+    }
+
+    private void FilterStaff(ChangeEventArgs e)
+    {
+        searchCnic = e.Value?.ToString() ?? "";
+        showSuggestions = !string.IsNullOrWhiteSpace(searchCnic);
+        if (showSuggestions)
+        {
+            filteredStaff = staffMembers.Where(s =>
+                s.CNIC.Contains(searchCnic, StringComparison.OrdinalIgnoreCase) ||
+                s.Names.Contains(searchCnic, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        else
+        {
+            filteredStaff = staffMembers;
+        }
+    }
+
+    private void SelectStaff(StaffModel staff)
+    {
+        Salary.StaffCNIC = staff.CNIC;
+        searchCnic = $"{staff.CNIC} - {staff.Names}";
+        showSuggestions = false;
+    }
+
+    private async Task HandleSubmit()
+    {
+        ErrorMessage = string.Empty;
+        SuccessMessage = string.Empty;
+
+        if (!IsValidHSName(HS_Name))
+        {
+            ErrorMessage = "Housing Society Name can only contain letters or digits.";
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(Salary.StaffCNIC))
+        {
+            ErrorMessage = "Please select a valid Staff CNIC.";
+            return;
+        }
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var url = $"api/Admin/AdminID?HS_Name={HS_Name}";
+            var response1 = await client.GetAsync(url);
+            if (response1.IsSuccessStatusCode)
+            {
+                Salary.A_id = await response1.Content.ReadAsStringAsync();
+                var response = await client.PutAsJsonAsync("api/StaffSalaries", Salary);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    SuccessMessage = "Salary updated successfully.";
+                    await OnSave.InvokeAsync(Salary);
+                }
+                else
+                {
+                    ErrorMessage = "Failed to update the salary record. Please try again.";
+                }
+            }
+            else
+            {
+                ErrorMessage = "Invalid Housing Society Name.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private bool IsValidHSName(string hsName)
+    {
+        return hsName.All(char.IsLetterOrDigit);
+    }
+
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

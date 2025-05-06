@@ -1,0 +1,238 @@
+﻿@page "/staffsalaries"
+@rendermode InteractiveServer
+@using System.Collections.Generic
+@using System.Linq
+@using ClassLibraryModel
+@using DALLibrary
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@using Blazored.SessionStorage
+@using System.Security.Claims
+@inject ISessionStorageService SessionStorage
+
+@if (role == "Admin")
+{
+    <div style="display: flex; flex-direction: row; background-color: #f8f9fa;">
+        <Sidebars></Sidebars>
+        <div style="width: 80%; margin: 40px;">
+            <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
+                <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Staff Salary Management</h2>
+
+                <!-- Search Box -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <input @bind="searchText" style="width: 60%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="Search by Staff Name or Payment Method" />
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="SearchSalaries">Search</button>
+                </div>
+
+                <!-- Add Salary Button -->
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <button style="background-color: #1b6cb9; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;" @onclick="AddNewSalary">Add Salary</button>
+                </div>
+
+                <!-- Salary Form -->
+                @if (showForm)
+                {
+                    <div style="margin-top: 20px;">
+                        @if (currentSalary.SalaryID == null)
+                        {
+                            <SalaryForm Salary="currentSalary" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                        else
+                        {
+                            <UpdateSalaryForm Salary="currentSalary" OnSave="HandleSave" OnCancel="HandleCancel" />
+                        }
+                    </div>
+                }
+
+                <!-- Data Table -->
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #1b6cb9; color: white;">
+                            <th style="padding: 10px; border: 1px solid #ddd;">Staff Name</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Amount</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Payment Date</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Payment Method</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Status</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Description</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (filteredSalaries.Any())
+                        {
+                            @foreach (var salary in filteredSalaries)
+                            {
+                                <tr style="background-color: #f8f9fa;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">
+                                        @(staffMembers.FirstOrDefault(s => s.CNIC == salary.StaffCNIC)?.Names ?? "Unknown")
+                                    </td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@salary.Amount</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@salary.PaymentDate.ToString("yyyy-MM-dd")</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@salary.PaymentMethod</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@salary.Status</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@salary.Description</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+                                        <button style="background-color: #1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditSalary(salary)">Update</button>
+                                        <button style="background-color: #1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteSalary(salary.SalaryID)">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" style="padding: 20px; text-align: center; color: #888;">No salary records found</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<StaffSalaryModel> salaries = new List<StaffSalaryModel>();
+    private List<StaffSalaryModel> filteredSalaries = new List<StaffSalaryModel>();
+    private List<StaffModel> staffMembers = new List<StaffModel>();
+    private StaffSalaryModel currentSalary;
+    private bool showForm;
+    private string A_id;
+    private string token;
+    private string role;
+    private string searchText = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                token = await SessionStorage.GetItemAsync<string>("authToken");
+                var claims = RoleFetch.ParseClaimsFromJwt(token);
+                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                role = roleClaim?.Value;
+                StateHasChanged();
+                await LoadStaff();
+                await LoadStaffSalaries();
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving token: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task LoadStaff()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Staff?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                staffMembers = await response.Content.ReadFromJsonAsync<List<StaffModel>>();
+            }
+        }
+    }
+
+    private async Task LoadStaffSalaries()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/StaffSalaries?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                salaries = await response.Content.ReadFromJsonAsync<List<StaffSalaryModel>>();
+                filteredSalaries = salaries;
+            }
+        }
+    }
+
+    private void AddNewSalary()
+    {
+        currentSalary = new StaffSalaryModel { A_id = A_id };
+        showForm = true;
+    }
+
+    private void EditSalary(StaffSalaryModel salary)
+    {
+        currentSalary = salary;
+        showForm = true;
+    }
+
+    private async void DeleteSalary(string salaryID)
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var response = await client.DeleteAsync($"api/StaffSalaries?SalaryID={salaryID}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var salaryToRemove = salaries.FirstOrDefault(s => s.SalaryID == salaryID);
+            if (salaryToRemove != null)
+            {
+                salaries.Remove(salaryToRemove);
+                filteredSalaries.Remove(salaryToRemove);
+            }
+            StateHasChanged();
+        }
+        else
+        {
+            Console.WriteLine($"Failed to delete salary with ID {salaryID}. Status code: {response.StatusCode}");
+        }
+    }
+
+    private async void HandleSave(StaffSalaryModel savedSalary)
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        if (savedSalary.SalaryID == null)
+        {
+            // Add new salary
+            savedSalary.A_id = A_id;
+            var response = await client.PostAsJsonAsync("api/StaffSalaries", savedSalary);
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"Failed to add salary. Status code: {response.StatusCode}");
+            }
+        }
+        else
+        {
+            // Update existing salary
+            var response = await client.PutAsJsonAsync("api/StaffSalaries", savedSalary);
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"Failed to update salary. Status code: {response.StatusCode}");
+            }
+        }
+        await LoadStaffSalaries();
+        showForm = false;
+        StateHasChanged();
+    }
+
+    private void HandleCancel()
+    {
+        showForm = false;
+    }
+
+    private void SearchSalaries()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredSalaries = salaries;
+        }
+        else
+        {
+            filteredSalaries = salaries.Where(s =>
+                (staffMembers.FirstOrDefault(st => st.CNIC == s.StaffCNIC)?.Names?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (s.PaymentMethod?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false)).ToList();
+        }
+    }
+}

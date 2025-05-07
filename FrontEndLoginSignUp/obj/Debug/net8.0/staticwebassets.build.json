@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0X0z6hr24oXHaM3iXDU6XQJsAFY971gDfLm372j3FMA=",
+  "Hash": "4BL63oRkzLwRi5RZpS/JKLgig4LQMOmLdlU7I0alP8w=",
   "Source": "FrontEndLoginSignUp",
   "BasePath": "_content/FrontEndLoginSignUp",
   "Mode": "Default",
@@ -1184,6 +1184,27 @@
       "OriginalItemSpec": "wwwroot\\home_services.jpeg"
     },
     {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\budget.png",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "icons/budget#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "w3u731y26q",
+      "Integrity": "LLu3fM6Ip25FpLtygbGG4kXKcjtZdmA7fuF6sNqqqCM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\budget.png"
+    },
+    {
       "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\cleaning-staff.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
@@ -1245,6 +1266,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\home (2).png"
+    },
+    {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\income.png",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "icons/income#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "navje804s1",
+      "Integrity": "0ex857gKjfbHhdsPBVq+x5q1WchOjt2T49RsgYyUDMw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\income.png"
     },
     {
       "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\key.png",
@@ -1352,6 +1394,69 @@
       "OriginalItemSpec": "wwwroot\\icons\\profile.png"
     },
     {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\report.png",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "icons/report#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4egzaixcgq",
+      "Integrity": "ROCSLEOeTQCD/n0lPOIImqQtkqMQGXXWd/x0Wwj+PSY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\report.png"
+    },
+    {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\salary.png",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "icons/salary#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2l2gyc4czv",
+      "Integrity": "FsPoekXSIW5TYx4aGPN0L5mzkENUvjGc3l4E/sSXT08=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\salary.png"
+    },
+    {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\saving.png",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "icons/saving#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "coh1zlsq7k",
+      "Integrity": "RDkPQcqu8S/gOgj3/YCxK+qkqYSbASiZheV0NV9vB2k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\saving.png"
+    },
+    {
       "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\setting.png",
       "SourceId": "FrontEndLoginSignUp",
       "SourceType": "Discovered",
@@ -1371,6 +1476,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\setting.png"
+    },
+    {
+      "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\spending.png",
+      "SourceId": "FrontEndLoginSignUp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\",
+      "BasePath": "_content/FrontEndLoginSignUp",
+      "RelativePath": "icons/spending#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "enxlkel0ok",
+      "Integrity": "ZoZG4EQHA2OucO8gN4JmI0Y/6MLh4io2reqYGnfaHvU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icons\\spending.png"
     },
     {
       "Identity": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\user.png",
@@ -3880,6 +4006,88 @@
       ]
     },
     {
+      "Route": "icons/budget.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\budget.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23497"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LLu3fM6Ip25FpLtygbGG4kXKcjtZdmA7fuF6sNqqqCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:22:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LLu3fM6Ip25FpLtygbGG4kXKcjtZdmA7fuF6sNqqqCM="
+        }
+      ]
+    },
+    {
+      "Route": "icons/budget.w3u731y26q.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\budget.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23497"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LLu3fM6Ip25FpLtygbGG4kXKcjtZdmA7fuF6sNqqqCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:22:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "w3u731y26q"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/budget.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LLu3fM6Ip25FpLtygbGG4kXKcjtZdmA7fuF6sNqqqCM="
+        }
+      ]
+    },
+    {
       "Route": "icons/cleaning-staff.ktns6ujgzn.png",
       "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\cleaning-staff.png",
       "Selectors": [],
@@ -4122,6 +4330,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-OpVH+pM90tIjz+ZSNY/ekS3o716H8/RUWrNJgS3dBvY="
+        }
+      ]
+    },
+    {
+      "Route": "icons/income.navje804s1.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\income.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "35852"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0ex857gKjfbHhdsPBVq+x5q1WchOjt2T49RsgYyUDMw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:27:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "navje804s1"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/income.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0ex857gKjfbHhdsPBVq+x5q1WchOjt2T49RsgYyUDMw="
+        }
+      ]
+    },
+    {
+      "Route": "icons/income.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\income.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "35852"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0ex857gKjfbHhdsPBVq+x5q1WchOjt2T49RsgYyUDMw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:27:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0ex857gKjfbHhdsPBVq+x5q1WchOjt2T49RsgYyUDMw="
         }
       ]
     },
@@ -4536,6 +4826,252 @@
       ]
     },
     {
+      "Route": "icons/report.4egzaixcgq.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\report.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ROCSLEOeTQCD/n0lPOIImqQtkqMQGXXWd/x0Wwj+PSY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:24:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4egzaixcgq"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/report.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ROCSLEOeTQCD/n0lPOIImqQtkqMQGXXWd/x0Wwj+PSY="
+        }
+      ]
+    },
+    {
+      "Route": "icons/report.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\report.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ROCSLEOeTQCD/n0lPOIImqQtkqMQGXXWd/x0Wwj+PSY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:24:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ROCSLEOeTQCD/n0lPOIImqQtkqMQGXXWd/x0Wwj+PSY="
+        }
+      ]
+    },
+    {
+      "Route": "icons/salary.2l2gyc4czv.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\salary.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23137"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FsPoekXSIW5TYx4aGPN0L5mzkENUvjGc3l4E/sSXT08=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:25:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2l2gyc4czv"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/salary.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FsPoekXSIW5TYx4aGPN0L5mzkENUvjGc3l4E/sSXT08="
+        }
+      ]
+    },
+    {
+      "Route": "icons/salary.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\salary.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23137"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FsPoekXSIW5TYx4aGPN0L5mzkENUvjGc3l4E/sSXT08=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:25:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FsPoekXSIW5TYx4aGPN0L5mzkENUvjGc3l4E/sSXT08="
+        }
+      ]
+    },
+    {
+      "Route": "icons/saving.coh1zlsq7k.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\saving.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "33487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RDkPQcqu8S/gOgj3/YCxK+qkqYSbASiZheV0NV9vB2k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:29:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "coh1zlsq7k"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/saving.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RDkPQcqu8S/gOgj3/YCxK+qkqYSbASiZheV0NV9vB2k="
+        }
+      ]
+    },
+    {
+      "Route": "icons/saving.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\saving.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "33487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RDkPQcqu8S/gOgj3/YCxK+qkqYSbASiZheV0NV9vB2k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:29:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-RDkPQcqu8S/gOgj3/YCxK+qkqYSbASiZheV0NV9vB2k="
+        }
+      ]
+    },
+    {
       "Route": "icons/setting.cgx8kzpmc8.png",
       "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\setting.png",
       "Selectors": [],
@@ -4614,6 +5150,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-XGvpRkQM9U0mfscTkrzpNflIdJ9E/qFSjQezXRQhZaM="
+        }
+      ]
+    },
+    {
+      "Route": "icons/spending.enxlkel0ok.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\spending.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23713"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZoZG4EQHA2OucO8gN4JmI0Y/6MLh4io2reqYGnfaHvU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:29:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "enxlkel0ok"
+        },
+        {
+          "Name": "label",
+          "Value": "icons/spending.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZoZG4EQHA2OucO8gN4JmI0Y/6MLh4io2reqYGnfaHvU="
+        }
+      ]
+    },
+    {
+      "Route": "icons/spending.png",
+      "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\spending.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23713"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZoZG4EQHA2OucO8gN4JmI0Y/6MLh4io2reqYGnfaHvU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 12:29:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZoZG4EQHA2OucO8gN4JmI0Y/6MLh4io2reqYGnfaHvU="
         }
       ]
     },

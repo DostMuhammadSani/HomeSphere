@@ -3,15 +3,21 @@ wwwroot\app.css
 wwwroot\favicon.png
 wwwroot\general.jpg
 wwwroot\home_services.jpeg
+wwwroot\icons\budget.png
 wwwroot\icons\cleaning-staff.png
 wwwroot\icons\emails.png
 wwwroot\icons\home (2).png
+wwwroot\icons\income.png
 wwwroot\icons\key.png
 wwwroot\icons\land.png
 wwwroot\icons\money.png
 wwwroot\icons\notifications.png
 wwwroot\icons\profile.png
+wwwroot\icons\report.png
+wwwroot\icons\salary.png
+wwwroot\icons\saving.png
 wwwroot\icons\setting.png
+wwwroot\icons\spending.png
 wwwroot\icons\user.png
 wwwroot\login.jpg
 wwwroot\mobile.png

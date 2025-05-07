@@ -380,3 +380,10 @@ D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\FrontEndLo
 D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\staticwebassets\msbuild.FrontEndLoginSignUp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\iTextSharp.LGPLv2.Core.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\SkiaSharp.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\runtimes\osx\native\libSkiaSharp.dylib
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll

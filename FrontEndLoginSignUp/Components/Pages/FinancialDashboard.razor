@@ -1,0 +1,588 @@
+﻿@page "/financial-dashboard"
+@using System.Drawing
+@inject UserService UserService
+@using Blazored.SessionStorage
+@inject ISessionStorageService SessionStorage
+@using System.Security.Claims
+@using ClassLibraryModel
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+@inject IHttpClientFactory HttpClientFactory
+@inject IJSRuntime JSRuntime
+
+@if (role == "Admin")
+{
+    <!-- Dashboard Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <Sidebars></Sidebars>
+            <div class="col-md-10 p-4">
+                <!-- Improved Header Section -->
+                <div class="dashboard-header mb-4 text-center">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div>
+                            <h1 class="dashboard-title">Financial Overview</h1>
+                            <p class="dashboard-subtitle">Monitor your organization's financial health</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Cards - Improved with better icons and layout -->
+                <div class="row text-center mb-4 px-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="card navigation-card" @onclick="ToBudget" >
+                            <div class="card-body">
+                                <img src="/icons/budget.png" alt="Budgets Icon" class="navigation-icon">
+                                <h5 class="mt-3">Budgets</h5>
+                                <p class="text-muted">Manage and track budgets</p>
+                                <span class="navigation-link">View Budgets <i class="fas fa-arrow-right ms-2"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card navigation-card" @onclick="ToReport">
+                            <div class="card-body">
+                                <img src="/icons/report.png" alt="Reports Icon" class="navigation-icon">
+                                <h5 class="mt-3">Reports</h5>
+                                <p class="text-muted">Generate financial reports</p>
+                                <span class="navigation-link">View Reports <i class="fas fa-arrow-right ms-2"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card navigation-card" @onclick="ToSalaries">
+                            <div class="card-body">
+                                <img src="/icons/salary.png" alt="Salaries Icon" class="navigation-icon">
+                                <h5 class="mt-3">Salaries</h5>
+                                <p class="text-muted">Manage staff payroll</p>
+                                <span class="navigation-link">View Salaries <i class="fas fa-arrow-right ms-2"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Summary Cards - Simplified without trend indicators -->
+                <div class="row text-center mb-4 px-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="card summary-card income-card">
+                            <div class="card-body">
+                                <div class="summary-icon-container">
+                                    <img src="/icons/income.png" alt="Income Icon" class="summary-icon">
+                                </div>
+                                <h3 class="mt-3">@summary?.CurrentMonthIncome.ToString("C")</h3>
+                                <p class="text-muted">Monthly Income</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card summary-card expense-card">
+                            <div class="card-body">
+                                <div class="summary-icon-container">
+                                    <img src="/icons/spending.png" alt="Expenses Icon" class="summary-icon">
+                                </div>
+                                <h3 class="mt-3">@summary?.CurrentMonthExpenses.ToString("C")</h3>
+                                <p class="text-muted">Monthly Expenses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card summary-card @(summary?.CurrentMonthNet >= 0 ? "profit-card" : "loss-card")">
+                            <div class="card-body">
+                                <div class="summary-icon-container">
+                                    <img src="/icons/saving.png" alt="Net Icon" class="summary-icon">
+                                </div>
+                                <h3 class="mt-3">@summary?.CurrentMonthNet.ToString("C")</h3>
+                                <p class="text-muted">Monthly Net</p>
+                                <div class="profit-loss-badge">
+                                    @(summary?.CurrentMonthNet >= 0 ? "Profit" : "Loss")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section - Simplified without unsupported properties -->
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="card chart-card">
+                            <div class="card-header bg-white border-0">
+                                <h5 class="chart-title">Monthly Financial Performance</h5>
+                                <p class="chart-subtitle">Income vs Expenses</p>
+                            </div>
+                            <div class="card-body pt-0">
+                                <BarChart @ref="barChart" Width="500" Height="300" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card chart-card">
+                            <div class="card-header bg-white border-0">
+                                <h5 class="chart-title">Expense Distribution</h5>
+                                <p class="chart-subtitle">Where your money goes</p>
+                            </div>
+                            <div class="card-body pt-0">
+                                <DoughnutChart @ref="doughnutChart" Width="500" Height="300" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unpaid Fees Section -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card alert-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                       
+                                        <div>
+                                            <h5 class="alert-title">Pending Payments</h5>
+                                            <p class="alert-text">@summary?.UnpaidFeesCount unpaid fees totaling @summary?.UnpaidFeesAmount.ToString("C")</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn action-button" >
+                                        <i class="fas fa-eye me-2"></i> Review
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <!-- Access Denied Section -->
+    <div class="access-denied-container">
+        <div class="access-denied-content">
+            <div class="denied-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2>Access Denied</h2>
+            <p>You don't have permission to access the financial dashboard.</p>
+            <p>Your current role: <strong>@role</strong></p>
+            <button class="btn-return" @onclick="NavigateToAppropriatePage">
+                Return to @(role == "Shopkeeper" ? "Grocery Management" : "Home")
+            </button>
+        </div>
+    </div>
+}
+
+<style>
+    /* Base Styles */
+    .row {
+        background-color: #f8fafc;
+    }
+
+    /* Header Styles */
+    .dashboard-header {
+        padding: 1.5rem 0;
+    }
+
+    .header-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .dashboard-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 0.25rem;
+    }
+
+    .dashboard-subtitle {
+        font-size: 0.9rem;
+        color: #718096;
+        margin-bottom: 0;
+    }
+
+    /* Navigation Cards */
+    .navigation-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        height: 100%;
+    }
+
+        .navigation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+    .navigation-icon {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+
+    .navigation-link {
+        color: #3b82f6;
+        font-weight: 500;
+        font-size: 0.9rem;
+        display: inline-block;
+        margin-top: 0.5rem;
+    }
+
+    /* Summary Cards */
+    .summary-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        height: 100%;
+        position: relative;
+    }
+
+    .income-card {
+        background: #d9f4ff;
+        border-left: 4px solid #3b82f6;
+    }
+
+    .expense-card {
+        background: #d9f4ff;
+        border-left: 4px solid #3b82f6;
+    }
+
+    .profit-card {
+        background: #d9f4ff;
+        border-left: 4px solid #3b82f6;
+    }
+
+    .loss-card {
+        background: #d9f4ff;
+        border-left: 4px solid #3b82f6;
+    }
+
+    .summary-icon-container {
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .summary-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .profit-loss-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+
+    .profit-card .profit-loss-badge {
+        background-color: white;
+        color: #8bd0fa;
+    }
+
+    .loss-card .profit-loss-badge {
+        background-color: #fee2e2;
+        color: #8bd0fa;
+    }
+
+    /* Chart Cards */
+    .chart-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        height: 100%;
+    }
+
+    .chart-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 0.25rem;
+    }
+
+    .chart-subtitle {
+        font-size: 0.85rem;
+        color: #718096;
+        margin-bottom: 0;
+    }
+
+    /* Alert Card */
+    .alert-card {
+        border: none;
+        border-radius: 12px;
+        background-color: white;
+        border-left: 4px solid #3b82f6;
+    }
+
+    .alert-icon-container {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .alert-icon {
+        color: #3b82f6;
+        font-size: 1.5rem;
+    }
+
+    .alert-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 0.25rem;
+    }
+
+    .alert-text {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-bottom: 0;
+    }
+
+    .action-button {
+        background-color: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 1.25rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+        .action-button:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+        }
+
+    /* Access Denied Styles */
+    .access-denied-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f8fafc;
+    }
+
+    .access-denied-content {
+        text-align: center;
+        max-width: 500px;
+        padding: 40px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .denied-icon {
+        font-size: 60px;
+        color: #ef4444;
+        margin-bottom: 20px;
+    }
+
+    .access-denied-content h2 {
+        color: #2d3748;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .access-denied-content p {
+        color: #64748b;
+        margin-bottom: 10px;
+    }
+
+    .btn-return {
+        margin-top: 20px;
+        padding: 10px 25px;
+        background-color: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .btn-return:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+</style>
+
+@code {
+    private string A_id;
+    private string token;
+    public string role;
+    private FinancialSummaryModel summary = new FinancialSummaryModel();
+    private int reportsCount = 0;
+    private int staffCount = 0;
+
+    // Chart references
+    private BarChart barChart = default!;
+    private BarChartOptions barChartOptions = default!;
+    private ChartData barChartData = default!;
+
+    private DoughnutChart doughnutChart = default!;
+    private DoughnutChartOptions doughnutChartOptions = default!;
+    private ChartData doughnutChartData = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim?.Value;
+
+            if (string.IsNullOrEmpty(token))
+            {
+                Navigation.NavigateTo("/login");
+                return;
+            }
+
+            if (role == "Admin")
+            {
+                var client = HttpClientFactory.CreateClient("AuthApi");
+                var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+                var response1 = await client.GetAsync(url);
+
+                if (response1.IsSuccessStatusCode)
+                {
+                    A_id = await response1.Content.ReadAsStringAsync();
+
+                    // Load financial summary
+                    var summaryResponse = await client.GetAsync($"api/FinancialReports/Summary?A_id={A_id}");
+                    if (summaryResponse.IsSuccessStatusCode)
+                    {
+                        summary = await summaryResponse.Content.ReadFromJsonAsync<FinancialSummaryModel>();
+                    }
+                }
+            }
+            else
+            {
+                await SessionStorage.RemoveItemAsync("authToken");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error initializing financial dashboard: {ex.Message}");
+        }
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender && role == "Admin")
+        {
+            InitializeBarChart();
+            InitializeDoughnutChart();
+        }
+    }
+
+    private void InitializeBarChart()
+    {
+        var labels = new List<string> { "Income", "Expenses", "Net" };
+        var datasets = new List<IChartDataset>();
+
+        var dataset1 = new BarChartDataset()
+            {
+                Data = new List<double?> {
+                (double?)summary.CurrentMonthIncome,
+                (double?)summary.CurrentMonthExpenses,
+                (double?)summary.CurrentMonthNet
+            },
+                BackgroundColor = new List<string> {
+                "rgba(16, 185, 129, 0.7)", // Green for income
+                "rgba(239, 68, 68, 0.7)", // Red for expenses
+                summary.CurrentMonthNet >= 0 ? "rgba(16, 185, 129, 0.7)" : "rgba(239, 68, 68, 0.7)" // Green or red for net
+            },
+                BorderColor = new List<string> {
+                "rgba(16, 185, 129, 1)",
+                "rgba(239, 68, 68, 1)",
+                summary.CurrentMonthNet >= 0 ? "rgba(16, 185, 129, 1)" : "rgba(239, 68, 68, 1)"
+            },
+                BorderWidth = new List<double> { 1 }
+            };
+        datasets.Add(dataset1);
+
+        barChartData = new ChartData { Labels = labels, Datasets = datasets };
+
+        barChartOptions = new BarChartOptions();
+        barChartOptions.Responsive = true;
+        barChartOptions.Interaction = new Interaction { Mode = InteractionMode.Y };
+        barChartOptions.IndexAxis = "x";
+
+        barChartOptions.Plugins.Legend.Display = false;
+    }
+
+    private void InitializeDoughnutChart()
+    {
+        // Sample expense categories - replace with actual data from your API
+        var labels = new List<string> { "Salaries", "Maintenance", "Utilities", "Supplies", "Other" };
+        var backgroundColors = new List<string> {
+            "rgba(239, 68, 68, 0.7)",    // Red
+            "rgba(249, 115, 22, 0.7)",   // Orange
+            "rgba(59, 130, 246, 0.7)",   // Blue
+            "rgba(16, 185, 129, 0.7)",    // Green
+            "rgba(139, 92, 246, 0.7)"    // Purple
+        };
+
+        // Sample data - replace with actual expense breakdown from your API
+        var expenseData = new List<double?> {
+            12000,  // Salaries
+            5000,   // Maintenance
+            3000,   // Utilities
+            2000,   // Supplies
+            1000    // Other
+        };
+
+        var datasets = new List<IChartDataset>();
+        var dataset = new DoughnutChartDataset()
+            {
+                Data = expenseData,
+                BackgroundColor = backgroundColors,
+                BorderColor = backgroundColors,
+                BorderWidth = new List<double> { 1 }
+            };
+        datasets.Add(dataset);
+
+        doughnutChartData = new ChartData { Labels = labels, Datasets = datasets };
+
+        doughnutChartOptions = new DoughnutChartOptions();
+        doughnutChartOptions.Responsive = true;
+    }
+
+    private async Task NavigateToAppropriatePage()
+    {
+        await SessionStorage.RemoveItemAsync("authToken");
+        Navigation.NavigateTo(role == "Shopkeeper" ? "/logingrocery" : "/");
+    }
+
+    private void ToSalaries()
+    {
+       
+        Navigation.NavigateTo("/staffsalaries");
+    }
+
+    private void ToBudget()
+    {
+
+        Navigation.NavigateTo("/budget");
+    }
+
+      private void ToReport()
+    {
+       
+        Navigation.NavigateTo("/reports" );
+    }
+
+}

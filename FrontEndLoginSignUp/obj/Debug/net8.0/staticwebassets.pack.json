@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\home_services.jpeg"
     },
     {
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\budget.png",
+      "PackagePath": "staticwebassets\\icons\\budget.png"
+    },
+    {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\cleaning-staff.png",
       "PackagePath": "staticwebassets\\icons\\cleaning-staff.png"
     },
@@ -35,6 +39,10 @@
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\home (2).png",
       "PackagePath": "staticwebassets\\icons\\home (2).png"
+    },
+    {
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\income.png",
+      "PackagePath": "staticwebassets\\icons\\income.png"
     },
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\key.png",
@@ -57,8 +65,24 @@
       "PackagePath": "staticwebassets\\icons\\profile.png"
     },
     {
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\report.png",
+      "PackagePath": "staticwebassets\\icons\\report.png"
+    },
+    {
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\salary.png",
+      "PackagePath": "staticwebassets\\icons\\salary.png"
+    },
+    {
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\saving.png",
+      "PackagePath": "staticwebassets\\icons\\saving.png"
+    },
+    {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\setting.png",
       "PackagePath": "staticwebassets\\icons\\setting.png"
+    },
+    {
+      "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\spending.png",
+      "PackagePath": "staticwebassets\\icons\\spending.png"
     },
     {
       "Id": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\wwwroot\\icons\\user.png",

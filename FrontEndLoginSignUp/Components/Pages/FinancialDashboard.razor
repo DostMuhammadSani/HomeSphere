@@ -102,29 +102,19 @@
                 </div>
 
                 <!-- Charts Section - Simplified without unsupported properties -->
-                <div class="row mb-4">
+                <div class="row mb-4" style="width:100vw;">
                     <div class="col-md-6 mb-3">
-                        <div class="card chart-card">
+                        <div class="card chart-card" style="width:78.36vw;">
                             <div class="card-header bg-white border-0">
                                 <h5 class="chart-title">Monthly Financial Performance</h5>
                                 <p class="chart-subtitle">Income vs Expenses</p>
                             </div>
                             <div class="card-body pt-0">
-                                <BarChart @ref="barChart" Width="500" Height="300" />
+                               <FinanceBarChart></FinanceBarChart>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="card chart-card">
-                            <div class="card-header bg-white border-0">
-                                <h5 class="chart-title">Expense Distribution</h5>
-                                <p class="chart-subtitle">Where your money goes</p>
-                            </div>
-                            <div class="card-body pt-0">
-                                <DoughnutChart @ref="doughnutChart" Width="500" Height="300" />
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <!-- Unpaid Fees Section -->
@@ -134,7 +124,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center">
-                                       
+
                                         <div>
                                             <h5 class="alert-title">Pending Payments</h5>
                                             <p class="alert-text">@summary?.UnpaidFeesCount unpaid fees totaling @summary?.UnpaidFeesAmount.ToString("C")</p>
@@ -173,267 +163,266 @@ else
 <style>
     /* Base Styles */
     .row {
-        background-color: #f8fafc;
+    background-color: #f8fafc;
     }
 
     /* Header Styles */
     .dashboard-header {
-        padding: 1.5rem 0;
+    padding: 1.5rem 0;
     }
 
     .header-icon {
-        width: 50px;
-        height: 50px;
+    width: 50px;
+    height: 50px;
     }
 
     .dashboard-title {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #2d3748;
-        margin-bottom: 0.25rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
     }
 
     .dashboard-subtitle {
-        font-size: 0.9rem;
-        color: #718096;
-        margin-bottom: 0;
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 0;
     }
 
     /* Navigation Cards */
     .navigation-card {
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        height: 100%;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
     }
 
-        .navigation-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
+    .navigation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
 
     .navigation-icon {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
     }
 
     .navigation-link {
-        color: #3b82f6;
-        font-weight: 500;
-        font-size: 0.9rem;
-        display: inline-block;
-        margin-top: 0.5rem;
+    color: #3b82f6;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 0.5rem;
     }
 
     /* Summary Cards */
     .summary-card {
-        border: none;
-        border-radius: 12px;
-        overflow: hidden;
-        height: 100%;
-        position: relative;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
     }
 
     .income-card {
-        background: #d9f4ff;
-        border-left: 4px solid #3b82f6;
+    background: #d9f4ff;
+    border-left: 4px solid #3b82f6;
     }
 
     .expense-card {
-        background: #d9f4ff;
-        border-left: 4px solid #3b82f6;
+    background: #d9f4ff;
+    border-left: 4px solid #3b82f6;
     }
 
     .profit-card {
-        background: #d9f4ff;
-        border-left: 4px solid #3b82f6;
+    background: #d9f4ff;
+    border-left: 4px solid #3b82f6;
     }
 
     .loss-card {
-        background: #d9f4ff;
-        border-left: 4px solid #3b82f6;
+    background: #d9f4ff;
+    border-left: 4px solid #3b82f6;
     }
 
     .summary-icon-container {
-        background-color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
     .summary-icon {
-        width: 30px;
-        height: 30px;
+    width: 30px;
+    height: 30px;
     }
 
     .profit-loss-badge {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-top: 0.5rem;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
     }
 
     .profit-card .profit-loss-badge {
-        background-color: white;
-        color: #8bd0fa;
+    background-color: white;
+    color: #8bd0fa;
     }
 
     .loss-card .profit-loss-badge {
-        background-color: #fee2e2;
-        color: #8bd0fa;
+    background-color: #fee2e2;
+    color: #8bd0fa;
     }
 
     /* Chart Cards */
     .chart-card {
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        height: 100%;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    height: 100%;
     }
 
     .chart-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
     }
 
     .chart-subtitle {
-        font-size: 0.85rem;
-        color: #718096;
-        margin-bottom: 0;
+    font-size: 0.85rem;
+    color: #718096;
+    margin-bottom: 0;
     }
 
     /* Alert Card */
     .alert-card {
-        border: none;
-        border-radius: 12px;
-        background-color: white;
-        border-left: 4px solid #3b82f6;
+    border: none;
+    border-radius: 12px;
+    background-color: white;
+    border-left: 4px solid #3b82f6;
     }
 
     .alert-icon-container {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     }
 
     .alert-icon {
-        color: #3b82f6;
-        font-size: 1.5rem;
+    color: #3b82f6;
+    font-size: 1.5rem;
     }
 
     .alert-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
     }
 
     .alert-text {
-        font-size: 0.9rem;
-        color: #64748b;
-        margin-bottom: 0;
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 0;
     }
 
     .action-button {
-        background-color: #3b82f6;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 0.5rem 1.25rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
     }
 
-        .action-button:hover {
-            background-color: #ea580c;
-            transform: translateY(-2px);
-        }
+    .action-button:hover {
+    background-color: #ea580c;
+    transform: translateY(-2px);
+    }
 
     /* Access Denied Styles */
     .access-denied-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f8fafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8fafc;
     }
 
     .access-denied-content {
-        text-align: center;
-        max-width: 500px;
-        padding: 40px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    max-width: 500px;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 
     .denied-icon {
-        font-size: 60px;
-        color: #ef4444;
-        margin-bottom: 20px;
+    font-size: 60px;
+    color: #ef4444;
+    margin-bottom: 20px;
     }
 
     .access-denied-content h2 {
-        color: #2d3748;
-        margin-bottom: 15px;
-        font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-weight: 700;
     }
 
     .access-denied-content p {
-        color: #64748b;
-        margin-bottom: 10px;
+    color: #64748b;
+    margin-bottom: 10px;
     }
 
     .btn-return {
-        margin-top: 20px;
-        padding: 10px 25px;
-        background-color: #3b82f6;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
     }
 
-        .btn-return:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-        }
+    .btn-return:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    }
 </style>
 
 @code {
     private string A_id;
     private string token;
     public string role;
-    private FinancialSummaryModel summary = new FinancialSummaryModel();
-    private int reportsCount = 0;
-    private int staffCount = 0;
+    private FinancialSummaryModel summary;
+    private bool isDataLoaded = false; // Track if data is loaded
 
-    // Chart references
-    private BarChart barChart = default!;
-    private BarChartOptions barChartOptions = default!;
-    private ChartData barChartData = default!;
+    // Chart data
+    private BarChart barChart;
+    private BarChartOptions barChartOptions;
+    private ChartData barChartData;
 
-    private DoughnutChart doughnutChart = default!;
-    private DoughnutChartOptions doughnutChartOptions = default!;
-    private ChartData doughnutChartData = default!;
+    private DoughnutChart doughnutChart;
+    private DoughnutChartOptions doughnutChartOptions;
+    private ChartData doughnutChartData;
 
     protected override async Task OnInitializedAsync()
     {
@@ -465,6 +454,8 @@ else
                     if (summaryResponse.IsSuccessStatusCode)
                     {
                         summary = await summaryResponse.Content.ReadFromJsonAsync<FinancialSummaryModel>();
+                     
+                        isDataLoaded = true; // Mark data as loaded
                     }
                 }
             }
@@ -479,88 +470,7 @@ else
         }
     }
 
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (firstRender && role == "Admin")
-        {
-            InitializeBarChart();
-            InitializeDoughnutChart();
-        }
-    }
-
-    private void InitializeBarChart()
-    {
-        var labels = new List<string> { "Income", "Expenses", "Net" };
-        var datasets = new List<IChartDataset>();
-
-        var dataset1 = new BarChartDataset()
-            {
-                Data = new List<double?> {
-                (double?)summary.CurrentMonthIncome,
-                (double?)summary.CurrentMonthExpenses,
-                (double?)summary.CurrentMonthNet
-            },
-                BackgroundColor = new List<string> {
-                "rgba(16, 185, 129, 0.7)", // Green for income
-                "rgba(239, 68, 68, 0.7)", // Red for expenses
-                summary.CurrentMonthNet >= 0 ? "rgba(16, 185, 129, 0.7)" : "rgba(239, 68, 68, 0.7)" // Green or red for net
-            },
-                BorderColor = new List<string> {
-                "rgba(16, 185, 129, 1)",
-                "rgba(239, 68, 68, 1)",
-                summary.CurrentMonthNet >= 0 ? "rgba(16, 185, 129, 1)" : "rgba(239, 68, 68, 1)"
-            },
-                BorderWidth = new List<double> { 1 }
-            };
-        datasets.Add(dataset1);
-
-        barChartData = new ChartData { Labels = labels, Datasets = datasets };
-
-        barChartOptions = new BarChartOptions();
-        barChartOptions.Responsive = true;
-        barChartOptions.Interaction = new Interaction { Mode = InteractionMode.Y };
-        barChartOptions.IndexAxis = "x";
-
-        barChartOptions.Plugins.Legend.Display = false;
-    }
-
-    private void InitializeDoughnutChart()
-    {
-        // Sample expense categories - replace with actual data from your API
-        var labels = new List<string> { "Salaries", "Maintenance", "Utilities", "Supplies", "Other" };
-        var backgroundColors = new List<string> {
-            "rgba(239, 68, 68, 0.7)",    // Red
-            "rgba(249, 115, 22, 0.7)",   // Orange
-            "rgba(59, 130, 246, 0.7)",   // Blue
-            "rgba(16, 185, 129, 0.7)",    // Green
-            "rgba(139, 92, 246, 0.7)"    // Purple
-        };
-
-        // Sample data - replace with actual expense breakdown from your API
-        var expenseData = new List<double?> {
-            12000,  // Salaries
-            5000,   // Maintenance
-            3000,   // Utilities
-            2000,   // Supplies
-            1000    // Other
-        };
-
-        var datasets = new List<IChartDataset>();
-        var dataset = new DoughnutChartDataset()
-            {
-                Data = expenseData,
-                BackgroundColor = backgroundColors,
-                BorderColor = backgroundColors,
-                BorderWidth = new List<double> { 1 }
-            };
-        datasets.Add(dataset);
-
-        doughnutChartData = new ChartData { Labels = labels, Datasets = datasets };
-
-        doughnutChartOptions = new DoughnutChartOptions();
-        doughnutChartOptions.Responsive = true;
-    }
-
+    
     private async Task NavigateToAppropriatePage()
     {
         await SessionStorage.RemoveItemAsync("authToken");

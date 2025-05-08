@@ -387,3 +387,5 @@ D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\runtimes\o
 D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
 D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
 D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\WebAPI.staticwebassets.runtime.json
+D:\Final Year Project\HomeSphere\FrontEndLoginSignUp\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll

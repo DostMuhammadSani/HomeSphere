@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4BL63oRkzLwRi5RZpS/JKLgig4LQMOmLdlU7I0alP8w=",
+  "Hash": "Kuw63byuA0g1GAje9l06+NkSDfVduoY6h2+tsXm+wtQ=",
   "Source": "FrontEndLoginSignUp",
   "BasePath": "_content/FrontEndLoginSignUp",
   "Mode": "Default",
@@ -29,12 +29,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\Blazor.Bootstrap.bundle.scp.css",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\Blazor.Bootstrap.7t9tbfaemk.bundle.scp.css",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
-      "RelativePath": "Blazor.Bootstrap.bundle.scp.css",
+      "RelativePath": "Blazor.Bootstrap.7t9tbfaemk.bundle.scp.css",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Primary",
@@ -43,17 +43,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "9pixr9552e",
-      "Integrity": "E9QnlAmc6FCKQ12unLwOlh6hUcUx/XUc2bitsqVDVco=",
+      "Fingerprint": "7t9tbfaemk",
+      "Integrity": "FYJNevdgdMX4R7rEhQxDvKVdV5SyZSlRT4eVSU+Lgyk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\Blazor.Bootstrap.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\Blazor.Bootstrap.7t9tbfaemk.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.css",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.css",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "blazor.bootstrap.css",
       "AssetKind": "All",
@@ -64,17 +64,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "yoeif30kwf",
-      "Integrity": "HopJKwHvn6Cr9f/7OiDpO/6tEO8EmXJrrin9lzeOOXg=",
+      "Fingerprint": "63oqyoiiv4",
+      "Integrity": "jqE3jyGxWnCTc0Y7oGfHKZOpZM9udgb38MQGLaxmkNc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.css"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "blazor.bootstrap.js",
       "AssetKind": "All",
@@ -85,17 +85,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "vc9g1nou3m",
-      "Integrity": "X/DJ5i9rFNw+60KIBuJ1SA0RXVJAbsW3eiSoeo+GhQw=",
+      "Fingerprint": "5vmds449nb",
+      "Integrity": "/56eGJ+O8AbP07k4uCOAQdLbbj1ZsrX1aBINOPS9IAM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.pdf.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.pdf.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "blazor.bootstrap.pdf.js",
       "AssetKind": "All",
@@ -110,13 +110,13 @@
       "Integrity": "oAIj2P0Z/6hTwjGA3OGvWLdxMP4KwE35+AQzWQTpxAg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.pdf.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.pdf.js"
     },
     {
-      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.sortable-list.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.sortable-list.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "blazor.bootstrap.sortable-list.js",
       "AssetKind": "All",
@@ -131,13 +131,34 @@
       "Integrity": "du71NM6e2+m9l81ldV+Gbr74ER7Xx1GnJFg+rIY6OQU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.sortable-list.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.sortable-list.js"
     },
     {
-      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\icon\\128X128.png",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.theme-switcher.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\",
+      "BasePath": "_content/Blazor.Bootstrap",
+      "RelativePath": "blazor.bootstrap.theme-switcher.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "pisakkcwob",
+      "Integrity": "Hy2y6B5ohWPnmWg4c52+QUuZGTw8r09KtWKcaGiaa/k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.theme-switcher.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\icon\\128X128.png",
+      "SourceId": "Blazor.Bootstrap",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "icon/128X128.png",
       "AssetKind": "All",
@@ -152,13 +173,13 @@
       "Integrity": "J1yB7ftYf6PWiU1781eE0JHBGfd1MV/XlLaxpVy09RU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\icon\\128X128.png"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\icon\\128X128.png"
     },
     {
-      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.min.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\pdfjs-4.0.379.min.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "pdfjs-4.0.379.min.js",
       "AssetKind": "All",
@@ -173,13 +194,13 @@
       "Integrity": "XX7we2CiSWzj3rsNtKFCod90LBYAJ3bo8rmu4EuN7SQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.min.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\pdfjs-4.0.379.min.js"
     },
     {
-      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.worker.min.js",
+      "Identity": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\pdfjs-4.0.379.worker.min.js",
       "SourceId": "Blazor.Bootstrap",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\",
       "BasePath": "_content/Blazor.Bootstrap",
       "RelativePath": "pdfjs-4.0.379.worker.min.js",
       "AssetKind": "All",
@@ -194,7 +215,7 @@
       "Integrity": "JbwqIn9Fic7JuWyTXuNnAA1T0dYQ2tkTi9HhrSltUtQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.worker.min.js"
+      "OriginalItemSpec": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\pdfjs-4.0.379.worker.min.js"
     },
     {
       "Identity": "C:\\Users\\User\\.nuget\\packages\\blazored.modal\\7.3.1\\staticwebassets\\Blazored.Modal.bundle.scp.css",
@@ -1051,8 +1072,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "p9qu0iymrk",
-      "Integrity": "fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo=",
+      "Fingerprint": "s9o6yi9pj4",
+      "Integrity": "oIUl++XE/lPBvTETGVHvyyh8++G/PqKAI60JmletBJ4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndLoginSignUp.styles.css"
@@ -1648,91 +1669,21 @@
   ],
   "Endpoints": [
     {
-      "Route": "_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css",
-      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\Blazor.Bootstrap.bundle.scp.css",
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.5vmds449nb.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "13813"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"E9QnlAmc6FCKQ12unLwOlh6hUcUx/XUc2bitsqVDVco=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 01 Jul 2024 07:21:02 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-E9QnlAmc6FCKQ12unLwOlh6hUcUx/XUc2bitsqVDVco="
-        }
-      ]
-    },
-    {
-      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.css",
-      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
-          "Value": "20005"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"HopJKwHvn6Cr9f/7OiDpO/6tEO8EmXJrrin9lzeOOXg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 15 Jul 2024 07:36:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-HopJKwHvn6Cr9f/7OiDpO/6tEO8EmXJrrin9lzeOOXg="
-        }
-      ]
-    },
-    {
-      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.js",
-      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "76428"
+          "Value": "77889"
         },
         {
           "Name": "Content-Type",
@@ -1740,32 +1691,241 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"X/DJ5i9rFNw+60KIBuJ1SA0RXVJAbsW3eiSoeo+GhQw=\""
+          "Value": "\"/56eGJ+O8AbP07k4uCOAQdLbbj1ZsrX1aBINOPS9IAM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 25 Aug 2024 11:27:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "Thu, 30 Jan 2025 18:04:42 GMT"
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "5vmds449nb"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-X/DJ5i9rFNw+60KIBuJ1SA0RXVJAbsW3eiSoeo+GhQw="
+          "Value": "sha256-/56eGJ+O8AbP07k4uCOAQdLbbj1ZsrX1aBINOPS9IAM="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor.Bootstrap/blazor.bootstrap.js"
         }
       ]
     },
     {
-      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.pdf.js",
-      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.pdf.js",
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.63oqyoiiv4.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22639"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jqE3jyGxWnCTc0Y7oGfHKZOpZM9udgb38MQGLaxmkNc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 09 Nov 2024 14:43:36 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "63oqyoiiv4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jqE3jyGxWnCTc0Y7oGfHKZOpZM9udgb38MQGLaxmkNc="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor.Bootstrap/blazor.bootstrap.css"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/Blazor.Bootstrap.7t9tbfaemk.bundle.scp.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\Blazor.Bootstrap.7t9tbfaemk.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14166"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FYJNevdgdMX4R7rEhQxDvKVdV5SyZSlRT4eVSU+Lgyk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 02 Nov 2024 09:45:23 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7t9tbfaemk"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FYJNevdgdMX4R7rEhQxDvKVdV5SyZSlRT4eVSU+Lgyk="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\Blazor.Bootstrap.7t9tbfaemk.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14166"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FYJNevdgdMX4R7rEhQxDvKVdV5SyZSlRT4eVSU+Lgyk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 02 Nov 2024 09:45:23 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FYJNevdgdMX4R7rEhQxDvKVdV5SyZSlRT4eVSU+Lgyk="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.css",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22639"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jqE3jyGxWnCTc0Y7oGfHKZOpZM9udgb38MQGLaxmkNc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 09 Nov 2024 14:43:36 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jqE3jyGxWnCTc0Y7oGfHKZOpZM9udgb38MQGLaxmkNc="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77889"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/56eGJ+O8AbP07k4uCOAQdLbbj1ZsrX1aBINOPS9IAM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 30 Jan 2025 18:04:42 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/56eGJ+O8AbP07k4uCOAQdLbbj1ZsrX1aBINOPS9IAM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.pdf.ct0ej5e0q0.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.pdf.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1782,10 +1942,51 @@
         {
           "Name": "Last-Modified",
           "Value": "Mon, 15 Jul 2024 07:36:20 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ct0ej5e0q0"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oAIj2P0Z/6hTwjGA3OGvWLdxMP4KwE35+AQzWQTpxAg="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor.Bootstrap/blazor.bootstrap.pdf.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.pdf.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.pdf.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
         },
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7290"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oAIj2P0Z/6hTwjGA3OGvWLdxMP4KwE35+AQzWQTpxAg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Jul 2024 07:36:20 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1796,13 +1997,17 @@
       ]
     },
     {
-      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.sortable-list.js",
-      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\blazor.bootstrap.sortable-list.js",
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.sortable-list.ezlxc6gzv3.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.sortable-list.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1819,10 +2024,51 @@
         {
           "Name": "Last-Modified",
           "Value": "Mon, 15 Apr 2024 19:30:56 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ezlxc6gzv3"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-du71NM6e2+m9l81ldV+Gbr74ER7Xx1GnJFg+rIY6OQU="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor.Bootstrap/blazor.bootstrap.sortable-list.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.sortable-list.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.sortable-list.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
         },
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1930"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"du71NM6e2+m9l81ldV+Gbr74ER7Xx1GnJFg+rIY6OQU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Apr 2024 19:30:56 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1833,13 +2079,99 @@
       ]
     },
     {
-      "Route": "_content/Blazor.Bootstrap/icon/128X128.png",
-      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\icon\\128X128.png",
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.theme-switcher.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.theme-switcher.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2896"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hy2y6B5ohWPnmWg4c52+QUuZGTw8r09KtWKcaGiaa/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Nov 2024 15:30:37 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hy2y6B5ohWPnmWg4c52+QUuZGTw8r09KtWKcaGiaa/k="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/blazor.bootstrap.theme-switcher.pisakkcwob.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\blazor.bootstrap.theme-switcher.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2896"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hy2y6B5ohWPnmWg4c52+QUuZGTw8r09KtWKcaGiaa/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Nov 2024 15:30:37 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pisakkcwob"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hy2y6B5ohWPnmWg4c52+QUuZGTw8r09KtWKcaGiaa/k="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor.Bootstrap/blazor.bootstrap.theme-switcher.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/icon/128X128.png",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\icon\\128X128.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1855,11 +2187,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 19 Apr 2022 11:45:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
+          "Value": "Tue, 19 Apr 2022 11:45:43 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1870,13 +2198,62 @@
       ]
     },
     {
-      "Route": "_content/Blazor.Bootstrap/pdfjs-4.0.379.min.js",
-      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.min.js",
+      "Route": "_content/Blazor.Bootstrap/icon/128X128.tngynhsog2.png",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\icon\\128X128.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7074"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"J1yB7ftYf6PWiU1781eE0JHBGfd1MV/XlLaxpVy09RU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 19 Apr 2022 11:45:43 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tngynhsog2"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-J1yB7ftYf6PWiU1781eE0JHBGfd1MV/XlLaxpVy09RU="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor.Bootstrap/icon/128X128.png"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/pdfjs-4.0.379.min.j8zp7bt7w3.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\pdfjs-4.0.379.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1893,10 +2270,51 @@
         {
           "Name": "Last-Modified",
           "Value": "Mon, 15 Jul 2024 07:36:20 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j8zp7bt7w3"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XX7we2CiSWzj3rsNtKFCod90LBYAJ3bo8rmu4EuN7SQ="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor.Bootstrap/pdfjs-4.0.379.min.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/pdfjs-4.0.379.min.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\pdfjs-4.0.379.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
         },
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "305685"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XX7we2CiSWzj3rsNtKFCod90LBYAJ3bo8rmu4EuN7SQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Jul 2024 07:36:20 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1907,13 +2325,17 @@
       ]
     },
     {
-      "Route": "_content/Blazor.Bootstrap/pdfjs-4.0.379.worker.min.js",
-      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.0.0\\staticwebassets\\pdfjs-4.0.379.worker.min.js",
+      "Route": "_content/Blazor.Bootstrap/pdfjs-4.0.379.worker.min.79hai7knhw.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\pdfjs-4.0.379.worker.min.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1930,10 +2352,51 @@
         {
           "Name": "Last-Modified",
           "Value": "Mon, 15 Jul 2024 07:36:20 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "79hai7knhw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JbwqIn9Fic7JuWyTXuNnAA1T0dYQ2tkTi9HhrSltUtQ="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor.Bootstrap/pdfjs-4.0.379.worker.min.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor.Bootstrap/pdfjs-4.0.379.worker.min.js",
+      "AssetFile": "C:\\Users\\User\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\staticwebassets\\pdfjs-4.0.379.worker.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
         },
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1029159"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JbwqIn9Fic7JuWyTXuNnAA1T0dYQ2tkTi9HhrSltUtQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 15 Jul 2024 07:36:20 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3752,7 +4215,7 @@
       ]
     },
     {
-      "Route": "FrontEndLoginSignUp.p9qu0iymrk.styles.css",
+      "Route": "FrontEndLoginSignUp.s9o6yi9pj4.styles.css",
       "AssetFile": "D:\\Final Year Project\\HomeSphere\\FrontEndLoginSignUp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndLoginSignUp.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3766,7 +4229,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6059"
+          "Value": "6070"
         },
         {
           "Name": "Content-Type",
@@ -3774,25 +4237,25 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo=\""
+          "Value": "\"oIUl++XE/lPBvTETGVHvyyh8++G/PqKAI60JmletBJ4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 04 Apr 2025 18:48:00 GMT"
+          "Value": "Thu, 08 May 2025 20:26:31 GMT"
         },
         {
           "Name": "Link",
-          "Value": "<_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css>; rel=\"preload\"; as=\"style\", <_content/Blazored.Modal/Blazored.Modal.bundle.scp.css>; rel=\"preload\"; as=\"style\""
+          "Value": "<_content/Blazor.Bootstrap/Blazor.Bootstrap.7t9tbfaemk.bundle.scp.css>; rel=\"preload\"; as=\"style\", <_content/Blazored.Modal/Blazored.Modal.bundle.scp.css>; rel=\"preload\"; as=\"style\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "p9qu0iymrk"
+          "Value": "s9o6yi9pj4"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo="
+          "Value": "sha256-oIUl++XE/lPBvTETGVHvyyh8++G/PqKAI60JmletBJ4="
         },
         {
           "Name": "label",
@@ -3815,7 +4278,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6059"
+          "Value": "6070"
         },
         {
           "Name": "Content-Type",
@@ -3823,21 +4286,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo=\""
+          "Value": "\"oIUl++XE/lPBvTETGVHvyyh8++G/PqKAI60JmletBJ4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 04 Apr 2025 18:48:00 GMT"
+          "Value": "Thu, 08 May 2025 20:26:31 GMT"
         },
         {
           "Name": "Link",
-          "Value": "<_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css>; rel=\"preload\"; as=\"style\", <_content/Blazored.Modal/Blazored.Modal.bundle.scp.css>; rel=\"preload\"; as=\"style\""
+          "Value": "<_content/Blazor.Bootstrap/Blazor.Bootstrap.7t9tbfaemk.bundle.scp.css>; rel=\"preload\"; as=\"style\", <_content/Blazored.Modal/Blazored.Modal.bundle.scp.css>; rel=\"preload\"; as=\"style\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fQg68YeslNwifZWjoI4Plyi+JZxR3QoGpqHftvKDYAo="
+          "Value": "sha256-oIUl++XE/lPBvTETGVHvyyh8++G/PqKAI60JmletBJ4="
         }
       ]
     },

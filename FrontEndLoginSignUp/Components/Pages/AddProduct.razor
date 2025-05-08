@@ -71,7 +71,7 @@
                         <InputDate @bind-Value="@NewProduct.ExpiryDate" class="form-control" />
                     </div>
                     <div class="form-group full-width">
-                        <label class="form-label">Description</label>
+                        <label class="form-label">Product Name and Description</label>
                         <InputTextArea @bind-Value="@NewProduct.Descriptions" class="form-control" rows="3" />
                         <ValidationMessage For="@(() => NewProduct.Descriptions)" />
                     </div>

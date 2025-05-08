@@ -618,3 +618,14 @@ D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\WebAPI.staticwebassets.
 D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\staticwebassets\msbuild.WebAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 D:\Final Year Project\HomeSphere\WebAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\WebAPI.staticwebassets.runtime.json
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\BlazorBootstrap.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Final Year Project\HomeSphere\WebAPI\bin\Debug\net8.0\Microsoft.JSInterop.dll

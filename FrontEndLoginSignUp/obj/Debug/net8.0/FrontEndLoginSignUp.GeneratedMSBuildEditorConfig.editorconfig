@@ -76,6 +76,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudEZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/FinanceBarChart.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaW5hbmNlQmFyQ2hhcnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Final Year Project/HomeSphere/FrontEndLoginSignUp/Components/Pages/FinancialDashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaW5hbmNpYWxEYXNoYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

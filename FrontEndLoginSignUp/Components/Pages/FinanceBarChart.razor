@@ -1,0 +1,78 @@
+﻿@inject UserService UserService
+@using ClassLibraryModel
+
+@inject IHttpClientFactory HttpClientFactory
+
+<BarChart @ref="barChart" Width="900" Height="300" />
+
+@code {
+
+    private string A_id;
+    private string token;
+    public string role;
+    private FinancialSummaryModel summary;
+
+    private BarChart barChart = default!;
+    private BarChartOptions barChartOptions = default!;
+    private ChartData chartData = default!;
+
+    protected override void OnInitialized()
+
+    {
+
+        barChartOptions = new BarChartOptions();
+        barChartOptions.Responsive = true;
+        barChartOptions.Interaction = new Interaction { Mode = InteractionMode.Y };
+        barChartOptions.IndexAxis = "y";
+
+       
+        barChartOptions.Plugins.Legend.Display = false;
+    }
+
+    private async Task LoadReports()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+
+            // Load financial summary
+            var summaryResponse = await client.GetAsync($"api/FinancialReports/Summary?A_id={A_id}");
+            if (summaryResponse.IsSuccessStatusCode)
+            {
+                summary = await summaryResponse.Content.ReadFromJsonAsync<FinancialSummaryModel>();
+
+            }
+        }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadReports();
+            UpdateData();
+            await barChart.InitializeAsync(chartData, barChartOptions);
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private void UpdateData()
+    {
+        var labels = new List<string> { "Expense", "Income", "Savings" };
+        var datasets = new List<IChartDataset>();
+
+        var dataset1 = new BarChartDataset()
+            {
+                Data = new List<double?> { (double?)summary.CurrentMonthExpenses, (double?)summary.CurrentMonthIncome, (double?)summary.CurrentMonthNet },
+                BackgroundColor = new List<string> { "#2563eb", "#2563eb", "#2563eb" }, // Set color for all bars
+                BorderColor = new List<string> { "#2563eb", "#2563eb", "#2563eb" },    // Set border color to match
+                BorderWidth = new List<double> { 0 },
+            };
+        datasets.Add(dataset1);
+
+        chartData = new ChartData { Labels = labels, Datasets = datasets };
+    }
+}

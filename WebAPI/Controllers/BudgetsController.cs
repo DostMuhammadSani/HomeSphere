@@ -30,6 +30,8 @@ namespace WebAPI.Controllers
                 new SqlParameter("@StartDate", budget.StartDate),
                 new SqlParameter("@EndDate", budget.EndDate),
                 new SqlParameter("@TotalAmount", budget.TotalAmount),
+                new SqlParameter("@AllocatedAmount", budget.AllocatedAmount),
+                new SqlParameter("@Status", budget.Status ?? "Active"), // Default to 'Active' if null
                 new SqlParameter("@A_id", budget.A_id)
             };
 
@@ -59,6 +61,7 @@ namespace WebAPI.Controllers
                 new SqlParameter("@StartDate", budget.StartDate),
                 new SqlParameter("@EndDate", budget.EndDate),
                 new SqlParameter("@TotalAmount", budget.TotalAmount),
+                new SqlParameter("@AllocatedAmount", budget.AllocatedAmount),
                 new SqlParameter("@Status", budget.Status)
             };
 

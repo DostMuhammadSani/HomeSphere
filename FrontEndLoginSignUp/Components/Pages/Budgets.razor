@@ -1,0 +1,992 @@
+﻿@page "/budgets"
+@using System.Drawing
+@inject UserService UserService
+@using Blazored.SessionStorage
+@inject ISessionStorageService SessionStorage
+@using System.Security.Claims
+@using ClassLibraryModel
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+@inject IHttpClientFactory HttpClientFactory
+@inject IJSRuntime JSRuntime
+
+@if (role == "Admin")
+{
+    <!-- Dashboard Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <Sidebars></Sidebars>
+            <div class="col-md-10 p-4">
+                <!-- Header Section -->
+                <div class="dashboard-header mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h1 class="dashboard-title">Budget Management</h1>
+                            <p class="dashboard-subtitle">Create and manage organizational budgets</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" @onclick="OpenCreateModal">
+                                <i class="fas fa-plus me-2"></i>New Budget
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Budget Summary Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card summary-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="summary-icon-container bg-primary-light">
+                                        <i class="fas fa-wallet text-primary"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h6 class="mb-0">Total Budgets</h6>
+                                        <h3 class="mb-0">@budgets?.Count</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card summary-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="summary-icon-container bg-success-light">
+                                        <i class="fas fa-check-circle text-success"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h6 class="mb-0">Active Budgets</h6>
+                                        <h3 class="mb-0">@budgets?.Count(b => b.Status == "Active")</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card summary-card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="summary-icon-container bg-info-light">
+                                        <i class="fas fa-dollar-sign text-info"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h6 class="mb-0">Total Funds</h6>
+                                        <h3 class="mb-0">@budgets?.Sum(b => b.TotalAmount).ToString("C")</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Budgets Table -->
+                <div class="card">
+                    <div class="card-header bg-white border-bottom-0">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">All Budgets</h5>
+                            <div class="input-group search-box" style="width: 300px;">
+                                <span class="input-group-text bg-transparent">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Search budgets..."
+                                @bind="searchTerm" @oninput="FilterBudgets" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @if (isLoading)
+                        {
+                            <div class="text-center py-5">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading budgets...</p>
+                            </div>
+                        }
+                        else if (!filteredBudgets.Any())
+                        {
+                            <div class="text-center py-5">
+                                <i class="fas fa-wallet fa-4x text-muted mb-4"></i>
+                                <h4>No budgets found</h4>
+                                <p class="text-muted">Create your first budget to get started</p>
+                                <button class="btn btn-primary mt-3" @onclick="OpenCreateModal">
+                                    <i class="fas fa-plus me-2"></i>Create Budget
+                                </button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle">
+                                    <thead>
+                                        <tr class="table-light">
+                                            <th style="width: 30%;">Budget Details</th>
+                                            <th style="width: 15%;">Period</th>
+                                            <th style="width: 15%;" class="text-end">Total Amount</th>
+                                            <th style="width: 15%;" class="text-end">Allocated</th>
+                                            <th style="width: 15%;" class="text-end">Remaining</th>
+                                            <th style="width: 10%;" class="text-center">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var budget in filteredBudgets)
+                                        {
+                                            <tr @onclick="() => ViewBudgetDetails(budget)" style="cursor: pointer;">
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="budget-icon me-3">
+                                                            <i class="fas @GetBudgetIcon(budget) @GetBudgetIconColor(budget)"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-1">@budget.Title</h6>
+                                                            <small class="text-muted">@(budget.Description.Length > 50 ? budget.Description.Substring(0, 50) + "..." : budget.Description)</small>
+                                                            <div class="mt-1">
+                                                                <span class="badge bg-secondary">ID: @budget.BudgetID.Substring(0, 8)</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-muted">@budget.StartDate.ToString("MMM d, yyyy")</div>
+                                                    <div class="text-muted">to @budget.EndDate.ToString("MMM d, yyyy")</div>
+                                                </td>
+                                                <td class="text-end fw-bold">
+                                                    @budget.TotalAmount.ToString("C")
+                                                </td>
+                                                <td class="text-end text-warning fw-bold">
+                                                    @budget.AllocatedAmount.ToString("C")
+                                                </td>
+                                                <td class="text-end fw-bold @GetRemainingAmountColor(budget)">
+                                                    @budget.RemainingAmount.ToString("C")
+                                                </td>
+                                                <td class="text-center">
+                                                    <span class="badge @GetStatusBadgeClass(budget)">@budget.Status</span>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                    @if (filteredBudgets.Any())
+                    {
+                        <div class="card-footer bg-white border-top-0">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    Showing <strong>@filteredBudgets.Count</strong> of <strong>@budgets.Count</strong> budgets
+                                </div>
+                                <nav>
+                                    <ul class="pagination pagination-sm mb-0">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Budget Modal -->
+    <div class="modal @(showCreateModal ? "show d-block" : "d-none")" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create New Budget</h5>
+                    <button type="button" class="btn-close" @onclick="CloseCreateModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Budget Title*</label>
+                            <input type="text" class="form-control" @bind="newBudget.Title" placeholder="Q1 2023 Operating Budget" />
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" @bind="newBudget.Description"
+                            placeholder="Brief description of the budget..."></textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Start Date*</label>
+                            <input type="date" class="form-control" @bind="newBudget.StartDate" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">End Date*</label>
+                            <input type="date" class="form-control" @bind="newBudget.EndDate" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Total Amount*</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" @bind="newBudget.TotalAmount"
+                                step="0.01" min="0" placeholder="0.00" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Allocated Amount*</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" @bind="newBudget.AllocatedAmount"
+                                step="0.01" min="0" placeholder="0.00" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" @bind="newBudget.Status">
+                                <option value="Active">Active</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="card bg-light">
+                                <div class="card-body p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="mb-0">Remaining Amount:</h6>
+                                        <h4 class="mb-0 @(GetRemainingAmount(newBudget) >= 0 ? "text-success" : "text-danger")">
+                                            @(GetRemainingAmount(newBudget).ToString("C"))
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" @onclick="CloseCreateModal">Cancel</button>
+                    <button type="button" class="btn btn-primary" @onclick="CreateBudget"
+                    disabled="@(!IsValidBudget(newBudget))">
+                        <i class="fas fa-save me-2"></i>Save Budget
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Budget Details Modal -->
+    <div class="modal @(showDetailsModal ? "show d-block" : "d-none")" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas @GetBudgetIcon(selectedBudget) @GetBudgetIconColor(selectedBudget) me-2"></i>
+                        @selectedBudget?.Title
+                    </h5>
+                    <button type="button" class="btn-close" @onclick="ToggleDetailsModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <p class="text-muted">@selectedBudget?.Description</p>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div>
+                                    <small class="text-muted">Budget ID</small>
+                                    <div>@selectedBudget?.BudgetID</div>
+                                </div>
+                                <div>
+                                    <small class="text-muted">Period</small>
+                                    <div>@selectedBudget?.StartDate.ToString("MMM d, yyyy") - @selectedBudget?.EndDate.ToString("MMM d, yyyy")</div>
+                                </div>
+                                <div>
+                                    <small class="text-muted">Status</small>
+                                    <div>
+                                        <span class="badge @GetStatusBadgeClass(selectedBudget)">@selectedBudget?.Status</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="card summary-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="summary-icon-container bg-primary-light">
+                                            <i class="fas fa-wallet text-primary"></i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0">Total Amount</h6>
+                                            <h3 class="mb-0">@selectedBudget?.TotalAmount.ToString("C")</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card summary-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="summary-icon-container bg-warning-light">
+                                            <i class="fas fa-hand-holding-usd text-warning"></i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0">Allocated</h6>
+                                            <h3 class="mb-0 text-warning">@selectedBudget?.AllocatedAmount.ToString("C")</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card summary-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="summary-icon-container @(selectedBudget?.RemainingAmount >= 0 ? "bg-success-light" : "bg-danger-light")">
+                                            <i class="fas @(selectedBudget?.RemainingAmount >= 0 ? "fa-check-circle text-success" : "fa-exclamation-triangle text-danger")"></i>
+                                        </div>
+                                        <div class="ms-3">
+                                            <h6 class="mb-0">Remaining</h6>
+                                            <h3 class="mb-0 @(selectedBudget?.RemainingAmount >= 0 ? "text-success" : "text-danger")">
+                                                @selectedBudget?.RemainingAmount.ToString("C")
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="progress mb-3" style="height: 20px;">
+                                <div class="progress-bar bg-warning" role="progressbar"
+                                style="width: @GetAllocationPercentage(selectedBudget)%"
+                                aria-valuenow="@GetAllocationPercentage(selectedBudget)"
+                                aria-valuemin="0"
+                                aria-valuemax="100">
+                                    @GetAllocationPercentage(selectedBudget)% Allocated
+                                </div>
+                                <div class="progress-bar bg-success" role="progressbar"
+                                style="width: @(100 - GetAllocationPercentage(selectedBudget))%"
+                                aria-valuenow="@(100 - GetAllocationPercentage(selectedBudget))"
+                                aria-valuemin="0"
+                                aria-valuemax="100">
+                                    @(100 - GetAllocationPercentage(selectedBudget))% Remaining
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" @onclick="ToggleDetailsModal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <button type="button" class="btn btn-danger me-auto" @onclick="() => DeleteBudget(selectedBudget)">
+                        <i class="fas fa-trash me-2"></i>Delete
+                    </button>
+                    <button type="button" class="btn btn-primary" @onclick="() => OpenEditModal(selectedBudget)">
+                        <i class="fas fa-edit me-2"></i>Edit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Budget Modal -->
+    <div class="modal @(showEditModal ? "show d-block" : "d-none")" tabindex="-1" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Budget</h5>
+                    <button type="button" class="btn-close" @onclick="CloseEditModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Budget Title*</label>
+                            <input type="text" class="form-control" @bind="editBudget.Title" placeholder="Q1 2023 Operating Budget" />
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" @bind="editBudget.Description"
+                            placeholder="Brief description of the budget..."></textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Start Date*</label>
+                            <input type="date" class="form-control" @bind="editBudget.StartDate" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">End Date*</label>
+                            <input type="date" class="form-control" @bind="editBudget.EndDate" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Total Amount*</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" @bind="editBudget.TotalAmount"
+                                step="0.01" min="0" placeholder="0.00" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Allocated Amount*</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" @bind="editBudget.AllocatedAmount"
+                                step="0.01" min="0" placeholder="0.00" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" @bind="editBudget.Status">
+                                <option value="Active">Active</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="card bg-light">
+                                <div class="card-body p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="mb-0">Remaining Amount:</h6>
+                                        <h4 class="mb-0 @(GetRemainingAmount(editBudget) >= 0 ? "text-success" : "text-danger")">
+                                            @(GetRemainingAmount(editBudget).ToString("C"))
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" @onclick="CloseEditModal">Cancel</button>
+                    <button type="button" class="btn btn-primary" @onclick="UpdateBudget"
+                    disabled="@(!IsValidBudget(editBudget))">
+                        <i class="fas fa-save me-2"></i>Update Budget
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <!-- Access Denied Section -->
+    <div class="access-denied-container">
+        <div class="access-denied-content">
+            <div class="denied-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2>Access Denied</h2>
+            <p>You don't have permission to access budget management.</p>
+            <p>Your current role: <strong>@role</strong></p>
+            <button class="btn-return" @onclick="NavigateToAppropriatePage">
+                Return to @(role == "Shopkeeper" ? "Grocery Management" : "Home")
+            </button>
+        </div>
+    </div>
+}
+
+<style>
+    /* Base Styles */
+    .row {
+    background-color: #f8fafc;
+    }
+
+    /* Header Styles */
+    .dashboard-header {
+    padding: 1.5rem 0;
+    }
+
+    .dashboard-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+    }
+
+    .dashboard-subtitle {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 0;
+    }
+
+    /* Summary Cards */
+    .summary-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    }
+
+    .summary-icon-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .bg-primary-light {
+    background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    .bg-success-light {
+    background-color: rgba(16, 185, 129, 0.1);
+    }
+
+    .bg-danger-light {
+    background-color: rgba(239, 68, 68, 0.1);
+    }
+
+    .bg-warning-light {
+    background-color: rgba(245, 158, 11, 0.1);
+    }
+
+    .bg-info-light {
+    background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    /* Table Styles */
+    .table {
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: rgba(241, 245, 249, 0.5);
+    }
+
+    .table th {
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    }
+
+    .budget-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: rgba(59, 130, 246, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    /* Search Box */
+    .search-box .input-group-text {
+    border-right: none;
+    background-color: transparent;
+    }
+
+    .search-box .form-control {
+    border-left: none;
+    padding-left: 0;
+    }
+
+    .search-box .form-control:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+    }
+
+    /* Modal Styles */
+    .modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+    border-bottom: 1px solid #e2e8f0;
+    }
+
+    .modal-footer {
+    border-top: 1px solid #e2e8f0;
+    }
+
+    /* Status Badges */
+    .badge-active {
+    background-color: #10b981;
+    color: white;
+    }
+
+    .badge-completed {
+    background-color: #3b82f6;
+    color: white;
+    }
+
+    .badge-cancelled {
+    background-color: #ef4444;
+    color: white;
+    }
+
+    /* Progress Bar */
+    .progress {
+    border-radius: 10px;
+    }
+
+    /* Access Denied Styles */
+    .access-denied-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8fafc;
+    }
+
+    .access-denied-content {
+    text-align: center;
+    max-width: 500px;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .denied-icon {
+    font-size: 60px;
+    color: #ef4444;
+    margin-bottom: 20px;
+    }
+
+    .access-denied-content h2 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-weight: 700;
+    }
+
+    .access-denied-content p {
+    color: #64748b;
+    margin-bottom: 10px;
+    }
+
+    .btn-return {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+
+    .btn-return:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    }
+</style>
+
+@code {
+    private string A_id;
+    private string token;
+    public string role;
+    private List<BudgetModel> budgets = new List<BudgetModel>();
+    private List<BudgetModel> filteredBudgets = new List<BudgetModel>();
+    private BudgetModel newBudget = new BudgetModel();
+    private BudgetModel editBudget = new BudgetModel();
+    private BudgetModel selectedBudget;
+    private bool showCreateModal = false;
+    private bool showEditModal = false;
+    private bool showDetailsModal = false;
+    private bool isLoading = true;
+    private string searchTerm = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim?.Value;
+
+            if (string.IsNullOrEmpty(token))
+            {
+                Navigation.NavigateTo("/login");
+                return;
+            }
+
+            if (role == "Admin")
+            {
+                var client = HttpClientFactory.CreateClient("AuthApi");
+                var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+                var response1 = await client.GetAsync(url);
+
+                if (response1.IsSuccessStatusCode)
+                {
+                    A_id = await response1.Content.ReadAsStringAsync();
+                    await LoadBudgets();
+                }
+            }
+            else
+            {
+                await SessionStorage.RemoveItemAsync("authToken");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error initializing budgets: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task LoadBudgets()
+    {
+        isLoading = true;
+        StateHasChanged();
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            budgets = await client.GetFromJsonAsync<List<BudgetModel>>($"api/Budgets?A_id={A_id}");
+            filteredBudgets = budgets;
+        }
+        catch (Exception ex)
+        {
+            await JSRuntime.InvokeVoidAsync("console.error", $"Error loading budgets: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private void FilterBudgets()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredBudgets = budgets;
+        }
+        else
+        {
+            var term = searchTerm.ToLower();
+            filteredBudgets = budgets.Where(b =>
+                b.Title.ToLower().Contains(term) ||
+                b.Description.ToLower().Contains(term) ||
+                b.BudgetID.ToLower().Contains(term) ||
+                b.StartDate.ToString("d").Contains(term) ||
+                b.EndDate.ToString("d").Contains(term) ||
+                b.Status.ToLower().Contains(term)
+            ).ToList();
+        }
+    }
+
+    private void OpenCreateModal()
+    {
+        newBudget = new BudgetModel
+            {
+                BudgetID = Guid.NewGuid().ToString(),
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddMonths(1),
+                Status = "Active",
+                TotalAmount = 0,
+                AllocatedAmount = 0,
+                RemainingAmount = 0
+            };
+        showCreateModal = true;
+    }
+
+    private void CloseCreateModal()
+    {
+        showCreateModal = false;
+    }
+
+    private void OpenEditModal(BudgetModel budget)
+    {
+        editBudget = new BudgetModel
+            {
+                BudgetID = budget.BudgetID,
+                Title = budget.Title,
+                Description = budget.Description,
+                StartDate = budget.StartDate,
+                EndDate = budget.EndDate,
+                TotalAmount = budget.TotalAmount,
+                AllocatedAmount = budget.AllocatedAmount,
+                RemainingAmount = budget.RemainingAmount,
+                Status = budget.Status,
+                A_id = budget.A_id
+            };
+        showEditModal = true;
+        showDetailsModal = false;
+    }
+
+    private void CloseEditModal()
+    {
+        showEditModal = false;
+    }
+
+    private void ViewBudgetDetails(BudgetModel budget)
+    {
+        selectedBudget = budget;
+        showDetailsModal = true;
+    }
+
+    private void ToggleDetailsModal()
+    {
+        showDetailsModal = !showDetailsModal;
+    }
+
+    private bool IsValidBudget(BudgetModel budget)
+    {
+        return !string.IsNullOrWhiteSpace(budget.Title) &&
+               !string.IsNullOrWhiteSpace(budget.BudgetID) &&
+               budget.StartDate <= budget.EndDate &&
+               budget.TotalAmount >= 0 &&
+               budget.AllocatedAmount >= 0 &&
+               budget.AllocatedAmount <= budget.TotalAmount;
+    }
+
+    private decimal GetRemainingAmount(BudgetModel budget)
+    {
+        if (budget == null) return 0;
+        return budget.TotalAmount - budget.AllocatedAmount;
+    }
+
+    private int GetAllocationPercentage(BudgetModel budget)
+    {
+        if (budget == null || budget.TotalAmount == 0) return 0;
+        return (int)((budget.AllocatedAmount / budget.TotalAmount) * 100);
+    }
+
+    private string GetBudgetIcon(BudgetModel budget)
+    {
+        if (budget == null) return "fa-wallet";
+        return budget.Status switch
+        {
+            "Active" => "fa-wallet",
+            "Completed" => "fa-check-circle",
+            "Cancelled" => "fa-ban",
+            _ => "fa-wallet"
+        };
+    }
+
+    private string GetBudgetIconColor(BudgetModel budget)
+    {
+        if (budget == null) return "text-primary";
+        return budget.Status switch
+        {
+            "Active" => "text-primary",
+            "Completed" => "text-success",
+            "Cancelled" => "text-danger",
+            _ => "text-primary"
+        };
+    }
+
+    private string GetRemainingAmountColor(BudgetModel budget)
+    {
+        if (budget == null) return "text-success";
+        return budget.RemainingAmount >= 0 ? "text-success" : "text-danger";
+    }
+
+    private string GetStatusBadgeClass(BudgetModel budget)
+    {
+        if (budget == null) return "badge-active";
+        return budget.Status switch
+        {
+            "Active" => "badge-active",
+            "Completed" => "badge-completed",
+            "Cancelled" => "badge-cancelled",
+            _ => "badge-active"
+        };
+    }
+
+    private async Task CreateBudget()
+    {
+        try
+        {
+            newBudget.A_id = A_id;
+            newBudget.RemainingAmount = newBudget.TotalAmount - newBudget.AllocatedAmount;
+
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.PostAsJsonAsync("api/Budgets", newBudget);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await LoadBudgets();
+                CloseCreateModal();
+                await JSRuntime.InvokeVoidAsync("alert", "Budget created successfully");
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "A budget with this ID already exists");
+            }
+            else
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "Error creating budget");
+            }
+        }
+        catch (Exception ex)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", $"Error: {ex.Message}");
+        }
+    }
+
+    private async Task UpdateBudget()
+    {
+        try
+        {
+            editBudget.A_id = A_id;
+            editBudget.RemainingAmount = editBudget.TotalAmount - editBudget.AllocatedAmount;
+
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.PutAsJsonAsync("api/Budgets", editBudget);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await LoadBudgets();
+                CloseEditModal();
+                await JSRuntime.InvokeVoidAsync("alert", "Budget updated successfully");
+            }
+            else
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "Error updating budget");
+            }
+        }
+        catch (Exception ex)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", $"Error: {ex.Message}");
+        }
+    }
+
+    private async Task DeleteBudget(BudgetModel budget)
+    {
+        if (await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete the budget '{budget.Title}'?"))
+        {
+            try
+            {
+                var client = HttpClientFactory.CreateClient("AuthApi");
+                var response = await client.DeleteAsync($"api/Budgets?BudgetID={budget.BudgetID}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    budgets.Remove(budget);
+                    filteredBudgets = budgets.ToList();
+                    StateHasChanged();
+                    await JSRuntime.InvokeVoidAsync("alert", "Budget deleted successfully");
+                    ToggleDetailsModal();
+                }
+                else
+                {
+                    await JSRuntime.InvokeVoidAsync("alert", "Error deleting budget");
+                }
+            }
+            catch (Exception ex)
+            {
+                await JSRuntime.InvokeVoidAsync("alert", $"Error: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task NavigateToAppropriatePage()
+    {
+        await SessionStorage.RemoveItemAsync("authToken");
+        Navigation.NavigateTo(role == "Shopkeeper" ? "/logingrocery" : "/");
+    }
+}

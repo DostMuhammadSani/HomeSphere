@@ -11,7 +11,7 @@ namespace DALLibrary
     {
         public static SqlConnection getConnection()
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-QQB77P7\\SQLEXPRESS;Initial Catalog=Homesphere;Integrated Security=True;");
+            SqlConnection con = new SqlConnection("Data Source=82.112.236.203,1401;Initial Catalog=Homesphere;User ID=sa;Password=Awab123@@A");
             return con;
         }
     }

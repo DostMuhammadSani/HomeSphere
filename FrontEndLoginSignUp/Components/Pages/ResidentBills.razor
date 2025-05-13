@@ -10,137 +10,148 @@
 @using System.Security.Claims
 @inject ISessionStorageService SessionStorage
 
-<div class="page-container">
-    <div class="card bill-card">
-        <div class="card-header">
-            <h3 class="card-title">Create Individual Bill</h3>
-            <p class="card-subtitle">Generate bill for a specific resident</p>
-        </div>
-
-        <div class="card-body">
-            <!-- Search Section -->
-            <div class="search-section">
-                <div class="search-group">
-                    <input @bind="searchQuery" class="search-input" placeholder="Search by name or CNIC..." />
-                    <button @onclick="SearchResident" class="search-button">
-                        <i class="search-icon">🔍</i> Search
-                    </button>
+@if (role == "Admin")
+{
+    <div class="page-container">
+        <Sidebars></Sidebars>
+        <div class="main-content">
+            <div class="card bill-card">
+                <div class="card-header">
+                    <h3 class="card-title">Create Individual Bill</h3>
+                    <p class="card-subtitle">Generate bill for a specific resident</p>
                 </div>
 
-                @if (searchResults?.Any() ?? false)
-                {
-                    <div class="results-container">
-                        @foreach (var resident in searchResults)
+                <div class="card-body">
+                    <!-- Search Section -->
+                    <div class="search-section">
+                        <div class="search-group">
+                            <input @bind="searchQuery" class="search-input" placeholder="Search by name or CNIC..." />
+                            <button @onclick="SearchResident" class="search-button">
+                                <i class="search-icon">🔍</i> Search
+                            </button>
+                        </div>
+
+                        @if (searchResults?.Any() ?? false)
                         {
-                            <div class="resident-card" @onclick="() => SelectResident(resident)">
-                                <div class="resident-info">
-                                    <span class="resident-name">@resident.Names</span>
-                                    <span class="resident-cnic">@FormatCnic(resident.CNIC)</span>
-                                </div>
-                            
+                            <div class="results-container">
+                                @foreach (var resident in searchResults)
+                                {
+                                    <div class="resident-card" @onclick="() => SelectResident(resident)">
+                                        <div class="resident-info">
+                                            <span class="resident-name">@resident.Names</span>
+                                            <span class="resident-cnic">@FormatCnic(resident.CNIC)</span>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         }
+                        else if (hasSearched && !(searchResults?.Any() ?? false))
+                        {
+                            <div class="no-results">No residents found matching your search</div>
+                        }
                     </div>
-                }
-                else if (hasSearched && !(searchResults?.Any() ?? false))
-                {
-                    <div class="no-results">No residents found matching your search</div>
-                }
+
+                    <!-- Selected Resident Display -->
+                    @if (selectedResident != null)
+                    {
+                        <div class="selected-resident">
+                            <div class="selected-header">
+                                <span>Selected Resident:</span>
+                                <button @onclick="ClearSelection" class="clear-button">×</button>
+                            </div>
+                            <div class="selected-details">
+                                <div>
+                                    <strong>Name:</strong> @selectedResident.Names
+                                </div>
+                                <div>
+                                    <strong>CNIC:</strong> @FormatCnic(selectedResident.CNIC)
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Bill Form -->
+                    <form @onsubmit="HandleSubmit" class="@(selectedResident == null ? "form-disabled" : "")">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Item Description</label>
+                                <input @bind="bill.Item" type="text" class="form-control" placeholder="Enter item description" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Amount</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">Rs.</span>
+                                    <input @bind="bill.Price" type="number" step="1" class="form-control" placeholder="0.00" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Status</label>
+                                <select @bind="bill.Statuss" class="form-select" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Fine Amount</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">Rs.</span>
+                                    <input @bind="bill.Fine" type="number" step="1" class="form-control" placeholder="0.00" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Issue Date</label>
+                                <input @bind="bill.IssueDate" type="date" class="form-control" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Due Date</label>
+                                <input @bind="bill.DueDate" type="date" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="form-footer">
+                            <button type="submit" class="btn-primary" disabled="@(isProcessing || selectedResident == null)">
+                                @if (isProcessing)
+                                {
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    <span> Processing...</span>
+                                }
+                                else
+                                {
+                                    <span>Generate Bill</span>
+                                }
+                            </button>
+                        </div>
+                    </form>
+
+                    @if (!string.IsNullOrEmpty(message))
+                    {
+                        <div class="alert @(isError ? "alert-danger" : "alert-success")">
+                            @message
+                        </div>
+                    }
+                </div>
             </div>
-
-            <!-- Selected Resident Display -->
-            @if (selectedResident != null)
-            {
-                <div class="selected-resident">
-                    <div class="selected-header">
-                        <span>Selected Resident:</span>
-                        <button @onclick="ClearSelection" class="clear-button">×</button>
-                    </div>
-                    <div class="selected-details">
-                        <div>
-                            <strong>Name:</strong> @selectedResident.Names
-                        </div>
-                        <div>
-                            <strong>CNIC:</strong> @FormatCnic(selectedResident.CNIC)
-                        </div>
-                    </div>
-                </div>
-            }
-
-            <!-- Bill Form -->
-            <form @onsubmit="HandleSubmit" class="@(selectedResident == null ? "form-disabled" : "")">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label class="form-label">Item Description</label>
-                        <input @bind="bill.Item" type="text" class="form-control" placeholder="Enter item description" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Amount</label>
-                        <div class="input-group">
-                            <span class="input-group-text">$</span>
-                            <input @bind="bill.Price" type="number" step="0.01" class="form-control" placeholder="0.00" required />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Status</label>
-                        <select @bind="bill.Statuss" class="form-select" required>
-                            <option value="">Select Status</option>
-                            <option value="Paid">Paid</option>
-                            <option value="Unpaid">Unpaid</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Fine Amount</label>
-                        <div class="input-group">
-                            <span class="input-group-text">$</span>
-                            <input @bind="bill.Fine" type="number" step="0.01" class="form-control" placeholder="0.00" required />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Issue Date</label>
-                        <input @bind="bill.IssueDate" type="date" class="form-control" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Due Date</label>
-                        <input @bind="bill.DueDate" type="date" class="form-control" required />
-                    </div>
-                </div>
-
-                <div class="form-footer">
-                    <button type="submit" class="btn-primary" disabled="@(isProcessing || selectedResident == null)">
-                        @if (isProcessing)
-                        {
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            <span> Processing...</span>
-                        }
-                        else
-                        {
-                            <span>Generate Bill</span>
-                        }
-                    </button>
-                </div>
-            </form>
-
-            @if (!string.IsNullOrEmpty(message))
-            {
-                <div class="alert @(isError ? "alert-danger" : "alert-success")">
-                    @message
-                </div>
-            }
         </div>
     </div>
-</div>
+}
 
 <style>
     .page-container {
-        background-color: #f8fafc;
+        display: flex;
         min-height: 100vh;
-        padding: 2rem;
+        background-color: #f8f9fa;
+    }
+
+    .main-content {
+        flex: 1;
+        padding: 20px;
+        background-color: #f8f9fa;
     }
 
     .bill-card {
@@ -251,11 +262,6 @@
     }
 
     .resident-cnic {
-        color: #64748b;
-        font-size: 0.875rem;
-    }
-
-    .resident-address {
         color: #64748b;
         font-size: 0.875rem;
     }
@@ -425,6 +431,9 @@
     private string A_id;
     private string token;
     public string role;
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; } = default!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

@@ -1090,6 +1090,27 @@
         }
       }
     },
+    "/api/Orders/OrderConnection": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "ProductID",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/OwnShip": {
       "get": {
         "tags": [

@@ -634,6 +634,22 @@
     ]
   },
   {
+    "ContainingType": "WebAPI.Controllers.OrdersController",
+    "Method": "GetConnection",
+    "RelativePath": "api/Orders/OrderConnection",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProductID",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebAPI.Controllers.OwnShipController",
     "Method": "GetOwnShips",
     "RelativePath": "api/OwnShip",

@@ -1,6 +1,4 @@
 ﻿@page "/eventdesc/{EID:int}"
-@rendermode InteractiveServer
-
 @using System.Collections.Generic
 @using System.Linq
 @using ClassLibraryModel
@@ -10,83 +8,89 @@
 @inject NavigationManager Navigation
 @inject Blazored.SessionStorage.ISessionStorageService SessionStorage
 @using System.Security.Claims
+@rendermode InteractiveServer
 
-<h3 class="text-center text-primary">Event Description</h3>
 @if (role == "Admin")
 {
-    <h4 class="text-center text-secondary">Event ID: @EID</h4>
+    <div class="page-container">
+        <Sidebars></Sidebars>
+        <div class="main-content">
+            <div class="container">
+                <h3 class="text-center text-primary">Event Description</h3>
+                <h4 class="text-center text-secondary">Event ID: @EID</h4>
 
-    <div class="container mt-4">
-        @if (isLoading)
-        {
-            <div class="text-center">
-                <p>Loading event description...</p>
-                <div class="spinner-border text-primary" role="status"></div>
-            </div>
-        }
-        else if (eventDescription == null)
-        {
-            <div class="text-center">
-                <p class="text-danger">No description available for this event.</p>
-                <button class="btn btn-primary" @onclick="ShowAddForm">Add Description</button>
-            </div>
-        }
-        else
-        {
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    Event Description Details
-                </div>
-                <div class="card-body">
-                    <p><strong>Audience Type:</strong> @eventDescription.AudienceType</p>
-                    <p><strong>VIP Ticket Price:</strong> @eventDescription.VIPTicketPrice</p>
-                    <p><strong>General Ticket Price:</strong> @eventDescription.GeneralTicketPrice</p>
-                    <p><strong>Locations:</strong> @eventDescription.Locations</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-warning me-2" @onclick="ShowUpdateForm">Update</button>
-                    <button class="btn btn-danger" @onclick="DeleteDescription">Delete</button>
-                </div>
-            </div>
-        }
-
-        @if (showForm)
-        {
-            <div class="card mt-4">
-                <div class="card-header bg-primary text-white">
-                    @(isUpdate ? "Update Event Description" : "Add Event Description")
-                </div>
-                <div class="card-body">
-                    <EditForm Model="formModel" OnValidSubmit="HandleValidSubmit">
-                        <DataAnnotationsValidator />
-                        <ValidationSummary />
-
-                        <div class="mb-3">
-                            <label class="form-label">Audience Type</label>
-                            <InputText class="form-control" @bind-Value="formModel.AudienceType" />
+                @if (isLoading)
+                {
+                    <div class="text-center">
+                        <p>Loading event description...</p>
+                        <div class="spinner-border text-primary" role="status"></div>
+                    </div>
+                }
+                else if (eventDescription == null)
+                {
+                    <div class="text-center">
+                        <p class="text-danger">No description available for this event.</p>
+                        <button class="btn btn-primary" @onclick="ShowAddForm">Add Description</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            Event Description Details
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">VIP Ticket Price</label>
-                            <InputText class="form-control" @bind-Value="formModel.VIPTicketPrice" />
+                        <div class="card-body">
+                            <p><strong>Audience Type:</strong> @eventDescription.AudienceType</p>
+                            <p><strong>VIP Ticket Price:</strong> @eventDescription.VIPTicketPrice</p>
+                            <p><strong>General Ticket Price:</strong> @eventDescription.GeneralTicketPrice</p>
+                            <p><strong>Locations:</strong> @eventDescription.Locations</p>
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">General Ticket Price</label>
-                            <InputText class="form-control" @bind-Value="formModel.GeneralTicketPrice" />
+                        <div class="card-footer">
+                            <button class="btn btn-warning me-2" @onclick="ShowUpdateForm">Update</button>
+                            <button class="btn btn-danger" @onclick="DeleteDescription">Delete</button>
                         </div>
+                    </div>
+                }
 
-                        <div class="mb-3">
-                            <label class="form-label">Locations</label>
-                            <InputText class="form-control" @bind-Value="formModel.Locations" />
+                @if (showForm)
+                {
+                    <div class="card mt-4">
+                        <div class="card-header bg-primary text-white">
+                            @(isUpdate ? "Update Event Description" : "Add Event Description")
                         </div>
+                        <div class="card-body">
+                            <EditForm Model="formModel" OnValidSubmit="HandleValidSubmit">
+                                <DataAnnotationsValidator />
+                                <ValidationSummary />
 
-                        <button type="submit" class="btn btn-success me-2">Submit</button>
-                        <button type="button" class="btn btn-secondary" @onclick="CancelForm">Cancel</button>
-                    </EditForm>
-                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Audience Type</label>
+                                    <InputText class="form-control" @bind-Value="formModel.AudienceType" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">VIP Ticket Price</label>
+                                    <InputText class="form-control" @bind-Value="formModel.VIPTicketPrice" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">General Ticket Price</label>
+                                    <InputText class="form-control" @bind-Value="formModel.GeneralTicketPrice" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Locations</label>
+                                    <InputText class="form-control" @bind-Value="formModel.Locations" />
+                                </div>
+
+                                <button type="submit" class="btn btn-success me-2">Submit</button>
+                                <button type="button" class="btn btn-secondary" @onclick="CancelForm">Cancel</button>
+                            </EditForm>
+                        </div>
+                    </div>
+                }
             </div>
-        }
+        </div>
     </div>
 }
 
@@ -123,7 +127,6 @@
         }
     }
 
-
     private async Task LoadEventDescription()
     {
         try
@@ -135,7 +138,6 @@
             {
                 var eventDescriptions = await response.Content.ReadFromJsonAsync<List<EventDescriptionModel>>();
                 eventDescription = eventDescriptions[0];
-
             }
         }
         catch (Exception ex)
@@ -158,14 +160,14 @@
     private void ShowUpdateForm()
     {
         formModel = new EventDescriptionModel
-            {
-                EDescriptionID = eventDescription.EDescriptionID,
-                AudienceType = eventDescription.AudienceType,
-                VIPTicketPrice = eventDescription.VIPTicketPrice,
-                GeneralTicketPrice = eventDescription.GeneralTicketPrice,
-                Locations = eventDescription.Locations,
-                EID = eventDescription.EID
-            };
+        {
+            EDescriptionID = eventDescription.EDescriptionID,
+            AudienceType = eventDescription.AudienceType,
+            VIPTicketPrice = eventDescription.VIPTicketPrice,
+            GeneralTicketPrice = eventDescription.GeneralTicketPrice,
+            Locations = eventDescription.Locations,
+            EID = eventDescription.EID
+        };
         isUpdate = true;
         showForm = true;
     }
@@ -215,3 +217,42 @@
         showForm = false;
     }
 }
+
+<style>
+    /* Base Styles */
+    .page-container {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f8f9fa;
+    }
+
+    .main-content {
+        flex: 1;
+        padding: 20px;
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Responsive Styles */
+    @@media (max-width: 768px) {
+        .page-container {
+            flex-direction: column;
+        }
+
+        .main-content {
+            padding: 15px;
+        }
+
+        .container {
+            padding: 1.5rem;
+        }
+    }
+</style>

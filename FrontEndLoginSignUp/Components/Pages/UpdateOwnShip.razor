@@ -148,7 +148,7 @@
             var client = HttpClientFactory.CreateClient("AuthApi");
             var selectedPlot = plots.FirstOrDefault(p => p.PlotID == OwnShip.PlotID);
 
-            if (selectedPlot == null || selectedPlot.SoldStatus != "Available")
+            if (selectedPlot == null )
             {
                 ErrorMessage = "The selected plot is no longer available.";
                 return;

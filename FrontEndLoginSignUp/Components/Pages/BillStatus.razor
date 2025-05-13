@@ -1,10 +1,9 @@
 ﻿@page "/bill-status"
+@rendermode InteractiveServer
 @using Microsoft.AspNetCore.Components.Web
 @using Blazored.SessionStorage
 @using System.Security.Claims
 @inject ISessionStorageService SessionStorage
-@rendermode InteractiveServer
-
 @using System.Collections.Generic
 @using System.Linq
 @using ClassLibraryModel
@@ -12,7 +11,130 @@
 @inject IHttpClientFactory HttpClientFactory
 @inject UserService UserService
 
+@if (role == "Admin")
+{
+    <div class="page-container">
+        <Sidebars></Sidebars>
+        <div class="main-content">
+            <div class="bill-container">
+                <h2 class="page-header">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    Bill Management
+                </h2>
+
+                <div class="toolbar">
+                    <div class="search-box">
+                        <input class="search-input"
+                               type="text"
+                               @bind="searchTerm"
+                               @oninput="(e) => { searchTerm = e.Value.ToString(); FilterBills(); }"
+                               placeholder="Search bills..." />
+                    </div>
+                    <div class="button-group">
+                        <button class="search-button" @onclick="() => FilterBills()">
+                            <i class="fas fa-search"></i>
+                            <span class="button-text">Search</span>
+                        </button>
+                        <button class="refresh-button" @onclick="LoadBills">
+                            <i class="fas fa-sync-alt"></i>
+                            <span class="button-text">Refresh</span>
+                        </button>
+                    </div>
+                </div>
+
+                @if (filteredBills == null)
+                {
+                    <div class="empty-state">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <h3>Loading bills...</h3>
+                    </div>
+                }
+                else if (!filteredBills.Any())
+                {
+                    <div class="empty-state">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>No bills found</h3>
+                        <p>@(string.IsNullOrEmpty(searchTerm) ? "There are no bills to display." : "No bills match your search criteria.")</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="bill-table-container">
+                        <table class="bill-table">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Item</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Issued</th>
+                                    <th>Due Date</th>
+                                    <th>Fine</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var bill in filteredBills)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="customer-info">
+                                                <div class="customer-avatar">
+                                                    @GetInitials(bill.CNIC)
+                                                </div>
+                                                <span class="customer-cnic">@bill.CNIC</span>
+                                            </div>
+                                        </td>
+                                        <td>@bill.Item</td>
+                                        <td class="amount">@bill.Price</td>
+                                        <td>
+                                            <span class="status-badge @GetStatusClass(bill.Statuss)">
+                                                @bill.Statuss
+                                            </span>
+                                        </td>
+                                        <td class="date">@bill.IssueDate.ToString("dd MMM yyyy")</td>
+                                        <td class="date @(IsOverdue(bill.DueDate) ? "status-overdue" : "")">
+                                            @bill.DueDate.ToString("dd MMM yyyy")
+                                        </td>
+                                        <td class="amount">@bill.Fine</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="page-container">
+        <Sidebars></Sidebars>
+        <div class="main-content">
+            <div class="bill-container">
+                <div class="empty-state">
+                    <i class="fas fa-lock"></i>
+                    <h3>Access Denied</h3>
+                    <p>You don't have permission to view this page.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 <style>
+    .page-container {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f8f9fa;
+    }
+
+    .main-content {
+        flex: 1;
+        padding: 20px;
+        background-color: #f8f9fa;
+    }
+
     .bill-container {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         max-width: 1200px;
@@ -243,105 +365,6 @@
     }
 </style>
 
-<div class="bill-container">
-    @if (role == "Admin")
-    {
-        <h2 class="page-header">
-            <i class="fas fa-file-invoice-dollar"></i>
-            Bill Management
-        </h2>
-
-        <div class="toolbar">
-            <div class="search-box">
-                <input class="search-input"
-                       type="text"
-                       @bind="searchTerm"
-                       @oninput="(e) => { searchTerm = e.Value.ToString(); FilterBills(); }"
-                       placeholder="Search bills..." />
-            </div>
-            <div class="button-group">
-                <button class="search-button" @onclick="() => FilterBills()">
-                    <i class="fas fa-search"></i>
-                    <span class="button-text">Search</span>
-                </button>
-                <button class="refresh-button" @onclick="LoadBills">
-                    <i class="fas fa-sync-alt"></i>
-                    <span class="button-text">Refresh</span>
-                </button>
-            </div>
-        </div>
-
-        @if (filteredBills == null)
-        {
-            <div class="empty-state">
-                <i class="fas fa-spinner fa-spin"></i>
-                <h3>Loading bills...</h3>
-            </div>
-        }
-        else if (!filteredBills.Any())
-        {
-            <div class="empty-state">
-                <i class="fas fa-file-alt"></i>
-                <h3>No bills found</h3>
-                <p>@(string.IsNullOrEmpty(searchTerm) ? "There are no bills to display." : "No bills match your search criteria.")</p>
-            </div>
-        }
-        else
-        {
-            <div class="bill-table-container">
-                <table class="bill-table">
-                    <thead>
-                        <tr>
-                            <th>Customer</th>
-                            <th>Item</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                            <th>Issued</th>
-                            <th>Due Date</th>
-                            <th>Fine</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var bill in filteredBills)
-                        {
-                            <tr>
-                                <td>
-                                    <div class="customer-info">
-                                        <div class="customer-avatar">
-                                            @GetInitials(bill.CNIC)
-                                        </div>
-                                        <span class="customer-cnic">@bill.CNIC</span>
-                                    </div>
-                                </td>
-                                <td>@bill.Item</td>
-                                <td class="amount">@bill.Price</td>
-                                <td>
-                                    <span class="status-badge @GetStatusClass(bill.Statuss)">
-                                        @bill.Statuss
-                                    </span>
-                                </td>
-                                <td class="date">@bill.IssueDate.ToString("dd MMM yyyy")</td>
-                                <td class="date @(IsOverdue(bill.DueDate) ? "status-overdue" : "")">
-                                    @bill.DueDate.ToString("dd MMM yyyy")
-                                </td>
-                                <td class="amount">@bill.Fine</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        }
-    }
-    else
-    {
-        <div class="empty-state">
-            <i class="fas fa-lock"></i>
-            <h3>Access Denied</h3>
-            <p>You don't have permission to view this page.</p>
-        </div>
-    }
-</div>
-
 @code {
     private List<BillModel> bills = new List<BillModel>();
     private List<BillModel> filteredBills = new List<BillModel>();
@@ -350,6 +373,9 @@
     private string A_id;
     private string token;
     public string role;
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; } = default!;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -435,6 +461,6 @@
         if (string.IsNullOrEmpty(cnic) || cnic.Length < 5)
             return "CN";
 
-        return cnic.Substring( 0, 2).ToUpper();
+        return cnic.Substring(0, 2).ToUpper();
     }
 }

@@ -13,8 +13,9 @@
 <!-- Header -->
 <header class="products-header">
     <div class="header-content">
-        <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
-        <div class="user-info">
+        <a href="/grocery" style="color:white">
+            <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
+        </a>  <div class="user-info">
             <span class="user-role"><i class="fas fa-user-shield"></i> @role</span>
             <button class="btn-logout" @onclick="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
@@ -74,7 +75,7 @@
                             <InputDate @bind-Value="@Product.ExpiryDate" class="form-control" />
                         </div>
                         <div class="form-group full-width">
-                            <label class="form-label">Description</label>
+                            <label class="form-label">Name and Description</label>
                             <InputTextArea @bind-Value="@Product.Descriptions" class="form-control" rows="3" />
                             <ValidationMessage For="@(() => Product.Descriptions)" />
                         </div>

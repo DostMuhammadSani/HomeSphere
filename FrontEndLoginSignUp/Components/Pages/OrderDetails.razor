@@ -14,8 +14,9 @@
 <!-- Header -->
 <header class="products-header">
     <div class="header-content">
-        <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
-        <div class="user-info">
+        <a href="/grocery" style="color:white">
+            <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
+        </a> <div class="user-info">
             <span class="user-role"><i class="fas fa-user-shield"></i> @role</span>
             <button class="btn-logout" @onclick="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
@@ -36,6 +37,10 @@
                 <i class="fas fa-search"></i>
             </button>
         </div>
+        <div class="total-bill">
+            <span class="total-label">Total Bill:</span>
+            <span class="total-amount">Rs.@totalBill.ToString("0.00")</span>
+        </div>
     </div>
 
     @if (isLoading)
@@ -52,21 +57,30 @@
             @foreach (var productGroup in filteredGroupedProducts)
             {
                 var product = productGroup.First();
+                var connection = productConnections.FirstOrDefault(c => c.ProductID == product.ProductID);
+                var quantity = connection?.Quantity ?? 0;
+                var productTotal = product.Price * quantity;
+
                 <div class="product-card">
                     <div class="product-header">
                         <h3>@product.Descriptions</h3>
-                         </div>
+                        <span class="quantity-badge">Qty: @quantity</span>
+                    </div>
                     <div class="product-image">
                         <img src="@(product.Picture ?? "https://via.placeholder.com/150")" alt="@product.Descriptions" />
                     </div>
                     <div class="product-details">
                         <div class="info-row">
-                            <span class="label">Price:</span>
-                            <span class="value">$@product.Price</span>
+                            <span class="label">Unit Price:</span>
+                            <span class="value">Rs.@product.Price.ToString("0.00")</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Quantity:</span>
+                            <span class="value">@quantity</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Total:</span>
-                            <span class="value">$@product.Price </span>
+                            <span class="value">Rs.@productTotal.ToString("0.00")</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Expires:</span>
@@ -89,8 +103,10 @@
     public string OrderId { get; set; }
 
     private List<ProductModel> OrderProducts = new List<ProductModel>();
+    private List<OrderConnectionModel> productConnections = new List<OrderConnectionModel>();
     private List<ProductModel> filteredProducts = new List<ProductModel>();
     private string searchTerm = "";
+    private decimal totalBill = 0;
     private IEnumerable<IGrouping<string, ProductModel>> groupedProducts =>
         OrderProducts.GroupBy(p => p.Descriptions + p.Price + p.ExpiryDate.ToString());
     private IEnumerable<IGrouping<string, ProductModel>> filteredGroupedProducts =>
@@ -113,6 +129,7 @@
             UserName = UserService.Username;
             await LoadOrderProducts();
             filteredProducts = OrderProducts;
+            await CalculateTotalBill();
         }
         catch (Exception ex)
         {
@@ -134,17 +151,32 @@
         try
         {
             var client = HttpClientFactory.CreateClient("AuthApi");
-            var response = await client.GetAsync($"api/Products/ProductsforOrder?OrderID={OrderId}");
 
-            if (response.IsSuccessStatusCode)
+            // Load products
+            var productsResponse = await client.GetAsync($"api/Products/ProductsforOrder?OrderID={OrderId}");
+            if (productsResponse.IsSuccessStatusCode)
             {
-                OrderProducts = await response.Content.ReadFromJsonAsync<List<ProductModel>>() ?? new();
+                OrderProducts = await productsResponse.Content.ReadFromJsonAsync<List<ProductModel>>() ?? new();
                 filteredProducts = OrderProducts;
                 StoreName = OrderProducts.FirstOrDefault()?.StoreID ?? "My Store";
             }
             else
             {
-                errorMessage = await GetErrorMessage(response);
+                errorMessage = await GetErrorMessage(productsResponse);
+            }
+
+            // Load order connections for all products
+            foreach (var product in OrderProducts)
+            {
+                var connectionResponse = await client.GetAsync($"api/Orders/OrderConnection?ProductID={product.ProductID}");
+                if (connectionResponse.IsSuccessStatusCode)
+                {
+                    var connections = await connectionResponse.Content.ReadFromJsonAsync<List<OrderConnectionModel>>();
+                    if (connections != null && connections.Any())
+                    {
+                        productConnections.AddRange(connections.Where(c => c.Orderid == OrderId));
+                    }
+                }
             }
         }
         catch (Exception ex)
@@ -157,6 +189,20 @@
             isLoading = false;
             StateHasChanged();
         }
+    }
+
+    private async Task CalculateTotalBill()
+    {
+        totalBill = 0;
+        foreach (var product in OrderProducts)
+        {
+            var connection = productConnections.FirstOrDefault(c => c.ProductID == product.ProductID);
+            if (connection != null)
+            {
+                totalBill += product.Price * connection.Quantity;
+            }
+        }
+        StateHasChanged();
     }
 
     private async Task<string> GetErrorMessage(HttpResponseMessage response)
@@ -195,7 +241,7 @@
 }
 
 <style>
-    /* All the original CSS styles remain exactly the same */
+    /* All the original CSS styles remain the same */
     :root {
         --primary-color: #0468d7;
         --primary-dark: #0254b3;
@@ -228,6 +274,25 @@
         flex: 1;
         max-width: 400px;
         min-width: 200px;
+    }
+
+    .total-bill {
+        background: var(--primary-color);
+        color: var(--text-light);
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: bold;
+    }
+
+    .total-label {
+        font-size: 1rem;
+    }
+
+    .total-amount {
+        font-size: 1.2rem;
     }
 
     .search-input {

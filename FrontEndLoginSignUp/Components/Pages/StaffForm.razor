@@ -30,9 +30,17 @@
                 <InputText id="contact" class="form-control" @bind-Value="Staff.Contact" required />
             </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label for="profession">Profession</label>
-                <InputText id="profession" class="form-control" @bind-Value="Staff.Profession" required />
+                <select id="profession" class="form-control" @bind="Staff.Profession" required>
+                    <option value="">-- Select Profession --</option>
+                    <option value="Electrician">Electrician</option>
+                    <option value="Plumber">Plumber</option>
+                    <option value="Carpenter">Carpenter</option>
+                    <option value="House Keeping">House Keeping</option>
+                    <option value="Painter">Painter</option>
+                    <option value="Security Guard">Security Guard</option>
+                </select>
             </div>
 
             <!-- Passwords Field -->

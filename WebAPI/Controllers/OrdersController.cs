@@ -22,5 +22,26 @@ namespace WebAPI.Controllers
             };
             return DALClass.GetDataParameter<OrderModel>("GetOrdersByStoreUsername", prm);
         }
+
+        [HttpGet("OrderConnection")]
+        public async Task<IActionResult> GetConnection(string ProductID)
+        {
+            try
+            {
+                SqlParameter[] prm =
+                {
+                    new SqlParameter("@ProductID",ProductID)
+                };
+
+                var connect = DALClass.GetDataParameter<OrderConnectionModel>("GetOrderConnection", prm);
+                return Ok(connect);
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., logging)
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
+        }
+
     }
 }

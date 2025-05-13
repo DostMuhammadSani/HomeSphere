@@ -33,7 +33,6 @@
                             {
                                 <div class="request-card" @onclick="() => ShowDetails(request)">
                                     <div class="request-header">
-                                     
                                         <span class="request-date">@request.RequestTimestamp.ToString("MMM dd, yyyy hh:mm tt")</span>
                                     </div>
                                     <div class="request-body">
@@ -74,9 +73,8 @@
                 <div class="modal-content">
                     <div class="detail-section">
                         <h4 class="section-title">Request Information</h4>
-                      
                         <div class="detail-row">
-                            <span class="detail-label">Address:</span>
+                            <span class="detail-label">Description:</span>
                             <span class="detail-value">@selectedRequest.Descriptions</span>
                         </div>
                         <div class="detail-row">
@@ -108,16 +106,70 @@
                     </div>
 
                     <div class="detail-section">
-                        <h4 class="section-title">Participants</h4>
-                        <div class="detail-row">
-                            <span class="detail-label">Client CNIC:</span>
-                            <span class="detail-value">@selectedRequest.R_CNIC</span>
-                        </div>
-                        <div class="detail-row">
-                            <span class="detail-label">Staff CNIC:</span>
-                            <span class="detail-value">@selectedRequest.S_CNIC</span>
-                        </div>
+                        <h4 class="section-title">Client Details</h4>
+                        @if (selectedResident != null)
+                        {
+                            <div class="detail-row">
+                                <span class="detail-label">Name:</span>
+                                <span class="detail-value">@selectedResident.Names</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Contact:</span>
+                                <span class="detail-value">@selectedResident.Contact</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">CNIC:</span>
+                                <span class="detail-value">@selectedResident.CNIC</span>
+                            </div>
+                            @if (!string.IsNullOrEmpty(selectedResident.Picture))
+                            {
+                                <div class="detail-row">
+                                    <span class="detail-label">Photo:</span>
+                                    <span class="detail-value">
+                                        <img src="@selectedResident.Picture" alt="Resident Photo" class="profile-image" />
+                                    </span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="detail-row">
+                                <span class="detail-value">Loading client details...</span>
+                            </div>
+                        }
                     </div>
+
+                    @if (selectedRequest.Statuss != "Pending" && selectedStaff != null)
+                    {
+                        <div class="detail-section">
+                            <h4 class="section-title">Staff Details</h4>
+                            <div class="detail-row">
+                                <span class="detail-label">Name:</span>
+                                <span class="detail-value">@selectedStaff.Names</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Profession:</span>
+                                <span class="detail-value">@selectedStaff.Profession</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Contact:</span>
+                                <span class="detail-value">@selectedStaff.Contact</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">CNIC:</span>
+                                <span class="detail-value">@selectedStaff.CNIC</span>
+                            </div>
+                            @if (!string.IsNullOrEmpty(selectedStaff.Picture))
+                            {
+                                <div class="detail-row">
+                                    <span class="detail-label">Photo:</span>
+                                    <span class="detail-value">
+                                        <img src="@selectedStaff.Picture" alt="Staff Photo" class="profile-image" />
+                                    </span>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" @onclick="CloseModal">Close</button>
@@ -130,41 +182,83 @@
 @code {
     private List<RequestModel> requests;
     private List<RequestModel> filteredRequests;
+    private List<Resident> residents;
+    private List<StaffModel> staffMembers;
     private RequestModel selectedRequest;
+    private Resident selectedResident;
+    private StaffModel selectedStaff;
     private string searchQuery = string.Empty;
     private string token;
     private string role;
     private string A_id;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-        if (firstRender)
+        try
         {
-            try
-            {
-                token = await SessionStorage.GetItemAsync<string>("authToken");
-                var claims = RoleFetch.ParseClaimsFromJwt(token);
-                var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
-                role = roleClaim?.Value;
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim?.Value;
 
-                var client = HttpClientFactory.CreateClient("AuthApi");
-                var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
-                var response1 = await client.GetAsync(url);
-                if (response1.IsSuccessStatusCode)
-                {
-                    A_id = await response1.Content.ReadAsStringAsync();
-                    var response = await client.GetAsync($"api/Request?A_id={A_id}");
-                    if (response.IsSuccessStatusCode)
-                    {
-                        requests = await response.Content.ReadFromJsonAsync<List<RequestModel>>();
-                        filteredRequests = requests;
-                    }
-                    StateHasChanged();
-                }
-            }
-            catch (Exception ex)
+            await LoadRequests();
+            await LoadResident();
+            await LoadStaff();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error initializing component: {ex.Message}");
+        }
+    }
+
+    private async Task LoadRequests()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Request?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine($"Error retrieving token: {ex.Message}");
+                requests = await response.Content.ReadFromJsonAsync<List<RequestModel>>();
+                filteredRequests = requests;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task LoadResident()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Resident?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                residents = await response.Content.ReadFromJsonAsync<List<Resident>>();
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task LoadStaff()
+    {
+        var client = HttpClientFactory.CreateClient("AuthApi");
+        var url = $"api/Admin/AdminID?HS_Name={UserService.Username}";
+        var response1 = await client.GetAsync(url);
+        if (response1.IsSuccessStatusCode)
+        {
+            A_id = await response1.Content.ReadAsStringAsync();
+            var response = await client.GetAsync($"api/Staff?A_id={A_id}");
+            if (response.IsSuccessStatusCode)
+            {
+                staffMembers = await response.Content.ReadFromJsonAsync<List<StaffModel>>();
+                StateHasChanged();
             }
         }
     }
@@ -181,14 +275,19 @@
         };
     }
 
-    private void ShowDetails(RequestModel request)
+    private async Task ShowDetails(RequestModel request)
     {
         selectedRequest = request;
+        selectedResident = residents?.FirstOrDefault(r => r.CNIC == request.R_CNIC);
+        selectedStaff = staffMembers?.FirstOrDefault(s => s.CNIC == request.S_CNIC);
+        StateHasChanged();
     }
 
     private void CloseModal()
     {
         selectedRequest = null;
+        selectedResident = null;
+        selectedStaff = null;
     }
 
     private void SearchRequests()
@@ -197,7 +296,6 @@
         {
             filteredRequests = requests.Where(r =>
                 r.Descriptions.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
-       
                 r.R_CNIC.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
                 r.S_CNIC.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)
             ).ToList();
@@ -216,7 +314,7 @@
 }
 
 <style>
-    /* Base Styles */
+    /* All the CSS styles from the previous implementation remain exactly the same */
     .admin-dashboard {
         display: flex;
         min-height: 100vh;
@@ -229,7 +327,6 @@
         margin-left: 60px;
     }
 
-    /* Card Styles */
     .card {
         background: #ffffff;
         border-radius: 8px;
@@ -260,7 +357,6 @@
         padding: 1.5rem;
     }
 
-    /* Search Styles */
     .search-container {
         display: flex;
         align-items: center;
@@ -284,7 +380,6 @@
         cursor: pointer;
     }
 
-    /* Requests Grid */
     .requests-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -313,12 +408,6 @@
         margin-bottom: 0.75rem;
         padding-bottom: 0.5rem;
         border-bottom: 1px solid #f0f0f0;
-    }
-
-    .request-id {
-        font-weight: 600;
-        color: #3498db;
-        font-size: 0.9rem;
     }
 
     .request-date {
@@ -376,7 +465,6 @@
         color: #7f8c8d;
     }
 
-    /* Empty State */
     .empty-state {
         text-align: center;
         padding: 2rem;
@@ -392,7 +480,6 @@
         cursor: pointer;
     }
 
-    /* Modal Styles */
     .modal-overlay {
         position: fixed;
         top: 0;
@@ -410,7 +497,7 @@
         background: white;
         border-radius: 8px;
         width: 90%;
-        max-width: 600px;
+        max-width: 700px;
         max-height: 80vh;
         display: flex;
         flex-direction: column;
@@ -420,6 +507,7 @@
         padding: 1rem 1.5rem;
         border-bottom: 1px solid #eaeaea;
         flex-shrink: 0;
+        position: relative;
     }
 
         .modal-header h3 {
@@ -454,7 +542,6 @@
         flex-shrink: 0;
     }
 
-    /* Detail Sections */
     .detail-section {
         margin-bottom: 1.5rem;
     }
@@ -485,7 +572,14 @@
         word-break: break-word;
     }
 
-    /* Responsive Adjustments */
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #3498db;
+    }
+
     @@media (max-width: 768px) {
         .content-container {
             margin-left: 0;
@@ -516,6 +610,11 @@
 
         .detail-label {
             margin-bottom: 0.25rem;
+        }
+
+        .modal-dialog {
+            width: 95%;
+            max-height: 90vh;
         }
     }
 </style>

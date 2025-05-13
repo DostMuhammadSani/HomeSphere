@@ -14,79 +14,80 @@
 <!-- Header -->
 <header class="products-header">
     <div class="header-content">
-        <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
+        <a href="/grocery" style="color:white">
+            <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
+        </a>
         <div class="user-info">
             <span class="user-role"><i class="fas fa-user-shield"></i> @role</span>
             <button class="btn-logout" @onclick="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
     </div>
 </header>
-@if(role=="Shopkeeper"){
-<!-- Main Content -->
-<div class="products-container">
-    <div class="products-actions">
-        <div class="search-container">
-            <input type="text"
-                   placeholder="Search products..."
-                   @bind="searchTerm"
-                   @bind:event="oninput"
-                   @onkeyup="SearchProducts"
-                   class="search-input" />
-            <button class="btn-search" @onclick="SearchProducts">
-                <i class="fas fa-search"></i>
+@if (role == "Shopkeeper")
+{
+    <!-- Main Content -->
+    <div class="products-container">
+        <div class="products-actions">
+            <div class="search-container">
+                <input type="text"
+                       placeholder="Search products..."
+                       @bind="searchTerm"
+                       @bind:event="oninput"
+                       @onkeyup="SearchProducts"
+                       class="search-input" />
+                <button class="btn-search" @onclick="SearchProducts">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="btn-add" @onclick="NavigateToAddProduct">
+                <i class="fas fa-plus"></i> Add Product
             </button>
         </div>
-        <button class="btn-add" @onclick="NavigateToAddProduct">
-            <i class="fas fa-plus"></i> Add Product
-        </button>
-    </div>
 
-    @if (isLoading)
-    {
-        <div class="loading">Loading products...</div>
-    }
-    else if (errorMessage != null)
-    {
-        <div class="error-message">@errorMessage</div>
-    }
-    else
-    {
-        <div class="products-grid">
-            @foreach (var productGroup in filteredGroupedProducts)
-            {
-                var product = productGroup.First();
-                <div class="product-card">
-                    <div class="product-header">
-                        <h3>@product.Descriptions</h3>
-                        <span class="quantity-badge">@productGroup.Count()</span>
-                    </div>
-                    <div class="product-image">
-                        <img src="@(product.Picture ?? "https://via.placeholder.com/150")" alt="@product.Descriptions" />
-                    </div>
-                    <div class="product-details">
-                        <div class="info-row">
-                            <span class="label">Price:</span>
-                            <span class="value">$@product.Price</span>
+        @if (isLoading)
+        {
+            <div class="loading">Loading products...</div>
+        }
+        else if (errorMessage != null)
+        {
+            <div class="error-message">@errorMessage</div>
+        }
+        else
+        {
+            <div class="products-grid">
+                @foreach (var product in filteredProducts)
+                {
+                    <div class="product-card">
+                        <div class="product-header">
+                            <h3>@product.Descriptions</h3>
                         </div>
-                        <div class="info-row">
-                            <span class="label">Expires:</span>
-                            <span class="value">@product.ExpiryDate.ToString("MMM dd, yyyy")</span>
+                        <div class="product-image">
+                            <img src="@(product.Picture ?? "https://via.placeholder.com/150")" alt="@product.Descriptions" />
+                        </div>
+                        <div class="product-details">
+                            <div class="info-row">
+                                <span class="label">Price:</span>
+                                <span class="value">Rs. @product.Price</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Expires:</span>
+                                <span class="value">@product.ExpiryDate.ToString("MMM dd, yyyy")</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-action btn-update" @onclick="() => EditProduct(product.ProductID)">
+                                <i class="fas fa-edit"></i> Update
+                            </button>
+
+                            <button class="btn-action btn-delete" @onclick="() => DeleteProduct(product.ProductID)">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
                         </div>
                     </div>
-                    <div class="product-actions">
-                        <button class="btn-action btn-update" @onclick="() => EditProduct(product.ProductID)">
-                            <i class="fas fa-edit"></i> Update
-                        </button>
-                       
-                        <button class="btn-action btn-delete" @onclick="() => DeleteProduct(product.ProductID)">
-                            <i class="fas fa-trash"></i> Delete
-                        </button>
-                    </div>
-                </div>
-            }
-        </div>
-    }
-</div>
+                }
+            </div>
+        }
+    </div>
 }
 <!-- Footer -->
 <footer class="products-footer">
@@ -97,10 +98,6 @@
     private List<ProductModel> Product = new List<ProductModel>();
     private List<ProductModel> filteredProducts = new List<ProductModel>();
     private string searchTerm = "";
-    private IEnumerable<IGrouping<string, ProductModel>> groupedProducts =>
-        Product.GroupBy(p => p.Descriptions + p.Price + p.ExpiryDate.ToString());
-    private IEnumerable<IGrouping<string, ProductModel>> filteredGroupedProducts =>
-        filteredProducts.GroupBy(p => p.Descriptions + p.Price + p.ExpiryDate.ToString());
     private string UserName;
     private string StoreName = "My Store";
     private string errorMessage;
@@ -223,40 +220,6 @@
         {
             errorMessage = $"Failed to delete product: {ex.Message}";
             Console.WriteLine($"Delete product error: {ex}");
-        }
-        finally
-        {
-            isLoading = false;
-            StateHasChanged();
-        }
-    }
-
-    private async Task ReduceQuantity(string productId)
-    {
-        if (!await JSRuntime.InvokeAsync<bool>("confirm", "Reduce quantity by 1?"))
-            return;
-
-        isLoading = true;
-        StateHasChanged();
-
-        try
-        {
-            var client = HttpClientFactory.CreateClient("AuthApi");
-            var response = await client.DeleteAsync($"api/Products?UserName={UserName}&ProductID={productId}");
-
-            if (response.IsSuccessStatusCode)
-            {
-                await LoadProducts();
-            }
-            else
-            {
-                errorMessage = await GetErrorMessage(response);
-            }
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Failed to reduce quantity: {ex.Message}";
-            Console.WriteLine($"Reduce quantity error: {ex}");
         }
         finally
         {
@@ -392,14 +355,6 @@
             font-size: 1.2rem;
         }
 
-    .quantity-badge {
-        background: var(--primary-dark);
-        color: var(--text-light);
-        padding: 0.3rem 0.8rem;
-        border-radius: 12px;
-        font-size: 0.9rem;
-    }
-
     .product-image img {
         width: 100%;
         height: 220px;
@@ -451,14 +406,6 @@
 
         .btn-update:hover {
             background: var(--primary-dark);
-        }
-
-    .btn-reduce {
-        background: #2ecc71;
-    }
-
-        .btn-reduce:hover {
-            background: #27ae60;
         }
 
     .btn-delete {

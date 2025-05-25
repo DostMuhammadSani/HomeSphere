@@ -14,7 +14,8 @@
         <div class="header-content">
             <a href="/grocery" style="color:white">
                 <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
-            </a> <div class="user-info">
+            </a>
+            <div class="user-info">
                 <span class="user-role"><i class="fas fa-user-shield"></i> @role</span>
                 <button class="btn-logout" @onclick="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
             </div>
@@ -67,6 +68,7 @@
                                         <th>Total Amount</th>
                                         <th>Delivery Location</th>
                                         <th>Delivery Charges</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -79,9 +81,13 @@
                                             <td>@order.TotalAmount.ToString("C")</td>
                                             <td>@order.DeliveryLocation</td>
                                             <td>@order.DeliveryCharges</td>
+                                            <td>@(trackingRecords.ContainsKey(order.OrderID) ? trackingRecords[order.OrderID].Status : "No Tracking")</td>
                                             <td>
                                                 <button class="btn-view" @onclick="() => ViewOrderDetails(order.OrderID)">
                                                     <i class="fas fa-eye"></i> View Details
+                                                </button>
+                                                <button class="btn-manage-tracking" @onclick="() => NavigateToTracking(order.OrderID)">
+                                                    <i class="fas fa-truck"></i> Manage Tracking
                                                 </button>
                                             </td>
                                         </tr>
@@ -114,7 +120,6 @@
 </div>
 
 <style>
-    /* Base Styles - Same as previous page */
     :root {
         --primary-color: #0468d7;
         --primary-dark: #0254b3;
@@ -128,9 +133,9 @@
         --transition: all 0.3s ease;
         --success-color: #28a745;
         --view-color: #17a2b8;
+        --tracking-color: #6f42c1;
     }
 
-    /* Dashboard Layout */
     .grocery-dashboard {
         display: flex;
         flex-direction: column;
@@ -139,7 +144,6 @@
         font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     }
 
-    /* Header Styles - Same as previous page */
     .dashboard-header {
         background-color: var(--primary-color);
         color: var(--text-light);
@@ -195,7 +199,6 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-    /* Main Content Styles */
     .dashboard-main {
         flex: 1;
         padding: 2rem;
@@ -206,7 +209,7 @@
 
     .dashboard-grid {
         display: grid;
-        grid-template-columns: 1fr; /* Single column for orders */
+        grid-template-columns: 1fr;
         gap: 2rem;
         width: 100%;
         margin-top: 1rem;
@@ -227,7 +230,6 @@
         padding: 1.5rem;
     }
 
-    /* Search Section */
     .search-section {
         display: flex;
         justify-content: space-between;
@@ -307,7 +309,6 @@
             background-color: #218838;
         }
 
-    /* Orders Table */
     .orders-table-container {
         overflow-x: auto;
     }
@@ -347,6 +348,7 @@
         align-items: center;
         gap: 8px;
         white-space: nowrap;
+        margin-bottom: 0.5rem;
     }
 
         .btn-view:hover {
@@ -359,7 +361,31 @@
             transform: translateY(0);
         }
 
-    /* Loading and No Orders States */
+    .btn-manage-tracking {
+        padding: 0.5rem 1rem;
+        background-color: var(--tracking-color);
+        color: var(--text-light);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+        .btn-manage-tracking:hover {
+            background-color: #5a32a3;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-manage-tracking:active {
+            transform: translateY(0);
+        }
+
     .loading-spinner {
         padding: 2rem;
         text-align: center;
@@ -383,7 +409,6 @@
             color: var(--primary-color);
         }
 
-    /* Unauthorized Message - Same as previous page */
     .unauthorized-message {
         text-align: center;
         padding: 4rem 2rem;
@@ -423,7 +448,6 @@
             background-color: var(--primary-dark);
         }
 
-    /* Footer Styles - Same as previous page */
     .dashboard-footer {
         background-color: var(--text-dark);
         color: var(--text-light);
@@ -435,7 +459,6 @@
             margin: 0;
         }
 
-    /* Responsive Styles - Same as previous page */
     @@media (max-width: 768px) {
         .header-content {
             flex-direction: column;
@@ -506,9 +529,10 @@
             justify-content: center;
         }
 
-        .btn-view {
+        .btn-view, .btn-manage-tracking {
             width: 100%;
             justify-content: center;
+            margin-bottom: 0.5rem;
         }
     }
 </style>
@@ -520,8 +544,8 @@
     private bool isLoading = true;
     private List<OrderModel> orders = new();
     private List<OrderModel> filteredOrders = new();
+    private Dictionary<string, OrderTrackingModel> trackingRecords = new();
     private string searchTerm = string.Empty;
-    private string statusFilter = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
@@ -569,7 +593,21 @@
             if (response.IsSuccessStatusCode)
             {
                 orders = await response.Content.ReadFromJsonAsync<List<OrderModel>>() ?? new();
+                // Fetch tracking status for each order
+                trackingRecords.Clear();
+                foreach (var order in orders)
+                {
+                    var tracking = await LoadTrackingRecord(order.OrderID);
+                    if (tracking != null)
+                    {
+                        trackingRecords[order.OrderID] = tracking;
+                    }
+                }
                 FilterOrders();
+            }
+            else
+            {
+                errorMessage = "Failed to load orders. Please try again.";
             }
         }
         catch (Exception ex)
@@ -580,6 +618,27 @@
         finally
         {
             isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task<OrderTrackingModel?> LoadTrackingRecord(string orderId)
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.GetAsync($"api/OrderTracking?OrderID={orderId}");
+            if (response.IsSuccessStatusCode)
+            {
+                var trackingRecords = await response.Content.ReadFromJsonAsync<List<OrderTrackingModel>>();
+                return trackingRecords?.FirstOrDefault(); // Return the first (and only) record or null
+            }
+            return null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Load tracking record error for OrderID {orderId}: {ex.Message}");
+            return null;
         }
     }
 
@@ -589,9 +648,12 @@
             .Where(o => string.IsNullOrEmpty(searchTerm) ||
                        o.OrderID.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
                        o.DeliveryLocation.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                       o.TotalAmount.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
-            .OrderByDescending(o => o.OrderTime)
+                       o.TotalAmount.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                       (trackingRecords.ContainsKey(o.OrderID) && trackingRecords[o.OrderID].Status.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
+            .OrderBy(o => trackingRecords.ContainsKey(o.OrderID) && trackingRecords[o.OrderID].Status == "Delivered" ? 1 : 0) // Non-delivered or no tracking first
+            .ThenByDescending(o => o.OrderTime)
             .ToList();
+        StateHasChanged();
     }
 
     private void HandleSearch()
@@ -602,6 +664,11 @@
     private void ViewOrderDetails(string orderId)
     {
         Navigation.NavigateTo($"/order-details/{orderId}");
+    }
+
+    private void NavigateToTracking(string orderId)
+    {
+        Navigation.NavigateTo($"/order-tracking/{orderId}");
     }
 
     private IEnumerable<Claim> ParseClaimsFromJwt(string jwt)

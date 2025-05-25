@@ -33,6 +33,7 @@ namespace WebAPI.Controllers
                 new SqlParameter("@Descriptions", eventModel.Descriptions),
                 new SqlParameter("@Picture", (object?)eventModel.Picture ?? DBNull.Value),
                 new SqlParameter("@EDate", eventModel.EDate),
+                new SqlParameter("@StartTime", eventModel.StartTime),
                 new SqlParameter("@A_id", eventModel.A_id)
             };
 
@@ -62,6 +63,7 @@ namespace WebAPI.Controllers
                 new SqlParameter("@Descriptions", eventModel.Descriptions),
                 new SqlParameter("@Picture", eventModel.Picture),
                 new SqlParameter("@EDate", eventModel.EDate),
+                new SqlParameter("@StartTime", eventModel.StartTime),
                 new SqlParameter("@A_id", eventModel.A_id)
             };
 

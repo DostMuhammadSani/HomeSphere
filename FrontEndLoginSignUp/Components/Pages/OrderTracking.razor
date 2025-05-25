@@ -1,0 +1,685 @@
+﻿@page "/order-tracking/{orderId}"
+@rendermode InteractiveServer
+@using System.Collections.Generic
+@using System.Linq
+@using Blazored.SessionStorage
+@using ClassLibraryModel
+@using System.Security.Claims
+@inject IHttpClientFactory HttpClientFactory
+@inject UserService UserService
+@inject ISessionStorageService SessionStorage
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+<!-- Header -->
+<header class="products-header">
+    <div class="header-content">
+        <a href="/grocery" style="color:white">
+            <h1><i class="fas fa-store"></i> FreshMart Pro Dashboard</h1>
+        </a>
+        <div class="user-info">
+            <span class="user-role"><i class="fas fa-user-shield"></i> @role</span>
+            <button class="btn-logout" @onclick="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="products-container">
+    <div class="products-actions">
+        <div class="search-container">
+            <input type="text"
+                   placeholder="Search tracking records..."
+                   @bind="searchTerm"
+                   @bind:event="oninput"
+                   @onkeyup="SearchTracking"
+                   class="search-input" />
+            <button class="btn-search" @onclick="SearchTracking">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        @if (!trackingRecords.Any())
+        {
+            <button class="btn-add" @onclick="ShowCreateForm">
+                <i class="fas fa-plus"></i> Add Tracking
+            </button>
+        }
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="loading">Loading tracking records...</div>
+    }
+    else if (errorMessage != null)
+    {
+        <div class="error-message">@errorMessage</div>
+    }
+    else
+    {
+        <!-- Create/Update Form -->
+        @if (showForm && !isEditing)
+        {
+            <div class="form-container">
+                <h3>Create New Tracking Record</h3>
+                <div class="form-group">
+                    <label>Order ID</label>
+                    <input type="text" @bind="currentTracking.OrderID" disabled class="form-input" />
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select @bind="currentTracking.Status" class="form-input">
+                        <option value="Processing">Processing</option>
+                        <option value="Shipped">Shipped</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Estimated Delivery Time</label>
+                    <input type="text" @bind="currentTracking.EstimatedDeliveryTime" class="form-input" />
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea @bind="currentTracking.Notes" class="form-input" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Rider Contact</label>
+                    <input type="text" @bind="currentTracking.RiderContact" class="form-input" />
+                </div>
+                <div class="form-actions">
+                    <button class="btn-action btn-update" @onclick="SaveTracking">Create</button>
+                    <button class="btn-action btn-delete" @onclick="CancelForm">Cancel</button>
+                </div>
+            </div>
+        }
+        else if (showForm && isEditing)
+        {
+            <div class="form-container">
+                <h3>Update Tracking Record</h3>
+                <div class="form-group">
+                    <label>Order ID</label>
+                    <input type="text" @bind="currentTracking.OrderID" disabled class="form-input" />
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select @bind="currentTracking.Status" class="form-input">
+                        <option value="Processing">Processing</option>
+                        <option value="Shipped">Shipped</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Estimated Delivery Time</label>
+                    <input type="text" @bind="currentTracking.EstimatedDeliveryTime" class="form-input" />
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea @bind="currentTracking.Notes" class="form-input" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Rider Contact</label>
+                    <input type="text" @bind="currentTracking.RiderContact" class="form-input" />
+                </div>
+                <div class="form-actions">
+                    <button class="btn-action btn-update" @onclick="SaveTracking">Update</button>
+                    <button class="btn-action btn-delete" @onclick="CancelForm">Cancel</button>
+                </div>
+            </div>
+        }
+
+        <!-- Tracking Records Grid -->
+        @if (filteredTrackingRecords.Any())
+        {
+            <div class="products-grid">
+                @foreach (var tracking in filteredTrackingRecords)
+                {
+                    <div class="product-card">
+                        <div class="product-header">
+                            <h3>@tracking.Status</h3>
+                        </div>
+                        <div class="product-details">
+                            <div class="info-row">
+                                <span class="label">Order ID:</span>
+                                <span class="value">@tracking.OrderID</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Estimated Delivery:</span>
+                                <span class="value">@(tracking.EstimatedDeliveryTime ?? "N/A")</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Rider Contact:</span>
+                                <span class="value">@(tracking.RiderContact ?? "N/A")</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Notes:</span>
+                                <span class="value">@(tracking.Notes?.Length > 50 ? tracking.Notes.Substring(0, 50) + "..." : tracking.Notes ?? "N/A")</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-action btn-update" @onclick="() => EditTracking(tracking)">Edit</button>
+                            <button class="btn-action btn-delete" @onclick="() => DeleteTracking(tracking.TrackingID)">Delete</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="no-records">No tracking records found for this order.</div>
+        }
+    }
+</div>
+
+<!-- Footer -->
+<footer class="products-footer">
+    <p>© @DateTime.Now.Year FreshMart Pro - Grocery Store Management System</p>
+</footer>
+
+@code {
+    [Parameter]
+    public string orderId { get; set; }
+
+    private List<OrderTrackingModel> trackingRecords = new List<OrderTrackingModel>();
+    private List<OrderTrackingModel> filteredTrackingRecords = new List<OrderTrackingModel>();
+    private string searchTerm = "";
+    private string errorMessage;
+    private bool isLoading = true;
+    private string token;
+    private string role;
+    private bool showForm = false;
+    private bool isEditing = false;
+    private OrderTrackingModel currentTracking = new OrderTrackingModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            token = await SessionStorage.GetItemAsync<string>("authToken");
+            var claims = RoleFetch.ParseClaimsFromJwt(token);
+            var roleClaim = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+            role = roleClaim?.Value;
+            await LoadTrackingRecords();
+            filteredTrackingRecords = trackingRecords;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to initialize: {ex.Message}";
+            Console.WriteLine($"Initialization error: {ex}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task LoadTrackingRecords()
+    {
+        isLoading = true;
+        errorMessage = null;
+        StateHasChanged();
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.GetAsync($"api/OrderTracking?OrderID={orderId}");
+            if (response.IsSuccessStatusCode)
+            {
+                trackingRecords = await response.Content.ReadFromJsonAsync<List<OrderTrackingModel>>() ?? new();
+                filteredTrackingRecords = trackingRecords;
+            }
+            else
+            {
+                errorMessage = await GetErrorMessage(response);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to load tracking records: {ex.Message}";
+            Console.WriteLine($"Load tracking records error: {ex}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task SaveTracking()
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            if (!isEditing)
+            {
+                if (trackingRecords.Any())
+                {
+                    errorMessage = "Cannot create a new tracking record. Only one tracking record is allowed per order.";
+                    return;
+                }
+                currentTracking.TrackingID = Guid.NewGuid().ToString();
+                currentTracking.OrderID = orderId;
+                var response = await client.PostAsJsonAsync("api/OrderTracking", currentTracking);
+                if (!response.IsSuccessStatusCode)
+                {
+                    errorMessage = await GetErrorMessage(response);
+                    return;
+                }
+            }
+            else
+            {
+                var response = await client.PutAsJsonAsync("api/OrderTracking", currentTracking);
+                if (!response.IsSuccessStatusCode)
+                {
+                    errorMessage = await GetErrorMessage(response);
+                    return;
+                }
+            }
+
+            await LoadTrackingRecords();
+            CancelForm();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to save tracking record: {ex.Message}";
+            Console.WriteLine($"Save tracking error: {ex}");
+        }
+        finally
+        {
+            StateHasChanged();
+        }
+    }
+
+    private void ShowCreateForm()
+    {
+        if (trackingRecords.Any())
+        {
+            errorMessage = "Cannot add another tracking record. Only one is allowed per order.";
+            return;
+        }
+        currentTracking = new OrderTrackingModel { OrderID = orderId, Status = "Processing" };
+        showForm = true;
+        isEditing = false;
+        StateHasChanged();
+    }
+
+    private void EditTracking(OrderTrackingModel tracking)
+    {
+        currentTracking = new OrderTrackingModel
+            {
+                TrackingID = tracking.TrackingID,
+                OrderID = tracking.OrderID,
+                Status = tracking.Status,
+                EstimatedDeliveryTime = tracking.EstimatedDeliveryTime,
+                Notes = tracking.Notes,
+                RiderContact = tracking.RiderContact
+            };
+        showForm = true;
+        isEditing = true;
+        StateHasChanged();
+    }
+
+    private async Task DeleteTracking(string trackingID)
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("AuthApi");
+            var response = await client.DeleteAsync($"api/OrderTracking?TrackingID={trackingID}");
+            if (!response.IsSuccessStatusCode)
+            {
+                errorMessage = await GetErrorMessage(response);
+                return;
+            }
+            await LoadTrackingRecords();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to delete tracking record: {ex.Message}";
+            Console.WriteLine($"Delete tracking error: {ex}");
+        }
+        finally
+        {
+            StateHasChanged();
+        }
+    }
+
+    private void CancelForm()
+    {
+        showForm = false;
+        isEditing = false;
+        currentTracking = new OrderTrackingModel();
+        errorMessage = null;
+        StateHasChanged();
+    }
+
+    private void SearchTracking()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredTrackingRecords = trackingRecords;
+        }
+        else
+        {
+            filteredTrackingRecords = trackingRecords
+                .Where(t => t.Status.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                            (t.EstimatedDeliveryTime?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                            (t.Notes?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                            (t.RiderContact?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false))
+                .ToList();
+        }
+        StateHasChanged();
+    }
+
+    private async Task<string> GetErrorMessage(HttpResponseMessage response)
+    {
+        try
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            return !string.IsNullOrWhiteSpace(content)
+                ? (content.Length > 100 ? content.Substring(0, 100) + "..." : content)
+                : $"Error: {response.StatusCode}";
+        }
+        catch
+        {
+            return $"Error: {response.StatusCode}";
+        }
+    }
+
+    private async Task Logout()
+    {
+        await SessionStorage.RemoveItemAsync("authToken");
+        NavigationManager.NavigateTo("/");
+    }
+}
+
+<style>
+    :root {
+        --primary-color: #0468d7;
+        --primary-dark: #0254b3;
+        --primary-light: #1b6cb9;
+        --text-light: #fff;
+        --text-dark: #333;
+        --bg-light: #f8f9fa;
+        --radius: 8px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .products-container {
+        max-width: 1400px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .products-actions {
+        margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        max-width: 400px;
+        min-width: 200px;
+    }
+
+    .search-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 1px solid #ced4da;
+        border-right: none;
+        border-radius: var(--radius) 0 0 var(--radius);
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+        height: 40px;
+    }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+        }
+
+    .btn-search {
+        background: var(--primary-color);
+        color: var(--text-light);
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        cursor: pointer;
+        transition: background 0.3s;
+        height: 40px;
+        min-width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .btn-search:hover {
+            background: var(--primary-dark);
+        }
+
+    .btn-add {
+        background: var(--primary-color);
+        color: var(--text-light);
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background 0.3s;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .btn-add:hover {
+            background: var(--primary-dark);
+        }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #e9ecef;
+    }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    .product-header {
+        background: var(--primary-color);
+        color: var(--text-light);
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .product-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+    .product-details {
+        padding: 1rem;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem 0;
+    }
+
+    .label {
+        color: #666;
+        font-weight: 500;
+    }
+
+    .value {
+        color: var(--text-dark);
+        font-weight: 600;
+    }
+
+    .product-actions {
+        padding: 1rem;
+        border-top: 1px solid #e9ecef;
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .btn-action {
+        flex: 1;
+        padding: 0.6rem;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background 0.3s;
+        color: var(--text-light);
+        font-weight: 500;
+    }
+
+    .btn-update {
+        background: var(--primary-color);
+    }
+
+        .btn-update:hover {
+            background: var(--primary-dark);
+        }
+
+    .btn-delete {
+        background: #dc3545;
+    }
+
+        .btn-delete:hover {
+            background: #c82333;
+        }
+
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-dark);
+    }
+
+    .error-message {
+        text-align: center;
+        padding: 2rem;
+        color: #dc3545;
+    }
+
+    .no-records {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-dark);
+        font-size: 1.2rem;
+    }
+
+    .products-header {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        padding: 1rem 2rem;
+        box-shadow: var(--shadow);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .products-header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .user-role {
+        background: rgba(255,255,255,0.2);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+    }
+
+    .btn-logout {
+        background: transparent;
+        border: 1px solid var(--text-light);
+        color: var(--text-light);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-logout:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+    .products-footer {
+        text-align: center;
+        background: var(--text-dark);
+        color: var(--text-light);
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+
+    .form-container {
+        background: white;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+    .form-input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ced4da;
+        border-radius: var(--radius);
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+        .form-input:focus {
+            border-color: var(--primary-color);
+        }
+
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+    }
+</style>

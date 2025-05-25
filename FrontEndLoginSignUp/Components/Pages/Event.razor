@@ -55,6 +55,7 @@
                             <th style="padding: 10px; border: 1px solid #ddd;">Event Name</th>
                             <th style="padding: 10px; border: 1px solid #ddd;">Description</th>
                             <th style="padding: 10px; border: 1px solid #ddd;">Date</th>
+                            <th style="padding: 10px; border: 1px solid #ddd;">Time</th>
                             <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
                         </tr>
                     </thead>
@@ -72,6 +73,7 @@
                                 <td style="padding: 10px; border: 1px solid #ddd;">@evt.EName</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">@evt.Descriptions</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">@evt.EDate.ToShortDateString()</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">@evt.StartTime</td>
                                 <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
                                     <button style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="() => EditEvent(evt)">Update</button>
                                     <button style="background-color: #1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; cursor: pointer;" @onclick="() => DeleteEvent(evt.EID)">Delete</button>

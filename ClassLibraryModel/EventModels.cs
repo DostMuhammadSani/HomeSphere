@@ -13,6 +13,7 @@ namespace ClassLibraryModel
         public string Descriptions { get; set; } // Event Description
         public string? Picture { get; set; } // Picture URL or Path
         public DateTime EDate { get; set; } // Event Date
+        public string StartTime { get; set; }
         public string A_id { get; set; } // Admin ID
     }
 }

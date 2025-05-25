@@ -1,8 +1,10 @@
 ﻿@using System.ComponentModel.DataAnnotations
 @using ClassLibraryModel
+@using CloudinaryDotNet
+@using CloudinaryDotNet.Actions
 @inject NavigationManager Navigation
 @inject IHttpClientFactory HttpClientFactory
-@inject IWebHostEnvironment Environment
+@inject IPhotoService PhotoService
 
 <div class="card mt-4">
     <div class="card-body">
@@ -23,9 +25,17 @@
                 <InputTextArea id="description" class="form-control" @bind-Value="Event.Descriptions" required />
             </div>
 
+            <!-- Event Date Field -->
             <div class="form-group">
                 <label for="eventDate">Event Date</label>
                 <InputDate id="eventDate" class="form-control" @bind-Value="Event.EDate" required />
+            </div>
+
+            <!-- Start Time Field -->
+            <div class="form-group">
+                <label for="startTime">Start Time</label>
+                <InputText id="startTime" type="time" class="form-control" @bind-Value="Event.StartTime" required />
+                <ValidationMessage For="@(() => Event.StartTime)" />
             </div>
 
             <!-- Current Picture -->
@@ -40,12 +50,18 @@
             <!-- Upload New Picture -->
             <div class="form-group">
                 <label for="picture">Upload New Picture</label>
-                <InputFile OnChange="HandleFileSelected" />
+                <InputFile OnChange="HandleFileSelected" accept="image/*" />
+                @if (uploadProgress > 0 && uploadProgress < 100)
+                {
+                    <div class="progress mt-2">
+                        <div class="progress-bar" role="progressbar" style="width: @uploadProgress%" aria-valuenow="@uploadProgress" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                }
             </div>
 
             <!-- Update and Cancel Buttons -->
             <div class="form-group mt-3">
-                <button type="submit" class="btn btn-primary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;">Update</button>
+                <button type="submit" class="btn btn-primary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" disabled="@isUploading">Update</button>
                 <button type="button" class="btn btn-secondary" style="background-color:#1b6cb9; border: none; padding: 5px 10px; border-radius: 5px; color: white; margin-right: 5px; cursor: pointer;" @onclick="Cancel">Cancel</button>
             </div>
         </EditForm>
@@ -72,13 +88,22 @@
     [Parameter] public EventCallback<EventModels> OnSave { get; set; }
     [Parameter] public EventCallback OnCancel { get; set; }
 
-    public string ErrorMessage { get; set; }
-    public string SuccessMessage { get; set; }
+    public string ErrorMessage { get; set; } = "";
+    public string SuccessMessage { get; set; } = "";
+    private bool isUploading = false;
+    private int uploadProgress = 0;
 
     private async Task HandleUpdateClick()
     {
         ErrorMessage = string.Empty;
         SuccessMessage = string.Empty;
+
+        // Validate StartTime format
+        if (!IsValidTime(Event.StartTime))
+        {
+            ErrorMessage = "Start Time must be in HH:mm format (e.g., 14:30).";
+            return;
+        }
 
         try
         {
@@ -106,24 +131,51 @@
 
     private async Task HandleFileSelected(InputFileChangeEventArgs e)
     {
+        ErrorMessage = string.Empty;
+        isUploading = true;
+        uploadProgress = 0;
+
         try
         {
             var file = e.File;
-            var filePath = Path.Combine(Environment.WebRootPath, "uploads", file.Name);
 
-            // Ensure the directory exists
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            // Validate file size (e.g., 5MB max)
+            if (file.Size > 5 * 1024 * 1024)
+            {
+                ErrorMessage = "File size must be less than 5MB.";
+                return;
+            }
 
-            await using var fileStream = new FileStream(filePath, FileMode.Create);
-            await file.OpenReadStream().CopyToAsync(fileStream);
+            // Update progress (simulated)
+            uploadProgress = 10;
 
-            // Update the Picture field with the relative path
-            Event.Picture = $"/uploads/{file.Name}";
+            // Use the injected PhotoService to upload
+            var uploadResult = await PhotoService.AddPhotoAsync(file);
+
+            uploadProgress = 100;
+
+            if (uploadResult.Error != null)
+            {
+                ErrorMessage = $"Upload failed: {uploadResult.Error.Message}";
+                return;
+            }
+
+            Event.Picture = uploadResult.SecureUrl.ToString();
+            StateHasChanged();
         }
         catch (Exception ex)
         {
-            ErrorMessage = $"An error occurred while uploading the file: {ex.Message}";
+            ErrorMessage = $"Upload error: {ex.Message}";
         }
+        finally
+        {
+            isUploading = false;
+        }
+    }
+
+    private bool IsValidTime(string time)
+    {
+        return TimeSpan.TryParse(time, out _);
     }
 
     private void Cancel()

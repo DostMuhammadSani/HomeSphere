@@ -650,6 +650,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebAPI.Controllers.OrderTrackingController",
+    "Method": "GetOrderTrackingByOrderID",
+    "RelativePath": "api/OrderTracking",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OrderID",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ClassLibraryModel.OrderTrackingModel, ClassLibraryModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebAPI.Controllers.OrderTrackingController",
+    "Method": "CreateOrderTracking",
+    "RelativePath": "api/OrderTracking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderTracking",
+        "Type": "ClassLibraryModel.OrderTrackingModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI.Controllers.OrderTrackingController",
+    "Method": "UpdateOrderTracking",
+    "RelativePath": "api/OrderTracking",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderTracking",
+        "Type": "ClassLibraryModel.OrderTrackingModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI.Controllers.OrderTrackingController",
+    "Method": "DeleteOrderTracking",
+    "RelativePath": "api/OrderTracking",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TrackingID",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebAPI.Controllers.OwnShipController",
     "Method": "GetOwnShips",
     "RelativePath": "api/OwnShip",
